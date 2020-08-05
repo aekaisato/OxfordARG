@@ -19,7 +19,7 @@ ext. oxford Academy
 VIRDOS is heading towards the English Building. VIRIDOS begins telling the history of Oxford while moving.
 
 VIRIDOS
-Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi--
+Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-
 
 VIRIDOS suddenly glitches out and makes a sharp turn towards the Rosa Parks mural, smashing into it multiple times.
 
@@ -120,6 +120,19 @@ Hello? Hello?? Ah finally I've got connection again. I uh don't know what went w
 VIRIDOS starts moving into the English building.
 
 TRANSITION TO:
+i/e oxford academy, english building
+
+VIRIDOS continues the tour into the Oxford English Building.
+
+VIRIDOS
+This is our newest building, the English building. Not only are English classes taught here, but also our yearbook, ASB, and our school newspaper the Gamut meet in these classrooms as well.
+
+MRS. FONG pokes her head out of her classroom, clearly in need of help, interjecting the current tour.
+
+MRS. FONG
+Hey, do you mind helping me with a quick problem I have?
+
+TRANSITION TO:
 int. english classroom (fong)
 
 The classroom appears normal, except for a few books scattered. MRS. FONG stands in the middle of the classroom looking perplexed.
@@ -133,4 +146,88 @@ Hey, welcome to my classroom! Good thing you stopped by; my notes for *Of Mice a
 
 CUT TO:
 int. english classroom (fong)
+
+MRS. FONG
+Thank you! Now I can continue with my lesson prep. Have a nice day!
+
+HOSHI REPRESENTATIVE
+(via transmission)
+*Good, I've seen you've found out how we did our clues. You will continue to see this throughout the day; it's all part of the plan. Just continue your tour.*
+
+>**Fade to black**
+
+ [[write in Puzzles 4-7 (first 4 teacher visits) once puzzles are finalized]]
+
+TRANSITION TO:
+int. science hall, moving towards exit
+
+VIRIDOS suddenly stops.
+
+MR. ALONSO
+Uh oh, what's goi--
+
+The lights black out as the communicator and rest of the robot shut off, leaving a completely black screen. A light pulses on screen, saying "Using Emergency Power". The other HUD items fade in slowly, but now are more stripped down and "dark" in terms of design (more akin to a terminal look than a full GUI). The communicator plays static as the HOSHI REPRESENTATIVE hacks into it again.
+
+HOSHI REPRESENTATIVE
+(holding back panic)
+*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30C[[303]]. Be careful.*
+
+>**_PUZZLE 8 (Blackout Puzzle)_**
+[[goal of this puzzle is to penalize those that have been randomly clicking]]
+
+Map of 300 building is displayed with the instructions "go to classroom 30**C**". Most of the rooms have 360° photos, but have nothing of interest (and the instructions don't disappear unless in 303). Classroom 303 has an obvious sheet of paper left by HOSHI on the ground. Clicking on it triggers the next cutscene.
+
+[[Puzzles 9-12]]
+
+CUT TO:
+ext. oxford Academy, quad
+
+PLAYER receives page from custodian puzzle. Suddenly, the communicator glitches as a WHITNEY REPRESENTATIVE appears. Still a silhouette, but with a gradient yellow and black background.
+
+WHITNEY REPRESENTATIVE
+(devilishly)
+*We know who you are and what you're after. You will not succeed. Whitney will reign number 1! Stop now...or else...(pause)...we know where you are...*
+
+Using IP address, WHITNEY REPRESENTATIVE identifies the player's real life location. The communicator glitches again as HOSHI REPRESENTATIVE hacks back in.
+
+HOSHI REPRESENTATIVE
+(with urgency)
+*Hurry! They're onto us! You must find the rest of the research before it's too late! I'm sorry, I can't help you anymore until you find the rest of the pages; this connection just isn't safe anymore. The fate of our rankings is in your hands. I'll leave you with one last hint.*
+
+>**_PUZZLE 13 (Morse Code)_**
+
+[[Puzzle 14-15]]
+
+CUT TO:
+ext. oxford academy, quad
+
+Player has completed the missing research and is assembling the pages. A cryptic poem appears.
+
+>**_PUZZLE 16 (Project Emerald Cryptic Clue)_**
+
+The message that emerges from Puzzle 16 is "Look by the stairs near the elevator".
+
+TRANSITION TO:
+ext. oxford academy, science stairwell by elevator
+
+Camera pans towards metal opening to secret room.
+
+>**_PUZZLE 17 (The Final Puzzle)_**
+
+TRANSITION TO:
+int. science stairwell by elevator
+
+Camera pans to show the green polo sitting majestically in the center of the room. HOSHI REPRESENTATIVE now provides the history of Project Emerald.
+
+HOSHI REPRESENTATIVE
+*And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possesion of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out*
+
+The communicator then comes online again with Mr. Alonso exasperated and relieved after finally figuring out how to reconnect with it.
+
+MR. ALONSO
+There you are, finally my systems are back online! What on earth has VIRIDOS gone through?? *sigh*, I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...
+
+>Fade to Black
+
+Final credits and leaderboard is shown. If this is the first place winner, maybe a video from Ms. Houston explains the green polo prize.
 
