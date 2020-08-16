@@ -2,7 +2,7 @@ title: Oxford ARG
 credit: written by
 author: Brandon Imai and Aiden Sato
 source: Story by Brandon Imai and Aiden Sato
-draft date: 8-2-2020 ver. 0.1.4
+draft date: 8-15-2020 ver. 0.1.5
 
 ext. computer science building
 
@@ -16,7 +16,7 @@ Tutorial of VIRIDOS mechanics play
 
 CUT TO:
 ext. oxford Academy
-VIRDOS is heading towards the English Building. VIRIDOS begins telling the history of Oxford while moving.
+VIRIDOS is heading towards the English Building. VIRIDOS begins telling the history of Oxford while moving.
 
 VIRIDOS
 Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-
@@ -138,11 +138,11 @@ int. english classroom (fong)
 The classroom appears normal, except for a few books scattered. MRS. FONG stands in the middle of the classroom looking perplexed.
 
 MRS. FONG
-Hey, welcome to my classroom! Good thing you stopped by; my notes for *Of Mice and Men* were scrambled for some reason. Can you help me with this?
+Hey, welcome to my classroom! Good thing you stopped by; my notes for *Julius Caesar* were scrambled for some reason. Can you help me with this?
 
 >**_PUZZLE #4 (English Puzzle)_**
 
-[[PLAYER gets page 1 of composition book]]
+PLAYER gets page 1 of composition book (see notebook doc for actual lines)
 
 CUT TO:
 int. english classroom (fong)
@@ -156,7 +156,66 @@ HOSHI REPRESENTATIVE
 
 >**Fade to black**
 
- [[write in Puzzles 4-7 (first 4 teacher visits) once puzzles are finalized]]
+CUT TO:
+ext. Oxford Academy, front office
+
+VIRIDOS
+Here is the front office, the brains of Oxford. Our administrators work -
+
+MR. HERNANDEZ
+Ah there you are! I heard you'd be on campus today. Do you mind helping me putting up these posters?
+
+HOSHI REPRESENTATIVE
+(via transmission)
+*Go with the plan*
+
+TRANSITION TO:
+int. Oxford Academy, front office
+>**_PUZZLE #5 (FRONT OFFICE)_**
+
+PLAYER gets page 2 of composition book from a safe
+
+HOSHI REPRESENTATIVE
+(via transmission)
+*Well done*
+
+CUT TO:
+int. Oxford Academy, math building (worthington)
+
+MS. WORTHINGTON
+Hey! Thought I'd catch you on campus testing the tour today. Just wanted to give you a heads up that you forgot this assignment yesterday. No worries, feel free to do it right now.
+
+>**_PUZZLE #6 (MATH SUDOKU)_**
+
+PLAYER gets page 3 of composition book from a safe where combo is retrived from circled numbers on the solved puzzle.
+
+HOSHI REPRESENTATIVE
+(via transmission, sarcastically)
+*Next time don't forget to do your homework...*
+
+CUT TO:
+int. Oxford Academy, science hallway
+VIRIDOS continues the tour through the science hall
+
+VIRIDOS
+This is our science wing. We have a variety of courses and clubs associated with science.
+
+VIRIDOS makes a sharp right into Ms. Tran's classroom.
+
+TRANSITION TO:
+int. Oxford Academy, science classroom (Tran)
+
+MS. TRAN
+(via transmission)
+Hey, how's it going? I got this slip of paper this morning saying to look at my periodic table but I can't seem to figure it out. Do you think you can give it a shot?
+
+>**_PUZZLE #7 (SCIENCE)_**
+
+PLAYER gets page 4 from compsition book from smoker thing Tran hacks
+
+HOSHI REPRESENTATIVE
+(via transmission)
+*Nice work, that's four clues down. Keep going, hopefully Whitney hasn't caught on yet...*
 
 TRANSITION TO:
 int. science hall, moving towards exit
@@ -170,14 +229,35 @@ The lights black out as the communicator and rest of the robot shut off, leaving
 
 HOSHI REPRESENTATIVE
 (holding back panic)
-*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30C[[303]]. Be careful.*
+*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30B[[302]]. Be careful.*
 
 >**_PUZZLE 8 (Blackout Puzzle)_**
 [[goal of this puzzle is to penalize those that have been randomly clicking]]
 
-Map of 300 building is displayed with the instructions "go to classroom 30**C**". Most of the rooms have 360° photos, but have nothing of interest (and the instructions don't disappear unless in 303). Classroom 303 has an obvious sheet of paper left by HOSHI on the ground. Clicking on it triggers the next cutscene.
+Map of 300 building is displayed with the instructions "go to classroom 30**B**". Most of the rooms have 360° photos, but have nothing of interest (and the instructions don't disappear unless in 302). Classroom 302 has an obvious sheet of paper left by HOSHI on the ground. Clicking on it triggers the next cutscene.
 
-[[Puzzles 9-12]]
+VIRIDOS
+Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.
+
+MRS. STEPHAN goes onto the communicator.
+
+MRS. STEPHAN
+How's the tour been so far? I *know* you can't respond to that, but I just hope you're enjoying it. Right now, we're in Mr. Kim's room, and did you know he has a stash of Choco Pies in that cabinet over there? It's too bad he put a lock on it...
+
+MR. KIM
+Actually, I didn't do that. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
+
+Puzzle - similar to https://i.vgy.me/WB5kzU.png
+
+After opening the cabinet, a page is found with the Choco Pies.
+
+MRS. STEPHAN
+Wait, what's tha--
+
+HOSHI REPRESENTATIVE
+Good, you found the page. Now go to classroom D - 3, A - 1, E - 2 [103].
+
+Same map system, this time with the 100 building.
 
 CUT TO:
 ext. oxford Academy, quad
@@ -220,7 +300,7 @@ int. science stairwell by elevator
 Camera pans to show the green polo sitting majestically in the center of the room. HOSHI REPRESENTATIVE now provides the history of Project Emerald.
 
 HOSHI REPRESENTATIVE
-*And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possesion of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out*
+*And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out*
 
 The communicator then comes online again with Mr. Alonso exasperated and relieved after finally figuring out how to reconnect with it.
 
