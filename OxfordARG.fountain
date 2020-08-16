@@ -231,10 +231,13 @@ HOSHI REPRESENTATIVE
 (holding back panic)
 *...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30B[[302]]. Be careful.*
 
->**_PUZZLE 8 (Blackout Puzzle)_**
+> **_PUZZLE #8 (Blackout Puzzle)_**
 [[goal of this puzzle is to penalize those that have been randomly clicking]]
 
 Map of 300 building is displayed with the instructions "go to classroom 30**B**". Most of the rooms have 360° photos, but have nothing of interest (and the instructions don't disappear unless in 302). Classroom 302 has an obvious sheet of paper left by HOSHI on the ground. Clicking on it triggers the next cutscene.
+
+CUT TO:
+int. world language classroom (kim)
 
 VIRIDOS
 Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.
@@ -247,6 +250,7 @@ How's the tour been so far? I *know* you can't respond to that, but I just hope 
 MR. KIM
 Actually, I didn't do that. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
 
+> **_PUZZLE #9 (World Language Puzzle)_**
 Puzzle - similar to https://i.vgy.me/WB5kzU.png
 
 After opening the cabinet, a page is found with the Choco Pies.
@@ -255,16 +259,51 @@ MRS. STEPHAN
 Wait, what's tha--
 
 HOSHI REPRESENTATIVE
-Good, you found the page. Now go to classroom D - 3, A - 1, E - 2 [103].
+*Good, you found the page. Now go to classroom D - 3, A - 1, E - 2 [103].*
 
 Same map system, this time with the 100 building.
 
+CUT TO:
+int. oxford academy, history classroom (vosskuhler)
 
+MRS. VOSSKUHLER
+Oh, hello. Glad you're here. When I heard there was a blackout I decided to check in on the classroom. For whatever reason, someone threw a safe into it. There's also a slip of paper, but I can't read it from my camera angle.
+
+> **_PUZZLE #10 (History Puzzle)_**
+
+The slip of paper has a list of presidents. Using a poster in the room, you can figure out the code based on that. Or it could have text like "p4 p7 p 21" and on the poster, each president would have a letter underlined, so that would correspond to the actual code. Once the puzzle is completed, you get another page in the safe.
+
+HOSHI REPRESENTATIVE
+*We've almost stopped Whitney from getting into our system, but not quite. Go to room *
+
+CUT TO:
+i/e. Oxford Academy, P.E Lockers
+
+VIRIDOS
+As we approach the locker rooms, I'd like to take this chance to let you know about the plethora of athletics Oxford offers. Despite us being an academic school, we do-
+
+MRS. JENSEN
+(interrupting)
+I thought I heard that tour robot, glad I caught you guys! The blackout must've done something funky because when I returned to the lockers, there were a bunch of posters that I hadn't seen before! Maybe you guys can go check it out?
+
+> **_PUZZLE #11 (P.E Puzzle)_**
+PLAYER receives page from composition book
+
+HOSHI REPRESENTATIVE
+*Okay, I think Whitney has lost our trail. Head to the custodial building for your next page*
+
+CUT TO:
+ext. Oxford Academy, custodial building 
+
+MR. VASQUEZ
+Ah, glad to see our tour robot still functioning after that odd blackout. I thought you'd might want to take a look at this. All of my mops are all over the place for some reason!
+
+> **_ PUZZLE #12 (Custodial Puzzle)_**
 
 CUT TO:
 ext. oxford Academy, quad
 
-PLAYER receives page from custodian puzzle. Suddenly, the communicator glitches as a WHITNEY REPRESENTATIVE appears. Still a silhouette, but with a gradient yellow and black background.
+PLAYER receives page from custodian puzzle. VIRIDOS starts spewing random text/audio that becomes progressively glitchier. As the audio slows down and stops, the communicator glitches as a WHITNEY REPRESENTATIVE appears. Still a silhouette, but with a gradient yellow and black background.
 
 WHITNEY REPRESENTATIVE
 (devilishly)
@@ -277,8 +316,22 @@ HOSHI REPRESENTATIVE
 *Hurry! They're onto us! You must find the rest of the research before it's too late! I'm sorry, I can't help you anymore until you find the rest of the pages; this connection just isn't safe anymore. The fate of our rankings is in your hands. I'll leave you with one last hint.*
 
 >**_PUZZLE 13 (Morse Code)_**
+Morse code decoder will be given on the side of the popup with room selection
 
-[[Puzzle 14-15]]
+CUT TO:
+int. Oxford Academy, choir room 
+
+MR. HOGAN
+(shocked)
+Glad I ran into you. I just received this cryptic email from someone from Whitney?? Do you know what's going on? You're free to use my piano if you feel like it.
+
+>**_PUZZLE # 14 (VAPA Puzzle)_**
+
+MR. HOGAN
+What an interesting tune. I hope everything will be alright; best of luck.
+
+CUT TO:
+
 
 CUT TO:
 ext. oxford academy, quad
