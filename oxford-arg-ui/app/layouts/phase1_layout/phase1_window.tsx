@@ -45,8 +45,6 @@ export class Phase1Window extends React.Component<WindowProps> {
               borderBottomWidth: 4,
               borderLeftWidth: 4,
               borderRightWidth: 4,
-              shadowOpacity: 0.35,
-              shadowRadius: 20,
             },
           ]}
         >
