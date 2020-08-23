@@ -18,6 +18,8 @@ import { AppLoading } from "expo";
 
 import { MainScreen } from "./app/screens/main_screen/main_screen";
 import { Phase1Layout } from "./app/layouts/phase1_layout/phase1_layout";
+import { Phase2Layout } from "./app/layouts/phase2_layout/phase2_layout";
+import { Phase3Layout } from "./app/layouts/phase3_layout/phase3_layout";
 
 const theme = { ...darkTheme };
 
@@ -93,7 +95,7 @@ export default class App extends React.Component {
 
 export const StackNavigator = createStackNavigator({
   MainScreen: {
-    screen: Phase1Layout, // temp change
+    screen: Phase3Layout, // temp change
     navigationOptions: {
       headerShown: false,
     },
