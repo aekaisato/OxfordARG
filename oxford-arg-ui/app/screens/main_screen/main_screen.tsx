@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Dimensions } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,

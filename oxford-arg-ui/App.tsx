@@ -17,6 +17,7 @@ import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
 import { MainScreen } from "./app/screens/main_screen/main_screen";
+import { Phase1Layout } from "./app/layouts/phase1_layout/phase1_layout";
 
 const theme = { ...darkTheme };
 
@@ -31,28 +32,31 @@ export default class App extends React.Component {
 
   async loadFonts() {
     await Font.loadAsync({
-      "Metropolis-Regular": require("./assets/fonts/metropolis/Metropolis-Regular.ttf")
+      "Courier-Prime": require("./assets/fonts/courier-prime/Courier-Prime.ttf")
     });
     await Font.loadAsync({
-      "Metropolis-Medium": require("./assets/fonts/metropolis/Metropolis-Medium.ttf")
+      "Courier-Prime-Bold": require("./assets/fonts/courier-prime/Courier-Prime-Bold.ttf")
     });
     await Font.loadAsync({
-      "Metropolis-SemiBold": require("./assets/fonts/metropolis/Metropolis-SemiBold.ttf")
+      "Courier-Prime-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Italic.ttf")
     });
     await Font.loadAsync({
-      "Metropolis-Bold": require("./assets/fonts/metropolis/Metropolis-Bold.ttf")
+      "Courier-Prime-Bold-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Bold-Italic.ttf")
     });
     await Font.loadAsync({
-      "Metropolis-ExtraBold": require("./assets/fonts/metropolis/Metropolis-ExtraBold.ttf")
+      "Noto-Sans": require("./assets/fonts/noto-sans/NotoSans-Regular.ttf")
     });
     await Font.loadAsync({
-      "Metropolis-Black": require("./assets/fonts/metropolis/Metropolis-Black.ttf")
+      "Noto-Sans-Bold": require("./assets/fonts/noto-sans/NotoSans-Bold.ttf")
     });
     await Font.loadAsync({
-      Manrope: require("./assets/fonts/ManropeGX.ttf")
+      "Noto-Sans-Italic": require("./assets/fonts/noto-sans/NotoSans-Italic.ttf")
     });
     await Font.loadAsync({
-      Inter: require("./assets/fonts/Inter.otf")
+      "Noto-Sans-Bold-Italic": require("./assets/fonts/noto-sans/NotoSans-BoldItalic.ttf")
+    });
+    await Font.loadAsync({
+      "VT323": require("./assets/fonts/VT323-Regular.ttf")
     });
     this.fontsLoaded = true;
   }
@@ -89,7 +93,7 @@ export default class App extends React.Component {
 
 export const StackNavigator = createStackNavigator({
   MainScreen: {
-    screen: MainScreen,
+    screen: Phase1Layout, // temp change
     navigationOptions: {
       headerShown: false,
     },
