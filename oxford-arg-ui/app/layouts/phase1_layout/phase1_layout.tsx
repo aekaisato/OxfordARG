@@ -198,6 +198,7 @@ export class Phase1Layout extends React.Component {
                     color: "white",
                     margin: 6,
                     opacity: 1,
+                    textAlign: "center"
                   }}
                 >
                   {this.state.pagesCollected + " pages collected"}
