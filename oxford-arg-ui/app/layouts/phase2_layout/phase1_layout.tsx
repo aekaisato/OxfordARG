@@ -8,7 +8,6 @@ import {
   Easing,
   Text,
   Image,
-  Button,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -185,39 +184,26 @@ export class Phase1Layout extends React.Component {
                   backgroundColor: "#00000070",
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   height: (3 * deviceHeight) / 14 - 28,
+                  flexDirection: "row",
+                  justifyContent: "space-evenly",
                   alignItems: "center",
-                  justifyContent: "center"
                 }}
               >
-                <View
+                <Image
+                  source={require("../../../assets/img/notebook.png")}
+                  style={{ height: deviceHeight / 8, width: deviceHeight / 8 }}
+                />
+                <Text
                   style={{
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    alignItems: "center",
+                    fontFamily: "Courier-Prime-Bold",
+                    fontSize: 28,
+                    color: "white",
+                    margin: 6,
+                    opacity: 1,
                   }}
                 >
-                  <Image
-                    source={require("../../../assets/img/notebook.png")}
-                    style={{
-                      height: deviceHeight / 8,
-                      width: deviceHeight / 8,
-                    }}
-                  />
-                  <Text
-                    style={{
-                      fontFamily: "Courier-Prime-Bold",
-                      fontSize: 28,
-                      color: "white",
-                      margin: 6,
-                      opacity: 1,
-                    }}
-                  >
-                    {this.state.pagesCollected + " pages collected"}
-                  </Text>
-                </View>
-                <View style={{ width: deviceWidth / 16 }}>
-                  <Button title="Open Inventory" />
-                </View>
+                  {this.state.pagesCollected + " pages collected"}
+                </Text>
               </View>
             </Phase1Window>
             <Phase1Window>
