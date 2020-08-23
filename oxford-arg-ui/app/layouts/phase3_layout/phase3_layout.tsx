@@ -262,7 +262,7 @@ export class Phase3Layout extends React.Component {
                   }}
                   color="red"
                   font="VT323"
-                  speed={675}
+                  speed={480}
                 />
               </View>
             </Phase3Window>
