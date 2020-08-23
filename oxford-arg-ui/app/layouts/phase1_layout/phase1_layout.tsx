@@ -25,6 +25,8 @@ import { Phase1Window } from "./phase1_window";
 import { ScrollView } from "react-native-gesture-handler";
 import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
+import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
+import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -198,7 +200,6 @@ export class Phase1Layout extends React.Component {
                     color: "white",
                     margin: 6,
                     opacity: 1,
-                    textAlign: "center"
                   }}
                 >
                   {this.state.pagesCollected + " pages collected"}
@@ -271,16 +272,36 @@ export class Phase1Layout extends React.Component {
         >
           <Phase1Window
             windowName="Progress"
-            style={{ margin: 18, width: deviceWidth - 36, justifyContent: "center", alignItems: "center" }}
+            style={{
+              margin: 18,
+              width: deviceWidth - 36,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
             <View
               style={{
                 backgroundColor: "#303030",
                 width: deviceWidth - 36,
-                height: deviceHeight / 16
+                height: deviceHeight / 16,
+                alignItems: "center",
               }}
             >
-
+              <ProgressBar
+                color="#FFFFFF"
+                value={69}
+                style={{
+                  height: deviceHeight / 36,
+                  width: deviceWidth - 48,
+                  borderRadius: (deviceWidth - 48) / 4,
+                }}
+              />
+              <ProgressLeaderboard
+                style={{
+                  height: deviceHeight / 36,
+                  width: deviceWidth - 48,
+                }}
+              />
             </View>
           </Phase1Window>
         </View>
