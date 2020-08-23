@@ -27,12 +27,14 @@ function wait(timeout: number) {
 export declare interface CodeProps extends ViewProperties {
   font?: string
   speed?: number
+  color?: string
 }
 
 export class CodeDisplay extends React.Component<CodeProps> {
   font: string;
   state: any;
   speed: number
+  color: string;
   constructor(props: Readonly<CodeProps>) {
     super(props);
     this.state = {
@@ -47,6 +49,11 @@ export class CodeDisplay extends React.Component<CodeProps> {
       this.speed = 750
     } else {
       this.speed = props.speed
+    }
+    if (props.color == undefined) {
+      this.color = "white"
+    } else {
+      this.color = props.color
     }
   }
 
@@ -70,7 +77,7 @@ export class CodeDisplay extends React.Component<CodeProps> {
   render() {
     return (
       <View style={[this.props.style, {overflow: "hidden"}]}>
-        <Text style={{fontSize: 8, fontFamily: this.font}}>
+        <Text style={{fontSize: 8, fontFamily: this.font, color: this.color}}>
           { //@ts-ignore
           window.atob(CodeSnippets[this.state.index])}
         </Text>

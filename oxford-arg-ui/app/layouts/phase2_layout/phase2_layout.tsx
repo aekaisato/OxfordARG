@@ -21,7 +21,7 @@ import {
   IconRegistry,
   Layout,
 } from "@ui-kitten/components";
-import { Phase1Window } from "./phase1_window";
+import { Phase2Window } from "./phase2_window";
 import { ScrollView } from "react-native-gesture-handler";
 import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
@@ -33,7 +33,10 @@ let deviceWidth = Dimensions.get("window").width;
 
 document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
 
-export class Phase1Layout extends React.Component {
+const notebookAsciiArt64 =
+  "ICAgICAgICBfLi0iXAogICAgXy4tIiAgICAgXAogLC0iICAgICAgICAgIFwKKCBcICAgICAgICAgICAgXAogXCBcICAgICAgICAgICAgXAogIFwgXCAgICAgICAgICAgIFwKICAgXCBcICAgICAgICAgXy4tOwogICAgXCBcICAgIF8uLSIgICA6CiAgICAgXCBcLC0iICAgIF8uLSIKICAgICAgXCggICBfLi0iICAKICAgICAgIGAtLSI=";
+
+export class Phase2Layout extends React.Component {
   state = {
     loopAnim: new Animated.Value(0),
     pagesCollected: 0,
@@ -58,27 +61,6 @@ export class Phase1Layout extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={require("./gradient only.png")}
-          style={styles.imageBackground}
-          resizeMode="cover"
-        >
-          <ImageBackground
-            source={require("./grid only 2.png")}
-            style={styles.imageBackgroundGrid}
-            resizeMode="cover"
-          >
-            <Animated.View
-              style={{ position: "absolute", right: this.state.loopAnim }}
-            >
-              <ImageBackground
-                source={require("./grid only 1.png")}
-                style={styles.imageBackgroundGrid}
-                resizeMode="cover"
-              ></ImageBackground>
-            </Animated.View>
-          </ImageBackground>
-        </ImageBackground>
         <View
           style={{
             height: (6 * deviceHeight) / 7,
@@ -95,7 +77,7 @@ export class Phase1Layout extends React.Component {
             }}
           >
             <View style={{ margin: 18 }}>
-              <Phase1Window
+              <Phase2Window
                 windowName="Transcript"
                 style={{
                   height: (9 * deviceHeight) / 14,
@@ -110,9 +92,9 @@ export class Phase1Layout extends React.Component {
                 >
                   <Text
                     style={{
-                      fontFamily: "Courier-Prime",
-                      fontSize: 14,
-                      color: "white",
+                      fontFamily: "VT323",
+                      fontSize: 18,
+                      color: "red",
                       margin: 6,
                       opacity: 1,
                     }}
@@ -120,8 +102,8 @@ export class Phase1Layout extends React.Component {
                     {this.state.transcript}
                   </Text>
                 </ScrollView>
-              </Phase1Window>
-              <Phase1Window
+              </Phase2Window>
+              <Phase2Window
                 windowName="Communicator"
                 style={{
                   height: (3 * deviceHeight) / 14,
@@ -132,11 +114,11 @@ export class Phase1Layout extends React.Component {
                 <Image
                   source={{ uri: "https://i.vgy.me/utjbVt.jpg" }}
                   style={{
-                    height: (3 * deviceHeight) / 14 - 28,
+                    height: (3 * deviceHeight) / 14 - 8,
                     width: 0.2 * 0.9 * deviceWidth - 8,
                   }}
                 />
-              </Phase1Window>
+              </Phase2Window>
             </View>
           </View>
           <View
@@ -146,7 +128,7 @@ export class Phase1Layout extends React.Component {
               alignItems: "center",
             }}
           >
-            <Phase1Window
+            <Phase2Window
               windowName="Live Feed"
               style={{
                 height: (6 * deviceHeight) / 7,
@@ -158,11 +140,11 @@ export class Phase1Layout extends React.Component {
               <Image
                 source={{ uri: "https://i.vgy.me/wZOs7c.jpg" }}
                 style={{
-                  height: (6 * deviceHeight) / 7 - 28,
+                  height: (6 * deviceHeight) / 7 - 8,
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
               />
-            </Phase1Window>
+            </Phase2Window>
           </View>
           <View
             style={{
@@ -171,7 +153,7 @@ export class Phase1Layout extends React.Component {
               alignItems: "center",
             }}
           >
-            <Phase1Window
+            <Phase2Window
               windowName="Inventory"
               style={{
                 height: (3 * deviceHeight) / 14,
@@ -185,19 +167,27 @@ export class Phase1Layout extends React.Component {
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   height: (3 * deviceHeight) / 14 - 28,
                   flexDirection: "row",
-                  justifyContent: "space-evenly",
+                  justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Image
-                  source={require("../../../assets/img/notebook.png")}
-                  style={{ height: deviceHeight / 8, width: deviceHeight / 8 }}
-                />
                 <Text
                   style={{
-                    fontFamily: "Courier-Prime-Bold",
+                    fontFamily: "VT323",
+                    fontSize: 12,
+                    color: "red",
+                    width: 0.15 * 0.9 * deviceWidth - 8,
+                    marginLeft: 12,
+                    marginTop: 8,
+                  }}
+                >
+                  {window.atob(notebookAsciiArt64)}
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "VT323",
                     fontSize: 28,
-                    color: "white",
+                    color: "red",
                     margin: 6,
                     opacity: 1,
                   }}
@@ -205,8 +195,8 @@ export class Phase1Layout extends React.Component {
                   {this.state.pagesCollected + " pages collected"}
                 </Text>
               </View>
-            </Phase1Window>
-            <Phase1Window>
+            </Phase2Window>
+            <Phase2Window>
               <View
                 style={{
                   backgroundColor: "#00000070",
@@ -223,10 +213,13 @@ export class Phase1Layout extends React.Component {
                     width: 0.2 * 0.9 * deviceWidth - 8,
                     justifyContent: "center",
                   }}
+                  color="red"
+                  font="VT323"
+                  speed={675}
                 />
               </View>
-            </Phase1Window>
-            <Phase1Window>
+            </Phase2Window>
+            <Phase2Window>
               <View
                 style={{
                   backgroundColor: "#00000070",
@@ -242,23 +235,24 @@ export class Phase1Layout extends React.Component {
                   style={{
                     height: deviceHeight / 6,
                     width: deviceHeight / 6,
+                    tintColor: "red",
                   }}
                   resizeMode="contain"
                 />
                 <Text
                   style={{
-                    fontFamily: "Courier-Prime-Bold",
+                    fontFamily: "VT323",
                     fontSize: 28,
-                    color: "white",
+                    color: "red",
                     margin: 6,
                     opacity: 1,
                     textAlign: "center",
                   }}
                 >
-                  {"SYSTEMS\nCLEAR"}
+                  {"EMERGENCY\nPOWER"}
                 </Text>
               </View>
-            </Phase1Window>
+            </Phase2Window>
           </View>
         </View>
         <View
@@ -270,7 +264,7 @@ export class Phase1Layout extends React.Component {
             top: (6 * deviceHeight) / 7 + 14,
           }}
         >
-          <Phase1Window
+          <Phase2Window
             windowName="Progress"
             style={{
               margin: 18,
@@ -281,14 +275,13 @@ export class Phase1Layout extends React.Component {
           >
             <View
               style={{
-                backgroundColor: "#303030",
                 width: deviceWidth - 36,
                 height: deviceHeight / 16,
                 alignItems: "center",
               }}
             >
               <ProgressBar
-                color="#FFFFFF"
+                color="red"
                 value={69}
                 style={{
                   height: deviceHeight / 36,
@@ -301,9 +294,10 @@ export class Phase1Layout extends React.Component {
                   height: deviceHeight / 36,
                   width: deviceWidth - 48,
                 }}
+                color="red"
               />
             </View>
-          </Phase1Window>
+          </Phase2Window>
         </View>
       </View>
     );
@@ -315,6 +309,7 @@ const styles = StyleSheet.create({
     height: deviceHeight,
     width: deviceWidth,
     overflow: "hidden",
+    backgroundColor: "black",
   },
   imageBackground: {
     height: deviceHeight,

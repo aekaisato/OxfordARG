@@ -17,11 +17,21 @@ import {
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
-export class ProgressLeaderboard extends React.Component<ViewProperties> {
+export declare interface LeaderboardProps extends ViewProperties {
+  color?: string
+}
+
+export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
+  color: string;
   // add firebase stuff here
-  constructor(props: Readonly<ViewProperties>) {
+  constructor(props: Readonly<LeaderboardProps>) {
     super(props);
     this.state = {};
+    if (props.color == undefined) {
+      this.color = "black"
+    } else {
+      this.color = props.color
+    }
   }
   render() {
     return (
@@ -29,7 +39,7 @@ export class ProgressLeaderboard extends React.Component<ViewProperties> {
         style={[
           this.props.style,
           {
-            borderColor: "black",
+            borderColor: this.color,
             borderLeftWidth: 3,
             borderRightWidth: 3,
             flexDirection: "row",
@@ -42,7 +52,7 @@ export class ProgressLeaderboard extends React.Component<ViewProperties> {
         style={[
           this.props.style,
           {
-            borderColor: "black",
+            borderColor: this.color,
             borderWidth: 1.5,
             position: "absolute",
             left: -3,
