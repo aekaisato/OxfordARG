@@ -95,7 +95,7 @@ export default class App extends React.Component {
 
 export const StackNavigator = createStackNavigator({
   MainScreen: {
-    screen: Phase3Layout, // temp change
+    screen: Phase1Layout, // temp change
     navigationOptions: {
       headerShown: false,
     },

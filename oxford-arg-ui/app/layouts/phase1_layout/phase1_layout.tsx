@@ -186,7 +186,7 @@ export class Phase1Layout extends React.Component {
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   height: (3 * deviceHeight) / 14 - 28,
                   alignItems: "center",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
                 <View
@@ -220,59 +220,61 @@ export class Phase1Layout extends React.Component {
                 </View>
               </View>
             </Phase1Window>
-            <Phase1Window>
-              <View
-                style={{
-                  backgroundColor: "#00000070",
-                  height: (5 * deviceHeight) / 14 - 8 - 9,
-                  width: 0.2 * 0.9 * deviceWidth - 8,
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  alignItems: "center",
-                }}
-              >
-                <CodeDisplay
+            <View style={{ shadowOpacity: 0.35, shadowRadius: 20 }}>
+              <Phase1Window>
+                <View
                   style={{
+                    backgroundColor: "#00000070",
                     height: (5 * deviceHeight) / 14 - 8 - 9,
                     width: 0.2 * 0.9 * deviceWidth - 8,
-                    justifyContent: "center",
-                  }}
-                />
-              </View>
-            </Phase1Window>
-            <Phase1Window>
-              <View
-                style={{
-                  backgroundColor: "#00000070",
-                  height: (4 * deviceHeight) / 14 - 8 - 9,
-                  width: 0.2 * 0.9 * deviceWidth - 8,
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  alignItems: "center",
-                }}
-              >
-                <Image
-                  source={require("../../../assets/img/robot-white.png")}
-                  style={{
-                    height: deviceHeight / 6,
-                    width: deviceHeight / 6,
-                  }}
-                  resizeMode="contain"
-                />
-                <Text
-                  style={{
-                    fontFamily: "Courier-Prime-Bold",
-                    fontSize: 28,
-                    color: "white",
-                    margin: 6,
-                    opacity: 1,
-                    textAlign: "center",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    alignItems: "center",
                   }}
                 >
-                  {"SYSTEMS\nCLEAR"}
-                </Text>
-              </View>
-            </Phase1Window>
+                  <CodeDisplay
+                    style={{
+                      height: (5 * deviceHeight) / 14 - 8 - 9,
+                      width: 0.2 * 0.9 * deviceWidth - 8,
+                      justifyContent: "center",
+                    }}
+                  />
+                </View>
+              </Phase1Window>
+              <Phase1Window>
+                <View
+                  style={{
+                    backgroundColor: "#00000070",
+                    height: (4 * deviceHeight) / 14 - 8 - 9,
+                    width: 0.2 * 0.9 * deviceWidth - 8,
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    source={require("../../../assets/img/robot-white.png")}
+                    style={{
+                      height: deviceHeight / 6,
+                      width: deviceHeight / 6,
+                    }}
+                    resizeMode="contain"
+                  />
+                  <Text
+                    style={{
+                      fontFamily: "Courier-Prime-Bold",
+                      fontSize: 28,
+                      color: "white",
+                      margin: 6,
+                      opacity: 1,
+                      textAlign: "center",
+                    }}
+                  >
+                    {"SYSTEMS\nCLEAR"}
+                  </Text>
+                </View>
+              </Phase1Window>
+            </View>
           </View>
         </View>
         <View

@@ -8,6 +8,7 @@ import {
   Easing,
   Text,
   Image,
+  Button,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -27,6 +28,9 @@ import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
+import html2canvas from "html2canvas";
+//@ts-ignore
+import * as glitch from "glitch-canvas";
 //@ts-ignore
 //import stylesCSS from "./phase3_glitch.scss";
 
@@ -38,33 +42,62 @@ document.addEventListener("contextmenu", (event) => event.preventDefault()); // 
 const notebookAsciiArt64 =
   "ICAgICAgICBfLi0iXAogICAgXy4tIiAgICAgXAogLC0iICAgICAgICAgIFwKKCBcICAgICAgICAgICAgXAogXCBcICAgICAgICAgICAgXAogIFwgXCAgICAgICAgICAgIFwKICAgXCBcICAgICAgICAgXy4tOwogICAgXCBcICAgIF8uLSIgICA6CiAgICAgXCBcLC0iICAgIF8uLSIKICAgICAgXCggICBfLi0iICAKICAgICAgIGAtLSI=";
 
+function wait(timeout: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+}
 
+function getRandomArbitrary(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
 
 export class Phase3Layout extends React.Component {
   state = {
     loopAnim: new Animated.Value(0),
+    glitchImage: "",
     pagesCollected: 0,
     transcript:
       "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
 
-  move = () => {
-    Animated.loop(
-      Animated.timing(this.state.loopAnim, {
-        toValue: (128 * (deviceWidth * 1.75)) / 3840,
-        duration: 2500,
-        easing: Easing.inOut(Easing.linear),
-      })
-    ).start();
-  };
+  async glitchScreen() {
+    while (true) {
+      let canvasTemp = await html2canvas(document.body);
+      let ctx = await canvasTemp.getContext("2d");
+      if (ctx == null) {
+        return;
+      }
+      let imageData = await ctx.getImageData(0, 0, deviceWidth, deviceHeight);
+      let image = await glitch({ amount: 8, iterations: 20 })
+        .fromImageData(imageData)
+        .toDataURL();
+      await wait(getRandomArbitrary(350, 1200));
+      await this.setState({ glitchImage: image });
+    }
+  }
 
   componentDidMount() {
-    this.move();
+    this.glitchScreen();
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <View
+          //@ts-ignore
+          style={{
+            height: deviceHeight,
+            width: deviceWidth,
+            position: "absolute",
+            display: "flex",
+          }}
+        >
+          <Image
+            source={{ uri: this.state.glitchImage }}
+            style={{ height: deviceHeight, width: deviceWidth }}
+          />
+        </View>
         <View
           style={{
             height: (6 * deviceHeight) / 7,
@@ -90,7 +123,7 @@ export class Phase3Layout extends React.Component {
               >
                 <ScrollView
                   style={{
-                    backgroundColor: "#00000070",
+                    backgroundColor: "#000000C8",
                     width: 0.2 * 0.9 * deviceWidth - 7,
                   }}
                 >
@@ -167,43 +200,53 @@ export class Phase3Layout extends React.Component {
             >
               <View
                 style={{
-                  backgroundColor: "#00000070",
+                  backgroundColor: "#000000C8",
                   width: 0.2 * 0.9 * deviceWidth - 8,
-                  height: (3 * deviceHeight) / 14 - 28,
-                  flexDirection: "row",
+                  height: (3 * deviceHeight) / 14 - 8,
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Text
+                <View
                   style={{
-                    fontFamily: "VT323",
-                    fontSize: 12,
-                    color: "red",
-                    width: 0.15 * 0.9 * deviceWidth - 8,
-                    marginLeft: 12,
-                    marginTop: 8,
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
                   }}
                 >
-                  {window.atob(notebookAsciiArt64)}
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "VT323",
-                    fontSize: 28,
-                    color: "red",
-                    margin: 6,
-                    opacity: 1,
-                  }}
-                >
-                  {this.state.pagesCollected + " pages collected"}
-                </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 10,
+                      color: "red",
+                      width: 0.1 * 0.9 * deviceWidth - 8,
+                      marginLeft: 24,
+                      marginTop: 8,
+                    }}
+                  >
+                    {window.atob(notebookAsciiArt64)}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 28,
+                      color: "red",
+                      margin: 6,
+                      opacity: 1,
+                    }}
+                  >
+                    {this.state.pagesCollected + " pages collected"}
+                  </Text>
+                </View>
+                <View style={{ width: deviceWidth / 16 }}>
+                  <Button title="Open Inventory" color="red" />
+                </View>
               </View>
             </Phase3Window>
             <Phase3Window>
               <View
                 style={{
-                  backgroundColor: "#00000070",
+                  backgroundColor: "#000000C8",
                   height: (5 * deviceHeight) / 14 - 8 - 9,
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   flexDirection: "row",
@@ -219,14 +262,14 @@ export class Phase3Layout extends React.Component {
                   }}
                   color="red"
                   font="VT323"
-                  speed={675}
+                  speed={480}
                 />
               </View>
             </Phase3Window>
             <Phase3Window>
               <View
                 style={{
-                  backgroundColor: "#00000070",
+                  backgroundColor: "#000000C8",
                   height: (4 * deviceHeight) / 14 - 8 - 9,
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   flexDirection: "row",
@@ -253,7 +296,7 @@ export class Phase3Layout extends React.Component {
                     textAlign: "center",
                   }}
                 >
-                  {"EMERGENCY\nPOWER"}
+                  {"SYSTEM\nFAILURE"}
                 </Text>
               </View>
             </Phase3Window>
@@ -279,9 +322,11 @@ export class Phase3Layout extends React.Component {
           >
             <View
               style={{
-                width: deviceWidth - 36,
-                height: deviceHeight / 16,
+                width: deviceWidth - 44,
+                height: deviceHeight / 12,
                 alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#000000C8",
               }}
             >
               <ProgressBar
