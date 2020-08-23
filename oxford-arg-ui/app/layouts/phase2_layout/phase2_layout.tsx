@@ -44,19 +44,7 @@ export class Phase2Layout extends React.Component {
       "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
 
-  move = () => {
-    Animated.loop(
-      Animated.timing(this.state.loopAnim, {
-        toValue: (128 * (deviceWidth * 1.75)) / 3840,
-        duration: 2500,
-        easing: Easing.inOut(Easing.linear),
-      })
-    ).start();
-  };
-
-  componentDidMount() {
-    this.move();
-  }
+  componentDidMount() {}
 
   render() {
     return (
