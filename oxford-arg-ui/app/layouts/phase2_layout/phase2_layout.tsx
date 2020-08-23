@@ -8,6 +8,7 @@ import {
   Easing,
   Text,
   Image,
+  Button,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -154,34 +155,44 @@ export class Phase2Layout extends React.Component {
                   backgroundColor: "#00000070",
                   width: 0.2 * 0.9 * deviceWidth - 8,
                   height: (3 * deviceHeight) / 14 - 28,
-                  flexDirection: "row",
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Text
+                <View
                   style={{
-                    fontFamily: "VT323",
-                    fontSize: 12,
-                    color: "red",
-                    width: 0.15 * 0.9 * deviceWidth - 8,
-                    marginLeft: 12,
-                    marginTop: 8,
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
                   }}
                 >
-                  {window.atob(notebookAsciiArt64)}
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "VT323",
-                    fontSize: 28,
-                    color: "red",
-                    margin: 6,
-                    opacity: 1,
-                  }}
-                >
-                  {this.state.pagesCollected + " pages collected"}
-                </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 10,
+                      color: "red",
+                      width: 0.1 * 0.9 * deviceWidth - 8,
+                      marginLeft: 24,
+                      marginTop: 8,
+                    }}
+                  >
+                    {window.atob(notebookAsciiArt64)}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 28,
+                      color: "red",
+                      margin: 6,
+                      opacity: 1,
+                    }}
+                  >
+                    {this.state.pagesCollected + " pages collected"}
+                  </Text>
+                </View>
+                <View style={{ width: deviceWidth / 16 }}>
+                  <Button title="Open Inventory" color="red" />
+                </View>
               </View>
             </Phase2Window>
             <Phase2Window>

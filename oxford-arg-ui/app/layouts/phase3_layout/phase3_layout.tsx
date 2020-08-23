@@ -8,6 +8,7 @@ import {
   Easing,
   Text,
   Image,
+  Button,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -63,16 +64,16 @@ export class Phase3Layout extends React.Component {
   async glitchScreen() {
     while (true) {
       let canvasTemp = await html2canvas(document.body);
-      let ctx = canvasTemp.getContext("2d");
+      let ctx = await canvasTemp.getContext("2d");
       if (ctx == null) {
         return;
       }
-      let imageData = ctx.getImageData(0, 0, deviceWidth, deviceHeight);
+      let imageData = await ctx.getImageData(0, 0, deviceWidth, deviceHeight);
       let image = await glitch({ amount: 8, iterations: 20 })
         .fromImageData(imageData)
         .toDataURL();
       await wait(getRandomArbitrary(350, 1200));
-      this.setState({ glitchImage: image });
+      await this.setState({ glitchImage: image });
     }
   }
 
@@ -201,35 +202,45 @@ export class Phase3Layout extends React.Component {
                 style={{
                   backgroundColor: "#000000C8",
                   width: 0.2 * 0.9 * deviceWidth - 8,
-                  height: (3 * deviceHeight) / 14 - 6,
-                  flexDirection: "row",
+                  height: (3 * deviceHeight) / 14 - 8,
                   justifyContent: "center",
                   alignItems: "center",
                 }}
               >
-                <Text
+                <View
                   style={{
-                    fontFamily: "VT323",
-                    fontSize: 12,
-                    color: "red",
-                    width: 0.15 * 0.9 * deviceWidth - 8,
-                    marginLeft: 12,
-                    marginTop: 8,
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    alignItems: "center",
                   }}
                 >
-                  {window.atob(notebookAsciiArt64)}
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "VT323",
-                    fontSize: 28,
-                    color: "red",
-                    margin: 6,
-                    opacity: 1,
-                  }}
-                >
-                  {this.state.pagesCollected + " pages collected"}
-                </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 10,
+                      color: "red",
+                      width: 0.1 * 0.9 * deviceWidth - 8,
+                      marginLeft: 24,
+                      marginTop: 8,
+                    }}
+                  >
+                    {window.atob(notebookAsciiArt64)}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "VT323",
+                      fontSize: 28,
+                      color: "red",
+                      margin: 6,
+                      opacity: 1,
+                    }}
+                  >
+                    {this.state.pagesCollected + " pages collected"}
+                  </Text>
+                </View>
+                <View style={{ width: deviceWidth / 16 }}>
+                  <Button title="Open Inventory" color="red" />
+                </View>
               </View>
             </Phase3Window>
             <Phase3Window>
