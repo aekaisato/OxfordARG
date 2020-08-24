@@ -28,11 +28,6 @@ import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
-import html2canvas from "html2canvas";
-//@ts-ignore
-import * as glitch from "glitch-canvas";
-//@ts-ignore
-//import stylesCSS from "./phase3_glitch.scss";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -41,6 +36,19 @@ document.addEventListener("contextmenu", (event) => event.preventDefault()); // 
 
 const notebookAsciiArt64 =
   "ICAgICAgICBfLi0iXAogICAgXy4tIiAgICAgXAogLC0iICAgICAgICAgIFwKKCBcICAgICAgICAgICAgXAogXCBcICAgICAgICAgICAgXAogIFwgXCAgICAgICAgICAgIFwKICAgXCBcICAgICAgICAgXy4tOwogICAgXCBcICAgIF8uLSIgICA6CiAgICAgXCBcLC0iICAgIF8uLSIKICAgICAgXCggICBfLi0iICAKICAgICAgIGAtLSI=";
+
+const glitchImgArr = [
+  require("../../../assets/glitch/glitch0.png"),
+  require("../../../assets/glitch/glitch1.jpg"),
+  require("../../../assets/glitch/glitch2.jpg"),
+  require("../../../assets/glitch/glitch3.jpg"),
+  require("../../../assets/glitch/glitch4.jpg"),
+  require("../../../assets/glitch/glitch5.png"),
+  require("../../../assets/glitch/glitch6.png"),
+  require("../../../assets/glitch/glitch7.png"),
+  require("../../../assets/glitch/glitch8.png"),
+  require("../../../assets/glitch/glitch9.png"),
+];
 
 function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -55,27 +63,47 @@ function getRandomArbitrary(min: number, max: number) {
 export class Phase3Layout extends React.Component {
   state = {
     loopAnim: new Animated.Value(0),
-    glitchImage: "",
+    glitchImage: -1,
     pagesCollected: 0,
     transcript:
       "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
-
+/*
   async glitchScreen() {
+    let canvasTemp;
+    let ctx;
+    let imageData;
+    let image;
     while (true) {
-      let canvasTemp = await html2canvas(document.body);
-      let ctx = await canvasTemp.getContext("2d");
+      canvasTemp = await html2canvas(document.body, {
+        imageTimeout: 0,
+        logging: false,
+        removeContainer: true,
+      });
+      ctx = await canvasTemp.getContext("2d");
       if (ctx == null) {
+        console.log("null canvas");
         return;
       }
-      let imageData = await ctx.getImageData(0, 0, deviceWidth, deviceHeight);
-      let image = await glitch({ amount: 8, iterations: 20 })
+      imageData = await ctx.getImageData(0, 0, deviceWidth, deviceHeight);
+      await ctx.clearRect(0, 0, deviceWidth, deviceHeight);
+      image = await glitch({ amount: 8, iterations: 20 })
         .fromImageData(imageData)
         .toDataURL();
+      console.log(image);
       await wait(getRandomArbitrary(350, 1200));
       await this.setState({ glitchImage: image });
     }
   }
+//*/
+
+async glitchScreen() {
+  while(true) {
+    await wait(Math.floor(getRandomArbitrary(350, 1200)));
+    let temp = Math.floor(getRandomArbitrary(0, 9));
+    this.setState({glitchImage: temp})
+  }
+}
 
   componentDidMount() {
     this.glitchScreen();
@@ -94,7 +122,7 @@ export class Phase3Layout extends React.Component {
           }}
         >
           <Image
-            source={{ uri: this.state.glitchImage }}
+            source={glitchImgArr[this.state.glitchImage]}
             style={{ height: deviceHeight, width: deviceWidth }}
           />
         </View>
