@@ -1,3 +1,5 @@
+const { multiply } = require("react-native-reanimated");
+
 (async function () {
   var _lastColor = null,
     _currentColor,
@@ -269,6 +271,10 @@
                   "data-" + { t: "b", b: "t", l: "r", r: "l" }[matchDirection],
                   ""
                 );
+                let numCompleted = document.querySelectorAll("[data-completed=true]").length
+                if (numCompleted == size*size) {
+                    console.log("flow free completed, this should interface with an object that handles flags and completion")
+                }
               } else {
                 console.log("here: " + _currentPath[_currentColor].length);
                 console.log(_currentPath[_currentColor]);
