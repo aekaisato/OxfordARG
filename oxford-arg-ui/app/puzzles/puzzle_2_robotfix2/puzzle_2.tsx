@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
@@ -19,8 +13,6 @@ import {
   Layout,
 } from "@ui-kitten/components";
 
-import html from "./flow-free-master/flow.html";
-
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
@@ -28,12 +20,7 @@ export class Puzzle2 extends React.Component {
   render() {
     return (
       <Layout style={styles.container}>
-        <ImageBackground
-          style={[styles.container, {alignItems: "center"}]}
-          source={require("../../../assets/backdrops/puzzle_2.jpg")}
-        >
-          <div dangerouslySetInnerHTML={{ __html: html }} style={{boxShadow: "0px 0px 20px"}}></div>
-        </ImageBackground>
+        <Text style={{color: "white"}}>Hello, world!</Text>
       </Layout>
     );
   }
@@ -42,8 +29,7 @@ export class Puzzle2 extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "stretch",
+    alignItems: "center",
     justifyContent: "center",
-    overflow: "hidden",
   },
 });
