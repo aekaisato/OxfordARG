@@ -28,6 +28,8 @@ import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
+import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
+import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -156,13 +158,14 @@ export class Phase1Layout extends React.Component {
                 margin: 18,
               }}
             >
-              <Image
+              {/* <Image
                 source={{ uri: "https://i.vgy.me/wZOs7c.jpg" }}
                 style={{
                   height: (6 * deviceHeight) / 7 - 28,
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
-              />
+              /> */}
+              <Puzzle2></Puzzle2>
             </Phase1Window>
           </View>
           <View

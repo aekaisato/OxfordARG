@@ -95,7 +95,7 @@ export default class App extends React.Component {
 
 export const StackNavigator = createStackNavigator({
   MainScreen: {
-    screen: Phase3Layout, // temp change
+    screen: Phase1Layout, // temp change
     navigationOptions: {
       headerShown: false,
     },
@@ -107,7 +107,7 @@ export const AppNavigator = createAppContainer(StackNavigator);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
   },
