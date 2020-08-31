@@ -27,14 +27,14 @@ let deviceWidth = Dimensions.get("window").width;
 export class Puzzle1 extends React.Component {
   render() {
     return (
-      <Layout style={styles.container}>
+      <View style={styles.container}>
         <ImageBackground
           style={[styles.container, {alignItems: "center"}]}
-          source={require("../../../assets/backdrops/puzzle_2.jpg")}
+          source={require("../../../assets/backdrops/puzzle_1.jpg")}
         >
           <div dangerouslySetInnerHTML={{ __html: html }} style={{boxShadow: "0px 0px 20px"}}></div>
         </ImageBackground>
-      </Layout>
+      </View>
     );
   }
 }

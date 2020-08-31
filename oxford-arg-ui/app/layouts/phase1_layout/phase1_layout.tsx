@@ -30,6 +30,8 @@ import { ProgressBar } from "../../components/layout_components/progress_bar/pro
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
 import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix2/puzzle_1";
+import { Puzzle4Book } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_book";
+import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -165,7 +167,7 @@ export class Phase1Layout extends React.Component {
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
               /> */}
-              <Puzzle1></Puzzle1>
+              <Puzzle4Safe></Puzzle4Safe>
             </Phase1Window>
           </View>
           <View

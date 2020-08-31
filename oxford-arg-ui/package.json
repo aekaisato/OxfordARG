@@ -22,6 +22,8 @@
     "expo-av": "~8.1.0",
     "glitch-canvas": "^1.1.8",
     "html2canvas": "^1.0.0-rc.7",
+    "jquery": "^3.5.1",
+    "js-cipher": "^1.0.5",
     "node-sass": "^4.14.1",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
+    "@types/jquery": "^3.5.1",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
     "babel-preset-expo": "~8.1.0",

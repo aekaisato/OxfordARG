@@ -60,6 +60,12 @@ export default class App extends React.Component {
     await Font.loadAsync({
       "VT323": require("./assets/fonts/VT323-Regular.ttf")
     });
+    await Font.loadAsync({
+      "EB-Garamond": require("./assets/fonts/EBGaramond-VariableFont_wght.ttf")
+    });
+    await Font.loadAsync({
+      "EB-Garamond-Italic": require("./assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf")
+    });
     this.fontsLoaded = true;
   }
 
