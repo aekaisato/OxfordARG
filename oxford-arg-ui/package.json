@@ -37,7 +37,8 @@
     "react-native-web": "~0.11.7",
     "react-native-webview": "8.1.1",
     "react-navigation": "^4.3.8",
-    "react-navigation-stack": "^2.3.13"
+    "react-navigation-stack": "^2.3.13",
+    "sudoku-validator": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
