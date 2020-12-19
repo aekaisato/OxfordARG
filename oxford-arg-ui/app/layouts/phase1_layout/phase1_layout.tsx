@@ -38,9 +38,12 @@ import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
 import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
 import { Puzzle5Crossword } from "../../puzzles/puzzle_5_posters/puzzle_5_crossword";
 import { Puzzle6 } from "../../puzzles/puzzle_6_sudoku/puzzle_6";
-import { Puzzle7 } from "../../puzzles/puzzle_7_language/puzzle_7";
+import { Puzzle7 } from "../../puzzles/puzzle_7_ptable/puzzle_7";
 import { Puzzle3 } from "../../puzzles/puzzle_3_mural/puzzle_3";
 import { Inventory } from "../../components/inventory/inventory";
+import { Puzzle9 } from "../../puzzles/puzzle_9_language/puzzle_9";
+import { Puzzle14 } from "../../puzzles/puzzle_14_piano/puzzle_14";
+import { Puzzle15 } from "../../puzzles/puzzle_15_navigator/puzzle_15";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -187,7 +190,7 @@ export class Phase1Layout extends React.Component {
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
               /> */}
-              <Puzzle3></Puzzle3>
+              <Puzzle15></Puzzle15>
             </Phase1Window>
           </View>
           <View

@@ -34,7 +34,7 @@ async function wait(timeout: number) {
   });
 }
 
-export class Puzzle7 extends React.Component {
+export class Puzzle11 extends React.Component {
   // add blurred background of classroom
 
   componentDidMount() {}

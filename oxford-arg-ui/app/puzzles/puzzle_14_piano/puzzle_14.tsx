@@ -23,7 +23,10 @@ import {
   Layout,
 } from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
-import md5 from 'crypto-js/md5';
+import md5 from "crypto-js/md5";
+//@ts-ignore
+import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
+import "react-piano/dist/styles.css";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -34,30 +37,21 @@ async function wait(timeout: number) {
   });
 }
 
-export class Puzzle7 extends React.Component {
+export class Puzzle14 extends React.Component {
   // add blurred background of classroom
 
   componentDidMount() {}
 
-  state = {
-    textInput: ""
-  }
+  firstNote = MidiNumbers.fromNote("c3");
+  lastNote = MidiNumbers.fromNote("b3");
+  keyboardShortcuts = KeyboardShortcuts.create({
+    firstNote: this.firstNote,
+    lastNote: this.lastNote,
+    keyboardConfig: KeyboardShortcuts.HOME_ROW,
+  });
 
-  onTextChange(text) {
-    this.setState({textInput: text});
-  }
-
-  onSubmit() {
-    const correctHash = "e7e94d9ef1edaf2c6c55e9966b551295";
-    let currStr = this.state.textInput
-    let checkHash = md5(currStr.toLowerCase()).toString();
-    if (checkHash == correctHash) {
-      console.log("do smth here because the puzzle is now solved")
-    } else {
-      alert("password incorrect")
-    }
-  }
-
+  state = {};
+  
   render() {
     return (
       <View style={styles.container}>
@@ -74,24 +68,19 @@ export class Puzzle7 extends React.Component {
             width: "100%",
           }}
         >
-          <TextInput
-            style={{
-              width: "50%",
-              height: "80%",
-              backgroundColor: "white",
-              borderWidth: 2,
-              borderRadius: 5,
-              fontFamily: "VT323",
-              fontSize: 48,
-              textAlign: "center",
-              marginRight: 15
-            }}
-            autoFocus={true}
-            secureTextEntry={true}
-            value={this.state.textInput}
-            onChangeText={value => this.onTextChange(value)}
-          />
-          <Button title="Submit" onPress={() => this.onSubmit()} />
+          <View>
+            <Piano
+              noteRange={{ first: this.firstNote, last: this.lastNote }}
+              playNote={(midiNumber) => {
+                // Play a given note - see notes below
+              }}
+              stopNote={(midiNumber) => {
+                // Stop playing a given note - see notes below
+              }}
+              width={deviceWidth/3}
+              keyboardShortcuts={this.keyboardShortcuts}
+            />
+          </View>
         </View>
       </View>
     );
