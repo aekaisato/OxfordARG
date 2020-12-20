@@ -9,6 +9,8 @@ import {
   NativeSyntheticEvent,
   TextInputKeyPressEventData,
   Button,
+  ScrollView,
+  TouchableHighlightBase,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -55,9 +57,10 @@ export class Puzzle15 extends React.Component {
     yPos: 3,
     direction: "right",
     map: JSON.parse(JSON.stringify(map2d)),
+    queue: [],
   };
 
-  clockwise() {
+  async clockwise() {
     if (this.state.direction == "right") {
       this.setState({ direction: "down" });
     } else if (this.state.direction == "down") {
@@ -71,7 +74,7 @@ export class Puzzle15 extends React.Component {
     }
   }
 
-  counterClockwise() {
+  async counterClockwise() {
     if (this.state.direction == "right") {
       this.setState({ direction: "up" });
     } else if (this.state.direction == "up") {
@@ -109,7 +112,7 @@ export class Puzzle15 extends React.Component {
     }
   }
 
-  moveForward() {
+  async moveForward() {
     let dX = 0;
     let dY = 0;
     if (this.state.direction == "right") {
@@ -122,6 +125,15 @@ export class Puzzle15 extends React.Component {
       dY += 1;
     } else {
       console.warn("smth wrong with parsing direction when moving");
+    }
+
+    if (
+      this.state.xPos + dX > 7 ||
+      this.state.xPos + dX < 0 ||
+      this.state.yPos + dY > 7 ||
+      this.state.yPos + dY < 0
+    ) {
+      return;
     }
 
     if (
@@ -163,6 +175,56 @@ export class Puzzle15 extends React.Component {
         }
       );
     }
+  }
+
+  addToQueue(input: number) {
+    // 0 for forward, 1 for clockwise, 2 for counterclockwise
+    if (this.state.queue.length < 40) {
+      this.setState({ queue: [...this.state.queue, input] });
+    }
+  }
+
+  backspaceQueue() {
+    if (this.state.queue.length > 0) {
+      this.setState({ queue: this.state.queue.slice(0, -1) });
+    }
+  }
+
+  displayQueue(value: number) {
+    if (value == 0) {
+      return "\u25bb";
+    } else if (value == 1) {
+      return "\u21b7";
+    } else if (value == 2) {
+      return "\u21b6";
+    } else {
+      console.warn("issue with displaying queue: " + value);
+      return " ";
+    }
+  }
+
+  async processQueue() {
+    for (let i = 0; i < this.state.queue.length; i++) {
+      let value = this.state.queue[i];
+      if (value == 0) {
+        await this.moveForward();
+      } else if (value == 1) {
+        await this.clockwise();
+      } else if (value == 2) {
+        await this.counterClockwise();
+      } else {
+      }
+      await wait(500);
+    }
+    if (!(this.state.xPos == 7 && this.state.yPos == 3)) {
+      await wait(500);
+      alert("incorrect. try again.");
+      this.resetBoard();
+    }
+  }
+
+  resetBoard() {
+    this.setState({ map: map2d, xPos: 0, yPos: 3, direction: "right" });
   }
 
   render() {
@@ -265,12 +327,60 @@ export class Puzzle15 extends React.Component {
             </tr>
           </tbody>
         </table>
-        <Button
-          title="counter"
-          onPress={() => this.counterClockwise()}
-        ></Button>
-        <Button title="forward" onPress={() => this.moveForward()}></Button>
-        <Button title="clock" onPress={() => this.clockwise()}></Button>
+        <ScrollView
+          style={{
+            width: deviceWidth / 2,
+            height: deviceHeight / 15,
+          }}
+          contentContainerStyle={{
+            justifyContent: "space-evenly",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+          horizontal={true}
+        >
+          <Text style={{ color: "white", marginRight: 20 }}>
+            {"Queue (" + this.state.queue.length + "/40):"}
+          </Text>
+          <table
+            style={{
+              height: deviceHeight / 16,
+              textAlign: "center",
+            }}
+            border={3}
+          >
+            <tbody
+              style={{
+                fontFamily: "Noto-Sans-Bold",
+                fontSize: 32,
+                color: "white",
+              }}
+            >
+              <tr>
+                {this.state.queue.map((item) => (
+                  <td>{this.displayQueue(item)}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </ScrollView>
+        <View
+          style={{
+            width: "100%",
+            justifyContent: "space-evenly",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            title="backspace"
+            onPress={() => this.backspaceQueue()}
+          ></Button>
+          <Button title="counterclockwise" onPress={() => this.addToQueue(2)}></Button>
+          <Button title="forward" onPress={() => this.addToQueue(0)}></Button>
+          <Button title="clockwise" onPress={() => this.addToQueue(1)}></Button>
+          <Button title="play" onPress={() => this.processQueue()}></Button>
+        </View>
       </View>
     );
   }
