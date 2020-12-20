@@ -347,7 +347,7 @@ export class Puzzle15 extends React.Component {
               height: deviceHeight / 16,
               textAlign: "center",
             }}
-            border={3}
+            border={1.5}
           >
             <tbody
               style={{

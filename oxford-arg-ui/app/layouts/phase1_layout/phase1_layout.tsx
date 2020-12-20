@@ -190,7 +190,7 @@ export class Phase1Layout extends React.Component {
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
               /> */}
-              <Puzzle15></Puzzle15>
+              <Puzzle14></Puzzle14>
             </Phase1Window>
           </View>
           <View

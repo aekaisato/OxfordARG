@@ -27,9 +27,14 @@ import md5 from "crypto-js/md5";
 //@ts-ignore
 import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
+import SoundfontProvider from "./SoundfontProvider";
+const _ = require('lodash');
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
+
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const soundfontHostname = "https://d1pzp51pvbm36p.cloudfront.net";
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -50,13 +55,28 @@ export class Puzzle14 extends React.Component {
     keyboardConfig: KeyboardShortcuts.HOME_ROW,
   });
 
-  state = {};
-  
+  state = {
+    notes: [0, 0, 0, 0],
+  };
+
+  notePlayed(midiNumber: any) {
+    console.log(midiNumber);
+    this.setState(
+      { notes: [...this.state.notes.splice(1), midiNumber] },
+      () => {
+        console.log(this.state.notes)
+        if (_.isEqual(this.state.notes, [57, 50, 52, 55])) {
+          console.log("finished, do smth here");
+        }
+      }
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Image
-          source={require("../../../assets/img/ptable.png")}
+          source={require("../../../assets/img/piano.png")}
           style={{ height: "60%", width: "100%" }}
           resizeMode="contain"
         />
@@ -69,17 +89,21 @@ export class Puzzle14 extends React.Component {
           }}
         >
           <View>
-            <Piano
-              noteRange={{ first: this.firstNote, last: this.lastNote }}
-              playNote={(midiNumber) => {
-                // Play a given note - see notes below
-              }}
-              stopNote={(midiNumber) => {
-                // Stop playing a given note - see notes below
-              }}
-              width={deviceWidth/3}
-              keyboardShortcuts={this.keyboardShortcuts}
-            />
+            <SoundfontProvider
+              intrumentName="acoustic_grand_piano"
+              audioContext={audioContext}
+              hostname={soundfontHostname}
+              render={({ isLoading, playNote, stopNote }) => (
+                <Piano
+                  noteRange={{ first: this.firstNote, last: this.lastNote }}
+                  playNote={playNote}
+                  stopNote={stopNote}
+                  disabled={isLoading}
+                  width={deviceWidth / 3}
+                  onPlayNoteInput={(note: any) => this.notePlayed(note)}
+                />
+              )}
+            ></SoundfontProvider>
           </View>
         </View>
       </View>
