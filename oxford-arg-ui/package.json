@@ -19,6 +19,7 @@
     "babel-plugin-react-native-classname-to-style": "^1.2.2",
     "babel-plugin-react-native-platform-specific-extensions": "^1.1.1",
     "crypto-js": "^4.0.0",
+    "dangerously-set-html-content": "^1.0.8",
     "expo": "~37.0.3",
     "expo-av": "~8.1.0",
     "glitch-canvas": "^1.1.8",
@@ -43,7 +44,8 @@
     "react-navigation-stack": "^2.3.13",
     "react-piano": "^3.1.3",
     "soundfont-player": "^0.12.0",
-    "sudoku-validator": "^1.0.1"
+    "sudoku-validator": "^1.0.1",
+    "expo-asset": "~8.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -53,6 +55,7 @@
     "@types/react-addons-update": "^0.14.20",
     "@types/react-native": "~0.61.17",
     "babel-preset-expo": "~8.1.0",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^4.2.2",
     "file-loader": "^6.0.0",
     "html-loader": "^1.3.0",

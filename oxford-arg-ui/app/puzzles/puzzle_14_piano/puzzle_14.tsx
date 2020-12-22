@@ -60,11 +60,9 @@ export class Puzzle14 extends React.Component {
   };
 
   notePlayed(midiNumber: any) {
-    console.log(midiNumber);
     this.setState(
       { notes: [...this.state.notes.splice(1), midiNumber] },
       () => {
-        console.log(this.state.notes)
         if (_.isEqual(this.state.notes, [57, 50, 52, 55])) {
           console.log("finished, do smth here");
         }
