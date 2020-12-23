@@ -1,6 +1,6 @@
-var gameStartSong = new Audio('audio/music.wav');
-var gameWinSong = new Audio('audio/win.wav');
-gameStartSong.play();
+//var gameStartSong = new Audio('audio/music.wav');
+//var gameWinSong = new Audio('audio/win.wav');
+//gameStartSong.play();
 
 var game = {
   totalDays: 0,
@@ -69,7 +69,7 @@ function checkDeath() {
       if (caravan.party.length <= 0) {
         $("#randomEventMessage, #checkPoint").empty();
         $("#gameScreen").hide();
-        gameWinSong.play();
+        //gameWinSong.play();
         $("#event").html("Everyone in your party has died. The game is over.");
         $(".imgHeader").css("background-image", "url(img/endGameLoser.jpg)");
         $(".restartGame").show();
@@ -180,13 +180,13 @@ function gameChecker() {
   if (game.daysLeft === 0) {  // GAME OVER WIN
     $("#randomEventMessage, #checkPoint, #event").empty();
     var left = caravan.party.length;
-    $("#checkPoint").html("WINNER! WINNER! CHICKEN DINNER! Only " + left + " of your party has survived.");
+    $("#checkPoint").html("Only " + left + " of your party has survived. ");
     $(".imgHeader").css("background-image", "url(img/endGameWin.jpg)");
     $(".restartGame").show();
     $(".continueOnTrail, .rest, .mourn, .hunt, .talk, .heal").hide();
-    gameWinSong.play();
+    //gameWinSong.play();
     if (game.totalDays <= 100 && caravan.party.length >= 3) {
-      console.log("do smth here, completed")
+      $("#checkPoint").append("You Win!")
     } else {
       alert("you're very close! make sure to beat the game in under 100 days and with at least 3 people in the party remaining")
     }
@@ -366,7 +366,7 @@ $(function() {
     var char5 = new Character(member4);
     caravan.party.push(char1, char2, char3, char4, char5);
 
-    var autoNames = ["Ryan", "Gloria", "Riley", "Megan", "Chris", "Colin", "Blake", "Grace", "Ben", "Mark", "Liam", "Shane", "Christian", "Chance", "Oliver", "Evan", "Perry", "Dallas", "Alex", "Xi Xia", "Jahan", "Kaya", "Josh", "Nathaniel", "Janek", "Clifford", "Cameron", "Keith", "Pizza", "Stormi"];
+    var autoNames = ["Ryan", "Gloria", "Riley", "Megan", "Chris", "Colin", "Blake", "Grace", "Ben", "Mark", "Liam", "Shane", "Christian", "Chance", "Oliver", "Evan", "Perry", "Dallas", "Alex",];
     caravan.party.forEach(function(member) {
       if (!member.name) {
         var index = rollNumber(0, autoNames.length);

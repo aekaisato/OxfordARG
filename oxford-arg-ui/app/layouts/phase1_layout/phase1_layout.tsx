@@ -45,6 +45,7 @@ import { Puzzle9 } from "../../puzzles/puzzle_9_language/puzzle_9";
 import { Puzzle14 } from "../../puzzles/puzzle_14_piano/puzzle_14";
 import { Puzzle15 } from "../../puzzles/puzzle_15_navigator/puzzle_15";
 import { Puzzle10 } from "../../puzzles/puzzle_10_trail/puzzle_10";
+import { StatusDebugPage } from "../../components/status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -191,7 +192,7 @@ export class Phase1Layout extends React.Component {
                   width: (5 * deviceWidth) / 9 - 8,
                 }}
               /> */}
-              <Puzzle10></Puzzle10>
+              <StatusDebugPage></StatusDebugPage>
             </Phase1Window>
           </View>
           <View
