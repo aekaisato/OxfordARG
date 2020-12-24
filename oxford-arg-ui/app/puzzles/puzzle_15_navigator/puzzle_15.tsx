@@ -143,7 +143,7 @@ export class Puzzle15 extends React.Component {
     ) {
       if (this.state.map[this.state.yPos + dY][this.state.xPos + dX] == 3) {
         console.log("do smth here, puzzle completed");
-        (async function(){
+        (async function () {
           await wait(2000);
           await goto(await increment());
         })();
@@ -235,124 +235,22 @@ export class Puzzle15 extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <table
+        <ImageBackground
+          source={require("../../../assets/backdrops/puzzle_15.jpg")}
           style={{
-            width: (3 * deviceHeight) / 5,
-            height: (3 * deviceHeight) / 5,
-            textAlign: "center",
-          }}
-          border={3}
-        >
-          <tbody
-            style={{
-              fontFamily: "Noto-Sans-Bold",
-              fontSize: 32,
-              color: "white",
-            }}
-          >
-            <tr>
-              <td>{this.displayCharacter(this.state.map[0][0])}</td>
-              <td>{this.displayCharacter(this.state.map[0][1])}</td>
-              <td>{this.displayCharacter(this.state.map[0][2])}</td>
-              <td>{this.displayCharacter(this.state.map[0][3])}</td>
-              <td>{this.displayCharacter(this.state.map[0][4])}</td>
-              <td>{this.displayCharacter(this.state.map[0][5])}</td>
-              <td>{this.displayCharacter(this.state.map[0][6])}</td>
-              <td>{this.displayCharacter(this.state.map[0][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[1][0])}</td>
-              <td>{this.displayCharacter(this.state.map[1][1])}</td>
-              <td>{this.displayCharacter(this.state.map[1][2])}</td>
-              <td>{this.displayCharacter(this.state.map[1][3])}</td>
-              <td>{this.displayCharacter(this.state.map[1][4])}</td>
-              <td>{this.displayCharacter(this.state.map[1][5])}</td>
-              <td>{this.displayCharacter(this.state.map[1][6])}</td>
-              <td>{this.displayCharacter(this.state.map[1][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[2][0])}</td>
-              <td>{this.displayCharacter(this.state.map[2][1])}</td>
-              <td>{this.displayCharacter(this.state.map[2][2])}</td>
-              <td>{this.displayCharacter(this.state.map[2][3])}</td>
-              <td>{this.displayCharacter(this.state.map[2][4])}</td>
-              <td>{this.displayCharacter(this.state.map[2][5])}</td>
-              <td>{this.displayCharacter(this.state.map[2][6])}</td>
-              <td>{this.displayCharacter(this.state.map[2][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[3][0])}</td>
-              <td>{this.displayCharacter(this.state.map[3][1])}</td>
-              <td>{this.displayCharacter(this.state.map[3][2])}</td>
-              <td>{this.displayCharacter(this.state.map[3][3])}</td>
-              <td>{this.displayCharacter(this.state.map[3][4])}</td>
-              <td>{this.displayCharacter(this.state.map[3][5])}</td>
-              <td>{this.displayCharacter(this.state.map[3][6])}</td>
-              <td>{this.displayCharacter(this.state.map[3][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[4][0])}</td>
-              <td>{this.displayCharacter(this.state.map[4][1])}</td>
-              <td>{this.displayCharacter(this.state.map[4][2])}</td>
-              <td>{this.displayCharacter(this.state.map[4][3])}</td>
-              <td>{this.displayCharacter(this.state.map[4][4])}</td>
-              <td>{this.displayCharacter(this.state.map[4][5])}</td>
-              <td>{this.displayCharacter(this.state.map[4][6])}</td>
-              <td>{this.displayCharacter(this.state.map[4][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[5][0])}</td>
-              <td>{this.displayCharacter(this.state.map[5][1])}</td>
-              <td>{this.displayCharacter(this.state.map[5][2])}</td>
-              <td>{this.displayCharacter(this.state.map[5][3])}</td>
-              <td>{this.displayCharacter(this.state.map[5][4])}</td>
-              <td>{this.displayCharacter(this.state.map[5][5])}</td>
-              <td>{this.displayCharacter(this.state.map[5][6])}</td>
-              <td>{this.displayCharacter(this.state.map[5][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[6][0])}</td>
-              <td>{this.displayCharacter(this.state.map[6][1])}</td>
-              <td>{this.displayCharacter(this.state.map[6][2])}</td>
-              <td>{this.displayCharacter(this.state.map[6][3])}</td>
-              <td>{this.displayCharacter(this.state.map[6][4])}</td>
-              <td>{this.displayCharacter(this.state.map[6][5])}</td>
-              <td>{this.displayCharacter(this.state.map[6][6])}</td>
-              <td>{this.displayCharacter(this.state.map[6][7])}</td>
-            </tr>
-            <tr>
-              <td>{this.displayCharacter(this.state.map[7][0])}</td>
-              <td>{this.displayCharacter(this.state.map[7][1])}</td>
-              <td>{this.displayCharacter(this.state.map[7][2])}</td>
-              <td>{this.displayCharacter(this.state.map[7][3])}</td>
-              <td>{this.displayCharacter(this.state.map[7][4])}</td>
-              <td>{this.displayCharacter(this.state.map[7][5])}</td>
-              <td>{this.displayCharacter(this.state.map[7][6])}</td>
-              <td>{this.displayCharacter(this.state.map[7][7])}</td>
-            </tr>
-          </tbody>
-        </table>
-        <ScrollView
-          style={{
-            width: deviceWidth / 2,
-            height: deviceHeight / 15,
-          }}
-          contentContainerStyle={{
-            justifyContent: "space-evenly",
-            flexDirection: "row",
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
             alignItems: "center",
           }}
-          horizontal={true}
         >
-          <Text style={{ color: "white", marginRight: 20 }}>
-            {"Queue (" + this.state.queue.length + "/40):"}
-          </Text>
           <table
             style={{
-              height: deviceHeight / 16,
+              width: (3 * deviceHeight) / 5,
+              height: (3 * deviceHeight) / 5,
               textAlign: "center",
             }}
-            border={1.5}
+            border={3}
           >
             <tbody
               style={{
@@ -362,30 +260,148 @@ export class Puzzle15 extends React.Component {
               }}
             >
               <tr>
-                {this.state.queue.map((item) => (
-                  <td>{this.displayQueue(item)}</td>
-                ))}
+                <td>{this.displayCharacter(this.state.map[0][0])}</td>
+                <td>{this.displayCharacter(this.state.map[0][1])}</td>
+                <td>{this.displayCharacter(this.state.map[0][2])}</td>
+                <td>{this.displayCharacter(this.state.map[0][3])}</td>
+                <td>{this.displayCharacter(this.state.map[0][4])}</td>
+                <td>{this.displayCharacter(this.state.map[0][5])}</td>
+                <td>{this.displayCharacter(this.state.map[0][6])}</td>
+                <td>{this.displayCharacter(this.state.map[0][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[1][0])}</td>
+                <td>{this.displayCharacter(this.state.map[1][1])}</td>
+                <td>{this.displayCharacter(this.state.map[1][2])}</td>
+                <td>{this.displayCharacter(this.state.map[1][3])}</td>
+                <td>{this.displayCharacter(this.state.map[1][4])}</td>
+                <td>{this.displayCharacter(this.state.map[1][5])}</td>
+                <td>{this.displayCharacter(this.state.map[1][6])}</td>
+                <td>{this.displayCharacter(this.state.map[1][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[2][0])}</td>
+                <td>{this.displayCharacter(this.state.map[2][1])}</td>
+                <td>{this.displayCharacter(this.state.map[2][2])}</td>
+                <td>{this.displayCharacter(this.state.map[2][3])}</td>
+                <td>{this.displayCharacter(this.state.map[2][4])}</td>
+                <td>{this.displayCharacter(this.state.map[2][5])}</td>
+                <td>{this.displayCharacter(this.state.map[2][6])}</td>
+                <td>{this.displayCharacter(this.state.map[2][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[3][0])}</td>
+                <td>{this.displayCharacter(this.state.map[3][1])}</td>
+                <td>{this.displayCharacter(this.state.map[3][2])}</td>
+                <td>{this.displayCharacter(this.state.map[3][3])}</td>
+                <td>{this.displayCharacter(this.state.map[3][4])}</td>
+                <td>{this.displayCharacter(this.state.map[3][5])}</td>
+                <td>{this.displayCharacter(this.state.map[3][6])}</td>
+                <td>{this.displayCharacter(this.state.map[3][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[4][0])}</td>
+                <td>{this.displayCharacter(this.state.map[4][1])}</td>
+                <td>{this.displayCharacter(this.state.map[4][2])}</td>
+                <td>{this.displayCharacter(this.state.map[4][3])}</td>
+                <td>{this.displayCharacter(this.state.map[4][4])}</td>
+                <td>{this.displayCharacter(this.state.map[4][5])}</td>
+                <td>{this.displayCharacter(this.state.map[4][6])}</td>
+                <td>{this.displayCharacter(this.state.map[4][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[5][0])}</td>
+                <td>{this.displayCharacter(this.state.map[5][1])}</td>
+                <td>{this.displayCharacter(this.state.map[5][2])}</td>
+                <td>{this.displayCharacter(this.state.map[5][3])}</td>
+                <td>{this.displayCharacter(this.state.map[5][4])}</td>
+                <td>{this.displayCharacter(this.state.map[5][5])}</td>
+                <td>{this.displayCharacter(this.state.map[5][6])}</td>
+                <td>{this.displayCharacter(this.state.map[5][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[6][0])}</td>
+                <td>{this.displayCharacter(this.state.map[6][1])}</td>
+                <td>{this.displayCharacter(this.state.map[6][2])}</td>
+                <td>{this.displayCharacter(this.state.map[6][3])}</td>
+                <td>{this.displayCharacter(this.state.map[6][4])}</td>
+                <td>{this.displayCharacter(this.state.map[6][5])}</td>
+                <td>{this.displayCharacter(this.state.map[6][6])}</td>
+                <td>{this.displayCharacter(this.state.map[6][7])}</td>
+              </tr>
+              <tr>
+                <td>{this.displayCharacter(this.state.map[7][0])}</td>
+                <td>{this.displayCharacter(this.state.map[7][1])}</td>
+                <td>{this.displayCharacter(this.state.map[7][2])}</td>
+                <td>{this.displayCharacter(this.state.map[7][3])}</td>
+                <td>{this.displayCharacter(this.state.map[7][4])}</td>
+                <td>{this.displayCharacter(this.state.map[7][5])}</td>
+                <td>{this.displayCharacter(this.state.map[7][6])}</td>
+                <td>{this.displayCharacter(this.state.map[7][7])}</td>
               </tr>
             </tbody>
           </table>
-        </ScrollView>
-        <View
-          style={{
-            width: "100%",
-            justifyContent: "space-evenly",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Button
-            title="backspace"
-            onPress={() => this.backspaceQueue()}
-          ></Button>
-          <Button title="counterclockwise" onPress={() => this.addToQueue(2)}></Button>
-          <Button title="forward" onPress={() => this.addToQueue(0)}></Button>
-          <Button title="clockwise" onPress={() => this.addToQueue(1)}></Button>
-          <Button title="play" onPress={() => this.processQueue()}></Button>
-        </View>
+          <ScrollView
+            style={{
+              width: deviceWidth / 2,
+              height: deviceHeight / 15,
+            }}
+            contentContainerStyle={{
+              justifyContent: "space-evenly",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+            horizontal={true}
+          >
+            <Text style={{ color: "white", marginRight: 20 }}>
+              {"Queue (" + this.state.queue.length + "/40):"}
+            </Text>
+            <table
+              style={{
+                height: deviceHeight / 16,
+                textAlign: "center",
+              }}
+              border={1.5}
+            >
+              <tbody
+                style={{
+                  fontFamily: "Noto-Sans-Bold",
+                  fontSize: 32,
+                  color: "white",
+                }}
+              >
+                <tr>
+                  {this.state.queue.map((item) => (
+                    <td>{this.displayQueue(item)}</td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </ScrollView>
+          <View
+            style={{
+              width: "100%",
+              justifyContent: "space-evenly",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              title="backspace"
+              onPress={() => this.backspaceQueue()}
+            ></Button>
+            <Button
+              title="counterclockwise"
+              onPress={() => this.addToQueue(2)}
+            ></Button>
+            <Button title="forward" onPress={() => this.addToQueue(0)}></Button>
+            <Button
+              title="clockwise"
+              onPress={() => this.addToQueue(1)}
+            ></Button>
+            <Button title="play" onPress={() => this.processQueue()}></Button>
+          </View>
+        </ImageBackground>
       </View>
     );
   }

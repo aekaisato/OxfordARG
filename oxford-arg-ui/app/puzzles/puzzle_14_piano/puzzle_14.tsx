@@ -29,7 +29,7 @@ import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
 import SoundfontProvider from "./SoundfontProvider";
 import { goto, increment } from "../../components/status_system/status_system";
-const _ = require('lodash');
+const _ = require("lodash");
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -66,7 +66,7 @@ export class Puzzle14 extends React.Component {
       () => {
         if (_.isEqual(this.state.notes, [57, 50, 52, 55])) {
           console.log("finished, do smth here");
-          (async function(){
+          (async function () {
             await wait(2000);
             await goto(await increment());
           })();
@@ -78,37 +78,47 @@ export class Puzzle14 extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          source={require("../../../assets/img/piano.png")}
-          style={{ height: "60%", width: "100%" }}
-          resizeMode="contain"
-        />
-        <View
+        <ImageBackground
+          source={require("../../../assets/backdrops/puzzle_14.jpg")}
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
+            height: "100%",
             width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <View>
-            <SoundfontProvider
-              intrumentName="acoustic_grand_piano"
-              audioContext={audioContext}
-              hostname={soundfontHostname}
-              render={({ isLoading, playNote, stopNote }) => (
-                <Piano
-                  noteRange={{ first: this.firstNote, last: this.lastNote }}
-                  playNote={playNote}
-                  stopNote={stopNote}
-                  disabled={isLoading}
-                  width={deviceWidth / 3}
-                  onPlayNoteInput={(note: any) => this.notePlayed(note)}
-                />
-              )}
-            ></SoundfontProvider>
+          <Image
+            source={require("../../../assets/img/piano.png")}
+            style={{ height: "60%", width: "100%" }}
+            resizeMode="contain"
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+            }}
+          >
+            <View>
+              <SoundfontProvider
+                intrumentName="acoustic_grand_piano"
+                audioContext={audioContext}
+                hostname={soundfontHostname}
+                render={({ isLoading, playNote, stopNote }) => (
+                  <Piano
+                    noteRange={{ first: this.firstNote, last: this.lastNote }}
+                    playNote={playNote}
+                    stopNote={stopNote}
+                    disabled={isLoading}
+                    width={deviceWidth / 3}
+                    onPlayNoteInput={(note: any) => this.notePlayed(note)}
+                  />
+                )}
+              ></SoundfontProvider>
+            </View>
           </View>
-        </View>
+        </ImageBackground>
       </View>
     );
   }

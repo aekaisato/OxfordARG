@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Image } from "react-native";
+import { StyleSheet, View, Dimensions, Image, ImageBackground } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
@@ -22,6 +22,15 @@ export class Puzzle5Crossword extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <ImageBackground
+          source={require("../../../assets/backdrops/puzzle_5-1.jpg")}
+          style={{
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
         <Image
           source={require("../../../assets/img/poster.png")}
           style={{ height: "47%", width: "100%" }}
@@ -32,6 +41,7 @@ export class Puzzle5Crossword extends React.Component {
           style={{ height: "47%", width: "100%" }}
           resizeMode="contain"
         />
+        </ImageBackground>
       </View>
     );
   }

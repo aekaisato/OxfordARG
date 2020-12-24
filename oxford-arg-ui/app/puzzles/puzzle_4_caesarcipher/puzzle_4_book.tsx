@@ -5,7 +5,7 @@ import {
   Dimensions,
   Text,
   ImageBackground,
-  Image
+  Image,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -37,43 +37,57 @@ export class Puzzle4Book extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("../../../assets/img/blank-book.png")}
+          source={require("../../../assets/backdrops/puzzle_4-1.jpg")}
           style={{
-            height: "95%",
+            height: "100%",
             width: "100%",
-            justifyContent: "center"
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <View
+          <ImageBackground
+            source={require("../../../assets/img/blank-book.png")}
             style={{
-              flexDirection: "row",
-              alignItems: "flex-start",
-              justifyContent: "space-evenly",
-              height: "60%",
+              height: "95%",
+              width: "100%",
+              justifyContent: "center",
             }}
           >
-            <Text
+            <View
               style={{
-                width: "33%",
-                height: "80%",
-                fontFamily: "EB-Garamond",
-                fontSize: 36,
+                flexDirection: "row",
+                alignItems: "flex-start",
+                justifyContent: "space-evenly",
+                height: "60%",
               }}
             >
-              {cT1}
-            </Text>
-            <Text
-              style={{
-                width: "33%",
-                height: "80%",
-                fontFamily: "EB-Garamond",
-                fontSize: 36,
-              }}
-            >
-              {cT2}
-            </Text>
-          </View>
-          <Image source={require("../../../assets/img/caesar-cipher-guide.svg")} style={{height: "15%"}} resizeMode="contain"/>
+              <Text
+                style={{
+                  width: "33%",
+                  height: "80%",
+                  fontFamily: "EB-Garamond",
+                  fontSize: 36,
+                }}
+              >
+                {cT1}
+              </Text>
+              <Text
+                style={{
+                  width: "33%",
+                  height: "80%",
+                  fontFamily: "EB-Garamond",
+                  fontSize: 36,
+                }}
+              >
+                {cT2}
+              </Text>
+            </View>
+            <Image
+              source={require("../../../assets/img/caesar-cipher-guide.svg")}
+              style={{ height: "15%" }}
+              resizeMode="contain"
+            />
+          </ImageBackground>
         </ImageBackground>
       </View>
     );

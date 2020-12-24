@@ -118,7 +118,7 @@ async function wait(timeout: number) {
 
 export async function setStatus(statusNum: number) {
   console.log("attempting to set status to " + statusNum);
-  await AsyncStorage.setItem("status", 0 + "");
+  await AsyncStorage.setItem("status", statusNum + "");
   return statusLibrary[statusNum];
 }
 

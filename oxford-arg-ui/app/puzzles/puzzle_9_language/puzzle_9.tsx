@@ -33,7 +33,8 @@ async function wait(timeout: number) {
   });
 }
 
-export class Puzzle9 extends React.Component { // add blurred background of classroom
+export class Puzzle9 extends React.Component {
+  // add blurred background of classroom
   //POLO
 
   state = {
@@ -104,7 +105,7 @@ export class Puzzle9 extends React.Component { // add blurred background of clas
         console.log(
           "code correct, this should be handled by the flags system or whatever"
         );
-        (async function(){
+        (async function () {
           await wait(2000);
           await goto(await increment());
         })();
@@ -122,97 +123,111 @@ export class Puzzle9 extends React.Component { // add blurred background of clas
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require("../../../assets/img/language.png")} style={{ height: "45%", width: "100%" }} resizeMode="contain" />
         <ImageBackground
-          source={require("../../../assets/img/lock1.png")}
+          source={require("../../../assets/backdrops/puzzle_9.jpg")}
           style={{
-            height: "45%",
+            height: "100%",
             width: "100%",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
             alignItems: "center",
-            flexDirection: "row",
           }}
-          resizeMode="contain"
         >
-          <View style={{ width: "28%" }} />
-          <TextInput
-            ref="first"
-            style={{
-              width: "5%",
-              height: "10%",
-              backgroundColor: "white",
-              borderColor: this.state.outlineColor,
-              borderWidth: 2,
-              borderRadius: 5,
-              fontFamily: "VT323",
-              fontSize: 48,
-              textAlign: "center",
-              marginTop: "20%",
-            }}
-            maxLength={1}
-            onChangeText={(val) => this.handleOnChangeText("first", val)}
-            onKeyPress={(key) => this.handleKeyPress("first", key)}
-            value={this.state.first}
-            autoFocus={true}
+          <Image
+            source={require("../../../assets/img/language.png")}
+            style={{ height: "45%", width: "100%" }}
+            resizeMode="contain"
           />
-          <TextInput
-            ref="second"
+          <ImageBackground
+            source={require("../../../assets/img/lock1.png")}
             style={{
-              width: "5%",
-              height: "10%",
-              backgroundColor: "white",
-              borderColor: this.state.outlineColor,
-              borderWidth: 2,
-              borderRadius: 5,
-              fontFamily: "VT323",
-              fontSize: 48,
-              textAlign: "center",
-              marginTop: "20%",
+              height: "45%",
+              width: "100%",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              flexDirection: "row",
             }}
-            maxLength={1}
-            onChangeText={(val) => this.handleOnChangeText("second", val)}
-            onKeyPress={(key) => this.handleKeyPress("second", key)}
-            value={this.state.second}
-          />
-          <TextInput
-            ref="third"
-            style={{
-              width: "5%",
-              height: "10%",
-              backgroundColor: "white",
-              borderColor: this.state.outlineColor,
-              borderWidth: 2,
-              borderRadius: 5,
-              fontFamily: "VT323",
-              fontSize: 48,
-              textAlign: "center",
-              marginTop: "20%",
-            }}
-            maxLength={1}
-            onChangeText={(val) => this.handleOnChangeText("third", val)}
-            onKeyPress={(key) => this.handleKeyPress("third", key)}
-            value={this.state.third}
-          />
-          <TextInput
-            ref="fourth"
-            style={{
-              width: "5%",
-              height: "10%",
-              backgroundColor: "white",
-              borderColor: this.state.outlineColor,
-              borderWidth: 2,
-              borderRadius: 5,
-              fontFamily: "VT323",
-              fontSize: 48,
-              textAlign: "center",
-              marginTop: "20%",
-            }}
-            maxLength={1}
-            onChangeText={(val) => this.handleOnChangeText("fourth", val)}
-            onKeyPress={(key) => this.handleKeyPress("fourth", key)}
-            value={this.state.fourth}
-          />
-          <View style={{ width: "28%" }} />
+            resizeMode="contain"
+          >
+            <View style={{ width: "28%" }} />
+            <TextInput
+              ref="first"
+              style={{
+                width: "5%",
+                height: "10%",
+                backgroundColor: "white",
+                borderColor: this.state.outlineColor,
+                borderWidth: 2,
+                borderRadius: 5,
+                fontFamily: "VT323",
+                fontSize: 48,
+                textAlign: "center",
+                marginTop: "20%",
+              }}
+              maxLength={1}
+              onChangeText={(val) => this.handleOnChangeText("first", val)}
+              onKeyPress={(key) => this.handleKeyPress("first", key)}
+              value={this.state.first}
+              autoFocus={true}
+            />
+            <TextInput
+              ref="second"
+              style={{
+                width: "5%",
+                height: "10%",
+                backgroundColor: "white",
+                borderColor: this.state.outlineColor,
+                borderWidth: 2,
+                borderRadius: 5,
+                fontFamily: "VT323",
+                fontSize: 48,
+                textAlign: "center",
+                marginTop: "20%",
+              }}
+              maxLength={1}
+              onChangeText={(val) => this.handleOnChangeText("second", val)}
+              onKeyPress={(key) => this.handleKeyPress("second", key)}
+              value={this.state.second}
+            />
+            <TextInput
+              ref="third"
+              style={{
+                width: "5%",
+                height: "10%",
+                backgroundColor: "white",
+                borderColor: this.state.outlineColor,
+                borderWidth: 2,
+                borderRadius: 5,
+                fontFamily: "VT323",
+                fontSize: 48,
+                textAlign: "center",
+                marginTop: "20%",
+              }}
+              maxLength={1}
+              onChangeText={(val) => this.handleOnChangeText("third", val)}
+              onKeyPress={(key) => this.handleKeyPress("third", key)}
+              value={this.state.third}
+            />
+            <TextInput
+              ref="fourth"
+              style={{
+                width: "5%",
+                height: "10%",
+                backgroundColor: "white",
+                borderColor: this.state.outlineColor,
+                borderWidth: 2,
+                borderRadius: 5,
+                fontFamily: "VT323",
+                fontSize: 48,
+                textAlign: "center",
+                marginTop: "20%",
+              }}
+              maxLength={1}
+              onChangeText={(val) => this.handleOnChangeText("fourth", val)}
+              onKeyPress={(key) => this.handleKeyPress("fourth", key)}
+              value={this.state.fourth}
+            />
+            <View style={{ width: "28%" }} />
+          </ImageBackground>
         </ImageBackground>
       </View>
     );

@@ -26,9 +26,9 @@ function checkForGreen() {
   ) {
     return false;
   }
-  let pathStyle =
-    muralImage[0].contentDocument.documentElement.children[4].attributes.style
-      .nodeValue;
+  let pathStyle = muralImage[0].contentDocument.documentElement.children.namedItem(
+    "path1185"
+  ).attributes.style.nodeValue;
   pathStyle = pathStyle.replace(/ /g, "");
   console.log(pathStyle);
   var result = {},
@@ -53,12 +53,12 @@ function checkForGreen() {
 async function loopGreenCheck() {
   while (true) {
     await wait(2000);
-    console.log("loop")
+    console.log("loop");
     let isGreen = checkForGreen();
-    console.log(isGreen)
+    console.log(isGreen);
     if (isGreen) {
       console.log("puzzle complete, make sure to do stuff here");
-      (async function(){
+      (async function () {
         await wait(2000);
         await goto(await increment());
       })();
