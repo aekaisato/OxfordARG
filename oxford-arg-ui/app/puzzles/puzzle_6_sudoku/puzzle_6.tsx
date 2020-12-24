@@ -23,6 +23,7 @@ import {
 //@ts-ignore
 import { sudoku } from "./sudoku.js-master/sudoku";
 import { TextInput } from "react-native-gesture-handler";
+import { goto, increment } from "../../components/status_system/status_system";
 
 let sv = require("sudoku-validator");
 
@@ -118,6 +119,10 @@ export class Puzzle6 extends React.Component {
       if (check) {
         this.setState({ outlineColor: "green" });
         console.log("sudoku solved, handle opening safe stuff");
+        (async function(){
+          await wait(2000);
+          await goto(await increment());
+        })();
         return;
       } else {
         alert("incorrect");

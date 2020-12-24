@@ -22,6 +22,7 @@ import {
   Layout,
 } from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
+import { goto, increment } from "../../components/status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -103,6 +104,10 @@ export class Puzzle9 extends React.Component { // add blurred background of clas
         console.log(
           "code correct, this should be handled by the flags system or whatever"
         );
+        (async function(){
+          await wait(2000);
+          await goto(await increment());
+        })();
         return;
       } else {
         await wait(1000);

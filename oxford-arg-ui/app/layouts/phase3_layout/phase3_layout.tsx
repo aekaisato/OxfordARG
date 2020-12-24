@@ -28,6 +28,7 @@ import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
+import { PuzzleNavigator, setPuzzleNavigator } from "../../components/navigation/navigation";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -202,13 +203,11 @@ async glitchScreen() {
                 margin: 18,
               }}
             >
-              <Image
-                source={{ uri: "https://i.vgy.me/wZOs7c.jpg" }}
-                style={{
-                  height: (6 * deviceHeight) / 7 - 8,
-                  width: (5 * deviceWidth) / 9 - 8,
+              <PuzzleNavigator
+                ref={(navigatorRef) => {
+                  setPuzzleNavigator(navigatorRef);
                 }}
-              />
+              ></PuzzleNavigator>
             </Phase3Window>
           </View>
           <View

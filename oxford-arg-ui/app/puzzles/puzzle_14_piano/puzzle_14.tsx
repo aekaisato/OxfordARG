@@ -28,6 +28,7 @@ import md5 from "crypto-js/md5";
 import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
 import SoundfontProvider from "./SoundfontProvider";
+import { goto, increment } from "../../components/status_system/status_system";
 const _ = require('lodash');
 
 let deviceHeight = Dimensions.get("window").height;
@@ -65,6 +66,10 @@ export class Puzzle14 extends React.Component {
       () => {
         if (_.isEqual(this.state.notes, [57, 50, 52, 55])) {
           console.log("finished, do smth here");
+          (async function(){
+            await wait(2000);
+            await goto(await increment());
+          })();
         }
       }
     );

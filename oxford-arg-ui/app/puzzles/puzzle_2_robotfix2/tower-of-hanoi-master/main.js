@@ -6,6 +6,7 @@
 // should I daisy chain my methods, or have them call in sequence?
 // should I use `this.` or `game.`? I'm assuming that when I get more OOJS about it, `this` would be easier to work with.
 import $ from "jquery";
+const {goto, increment} = require("../../../components/status_system/status_system")
 
 async function wait(timeout) {
   return new Promise((resolve) => {
@@ -19,7 +20,6 @@ async function wait(timeout) {
 
 while($(".col").length == 0) {
   await wait(1000);
-  console.log("loop")
 }
 
 var $columns = $(".col");
@@ -150,6 +150,10 @@ var game = {
     console.log(
       "tower of hanoi, this should interface with an object that handles flags and completion"
     );
+    (async function(){
+      await wait(2000);
+      await goto(await increment());
+    })();
   },
   reset: function () {
     console.log("reset")

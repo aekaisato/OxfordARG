@@ -19,6 +19,8 @@ import {
   Layout,
 } from "@ui-kitten/components";
 
+// import {goto, increment} from "../../components/status_system/status_system"
+
 import html from "./flow-free-master/flow.html";
 
 let deviceHeight = Dimensions.get("window").height;

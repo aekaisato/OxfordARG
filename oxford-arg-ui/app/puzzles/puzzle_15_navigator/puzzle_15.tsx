@@ -29,6 +29,7 @@ import md5 from "crypto-js/md5";
 import { fontFamily } from "html2canvas/dist/types/css/property-descriptors/font-family";
 import { borderTopWidth } from "html2canvas/dist/types/css/property-descriptors/border-width";
 import update from "react-addons-update";
+import { goto, increment } from "../../components/status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -142,6 +143,10 @@ export class Puzzle15 extends React.Component {
     ) {
       if (this.state.map[this.state.yPos + dY][this.state.xPos + dX] == 3) {
         console.log("do smth here, puzzle completed");
+        (async function(){
+          await wait(2000);
+          await goto(await increment());
+        })();
       }
 
       this.setState(

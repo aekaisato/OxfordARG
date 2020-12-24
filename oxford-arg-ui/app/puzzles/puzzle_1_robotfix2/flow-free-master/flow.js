@@ -1,3 +1,5 @@
+// import {goto, increment} from "../../../components/status_system/status_system"
+const {goto, increment} = require("../../../components/status_system/status_system")
 const { multiply } = require("react-native-reanimated");
 
 (async function () {
@@ -273,7 +275,13 @@ const { multiply } = require("react-native-reanimated");
                 );
                 let numCompleted = document.querySelectorAll("[data-completed=true]").length
                 if (numCompleted == size*size) {
-                    console.log("flow free completed, this should interface with an object that handles flags and completion")
+                    console.log("flow free completed, this should interface with an object that handles flags and completion");
+                    
+                    (async function(){
+                      await wait(2000);
+                      await goto(await increment());
+                    })();
+                    //*/
                 }
               } else {
                 console.log("here: " + _currentPath[_currentColor].length);
@@ -319,7 +327,6 @@ const { multiply } = require("react-native-reanimated");
     });
   }
   while (document.querySelector(".grid") == null) {
-    console.log("loop");
     await wait(1000);
   }
   _init();

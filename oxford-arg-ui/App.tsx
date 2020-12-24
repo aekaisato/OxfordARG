@@ -16,10 +16,26 @@ import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
-import { MainScreen } from "./app/screens/main_screen/main_screen";
+import firebase from "firebase/app";
+
 import { Phase1Layout } from "./app/layouts/phase1_layout/phase1_layout";
 import { Phase2Layout } from "./app/layouts/phase2_layout/phase2_layout";
 import { Phase3Layout } from "./app/layouts/phase3_layout/phase3_layout";
+import { setPhaseNavigator } from "./app/components/navigation/navigation";
+import { initProgress } from "./app/components/status_system/status_system";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
+  authDomain: "viridos-735a4.firebaseapp.com",
+  databaseURL: "https://viridos-735a4-default-rtdb.firebaseio.com",
+  projectId: "viridos-735a4",
+  storageBucket: "viridos-735a4.appspot.com",
+  messagingSenderId: "733706320390",
+  appId: "1:733706320390:web:5a2ceb2aafbec9bf1ea187",
+  measurementId: "G-K2EQGJJKDS"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const theme = { ...darkTheme };
 
@@ -91,7 +107,9 @@ export default class App extends React.Component {
             theme={theme}
             customMapping={customMapping}
           >
-            <AppNavigator />
+            <AppNavigator ref={navigatorRef => {
+              setPhaseNavigator(navigatorRef)
+            }} />
           </ApplicationProvider>
         </React.Fragment>
       );
@@ -100,8 +118,20 @@ export default class App extends React.Component {
 }
 
 export const StackNavigator = createStackNavigator({
-  MainScreen: {
-    screen: Phase1Layout, // temp change
+  Phase1: {
+    screen: Phase1Layout,
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Phase2: {
+    screen: Phase2Layout, 
+    navigationOptions: {
+      headerShown: false,
+    },
+  },
+  Phase3: {
+    screen: Phase3Layout, 
     navigationOptions: {
       headerShown: false,
     },

@@ -15,6 +15,7 @@ import {
 import $ from "jquery";
 
 import Mural from "../../../assets/mural/rosaparks-mural-interactive.svg";
+import { goto, increment } from "../../components/status_system/status_system";
 
 function checkForGreen() {
   //@ts-ignore
@@ -57,6 +58,10 @@ async function loopGreenCheck() {
     console.log(isGreen)
     if (isGreen) {
       console.log("puzzle complete, make sure to do stuff here");
+      (async function(){
+        await wait(2000);
+        await goto(await increment());
+      })();
       return;
     }
   }

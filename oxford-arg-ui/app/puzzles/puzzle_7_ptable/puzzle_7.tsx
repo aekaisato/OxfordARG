@@ -24,6 +24,7 @@ import {
 } from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
 import md5 from 'crypto-js/md5';
+import { goto, increment } from "../../components/status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -52,7 +53,11 @@ export class Puzzle7 extends React.Component {
     let currStr = this.state.textInput
     let checkHash = md5(currStr.toLowerCase()).toString();
     if (checkHash == correctHash) {
-      console.log("do smth here because the puzzle is now solved")
+      console.log("do smth here because the puzzle is now solved");
+      (async function(){
+        await wait(2000);
+        await goto(await increment());
+      })();
     } else {
       alert("password incorrect")
     }
