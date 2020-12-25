@@ -1,8 +1,8 @@
 var APP_DATA = {
   "scenes": [
     {
-      "id": "0-pano_20200911_145529-fixed",
-      "name": "PANO_20200911_145529-fixed",
+      "id": "0-pano_20200911_150137",
+      "name": "PANO_20200911_150137",
       "levels": [
         {
           "tileSize": 256,
@@ -31,15 +31,15 @@ var APP_DATA = {
       "linkHotspots": [],
       "infoHotspots": [
         {
-          "yaw": -0.036976494350742684,
-          "pitch": 0.2531327367097074,
-          "title": "Piano",
-          "text": "The piano in the choir room."
+          "yaw": -2.562286723273285,
+          "pitch": 0.17230526628523357,
+          "title": "A Safe?<br>",
+          "text": "<div>That's not supposed to be there...</div>"
         }
       ]
     }
   ],
-  "name": "Choir Room",
+  "name": "Math Room",
   "settings": {
     "mouseViewMode": "drag",
     "autorotateEnabled": false,

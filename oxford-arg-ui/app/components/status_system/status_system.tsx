@@ -54,10 +54,17 @@ const statusLibrary = [
     save: true,
   },
   {
+    type: "360",
+    value: "MathRoom",
+    save: true,
+  },
+  /*
+  {
     type: "puzzle",
     value: "Puzzle6",
     save: true,
   },
+  //*/
   {
     type: "puzzle",
     value: "Puzzle7",

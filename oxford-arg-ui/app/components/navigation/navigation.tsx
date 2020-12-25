@@ -30,6 +30,7 @@ import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
 import { Puzzle8 } from "../../puzzles/puzzle_8_map1/puzzle_8";
 import { StatusDebugPage } from "../status_system/status_system";
 import { ChoirRoom } from "../../rooms/choir/choir";
+import { MathRoom } from "../../rooms/math/math";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -78,7 +79,7 @@ function roundNegative(x: number) {
 export const ThePuzzleNavigator = createStackNavigator(
   {
     StatusDebugPage: {
-      screen: StatusDebugPage
+      screen: StatusDebugPage,
     },
     Puzzle1: {
       screen: Puzzle1,
@@ -129,8 +130,11 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle16,
     },
     ChoirRoom: {
-      screen: ChoirRoom
-    }
+      screen: ChoirRoom,
+    },
+    MathRoom: {
+      screen: MathRoom,
+    },
   },
   {
     defaultNavigationOptions: {
@@ -140,13 +144,13 @@ export const ThePuzzleNavigator = createStackNavigator(
         open: {
           animation: "timing",
           config: {
-            duration: 500
+            duration: 500,
           },
         },
         close: {
           animation: "timing",
           config: {
-            duration: 500
+            duration: 500,
           },
         },
       },
