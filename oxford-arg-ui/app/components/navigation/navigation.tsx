@@ -29,6 +29,7 @@ import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
 import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
 import { Puzzle8 } from "../../puzzles/puzzle_8_map1/puzzle_8";
 import { StatusDebugPage } from "../status_system/status_system";
+import { ChoirRoom } from "../../rooms/choir/choir";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -127,6 +128,9 @@ export const ThePuzzleNavigator = createStackNavigator(
     Puzzle16: {
       screen: Puzzle16,
     },
+    ChoirRoom: {
+      screen: ChoirRoom
+    }
   },
   {
     defaultNavigationOptions: {

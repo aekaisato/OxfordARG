@@ -94,10 +94,17 @@ const statusLibrary = [
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle14",
+    type: "360",
+    value: "ChoirRoom",
     save: true,
   },
+  /*
+  {
+    type: "puzzle",
+    value: "Puzzle14",
+    save: false,
+  },
+  //*/
   {
     type: "puzzle",
     value: "Puzzle15",
@@ -164,7 +171,7 @@ export async function goto(status: {
 }) {
   console.log("attempting goto");
   console.log(status);
-  if (status.type == "puzzle") {
+  if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
   }
   // need stuff for videos and other stuff, too
