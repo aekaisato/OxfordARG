@@ -54,7 +54,7 @@ footer > a:hover {
 }
 
 
-#reset:active {
+#reset:activeB {
   transform: translate(0, 2px);
   /*background: #30A9DE;*/
 }
@@ -162,7 +162,7 @@ footer > a:hover {
   transform: translate(0, -1rem);
 }
 
-.active {
+.activeB {
   background-color: white;
   transform: translate(0, -1rem);
 }

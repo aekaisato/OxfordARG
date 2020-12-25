@@ -36,7 +36,7 @@ var $arrows = $(".arrow");
 var game = {
   rings: 4,
   moves: 0,
-  active: false,
+  activeB: false,
   originCol: {},
   targetCol: {},
   moverId: 0,
@@ -52,7 +52,7 @@ var game = {
 
     // hovering over a column
     $(".col").mouseenter(function () {
-      if (!game.active) {
+      if (!game.activeB) {
         $(this).children(".ring").eq(0).addClass("hover");
       } else {
         game.moveRing($(this));
@@ -82,12 +82,12 @@ var game = {
   },
   click: function (clicked) {
     var clickedRing = clicked.children(".ring").eq(0);
-    if (!this.active) {
+    if (!this.activeB) {
       // if a ring is NOT already selected...
       this.originCol = clicked;
-      clickedRing.addClass("active");
+      clickedRing.addClass("activeB");
       this.moverId = parseInt(clickedRing.attr("id"));
-      this.active = true;
+      this.activeB = true;
     } else if (this.checkMove(clicked)) {
       // if a ring IS selected, handle moving a ring
       game.moveRing(clicked);
@@ -118,22 +118,22 @@ var game = {
     }
   },
   rumble: function () {
-    $(".active").addClass("rumble");
+    $(".activeB").addClass("rumble");
     $columns.on("animationend", ".rumble", function () {
       $(this).removeClass("rumble");
     });
   },
   moveRing: function (destination) {
     console.log("ring moved")
-    $(".active").prependTo(destination);
+    $(".activeB").prependTo(destination);
   },
   incrementCounter: function () {
     this.moves++;
     $moves.html("moves: " + this.moves);
   },
   softReset: function () {
-    this.active = false;
-    $rings.removeClass("active hover");
+    this.activeB = false;
+    $rings.removeClass("activeB hover");
   },
   checkWin: function () {
     $winningColumns.each(function (column) {

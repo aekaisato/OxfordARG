@@ -21,6 +21,7 @@ import {
 } from "@ui-kitten/components";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { MuralClues } from "./mural-clues";
+import { Notebook } from "./notebook";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -216,9 +217,23 @@ export class Inventory extends React.Component<InventoryProps> {
             />
           </View>
           <View style={{ position: "absolute", top: 20, alignSelf: "center" }}>
-          <Text style={{fontFamily: "Roboto", alignSelf: "center"}}>
+            <Text style={{ fontFamily: "Roboto", alignSelf: "center" }}>
               drag and drop the images (a tad buggy, but deal with it)
             </Text>
+          </View>
+        </View>
+        <View
+          style={{
+            display: this.state.displayNotebook,
+            position: "absolute",
+            height: deviceHeight,
+            width: deviceWidth,
+            backgroundColor: "#000000CC",
+          }}
+        >
+          <Notebook style={{ height: deviceHeight, width: deviceWidth }} />
+          <View style={{ position: "absolute", top: 20, left: 20 }}>
+            <Button title="close" onPress={() => this.handleToggleNotebook()} />
           </View>
         </View>
       </View>
