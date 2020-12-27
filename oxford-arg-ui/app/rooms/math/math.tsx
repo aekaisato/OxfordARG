@@ -9,6 +9,7 @@ import {
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
+  NavigationEvents,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
@@ -33,27 +34,26 @@ async function wait(timeout: number) {
 export class MathRoom extends React.Component {
   async checkCode() {
     while (true) {
-      let iframeContents = $("#mathRoom").contents().find("#keySolved");
+      let iframeContents = $("#mathRoom").contents().find(".keySolved");
       if (
         iframeContents.length > 0 &&
-        iframeContents[iframeContents.length - 1].innerText.includes("A Safe?")
+        iframeContents[iframeContents.length - 1].innerText.includes("A Safe")
       ) {
         console.log("do stuff here");
         navigatePuzzle("Puzzle6");
+        $("#mathRoom").contents().find(".keySolved").remove();
         return;
       } else {
+        $("#mathRoom").contents().find(".keySolved").remove();
         await wait(1000);
       }
     }
   }
 
-  componentDidMount() {
-    this.checkCode();
-  }
-
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents onDidFocus={() => this.checkCode()} />
         <iframe
           width="100%"
           height="100%"

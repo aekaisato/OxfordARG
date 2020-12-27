@@ -28,6 +28,9 @@ let deviceWidth = Dimensions.get("window").width;
 
 let that;
 
+let notebookEnabled = false;
+export { notebookEnabled };
+
 const muralClueTitle = "Mysterious Clues";
 const muralClueDescription =
   "You found these every time you fixed ViriDOS and have no idea where they came from.";
@@ -47,6 +50,15 @@ export declare interface InventoryProps extends ViewProperties {
   notebookEnabled?: boolean;
 }
 
+export function enableMuralClues() {
+  that.enableMuralClues();
+}
+
+export function enableNotebook() {
+  that.enableNotebook();
+  notebookEnabled = true;
+}
+
 export class Inventory extends React.Component<InventoryProps> {
   constructor(props: any) {
     super(props);
@@ -58,10 +70,10 @@ export class Inventory extends React.Component<InventoryProps> {
       : false;
     this.state = {
       muralClueTitle: "Locked",
-      muralClueDescription: "Locked",
+      muralClueDescription: "Keep playing to unlock.",
       muralClueDisabled: true,
       notebookTitle: "Locked",
-      notebookDescription: "Locked",
+      notebookDescription: "Keey playing to unlock.",
       notebookDisabled: true,
       displayMuralClues: "none",
       displayNotebook: "none",
@@ -70,7 +82,7 @@ export class Inventory extends React.Component<InventoryProps> {
       this.enableMuralClues();
     }
     if (notebookEnabledTemp) {
-      this.enableMuralClues();
+      this.enableNotebook();
     }
     that = this;
   }
@@ -112,9 +124,8 @@ export class Inventory extends React.Component<InventoryProps> {
   }
 
   componentDidMount() {
-    console.warn("dont forget to remove this one mechanisms are in place");
-    this.enableMuralClues();
-    this.enableNotebook();
+    // this.enableMuralClues();
+    // this.enableNotebook();
   }
 
   render() {

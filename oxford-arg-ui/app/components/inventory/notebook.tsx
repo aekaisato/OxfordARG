@@ -66,6 +66,7 @@ const allImages = [
 ];
 
 let images: any = [];
+export { images };
 
 // export async function checkPages() {
 //   let status = await getStatus();

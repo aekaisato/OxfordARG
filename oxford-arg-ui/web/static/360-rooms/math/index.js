@@ -288,7 +288,7 @@
     console.log("figure this out")
     let a = document.createElement("p");
     a.innerText = title;
-    a.setAttribute("id", "keySolved")
+    a.setAttribute("class", "keySolved")
     document.body.appendChild(a);
   }
 

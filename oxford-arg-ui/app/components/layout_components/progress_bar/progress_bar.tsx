@@ -14,8 +14,17 @@ import {
   Text,
 } from "@ui-kitten/components";
 
+let that: any;
+
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
+
+let progress = 0.0; // num from 0 to 1
+
+export function setProgress(val: number) {
+  progress = val;
+  that.forceUpdate();
+}
 
 export declare interface ProgressProps extends ViewProperties {
   value: number;
@@ -27,6 +36,11 @@ export class ProgressBar extends React.Component<ProgressProps> {
     super(props);
     this.state = {};
   }
+
+  componentDidMount() {
+    that = this;
+  }
+
   render() {
     return (
       <View
@@ -43,7 +57,7 @@ export class ProgressBar extends React.Component<ProgressProps> {
               left: -4,
               top: -4,
               backgroundColor: this.props.color,
-              width: (this.props.value + 1) + "%",
+              width: progress * 100 + 1 + "%",
             },
           ]}
         ></View>

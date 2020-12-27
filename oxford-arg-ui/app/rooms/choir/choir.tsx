@@ -9,6 +9,7 @@ import {
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
+  NavigationEvents,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
@@ -33,27 +34,26 @@ async function wait(timeout: number) {
 export class ChoirRoom extends React.Component {
   async checkCode() {
     while (true) {
-      let iframeContents = $("#choirRoom").contents().find("#keySolved");
+      let iframeContents = $("#choirRoom").contents().find(".keySolved");
       if (
         iframeContents.length > 0 &&
         iframeContents[iframeContents.length - 1].innerText.includes("Piano")
       ) {
         console.log("do stuff here");
         navigatePuzzle("Puzzle14");
+        $("#choirRoom").contents().find(".keySolved").remove();
         return;
       } else {
+        $("#choirRoom").contents().find(".keySolved").remove();
         await wait(1000);
       }
     }
   }
 
-  componentDidMount() {
-    this.checkCode();
-  }
-
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents onDidFocus={() => this.checkCode()} />
         <iframe
           width="100%"
           height="100%"

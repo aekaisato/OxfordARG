@@ -12,6 +12,9 @@ import "firebase/auth";
 import "firebase/database";
 import { navigatePuzzle } from "../navigation/navigation";
 import { setPage } from "../inventory/notebook";
+import { setProgress } from "../layout_components/progress_bar/progress_bar";
+import { enableMuralClues, enableNotebook } from "../inventory/inventory";
+import { updatePagesCollected } from "../../layouts/phase1_layout/phase1_layout";
 
 /*
 const statusLibrary = [
@@ -23,7 +26,9 @@ const statusLibrary = [
 ];
 //*/
 
+console.warn("shift pages and flags to match their actual location");
 const statusLibrary = [
+  // shift pages and flags to match their actual location
   {
     type: "puzzle",
     value: "StatusDebugPage",
@@ -45,13 +50,13 @@ const statusLibrary = [
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle4",
+    type: "360",
+    value: "EnglishRoom",
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle5",
+    type: "360",
+    value: "OfficeRoom",
     save: true,
     page: 1,
   },
@@ -69,8 +74,8 @@ const statusLibrary = [
   },
   //*/
   {
-    type: "puzzle",
-    value: "Puzzle7",
+    type: "360",
+    value: "ScienceRoom",
     save: true,
     page: 3,
   },
@@ -81,19 +86,19 @@ const statusLibrary = [
     page: 4,
   },
   {
-    type: "puzzle",
-    value: "Puzzle9",
+    type: "360",
+    value: "LanguageRoom",
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle10",
+    type: "360",
+    value: "HistoryRoom",
     save: true,
     page: 5,
   },
   {
-    type: "puzzle",
-    value: "Puzzle11",
+    type: "360",
+    value: "PERoom",
     save: true,
     page: 6,
   },
@@ -122,8 +127,8 @@ const statusLibrary = [
   },
   //*/
   {
-    type: "puzzle",
-    value: "Puzzle15",
+    type: "360",
+    value: "PathwayRoom",
     save: true,
     page: 9,
   },
@@ -199,15 +204,25 @@ export async function goto(status: {
   // need stuff for videos and other stuff, too
   // also need access to both stack navigators in order to navigate between screens
 
-  let statusVal = await getStatus()
+  let statusVal = await getStatus();
+  let library = getLibrary();
   if (statusVal == null) {
     return;
   }
-  let library = getLibrary();
+  let percent = statusVal / library.length;
+  setProgress(percent);
+
+  console.warn("if a certain status is reached where you see the notebook");
+  enableNotebook();
+  enableMuralClues();
+
   for (let i = Number.parseInt(statusVal); i > 0; i--) {
     if (library[i].page != undefined) {
-      setPage(library[i].page)
-      alert("You found a notebook page! Check your inventory if you want to see it.")
+      setPage(library[i].page);
+      updatePagesCollected();
+      alert(
+        "You found a notebook page! Check your inventory if you want to see it."
+      );
       return;
     }
   }
@@ -310,6 +325,11 @@ async function getLoginInfoTemp() {
   console.log(firebase.auth().currentUser);
 }
 
+async function debugNavigatePuzzleTemp() {
+  let temp = prompt("what puzzle to nav (e.g. Puzzle4Book)");
+  navigatePuzzle(temp);
+}
+
 export class StatusDebugPage extends React.Component {
   render() {
     return (
@@ -328,6 +348,10 @@ export class StatusDebugPage extends React.Component {
           <Button title="login" onPress={() => loginTemp()} />
           <Button title="logout" onPress={() => logoutTemp()} />
           <Button title="info" onPress={() => getLoginInfoTemp()} />
+          <Button
+            title="nav puzzle"
+            onPress={() => debugNavigatePuzzleTemp()}
+          />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

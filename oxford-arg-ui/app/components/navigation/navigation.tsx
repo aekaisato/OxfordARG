@@ -31,6 +31,15 @@ import { Puzzle8 } from "../../puzzles/puzzle_8_map1/puzzle_8";
 import { StatusDebugPage } from "../status_system/status_system";
 import { ChoirRoom } from "../../rooms/choir/choir";
 import { MathRoom } from "../../rooms/math/math";
+import { Puzzle4Book } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_book";
+import { Puzzle5Crossword } from "../../puzzles/puzzle_5_posters/puzzle_5_crossword";
+import { EnglishRoom } from "../../rooms/english/english";
+import { OfficeRoom } from "../../rooms/office/office";
+import { ScienceRoom } from "../../rooms/science/science";
+import { LanguageRoom } from "../../rooms/language/language";
+import { HistoryRoom } from "../../rooms/history/history";
+import { PERoom } from "../../rooms/pe/pe";
+import { PathwayRoom } from "../../rooms/pathway/pathway";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -90,29 +99,62 @@ export const ThePuzzleNavigator = createStackNavigator(
     Puzzle3: {
       screen: Puzzle3,
     },
-    Puzzle4: {
-      screen: Puzzle4Safe,
+    Puzzle4Book: {
+      screen: Puzzle4Book,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
-    Puzzle5: {
+    Puzzle4Safe: {
+      screen: Puzzle4Safe,
+      navigationOptions: {
+        headerShown: true,
+      },
+    },
+    Puzzle5Crossword: {
+      screen: Puzzle5Crossword,
+      navigationOptions: {
+        headerShown: true,
+      },
+    },
+    Puzzle5Safe: {
       screen: Puzzle5Safe,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle6: {
       screen: Puzzle6,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle7: {
       screen: Puzzle7,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle8: {
       screen: Puzzle8,
     },
     Puzzle9: {
       screen: Puzzle9,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle10: {
       screen: Puzzle10,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle11: {
       screen: Puzzle11,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle12: {
       screen: Puzzle12,
@@ -122,18 +164,45 @@ export const ThePuzzleNavigator = createStackNavigator(
     },
     Puzzle14: {
       screen: Puzzle14,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle15: {
       screen: Puzzle15,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle16: {
       screen: Puzzle16,
     },
-    ChoirRoom: {
-      screen: ChoirRoom,
+    EnglishRoom: {
+      screen: EnglishRoom,
+    },
+    OfficeRoom: {
+      screen: OfficeRoom,
     },
     MathRoom: {
       screen: MathRoom,
+    },
+    ScienceRoom: {
+      screen: ScienceRoom,
+    },
+    LanguageRoom: {
+      screen: LanguageRoom,
+    },
+    HistoryRoom: {
+      screen: HistoryRoom,
+    },
+    PERoom: {
+      screen: PERoom,
+    },
+    ChoirRoom: {
+      screen: ChoirRoom,
+    },
+    PathwayRoom: {
+      screen: PathwayRoom,
     },
   },
   {

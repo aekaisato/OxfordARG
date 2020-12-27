@@ -40,7 +40,10 @@ import { Puzzle5Crossword } from "../../puzzles/puzzle_5_posters/puzzle_5_crossw
 import { Puzzle6 } from "../../puzzles/puzzle_6_sudoku/puzzle_6";
 import { Puzzle7 } from "../../puzzles/puzzle_7_ptable/puzzle_7";
 import { Puzzle3 } from "../../puzzles/puzzle_3_mural/puzzle_3";
-import { Inventory } from "../../components/inventory/inventory";
+import {
+  Inventory,
+  notebookEnabled,
+} from "../../components/inventory/inventory";
 import { Puzzle9 } from "../../puzzles/puzzle_9_language/puzzle_9";
 import { Puzzle14 } from "../../puzzles/puzzle_14_piano/puzzle_14";
 import { Puzzle15 } from "../../puzzles/puzzle_15_navigator/puzzle_15";
@@ -50,11 +53,18 @@ import {
   PuzzleNavigator,
   setPuzzleNavigator,
 } from "../../components/navigation/navigation";
+import { images } from "../../components/inventory/notebook";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
+
+let that;
+
+export function updatePagesCollected() {
+  that.updatePagesCollected();
+}
 
 export class Phase1Layout extends React.Component {
   handleToggleInventory() {
@@ -87,9 +97,65 @@ export class Phase1Layout extends React.Component {
 
   componentDidMount() {
     this.move();
+    that = this;
+  }
+
+  updatePagesCollected() {
+    this.setState({pagesCollected: images.length})
   }
 
   render() {
+    let notebookText;
+    let notebookImage;
+    if (notebookEnabled) {
+      notebookImage = (
+        <Image
+          source={require("../../../assets/img/notebook.png")}
+          style={{
+            height: deviceHeight / 8,
+            width: deviceHeight / 8,
+          }}
+        />
+      );
+      notebookText = (
+        <Text
+          style={{
+            fontFamily: "Courier-Prime-Bold",
+            fontSize: 28,
+            color: "white",
+            margin: 6,
+            opacity: 1,
+          }}
+        >
+          {this.state.pagesCollected + " pages collected"}
+        </Text>
+      );
+    } else {
+      notebookImage = (
+        <Image
+          source={require("../../../assets/img/cardboard-box.png")}
+          style={{
+            height: deviceHeight / 12,
+            width: deviceHeight / 12,
+            margin: deviceHeight / 48,
+          }}
+        />
+      );
+      notebookText = (
+        <Text
+          style={{
+            fontFamily: "Courier-Prime-Bold",
+            fontSize: 28,
+            color: "white",
+            margin: 6,
+            opacity: 1,
+          }}
+        >
+          {"items collected"}
+        </Text>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <ImageBackground
@@ -243,24 +309,8 @@ export class Phase1Layout extends React.Component {
                     alignItems: "center",
                   }}
                 >
-                  <Image
-                    source={require("../../../assets/img/notebook.png")}
-                    style={{
-                      height: deviceHeight / 8,
-                      width: deviceHeight / 8,
-                    }}
-                  />
-                  <Text
-                    style={{
-                      fontFamily: "Courier-Prime-Bold",
-                      fontSize: 28,
-                      color: "white",
-                      margin: 6,
-                      opacity: 1,
-                    }}
-                  >
-                    {this.state.pagesCollected + " pages collected"}
-                  </Text>
+                  {notebookImage}
+                  {notebookText}
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
                   <Button
