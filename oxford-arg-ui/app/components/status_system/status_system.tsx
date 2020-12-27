@@ -11,6 +11,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { navigatePuzzle } from "../navigation/navigation";
+import { setPage } from "../inventory/notebook";
 
 /*
 const statusLibrary = [
@@ -52,11 +53,13 @@ const statusLibrary = [
     type: "puzzle",
     value: "Puzzle5",
     save: true,
+    page: 1,
   },
   {
     type: "360",
     value: "MathRoom",
     save: true,
+    page: 2,
   },
   /*
   {
@@ -69,11 +72,13 @@ const statusLibrary = [
     type: "puzzle",
     value: "Puzzle7",
     save: true,
+    page: 3,
   },
   {
     type: "puzzle",
     value: "Puzzle8",
     save: true,
+    page: 4,
   },
   {
     type: "puzzle",
@@ -84,21 +89,25 @@ const statusLibrary = [
     type: "puzzle",
     value: "Puzzle10",
     save: true,
+    page: 5,
   },
   {
     type: "puzzle",
     value: "Puzzle11",
     save: true,
+    page: 6,
   },
   {
     type: "puzzle",
     value: "Puzzle12",
     save: true,
+    page: 7,
   },
   {
     type: "puzzle",
     value: "Puzzle13",
     save: true,
+    page: 8,
   },
   {
     type: "360",
@@ -116,11 +125,13 @@ const statusLibrary = [
     type: "puzzle",
     value: "Puzzle15",
     save: true,
+    page: 9,
   },
   {
     type: "puzzle",
     value: "Puzzle16",
     save: true,
+    page: 10,
   },
 ];
 
@@ -141,6 +152,10 @@ export async function getStatus() {
   let temp = await AsyncStorage.getItem("status");
   console.log("status: " + temp);
   return temp;
+}
+
+export function getLibrary() {
+  return statusLibrary;
 }
 
 export async function increment() {
@@ -183,6 +198,19 @@ export async function goto(status: {
   }
   // need stuff for videos and other stuff, too
   // also need access to both stack navigators in order to navigate between screens
+
+  let statusVal = await getStatus()
+  if (statusVal == null) {
+    return;
+  }
+  let library = getLibrary();
+  for (let i = Number.parseInt(statusVal); i > 0; i--) {
+    if (library[i].page != undefined) {
+      setPage(library[i].page)
+      alert("You found a notebook page! Check your inventory if you want to see it.")
+      return;
+    }
+  }
 }
 
 export async function initProgress() {

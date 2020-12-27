@@ -10,7 +10,7 @@ import {
   HeaderStyleInterpolators,
   useCardAnimation,
 } from "react-navigation-stack";
-import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix2/puzzle_1";
+import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
 import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 
 import { NavigationActions } from "react-navigation";

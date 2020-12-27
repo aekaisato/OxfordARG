@@ -120,7 +120,7 @@ export class Inventory extends React.Component<InventoryProps> {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <Text style={{ fontFamily: "Roboto", fontSize: deviceWidth / 100 }}>
+        <Text style={{ fontFamily: "Noto-Sans", fontSize: deviceWidth / 100 }}>
           Inventory (Click outside this window to close it)
         </Text>
         <View
@@ -142,7 +142,7 @@ export class Inventory extends React.Component<InventoryProps> {
           >
             <Text
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 32,
                 textAlign: "center",
               }}
@@ -151,7 +151,7 @@ export class Inventory extends React.Component<InventoryProps> {
             </Text>
             <Text
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 100,
                 textAlign: "center",
               }}
@@ -177,7 +177,7 @@ export class Inventory extends React.Component<InventoryProps> {
           >
             <Text
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 32,
                 textAlign: "center",
               }}
@@ -186,7 +186,7 @@ export class Inventory extends React.Component<InventoryProps> {
             </Text>
             <Text
               style={{
-                fontFamily: "Roboto",
+                fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 100,
                 textAlign: "center",
               }}
@@ -217,7 +217,7 @@ export class Inventory extends React.Component<InventoryProps> {
             />
           </View>
           <View style={{ position: "absolute", top: 20, alignSelf: "center" }}>
-            <Text style={{ fontFamily: "Roboto", alignSelf: "center" }}>
+            <Text style={{ fontFamily: "Noto-Sans", alignSelf: "center" }}>
               drag and drop the images (a tad buggy, but deal with it)
             </Text>
           </View>

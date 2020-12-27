@@ -32,7 +32,7 @@ import { CodeDisplay } from "../../components/layout_components/code_display/cod
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
 import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
-import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix2/puzzle_1";
+import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
 import { Puzzle4Book } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_book";
 import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
 import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
