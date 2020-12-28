@@ -197,9 +197,9 @@ VIRIDOS makes a sharp right into Ms. Tran's classroom.
 TRANSITION TO:
 int. Oxford Academy, science classroom (Tran) #19#
 
-MS. TRAN
+OFFICE TA
 (via transmission)
-Hey, how's it going? I got this slip of paper this morning saying to look at my periodic table but I don't know what it means . Do you think you can give it a shot?
+Hey, good thing I caught you! Ms. Tran got this slip of paper this morning saying to look at her periodic table but she doesn't know what it means. Do you think you can take a look at it?
 
 **_PUZZLE #7 (SCIENCE)_**
 
@@ -221,12 +221,10 @@ The lights black out as the communicator and rest of the robot shut off, leaving
 
 HOSHI REPRESENTATIVE
 (holding back panic)
-*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30B[[302]]. And be careful.*
+*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 302. And be careful.*
 
-**_PUZZLE #8 (Blackout Puzzle)_**
+**_PUZZLE #8 (Blackout Puzzle)_ UPDATE: THIS PUZZLE HAS BEEN OMITTED**
 [[goal of this puzzle is to penalize those that have been randomly clicking]]
-
-Map of 300 building is displayed with the instructions "go to classroom 30**B**". Most of the rooms have 360° photos, but have nothing of interest (and the instructions don't disappear unless in 302). Clicking on Classroom 302 triggers the next cutscene.
 
 CUT TO:
 int. world language classroom (kim) #21#
@@ -239,8 +237,9 @@ MRS. STEPHAN goes onto the communicator.
 MRS. STEPHAN
 How's the tour been so far? I *know* you can't respond to that, but I just hope you're enjoying it. Huh, that's odd. The lights are out. Is everything okay there? Uh...anyway... Right now, we're in Mr. Kim's room, and did you know he has a stash of Choco Pies in that cabinet over there? It's too bad he put a lock on it...
 
-MR. KIM
-Actually, I didn't do that. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
+MR. KIM'S CLASS REPRESENTATIVE
+Hi I'm Mr. Kim's class president. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
+[[I think Korean class has this right?]]
 
 **_PUZZLE #9 (World Language Puzzle)_**
 [[Puzzle - similar to https://i.vgy.me/WB5kzU.png]]
@@ -251,14 +250,14 @@ MRS. STEPHAN
 Wait, what's tha--
 
 HOSHI REPRESENTATIVE
-*Good, you found the page. Now go to classroom D - 3, A - 1, E - 2 [103].*
+*Good, you found the page. VIRIDOS will guide you to the next location.*
 
 Same map system, this time with the 100 building.
 
 CUT TO:
 int. oxford academy, history classroom (siggson) #22#
 
-MRS. SIGGSON
+SIGGSON TA
 Oh, hello. Glad you're here. When I heard there was a blackout I decided to check in on the classroom. For whatever reason, someone threw a safe into it. There's also a slip of paper, but I can't read it from my camera angle.
 
 **_PUZZLE #10 (History Puzzle)_**
@@ -330,8 +329,7 @@ Glad I ran into you. I just received this cryptic email from someone from Whitne
 MR. HOGAN
 What an interesting tune. I hope everything will be alright; best of luck.
 
-HOSHI REPRESENTATIVE
-*Morse code to classroom G, A - 1, B(702).* [[Put it all together now!]]
+[[UPDATE: New puzzle for room 851]]
 
 CUT TO:
 int. comp sci room #27#
