@@ -13,15 +13,16 @@ import {
   Layout,
   Text,
 } from "@ui-kitten/components";
-import ImageGallery from "react-image-gallery";
+import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import { ViewProperties } from "react-native";
+import { getLibrary, getStatus, setStatus } from "../status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
-let allImages = [
+const allImages = [
   {
     original: require("../../../assets/notebook/notebook-01.jpg"),
     thumbnail: require("../../../assets/notebook/thumbnails/thumbnail-1.png"),
@@ -64,6 +65,35 @@ let allImages = [
   },
 ];
 
+let images: any = [];
+export { images };
+
+// export async function checkPages() {
+//   let status = await getStatus();
+//   if(status == null) {
+//     return;
+//   }
+//   let statusVal = Number.parseInt(status);
+//   let library = getLibrary();
+//   for (let i = statusVal; i > 0; i--) {
+//     if(library[i].page != undefined) {
+//       let index = i;
+//       for(let j = 0; j < index; j++) {
+//         images.push(allImages[j])
+//       }
+//       return;
+//     }
+//   }
+// }
+
+let that: this;
+
+export function setPage(page: number) {
+  console.log("setting state?")
+  images = allImages.slice(0, page)
+  that.forceUpdate();
+}
+
 async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
@@ -75,14 +105,17 @@ export declare interface NotebookProps extends ViewProperties {}
 export class Notebook extends React.Component<NotebookProps> {
   constructor(props: any) {
     super(props);
-    this.state = {};
+  } 
+
+  componentDidMount() {
+    that = this;
   }
 
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
         <ImageGallery
-          items={allImages}
+          items={images}
           showPlayButton={false}
           showFullscreenButton={false}
         />

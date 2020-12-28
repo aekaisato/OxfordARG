@@ -10,7 +10,7 @@ import {
   HeaderStyleInterpolators,
   useCardAnimation,
 } from "react-navigation-stack";
-import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix2/puzzle_1";
+import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
 import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 
 import { NavigationActions } from "react-navigation";
@@ -29,6 +29,17 @@ import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
 import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
 import { Puzzle8 } from "../../puzzles/puzzle_8_map1/puzzle_8";
 import { StatusDebugPage } from "../status_system/status_system";
+import { ChoirRoom } from "../../rooms/choir/choir";
+import { MathRoom } from "../../rooms/math/math";
+import { Puzzle4Book } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_book";
+import { Puzzle5Crossword } from "../../puzzles/puzzle_5_posters/puzzle_5_crossword";
+import { EnglishRoom } from "../../rooms/english/english";
+import { OfficeRoom } from "../../rooms/office/office";
+import { ScienceRoom } from "../../rooms/science/science";
+import { LanguageRoom } from "../../rooms/language/language";
+import { HistoryRoom } from "../../rooms/history/history";
+import { PERoom } from "../../rooms/pe/pe";
+import { PathwayRoom } from "../../rooms/pathway/pathway";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -77,7 +88,7 @@ function roundNegative(x: number) {
 export const ThePuzzleNavigator = createStackNavigator(
   {
     StatusDebugPage: {
-      screen: StatusDebugPage
+      screen: StatusDebugPage,
     },
     Puzzle1: {
       screen: Puzzle1,
@@ -88,29 +99,62 @@ export const ThePuzzleNavigator = createStackNavigator(
     Puzzle3: {
       screen: Puzzle3,
     },
-    Puzzle4: {
-      screen: Puzzle4Safe,
+    Puzzle4Book: {
+      screen: Puzzle4Book,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
-    Puzzle5: {
+    Puzzle4Safe: {
+      screen: Puzzle4Safe,
+      navigationOptions: {
+        headerShown: true,
+      },
+    },
+    Puzzle5Crossword: {
+      screen: Puzzle5Crossword,
+      navigationOptions: {
+        headerShown: true,
+      },
+    },
+    Puzzle5Safe: {
       screen: Puzzle5Safe,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle6: {
       screen: Puzzle6,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle7: {
       screen: Puzzle7,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle8: {
       screen: Puzzle8,
     },
     Puzzle9: {
       screen: Puzzle9,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle10: {
       screen: Puzzle10,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle11: {
       screen: Puzzle11,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle12: {
       screen: Puzzle12,
@@ -120,12 +164,45 @@ export const ThePuzzleNavigator = createStackNavigator(
     },
     Puzzle14: {
       screen: Puzzle14,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle15: {
       screen: Puzzle15,
+      navigationOptions: {
+        headerShown: true,
+      },
     },
     Puzzle16: {
       screen: Puzzle16,
+    },
+    EnglishRoom: {
+      screen: EnglishRoom,
+    },
+    OfficeRoom: {
+      screen: OfficeRoom,
+    },
+    MathRoom: {
+      screen: MathRoom,
+    },
+    ScienceRoom: {
+      screen: ScienceRoom,
+    },
+    LanguageRoom: {
+      screen: LanguageRoom,
+    },
+    HistoryRoom: {
+      screen: HistoryRoom,
+    },
+    PERoom: {
+      screen: PERoom,
+    },
+    ChoirRoom: {
+      screen: ChoirRoom,
+    },
+    PathwayRoom: {
+      screen: PathwayRoom,
     },
   },
   {
@@ -136,13 +213,13 @@ export const ThePuzzleNavigator = createStackNavigator(
         open: {
           animation: "timing",
           config: {
-            duration: 500
+            duration: 500,
           },
         },
         close: {
           animation: "timing",
           config: {
-            duration: 500
+            duration: 500,
           },
         },
       },

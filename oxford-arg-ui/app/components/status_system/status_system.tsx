@@ -11,6 +11,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import { navigatePuzzle } from "../navigation/navigation";
+import { setPage } from "../inventory/notebook";
+import { setProgress } from "../layout_components/progress_bar/progress_bar";
+import { enableMuralClues, enableNotebook } from "../inventory/inventory";
+import { updatePagesCollected } from "../../layouts/phase1_layout/phase1_layout";
 
 /*
 const statusLibrary = [
@@ -22,7 +26,9 @@ const statusLibrary = [
 ];
 //*/
 
+console.warn("shift pages and flags to match their actual location");
 const statusLibrary = [
+  // shift pages and flags to match their actual location
   {
     type: "puzzle",
     value: "StatusDebugPage",
@@ -44,69 +50,93 @@ const statusLibrary = [
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle4",
+    type: "360",
+    value: "EnglishRoom",
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle5",
+    type: "360",
+    value: "OfficeRoom",
     save: true,
+    page: 1,
   },
+  {
+    type: "360",
+    value: "MathRoom",
+    save: true,
+    page: 2,
+  },
+  /*
   {
     type: "puzzle",
     value: "Puzzle6",
     save: true,
   },
+  //*/
   {
-    type: "puzzle",
-    value: "Puzzle7",
+    type: "360",
+    value: "ScienceRoom",
     save: true,
+    page: 3,
   },
   {
     type: "puzzle",
     value: "Puzzle8",
     save: true,
+    page: 4,
   },
   {
-    type: "puzzle",
-    value: "Puzzle9",
+    type: "360",
+    value: "LanguageRoom",
     save: true,
   },
   {
-    type: "puzzle",
-    value: "Puzzle10",
+    type: "360",
+    value: "HistoryRoom",
     save: true,
+    page: 5,
   },
   {
-    type: "puzzle",
-    value: "Puzzle11",
+    type: "360",
+    value: "PERoom",
     save: true,
+    page: 6,
   },
   {
     type: "puzzle",
     value: "Puzzle12",
     save: true,
+    page: 7,
   },
   {
     type: "puzzle",
     value: "Puzzle13",
     save: true,
+    page: 8,
   },
+  {
+    type: "360",
+    value: "ChoirRoom",
+    save: true,
+  },
+  /*
   {
     type: "puzzle",
     value: "Puzzle14",
-    save: true,
+    save: false,
   },
+  //*/
   {
-    type: "puzzle",
-    value: "Puzzle15",
+    type: "360",
+    value: "PathwayRoom",
     save: true,
+    page: 9,
   },
   {
     type: "puzzle",
     value: "Puzzle16",
     save: true,
+    page: 10,
   },
 ];
 
@@ -127,6 +157,10 @@ export async function getStatus() {
   let temp = await AsyncStorage.getItem("status");
   console.log("status: " + temp);
   return temp;
+}
+
+export function getLibrary() {
+  return statusLibrary;
 }
 
 export async function increment() {
@@ -164,11 +198,36 @@ export async function goto(status: {
 }) {
   console.log("attempting goto");
   console.log(status);
-  if (status.type == "puzzle") {
+  if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
   }
   // need stuff for videos and other stuff, too
   // also need access to both stack navigators in order to navigate between screens
+
+  let statusVal = await getStatus();
+  let library = getLibrary();
+  if (statusVal == null) {
+    return;
+  }
+  let percent = statusVal / library.length;
+  setProgress(percent);
+
+  console.warn("if a certain status is reached where you see the notebook");
+  enableNotebook();
+  enableMuralClues();
+
+  for (let i = Number.parseInt(statusVal); i > 0; i--) {
+    if (library[i].page != undefined) {
+      setPage(library[i].page);
+      updatePagesCollected();
+      if (i == Number.parseInt(statusVal)) {
+        alert(
+          "You found a notebook page! Check your inventory if you want to see it."
+        );
+      }
+      return;
+    }
+  }
 }
 
 export async function initProgress() {
@@ -268,6 +327,11 @@ async function getLoginInfoTemp() {
   console.log(firebase.auth().currentUser);
 }
 
+async function debugNavigatePuzzleTemp() {
+  let temp = prompt("what puzzle to nav (e.g. Puzzle4Book)");
+  navigatePuzzle(temp);
+}
+
 export class StatusDebugPage extends React.Component {
   render() {
     return (
@@ -286,6 +350,10 @@ export class StatusDebugPage extends React.Component {
           <Button title="login" onPress={() => loginTemp()} />
           <Button title="logout" onPress={() => logoutTemp()} />
           <Button title="info" onPress={() => getLoginInfoTemp()} />
+          <Button
+            title="nav puzzle"
+            onPress={() => debugNavigatePuzzleTemp()}
+          />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

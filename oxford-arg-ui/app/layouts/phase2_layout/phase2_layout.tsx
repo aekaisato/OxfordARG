@@ -35,6 +35,12 @@ let deviceWidth = Dimensions.get("window").width;
 
 document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
 
+let that;
+
+export function updatePagesCollected() {
+  that.updatePagesCollected();
+}
+
 const notebookAsciiArt64 =
   "ICAgICAgICBfLi0iXAogICAgXy4tIiAgICAgXAogLC0iICAgICAgICAgIFwKKCBcICAgICAgICAgICAgXAogXCBcICAgICAgICAgICAgXAogIFwgXCAgICAgICAgICAgIFwKICAgXCBcICAgICAgICAgXy4tOwogICAgXCBcICAgIF8uLSIgICA6CiAgICAgXCBcLC0iICAgIF8uLSIKICAgICAgXCggICBfLi0iICAKICAgICAgIGAtLSI=";
 
@@ -46,7 +52,9 @@ export class Phase2Layout extends React.Component {
       "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    that = this;
+  }
 
   render() {
     return (

@@ -61,6 +61,12 @@ function getRandomArbitrary(min: number, max: number) {
   return Math.random() * (max - min) + min;
 }
 
+let that;
+
+export function updatePagesCollected() {
+  that.updatePagesCollected();
+}
+
 export class Phase3Layout extends React.Component {
   state = {
     loopAnim: new Animated.Value(0),
@@ -108,6 +114,7 @@ async glitchScreen() {
 
   componentDidMount() {
     this.glitchScreen();
+    that = this;
   }
 
   render() {
