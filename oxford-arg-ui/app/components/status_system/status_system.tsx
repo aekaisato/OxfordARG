@@ -220,9 +220,11 @@ export async function goto(status: {
     if (library[i].page != undefined) {
       setPage(library[i].page);
       updatePagesCollected();
-      alert(
-        "You found a notebook page! Check your inventory if you want to see it."
-      );
+      if (i == Number.parseInt(statusVal)) {
+        alert(
+          "You found a notebook page! Check your inventory if you want to see it."
+        );
+      }
       return;
     }
   }
