@@ -9,6 +9,7 @@ import {
   Text,
   Image,
   Button,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -28,7 +29,12 @@ import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
-import { PuzzleNavigator, setPuzzleNavigator } from "../../components/navigation/navigation";
+import {
+  PuzzleNavigator,
+  setPuzzleNavigator,
+} from "../../components/navigation/navigation";
+import { images } from "../../components/inventory/notebook";
+import { Inventory } from "../../components/inventory/inventory";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -37,7 +43,10 @@ document.addEventListener("contextmenu", (event) => event.preventDefault()); // 
 
 let that;
 
-export function updatePagesCollected() {
+export function updatePagesCollected2() {
+  if (that == undefined) {
+    return;
+  }
   that.updatePagesCollected();
 }
 
@@ -48,12 +57,27 @@ export class Phase2Layout extends React.Component {
   state = {
     loopAnim: new Animated.Value(0),
     pagesCollected: 0,
+    inventoryDisplay: "none",
     transcript:
       "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
 
   componentDidMount() {
     that = this;
+  }
+
+  updatePagesCollected() {
+    this.setState({ pagesCollected: images.length });
+  }
+
+  handleToggleInventory() {
+    let temp = this.state.inventoryDisplay;
+    if (temp == "none") {
+      temp = "flex";
+    } else {
+      temp = "none";
+    }
+    this.setState({ inventoryDisplay: temp });
   }
 
   render() {
@@ -198,7 +222,11 @@ export class Phase2Layout extends React.Component {
                   </Text>
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
-                  <Button title="Open Inventory" color="red" />
+                  <Button
+                    title="Open Inventory"
+                    color="red"
+                    onPress={() => this.handleToggleInventory()}
+                  />
                 </View>
               </View>
             </Phase2Window>
@@ -304,6 +332,42 @@ export class Phase2Layout extends React.Component {
               />
             </View>
           </Phase2Window>
+        </View>
+        <View
+          /* @ts-ignore */
+          style={{
+            display: this.state.inventoryDisplay,
+            position: "absolute",
+            height: deviceHeight,
+            width: deviceWidth,
+            alignSelf: "center",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TouchableWithoutFeedback
+            style={{
+              height: deviceHeight,
+              width: deviceWidth,
+              justifyContent: "center",
+              alignItems: "center",
+              left: "100%",
+              top: "100%",
+            }}
+            onPress={() => this.handleToggleInventory()}
+          >
+            <View style={{ height: deviceHeight, width: deviceWidth }} />
+          </TouchableWithoutFeedback>
+          <Inventory
+            style={{
+              height: deviceHeight / 2,
+              width: deviceWidth / 2,
+              borderRadius: deviceWidth / 100,
+              backgroundColor: "#303030",
+              position: "absolute",
+              shadowRadius: 20,
+            }}
+          />
         </View>
       </View>
     );

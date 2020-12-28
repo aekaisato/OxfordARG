@@ -32,7 +32,7 @@ var firebaseConfig = {
   storageBucket: "viridos-735a4.appspot.com",
   messagingSenderId: "733706320390",
   appId: "1:733706320390:web:5a2ceb2aafbec9bf1ea187",
-  measurementId: "G-K2EQGJJKDS"
+  measurementId: "G-K2EQGJJKDS",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -40,7 +40,7 @@ firebase.initializeApp(firebaseConfig);
 const theme = { ...darkTheme };
 
 function wait(timeout: number) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
 }
@@ -50,37 +50,37 @@ export default class App extends React.Component {
 
   async loadFonts() {
     await Font.loadAsync({
-      "Courier-Prime": require("./assets/fonts/courier-prime/Courier-Prime.ttf")
+      "Courier-Prime": require("./assets/fonts/courier-prime/Courier-Prime.ttf"),
     });
     await Font.loadAsync({
-      "Courier-Prime-Bold": require("./assets/fonts/courier-prime/Courier-Prime-Bold.ttf")
+      "Courier-Prime-Bold": require("./assets/fonts/courier-prime/Courier-Prime-Bold.ttf"),
     });
     await Font.loadAsync({
-      "Courier-Prime-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Italic.ttf")
+      "Courier-Prime-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Italic.ttf"),
     });
     await Font.loadAsync({
-      "Courier-Prime-Bold-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Bold-Italic.ttf")
+      "Courier-Prime-Bold-Italic": require("./assets/fonts/courier-prime/Courier-Prime-Bold-Italic.ttf"),
     });
     await Font.loadAsync({
-      "Noto-Sans": require("./assets/fonts/noto-sans/NotoSans-Regular.ttf")
+      "Noto-Sans": require("./assets/fonts/noto-sans/NotoSans-Regular.ttf"),
     });
     await Font.loadAsync({
-      "Noto-Sans-Bold": require("./assets/fonts/noto-sans/NotoSans-Bold.ttf")
+      "Noto-Sans-Bold": require("./assets/fonts/noto-sans/NotoSans-Bold.ttf"),
     });
     await Font.loadAsync({
-      "Noto-Sans-Italic": require("./assets/fonts/noto-sans/NotoSans-Italic.ttf")
+      "Noto-Sans-Italic": require("./assets/fonts/noto-sans/NotoSans-Italic.ttf"),
     });
     await Font.loadAsync({
-      "Noto-Sans-Bold-Italic": require("./assets/fonts/noto-sans/NotoSans-BoldItalic.ttf")
+      "Noto-Sans-Bold-Italic": require("./assets/fonts/noto-sans/NotoSans-BoldItalic.ttf"),
     });
     await Font.loadAsync({
-      "VT323": require("./assets/fonts/VT323-Regular.ttf")
+      VT323: require("./assets/fonts/VT323-Regular.ttf"),
     });
     await Font.loadAsync({
-      "EB-Garamond": require("./assets/fonts/EBGaramond-VariableFont_wght.ttf")
+      "EB-Garamond": require("./assets/fonts/EBGaramond-VariableFont_wght.ttf"),
     });
     await Font.loadAsync({
-      "EB-Garamond-Italic": require("./assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf")
+      "EB-Garamond-Italic": require("./assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf"),
     });
     this.fontsLoaded = true;
   }
@@ -107,9 +107,11 @@ export default class App extends React.Component {
             theme={theme}
             customMapping={customMapping}
           >
-            <AppNavigator ref={navigatorRef => {
-              setPhaseNavigator(navigatorRef)
-            }} />
+            <AppNavigator
+              ref={(navigatorRef) => {
+                setPhaseNavigator(navigatorRef);
+              }}
+            />
           </ApplicationProvider>
         </React.Fragment>
       );
@@ -117,26 +119,54 @@ export default class App extends React.Component {
   }
 }
 
-export const StackNavigator = createStackNavigator({
-  Phase1: {
-    screen: Phase1Layout,
-    navigationOptions: {
-      headerShown: false,
-    },
-  },
-  Phase2: {
-    screen: Phase2Layout, 
-    navigationOptions: {
-      headerShown: false,
-    },
-  },
-  Phase3: {
-    screen: Phase3Layout, 
-    navigationOptions: {
-      headerShown: false,
-    },
+const forFade = ({ current, closing }) => ({
+  cardStyle: {
+    opacity: current.progress,
   },
 });
+
+export const StackNavigator = createStackNavigator(
+  {
+    Phase1: {
+      screen: Phase1Layout,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+    Phase2: {
+      screen: Phase2Layout,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+    Phase3: {
+      screen: Phase3Layout,
+      navigationOptions: {
+        headerShown: false,
+      },
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerShown: false,
+      cardStyleInterpolator: forFade,
+      transitionSpec: {
+        open: {
+          animation: "timing",
+          config: {
+            duration: 500,
+          },
+        },
+        close: {
+          animation: "timing",
+          config: {
+            duration: 500,
+          },
+        },
+      },
+    },
+  }
+);
 
 export const AppNavigator = createAppContainer(StackNavigator);
 

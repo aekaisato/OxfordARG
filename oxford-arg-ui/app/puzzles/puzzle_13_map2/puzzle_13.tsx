@@ -78,7 +78,7 @@ export class Puzzle13 extends React.Component {
               textAlign: "center",
             }}
           >
-            click on classroom G+1, Z+5, F-3
+            click on classroom G+1, Z+5, F-3 (C)
           </Text>
           <svg
             viewBox="0 0 1656 1250.6667"

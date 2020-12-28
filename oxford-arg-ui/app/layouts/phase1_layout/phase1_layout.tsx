@@ -62,7 +62,10 @@ document.addEventListener("contextmenu", (event) => event.preventDefault()); // 
 
 let that;
 
-export function updatePagesCollected() {
+export function updatePagesCollected1() {
+  if (that == undefined) {
+    return;
+  }
   that.updatePagesCollected();
 }
 

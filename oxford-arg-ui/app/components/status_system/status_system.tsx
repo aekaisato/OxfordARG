@@ -10,11 +10,13 @@ import {
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import { navigatePuzzle } from "../navigation/navigation";
+import { navigatePhase, navigatePuzzle } from "../navigation/navigation";
 import { setPage } from "../inventory/notebook";
 import { setProgress } from "../layout_components/progress_bar/progress_bar";
 import { enableMuralClues, enableNotebook } from "../inventory/inventory";
-import { updatePagesCollected } from "../../layouts/phase1_layout/phase1_layout";
+import { updatePagesCollected1 } from "../../layouts/phase1_layout/phase1_layout";
+import { updatePagesCollected2 } from "../../layouts/phase2_layout/phase2_layout";
+import { updatePagesCollected3 } from "../../layouts/phase3_layout/phase3_layout";
 
 /*
 const statusLibrary = [
@@ -80,10 +82,15 @@ const statusLibrary = [
     page: 3,
   },
   {
+    type: "phase",
+    value: "Phase2",
+    save: true,
+    page: 4,
+  },
+  {
     type: "puzzle",
     value: "Puzzle8",
     save: true,
-    page: 4,
   },
   {
     type: "360",
@@ -109,10 +116,15 @@ const statusLibrary = [
     page: 7,
   },
   {
+    type: "phase",
+    value: "Phase3",
+    save: true,
+    page: 8,
+  },
+  {
     type: "puzzle",
     value: "Puzzle13",
     save: true,
-    page: 8,
   },
   {
     type: "360",
@@ -200,6 +212,9 @@ export async function goto(status: {
   console.log(status);
   if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
+  } else if (status.type == "phase") {
+    navigatePhase(status.value);
+    await goto(await increment());
   }
   // need stuff for videos and other stuff, too
   // also need access to both stack navigators in order to navigate between screens
@@ -219,7 +234,9 @@ export async function goto(status: {
   for (let i = Number.parseInt(statusVal); i > 0; i--) {
     if (library[i].page != undefined) {
       setPage(library[i].page);
-      updatePagesCollected();
+      updatePagesCollected1();
+      updatePagesCollected2();
+      updatePagesCollected3();
       if (i == Number.parseInt(statusVal)) {
         alert(
           "You found a notebook page! Check your inventory if you want to see it."
@@ -332,6 +349,11 @@ async function debugNavigatePuzzleTemp() {
   navigatePuzzle(temp);
 }
 
+async function debugNavigatePhaseTemp() {
+  let temp = prompt("what phase to nav (e.g. Phase3)");
+  navigatePhase(temp);
+}
+
 export class StatusDebugPage extends React.Component {
   render() {
     return (
@@ -355,13 +377,18 @@ export class StatusDebugPage extends React.Component {
             onPress={() => debugNavigatePuzzleTemp()}
           />
           <Button
+            title="nav phase"
+            onPress={() => debugNavigatePhaseTemp()}
+          />
+          <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}
           />
           <Button
             title="continue"
-            onPress={async () =>
-              goto(statusLibrary[Number.parseInt(await getStatus())])
+            onPress={async () => {
+              console.warn("don't forget to add the thing to switch phase on continue depending on status")
+              goto(statusLibrary[Number.parseInt(await getStatus())])}
             }
           />
         </ImageBackground>
