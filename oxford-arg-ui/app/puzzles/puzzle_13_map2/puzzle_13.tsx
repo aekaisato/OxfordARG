@@ -56,7 +56,7 @@ async function incorrectLink() {
   console.warn("add stuff here for the incorrect stuff");
 }
 
-export class Puzzle8 extends React.Component {
+export class Puzzle13 extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -74,11 +74,11 @@ export class Puzzle8 extends React.Component {
               fontWeight: "bold",
               fontFamily: "VT323",
               color: "white",
-              fontSize: deviceWidth / 24,
+              fontSize: deviceWidth / 36,
               textAlign: "center",
             }}
           >
-            click on classroom 30B
+            click on classroom G+1, Z+5, F-3
           </Text>
           <svg
             viewBox="0 0 1656 1250.6667"
@@ -103,7 +103,7 @@ export class Puzzle8 extends React.Component {
                 strokeLinejoin: "miter",
                 strokeOpacity: 1,
               }}
-              d="m 1305.2007,455.68513 83.5455,-0.30922 0.5214,76.65489 -84.0669,-1.13075 z"
+              d="m 324.47368,97.079727 1.09324,88.771103 24.48858,-0.21865 0.4373,46.13474 84.61679,1.09324 -1.31189,-135.780433 z"
               id="path14"
               onClick={() => correctLink()}
             />

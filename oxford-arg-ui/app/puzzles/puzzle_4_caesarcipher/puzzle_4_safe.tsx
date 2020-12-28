@@ -23,6 +23,7 @@ import {
 } from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
 import { goto, increment } from "../../components/status_system/status_system";
+import md5 from "crypto-js/md5";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -87,18 +88,16 @@ export class Puzzle4Safe extends React.Component {
 
   async checkCode() {
     while (true) {
+      let str = this.state.first +
+      this.state.second +
+      this.state.third +
+      this.state.fourth;
       console.log(
         "checking: " +
-          this.state.first +
-          this.state.second +
-          this.state.third +
-          this.state.fourth
+          str
       );
       if (
-        this.state.first == "8" &&
-        this.state.second == "3" &&
-        this.state.third == "5" &&
-        this.state.fourth == "9"
+        md5(str).toString() == "3db54f5573cd617a0112d35dd1e6b1ef" 
       ) {
         this.setState({ outlineColor: "green" });
         console.log(

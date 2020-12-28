@@ -23,6 +23,7 @@ import {
 } from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
 import { goto, increment } from "../../components/status_system/status_system";
+import md5 from "crypto-js/md5";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -87,19 +88,14 @@ export class Puzzle5Safe extends React.Component {
 
   async checkCode() {
     while (true) {
-      console.log(
-        "checking: " +
-          this.state.first +
-          this.state.second +
-          this.state.third +
-          this.state.fourth
-      );
-      if (
-        this.state.first.toLowerCase() == "n" &&
-        this.state.second.toLowerCase() == "i" &&
-        this.state.third.toLowerCase() == "c" &&
-        this.state.fourth.toLowerCase() == "e"
-      ) {
+      let str =
+        this.state.first +
+        this.state.second +
+        this.state.third +
+        this.state.fourth;
+      str = str.toLowerCase();
+      console.log("checking: " + str);
+      if (md5(str).toString() == "7c6483ddcd99eb112c060ecbe0543e86") {
         this.setState({ outlineColor: "green" });
         console.log(
           "code correct, this should be handled by the flags system or whatever"

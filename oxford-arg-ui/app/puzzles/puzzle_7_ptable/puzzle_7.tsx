@@ -42,6 +42,7 @@ export class Puzzle7 extends React.Component {
 
   state = {
     textInput: "",
+    borderColor: "#000000"
   };
 
   onTextChange(text) {
@@ -53,6 +54,7 @@ export class Puzzle7 extends React.Component {
     let currStr = this.state.textInput;
     let checkHash = md5(currStr.toLowerCase()).toString();
     if (checkHash == correctHash) {
+      this.setState({borderColor: "#00FF00"});
       console.log("do smth here because the puzzle is now solved");
       (async function () {
         await wait(2000);
@@ -99,11 +101,17 @@ export class Puzzle7 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginRight: 15,
+                borderColor: this.state.borderColor
               }}
               autoFocus={true}
               secureTextEntry={true}
               value={this.state.textInput}
               onChangeText={(value) => this.onTextChange(value)}
+              onKeyPress={(event) => {
+                if (event.nativeEvent.key == "Enter") {
+                  this.onSubmit();
+                }
+              }}
             />
             <Button title="Submit" onPress={() => this.onSubmit()} />
           </View>
