@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View, Dimensions, Text } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
@@ -11,7 +11,6 @@ import {
   ApplicationProvider,
   IconRegistry,
   Layout,
-  Text,
 } from "@ui-kitten/components";
 
 let deviceHeight = Dimensions.get("window").height;
@@ -26,11 +25,11 @@ async function wait(timeout: number) {
 export class Name extends React.Component {
   render() {
     return (
-      <Layout style={styles.container}>
+      <View style={styles.container}>
         <Text>
           Hello, world!
         </Text>
-      </Layout>
+      </View>
     );
   }
 }

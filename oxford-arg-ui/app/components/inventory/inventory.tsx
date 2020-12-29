@@ -73,7 +73,7 @@ export class Inventory extends React.Component<InventoryProps> {
       muralClueDescription: "Keep playing to unlock.",
       muralClueDisabled: true,
       notebookTitle: "Locked",
-      notebookDescription: "Keey playing to unlock.",
+      notebookDescription: "Keep playing to unlock.",
       notebookDisabled: true,
       displayMuralClues: "none",
       displayNotebook: "none",

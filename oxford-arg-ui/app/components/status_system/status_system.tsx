@@ -17,6 +17,11 @@ import { enableMuralClues, enableNotebook } from "../inventory/inventory";
 import { updatePagesCollected1 } from "../../layouts/phase1_layout/phase1_layout";
 import { updatePagesCollected2 } from "../../layouts/phase2_layout/phase2_layout";
 import { updatePagesCollected3 } from "../../layouts/phase3_layout/phase3_layout";
+import {
+  getMural1Unlocked,
+  getMural2Unlocked,
+  setUnlocked,
+} from "../inventory/mural-clues";
 
 /*
 const statusLibrary = [
@@ -45,16 +50,19 @@ const statusLibrary = [
     type: "puzzle",
     value: "Puzzle2",
     save: true,
+    mural: 1,
   },
   {
     type: "puzzle",
     value: "Puzzle3",
     save: true,
+    mural: 2,
   },
   {
     type: "360",
     value: "EnglishRoom",
     save: true,
+    page: 0,
   },
   {
     type: "360",
@@ -227,12 +235,19 @@ export async function goto(status: {
   let percent = statusVal / library.length;
   setProgress(percent);
 
-  console.warn("if a certain status is reached where you see the notebook");
-  enableNotebook();
-  enableMuralClues();
+  if (!getMural1Unlocked()) {
+    setUnlocked(1, await isUnlockedMural(1, statusVal));
+  }
+  if (!getMural2Unlocked()) {
+    setUnlocked(2, await isUnlockedMural(2, statusVal));
+  }
 
   for (let i = Number.parseInt(statusVal); i > 0; i--) {
     if (library[i].page != undefined) {
+      if (library[i].page == 0) {
+        enableNotebook();
+        return;
+      }
       setPage(library[i].page);
       updatePagesCollected1();
       updatePagesCollected2();
@@ -245,6 +260,33 @@ export async function goto(status: {
       return;
     }
   }
+}
+
+export async function isUnlockedMural(num: number, status) {
+  console.log(status);
+  if (num != 1 && num != 2) {
+    return false;
+  }
+  let library = statusLibrary;
+  if (status == null) {
+    return false;
+  }
+  for (let i = Number.parseInt(status); i > 0; i--) {
+    if (library[i].mural != undefined) {
+      if (num == 1 && library[i].mural == 1) {
+        alert(
+          "You found a mysterious clue! Check your inventory if you want to see it."
+        );
+        return true;
+      } else if (num == 2 && library[i].mural == 2) {
+        alert(
+          "You found a mysterious clue! Check your inventory if you want to see it."
+        );
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 export async function initProgress() {
@@ -376,10 +418,7 @@ export class StatusDebugPage extends React.Component {
             title="nav puzzle"
             onPress={() => debugNavigatePuzzleTemp()}
           />
-          <Button
-            title="nav phase"
-            onPress={() => debugNavigatePhaseTemp()}
-          />
+          <Button title="nav phase" onPress={() => debugNavigatePhaseTemp()} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}
@@ -387,9 +426,11 @@ export class StatusDebugPage extends React.Component {
           <Button
             title="continue"
             onPress={async () => {
-              console.warn("don't forget to add the thing to switch phase on continue depending on status")
-              goto(statusLibrary[Number.parseInt(await getStatus())])}
-            }
+              console.warn(
+                "don't forget to add the thing to switch phase on continue depending on status"
+              );
+              goto(statusLibrary[Number.parseInt(await getStatus())]);
+            }}
           />
         </ImageBackground>
       </View>

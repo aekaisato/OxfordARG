@@ -5,6 +5,7 @@ import {
   Dimensions,
   Button,
   ImageBackground,
+  Text
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -17,7 +18,6 @@ import {
   ApplicationProvider,
   IconRegistry,
   Layout,
-  Text,
 } from "@ui-kitten/components";
 import { goto, increment } from "../../components/status_system/status_system";
 

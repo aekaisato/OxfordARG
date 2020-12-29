@@ -40,6 +40,7 @@ import { LanguageRoom } from "../../rooms/language/language";
 import { HistoryRoom } from "../../rooms/history/history";
 import { PERoom } from "../../rooms/pe/pe";
 import { PathwayRoom } from "../../rooms/pathway/pathway";
+import { SplashScreen } from "../../other/splash_screen";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -90,6 +91,9 @@ export const ThePuzzleNavigator = createStackNavigator(
     StatusDebugPage: {
       screen: StatusDebugPage,
     },
+    SplashScreen: {
+      screen: SplashScreen
+    },
     Puzzle1: {
       screen: Puzzle1,
     },
@@ -103,36 +107,42 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle4Book,
       navigationOptions: {
         headerShown: true,
+        title: "A Book"
       },
     },
     Puzzle4Safe: {
       screen: Puzzle4Safe,
       navigationOptions: {
         headerShown: true,
+        title: "A Safe"
       },
     },
     Puzzle5Crossword: {
       screen: Puzzle5Crossword,
       navigationOptions: {
         headerShown: true,
+        title: "A Few Posters"
       },
     },
     Puzzle5Safe: {
       screen: Puzzle5Safe,
       navigationOptions: {
         headerShown: true,
+        title: "A Safe"
       },
     },
     Puzzle6: {
       screen: Puzzle6,
       navigationOptions: {
         headerShown: true,
+        title: "A Strange Safe"
       },
     },
     Puzzle7: {
       screen: Puzzle7,
       navigationOptions: {
         headerShown: true,
+        title: "Periodic Table"
       },
     },
     Puzzle8: {
@@ -142,18 +152,21 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle9,
       navigationOptions: {
         headerShown: true,
+        title: "Locked Cabinet"
       },
     },
     Puzzle10: {
       screen: Puzzle10,
       navigationOptions: {
         headerShown: true,
+        title: "A Very Odd Safe"
       },
     },
     Puzzle11: {
       screen: Puzzle11,
       navigationOptions: {
         headerShown: true,
+        title: "Pong?"
       },
     },
     Puzzle12: {
@@ -166,12 +179,14 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle14,
       navigationOptions: {
         headerShown: true,
+        title: "Piano"
       },
     },
     Puzzle15: {
       screen: Puzzle15,
       navigationOptions: {
         headerShown: true,
+        title: "Laptop Screen"
       },
     },
     Puzzle16: {
