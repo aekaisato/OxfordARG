@@ -25,21 +25,32 @@ async function wait(timeout: number) {
 }
 
 async function continueTemp() {
-  (async function(){
+  (async function () {
     await wait(2000);
     await goto(await increment());
   })();
 }
 
+window.addEventListener("message", function (e) {
+  const data = e.data;
+  if (data == "puzzle completed") {
+    (async function () {
+      await wait(2000);
+      await goto(await increment());
+    })();
+  }
+});
+
 export class Puzzle11 extends React.Component {
   render() {
     return (
-      <Layout style={styles.container}>
-        <Text>
-          puzzle 11: press button to continue (temp)
-        </Text>
-        <Button title="continue" onPress={() => continueTemp()}/>
-      </Layout>
+      <View style={styles.container}>
+        <iframe
+          style={{ height: "100%", width: "100%" }}
+          src="/static/pong/index.html"
+          frameBorder="0"
+        />
+      </View>
     );
   }
 }
