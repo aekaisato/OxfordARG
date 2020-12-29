@@ -141,7 +141,7 @@ export class Puzzle6 extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("../../../assets/img/steel.jpg")}
+          source={require("../../../assets/backdrops/steel.jpg")}
           style={{
             height: "100%",
             width: "100%",

@@ -16,7 +16,7 @@ import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 import { NavigationActions } from "react-navigation";
 import { Puzzle10 } from "../../puzzles/puzzle_10_trail/puzzle_10";
 import { Puzzle11 } from "../../puzzles/puzzle_11_pe/puzzle_11";
-import { Puzzle12 } from "../../puzzles/puzzle_12_mops/puzzle_12_1";
+import { Puzzle12 } from "../../puzzles/puzzle_12_lights/puzzle_12";
 import { Puzzle13 } from "../../puzzles/puzzle_13_map2/puzzle_13";
 import { Puzzle14 } from "../../puzzles/puzzle_14_piano/puzzle_14";
 import { Puzzle15 } from "../../puzzles/puzzle_15_navigator/puzzle_15";

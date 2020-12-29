@@ -61,7 +61,7 @@ export class Puzzle13 extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("../../../assets/backdrops/map_1.jpg")}
+          source={require("../../../assets/backdrops/map_2.jpg")}
           style={{
             height: "100%",
             width: "100%",

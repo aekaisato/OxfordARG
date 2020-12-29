@@ -297,7 +297,7 @@ export class Phase3Layout extends React.Component {
                   </Text>
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
-                  <Button title="Open Inventory" color="red" />
+                  <Button title="Open Inventory" color="red" onPress={() => this.handleToggleInventory()} />
                 </View>
               </View>
             </Phase3Window>
