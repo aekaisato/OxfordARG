@@ -274,14 +274,18 @@ export async function isUnlockedMural(num: number, status) {
   for (let i = Number.parseInt(status); i > 0; i--) {
     if (library[i].mural != undefined) {
       if (num == 1 && library[i].mural == 1) {
-        alert(
-          "You found a mysterious clue! Check your inventory if you want to see it."
-        );
+        if (i == Number.parseInt(status)) {
+          alert(
+            "You found a mysterious clue! Check your inventory if you want to see it."
+          );
+        }
         return true;
       } else if (num == 2 && library[i].mural == 2) {
-        alert(
-          "You found a mysterious clue! Check your inventory if you want to see it."
-        );
+        if (i == Number.parseInt(status)) {
+          alert(
+            "You found a mysterious clue! Check your inventory if you want to see it."
+          );
+        }
         return true;
       }
     }
