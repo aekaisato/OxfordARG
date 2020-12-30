@@ -2,7 +2,7 @@ title: VIRIDOS: An Oxford ARG
 credit: written by
 author: Brandon Imai and Aiden Sato
 source: Story by Brandon Imai and Aiden Sato
-draft date: 9-13-2020 ver. 1.1.3
+draft date: 12-29-2020 ver. 1.2.1
 
 ext. computer science building #1#
 
@@ -221,10 +221,22 @@ The lights black out as the communicator and rest of the robot shut off, leaving
 
 HOSHI REPRESENTATIVE
 (holding back panic)
-*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 302. And be careful.*
+*...Look, something is wrong. We picked some strange signals fetching data from the robot. The IP address traces to Whitney. We think they're on your trail. It is _imperative_ that you find the pages and find them quick. Go to classroom 30B. And be careful.*
 
-**_PUZZLE #8 (Blackout Puzzle)_ UPDATE: THIS PUZZLE HAS BEEN OMITTED**
+**_PUZZLE #8 (Blackout Puzzle)**
 [[goal of this puzzle is to penalize those that have been randomly clicking]]
+
+[[audio only, error attempt #1]]
+HOSHI REPRESENTATIVE
+That's not quite right, try again
+
+[[error attempt #2]]
+HOSHI REPRESENTATIVE
+Uhhh, that's not what I meant either
+
+[[error #3]]
+HOSHI REPRESENTATIVE
+Take a closer look at the clue I gave you. It's almost *spelled* out for you. We thought you were the smart one... 
 
 CUT TO:
 int. world language classroom (kim) #21#
@@ -306,8 +318,21 @@ HOSHI REPRESENTATIVE
 (with urgency)
 *Hurry! They're onto us! You must find the rest of the research before it's too late! I'm sorry, I can't help you anymore until you find the rest of the pages; this connection just isn't safe anymore. The fate of our rankings is in your hands. I'll leave you with one last hint.*
 
-**_PUZZLE 13 (Morse Code)_**
-Morse code decoder will be given on the side of the popup with room selection
+**_PUZZLE 13 (Letter Addition/Subtraction)_**
+
+
+[[error attempt #1]]
+HOSHI REPRESENTATIVE
+Uhh that's not quite right, look at your math again
+
+[[error attempt #2]]
+HOSHI REPRESENTATIVE
+(bluntly)
+Wrong one
+
+[[error attempt #3]]
+HOSHI REPRESENTATIVE
+Cmon now, you're an Oxford student. I'm pretty confident you can do basic math unless the curriculum has changed since I was last there...
 
 VIRIDOS
 Oxford is part of the Anaheim Union High School District...
