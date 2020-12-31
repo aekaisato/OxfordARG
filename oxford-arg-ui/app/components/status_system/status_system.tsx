@@ -22,6 +22,7 @@ import {
   getMural2Unlocked,
   setUnlocked,
 } from "../inventory/mural-clues";
+import { queuePlayer } from "../video_player/video_player";
 
 /*
 const statusLibrary = [
@@ -400,6 +401,14 @@ async function debugNavigatePhaseTemp() {
   navigatePhase(temp);
 }
 
+async function debugCommunicatorTemp() {
+  let temp = prompt("what video (e.g. Scene1Line1)");
+  if(temp == null) {
+    temp = "";
+  }
+  queuePlayer(temp);
+}
+
 export class StatusDebugPage extends React.Component {
   render() {
     return (
@@ -423,6 +432,7 @@ export class StatusDebugPage extends React.Component {
             onPress={() => debugNavigatePuzzleTemp()}
           />
           <Button title="nav phase" onPress={() => debugNavigatePhaseTemp()} />
+          <Button title="test video" onPress={() => debugCommunicatorTemp()} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

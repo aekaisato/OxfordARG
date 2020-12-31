@@ -54,6 +54,7 @@ import {
   setPuzzleNavigator,
 } from "../../components/navigation/navigation";
 import { images } from "../../components/inventory/notebook";
+import { VideoPlayer } from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -232,13 +233,7 @@ export class Phase1Layout extends React.Component {
                   top: -4,
                 }}
               >
-                <Image
-                  source={{ uri: "https://i.vgy.me/utjbVt.jpg" }}
-                  style={{
-                    height: (3 * deviceHeight) / 14 - 28,
-                    width: 0.2 * 0.9 * deviceWidth - 8,
-                  }}
-                />
+                <VideoPlayer/>
               </Phase1Window>
             </View>
           </View>
