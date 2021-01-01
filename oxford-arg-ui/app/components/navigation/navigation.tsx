@@ -41,6 +41,7 @@ import { HistoryRoom } from "../../rooms/history/history";
 import { PERoom } from "../../rooms/pe/pe";
 import { PathwayRoom } from "../../rooms/pathway/pathway";
 import { SplashScreen } from "../../other/splash_screen";
+import { LiveFeed } from "../live_feed/live_feed";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -72,6 +73,11 @@ export function navigatePhase(routeName: any, params?: any) {
   );
 }
 
+export function toLiveFeed() {
+  console.log("nav to screen")
+  _puzzleNavigator.dispatch(NavigationActions.navigate({routeName: "LiveFeed"}));
+}
+
 const forFade = ({ current, closing }) => ({
   cardStyle: {
     opacity: current.progress,
@@ -93,6 +99,9 @@ export const ThePuzzleNavigator = createStackNavigator(
     },
     SplashScreen: {
       screen: SplashScreen
+    },
+    LiveFeed: {
+      screen: LiveFeed
     },
     Puzzle1: {
       screen: Puzzle1,

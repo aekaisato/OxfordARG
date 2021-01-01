@@ -10,7 +10,11 @@ import {
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import { navigatePhase, navigatePuzzle } from "../navigation/navigation";
+import {
+  navigatePhase,
+  navigatePuzzle,
+  toLiveFeed,
+} from "../navigation/navigation";
 import { setPage } from "../inventory/notebook";
 import { setProgress } from "../layout_components/progress_bar/progress_bar";
 import { enableMuralClues, enableNotebook } from "../inventory/inventory";
@@ -27,6 +31,7 @@ import {
   setTranscriptLine,
   setTranscriptStr,
 } from "../video_player/video_player";
+import { queueLiveFeed } from "../live_feed/live_feed";
 
 /*
 const statusLibrary = [
@@ -41,9 +46,21 @@ const statusLibrary = [
 console.warn("shift pages and flags to match their actual location");
 const statusLibrary = [
   // shift pages and flags to match their actual location
+  // add continue property to show when not to wait for next status
   {
     type: "puzzle",
     value: "StatusDebugPage",
+    save: false,
+  },
+  {
+    type: "livefeed",
+    value: "Scene1",
+    save: true,
+    continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene1Line1",
     save: false,
   },
   {
@@ -220,6 +237,7 @@ export async function goto(status: {
   type: string;
   value: string;
   save: boolean;
+  continue?: boolean;
 }) {
   console.log("attempting goto");
   console.log(status);
@@ -228,9 +246,18 @@ export async function goto(status: {
   } else if (status.type == "phase") {
     navigatePhase(status.value);
     await goto(await increment());
+  } else if (status.type == "livefeed") {
+    let temp = false;
+    if (status.continue != undefined) {
+      if (status.continue == true) {
+        temp = true;
+      }
+    }
+    toLiveFeed();
+    queueLiveFeed(status.value, temp);
+  } else if (status.type == "communicator") {
+    queuePlayer(status.value);
   }
-  // need stuff for videos and other stuff, too
-  // also need access to both stack navigators in order to navigate between screens
 
   let statusVal = await getStatus();
   let library = getLibrary();
@@ -264,6 +291,12 @@ export async function goto(status: {
       }
       return;
     }
+  }
+
+  if (status.continue != undefined && status.continue) {
+    (async function () {
+      await goto(await increment());
+    })();
   }
 }
 
@@ -429,6 +462,17 @@ async function debugTranscriptTemp2() {
   setTranscriptLine(temp);
 }
 
+async function debugLiveFeed() {
+  let temp = prompt(
+    "what video (e.g. Scene1) -- this will navigate to the next screen once the video is done"
+  );
+  if (temp == null) {
+    temp = "";
+  }
+  toLiveFeed();
+  queueLiveFeed(temp);
+}
+
 export class StatusDebugPage extends React.Component {
   render() {
     return (
@@ -455,6 +499,7 @@ export class StatusDebugPage extends React.Component {
           <Button title="test video" onPress={() => debugCommunicatorTemp()} />
           <Button title="test str" onPress={() => debugTranscriptTemp1()} />
           <Button title="test line" onPress={() => debugTranscriptTemp2()} />
+          <Button title="test live feed" onPress={() => debugLiveFeed()} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

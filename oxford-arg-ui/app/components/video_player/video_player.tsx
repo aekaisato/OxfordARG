@@ -20,6 +20,7 @@ import {
 } from "@ui-kitten/components";
 import ReactPlayer from "react-player/lazy";
 import { transcriptStrings } from "./transcript_strings";
+import { goto, increment } from "../status_system/status_system";
 
 let thatP: any;
 let thatT: any;
@@ -62,8 +63,11 @@ const urls = {
 
 export { urls };
 
-export function queuePlayer(line: string) {
-  thatP.queuePlayer(line);
+export function queuePlayer(line: string, blockGoto?: boolean) {
+  if (blockGoto == undefined) {
+    blockGoto = false;
+  }
+  thatP.queuePlayer(line, blockGoto);
   setTranscriptLine(line);
 }
 
@@ -77,16 +81,17 @@ export class VideoPlayer extends React.Component {
     this.state = {
       playing: false,
       video: "",
+      blockGoto: false,
     };
     thatP = this;
   }
 
-  queuePlayer(url: string) {
+  queuePlayer(url: string, blockGoto: boolean) {
     let boo = true;
-    if(urls[url] == undefined) {
+    if (urls[url] == undefined) {
       boo = false;
     }
-    this.setState({ video: url, playing: boo });
+    this.setState({ video: url, playing: boo, blockGoto });
     // setup wait for goto
   }
 
@@ -96,6 +101,13 @@ export class VideoPlayer extends React.Component {
 
   handleEnd() {
     this.setState({ playing: false, video: "" });
+    if (this.state.blockGoto) {
+      this.setState({ blockGoto: true });
+    } else {
+      (async function () {
+        await goto(await increment());
+      })();
+    }
   }
 
   render() {
@@ -114,10 +126,9 @@ export class VideoPlayer extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
+        <View style={[styles.container, { overflow: "hidden" }]}>
           <ReactPlayer
-            width="100%"
-            height="100%"
+            width={0.2 * 0.9 * deviceWidth}
             url="https://static.viridos.toadtoad.xyz/communicator-clips/Communicator%20Loop%20v3.mp4" // insert loop here
             playing={true}
             muted={true}

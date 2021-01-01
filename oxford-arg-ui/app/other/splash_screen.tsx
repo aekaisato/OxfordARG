@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { StyleSheet, View, Dimensions, Text, ViewProperties } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
@@ -51,19 +51,29 @@ async function wait(timeout: number) {
   });
 }
 
-export class SplashScreen extends React.Component {
+export declare interface SplashScreenProps extends ViewProperties {
+  showText?: boolean;
+}
+
+export class SplashScreen extends React.Component<SplashScreenProps> {
+  showText: boolean;
+  constructor(props) {
+    super(props);
+    if (props.showText == undefined) {
+      this.showText = true;
+    } else {
+      this.showText = props.showText;
+    }
+  }
+
   componentDidMount() {
     initVisualizer();
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <canvas
-          width={(5 * deviceWidth) / 9}
-          height={(6 * deviceHeight) / 7}
-          id="milkdropCanvas"
-        ></canvas>
+    let text;
+    if (this.showText) {
+      text = (
         <Text
           style={{
             position: "absolute",
@@ -76,9 +86,23 @@ export class SplashScreen extends React.Component {
             textShadowRadius: 20,
             textShadowColor: "black",
             fontFamily: "VT323",
-            fontSize: deviceWidth/24
+            fontSize: deviceWidth / 24,
           }}
-        >ViriDOS is awaiting input.</Text>
+        >
+          ViriDOS is awaiting input.
+        </Text>
+      );
+    } else {
+      text = <View />;
+    }
+    return (
+      <View style={styles.container}>
+        <canvas
+          width={(5 * deviceWidth) / 9}
+          height={(6 * deviceHeight) / 7}
+          id="milkdropCanvas"
+        ></canvas>
+        {text}
       </View>
     );
   }
