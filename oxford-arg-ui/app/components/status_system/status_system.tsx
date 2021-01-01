@@ -22,7 +22,11 @@ import {
   getMural2Unlocked,
   setUnlocked,
 } from "../inventory/mural-clues";
-import { queuePlayer } from "../video_player/video_player";
+import {
+  queuePlayer,
+  setTranscriptLine,
+  setTranscriptStr,
+} from "../video_player/video_player";
 
 /*
 const statusLibrary = [
@@ -403,10 +407,26 @@ async function debugNavigatePhaseTemp() {
 
 async function debugCommunicatorTemp() {
   let temp = prompt("what video (e.g. Scene1Line1)");
-  if(temp == null) {
+  if (temp == null) {
     temp = "";
   }
   queuePlayer(temp);
+}
+
+async function debugTranscriptTemp1() {
+  let temp = prompt("what to say");
+  if (temp == null) {
+    temp = "";
+  }
+  setTranscriptStr(temp);
+}
+
+async function debugTranscriptTemp2() {
+  let temp = prompt("what line (e.g. Scene1Line1)");
+  if (temp == null) {
+    temp = "";
+  }
+  setTranscriptLine(temp);
 }
 
 export class StatusDebugPage extends React.Component {
@@ -433,6 +453,8 @@ export class StatusDebugPage extends React.Component {
           />
           <Button title="nav phase" onPress={() => debugNavigatePhaseTemp()} />
           <Button title="test video" onPress={() => debugCommunicatorTemp()} />
+          <Button title="test str" onPress={() => debugTranscriptTemp1()} />
+          <Button title="test line" onPress={() => debugTranscriptTemp2()} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}
