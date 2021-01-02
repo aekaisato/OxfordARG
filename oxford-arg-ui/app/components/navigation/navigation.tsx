@@ -42,6 +42,7 @@ import { PERoom } from "../../rooms/pe/pe";
 import { PathwayRoom } from "../../rooms/pathway/pathway";
 import { SplashScreen } from "../../other/splash_screen";
 import { LiveFeed } from "../live_feed/live_feed";
+import { SoundTest } from "../sound_system/sound_system";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -74,8 +75,10 @@ export function navigatePhase(routeName: any, params?: any) {
 }
 
 export function toLiveFeed() {
-  console.log("nav to screen")
-  _puzzleNavigator.dispatch(NavigationActions.navigate({routeName: "LiveFeed"}));
+  console.log("nav to screen");
+  _puzzleNavigator.dispatch(
+    NavigationActions.navigate({ routeName: "LiveFeed" })
+  );
 }
 
 const forFade = ({ current, closing }) => ({
@@ -97,11 +100,17 @@ export const ThePuzzleNavigator = createStackNavigator(
     StatusDebugPage: {
       screen: StatusDebugPage,
     },
+    SoundTest: {
+      screen: SoundTest,
+      navigationOptions: {
+        headerShown: true,
+      },
+    },
     SplashScreen: {
-      screen: SplashScreen
+      screen: SplashScreen,
     },
     LiveFeed: {
-      screen: LiveFeed
+      screen: LiveFeed,
     },
     Puzzle1: {
       screen: Puzzle1,
@@ -116,42 +125,42 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle4Book,
       navigationOptions: {
         headerShown: true,
-        title: "A Book"
+        title: "A Book",
       },
     },
     Puzzle4Safe: {
       screen: Puzzle4Safe,
       navigationOptions: {
         headerShown: true,
-        title: "A Safe"
+        title: "A Safe",
       },
     },
     Puzzle5Crossword: {
       screen: Puzzle5Crossword,
       navigationOptions: {
         headerShown: true,
-        title: "A Few Posters"
+        title: "A Few Posters",
       },
     },
     Puzzle5Safe: {
       screen: Puzzle5Safe,
       navigationOptions: {
         headerShown: true,
-        title: "A Safe"
+        title: "A Safe",
       },
     },
     Puzzle6: {
       screen: Puzzle6,
       navigationOptions: {
         headerShown: true,
-        title: "A Strange Safe"
+        title: "A Strange Safe",
       },
     },
     Puzzle7: {
       screen: Puzzle7,
       navigationOptions: {
         headerShown: true,
-        title: "Periodic Table"
+        title: "Periodic Table",
       },
     },
     Puzzle8: {
@@ -161,21 +170,21 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle9,
       navigationOptions: {
         headerShown: true,
-        title: "Locked Cabinet"
+        title: "Locked Cabinet",
       },
     },
     Puzzle10: {
       screen: Puzzle10,
       navigationOptions: {
         headerShown: true,
-        title: "A Very Odd Safe"
+        title: "A Very Odd Safe",
       },
     },
     Puzzle11: {
       screen: Puzzle11,
       navigationOptions: {
         headerShown: true,
-        title: "Pong?"
+        title: "Pong?",
       },
     },
     Puzzle12: {
@@ -188,14 +197,14 @@ export const ThePuzzleNavigator = createStackNavigator(
       screen: Puzzle14,
       navigationOptions: {
         headerShown: true,
-        title: "Piano"
+        title: "Piano",
       },
     },
     Puzzle15: {
       screen: Puzzle15,
       navigationOptions: {
         headerShown: true,
-        title: "Laptop Screen"
+        title: "Laptop Screen",
       },
     },
     Puzzle16: {

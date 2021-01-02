@@ -502,6 +502,7 @@ export class StatusDebugPage extends React.Component {
           <Button title="test line" onPress={() => debugTranscriptTemp2()} />
           <Button title="test live feed" onPress={() => debugLiveFeed()} />
           <Button title="test ip trick" onPress={() => triggerIPEffect()} />
+          <Button title="sound test" onPress={() => navigatePuzzle("SoundTest")} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}
