@@ -23,6 +23,7 @@ import { Phase2Layout } from "./app/layouts/phase2_layout/phase2_layout";
 import { Phase3Layout } from "./app/layouts/phase3_layout/phase3_layout";
 import { setPhaseNavigator } from "./app/components/navigation/navigation";
 import { initProgress } from "./app/components/status_system/status_system";
+import { IPPopup } from "./app/other/ip_popup";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
@@ -112,6 +113,7 @@ export default class App extends React.Component {
                 setPhaseNavigator(navigatorRef);
               }}
             />
+            <IPPopup/>
           </ApplicationProvider>
         </React.Fragment>
       );

@@ -35,7 +35,10 @@ import {
 } from "../../components/navigation/navigation";
 import { images } from "../../components/inventory/notebook";
 import { Inventory } from "../../components/inventory/inventory";
-import { Transcript, VideoPlayer } from "../../components/video_player/video_player";
+import {
+  Transcript,
+  VideoPlayer,
+} from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -97,8 +100,6 @@ export class Phase3Layout extends React.Component {
     glitchImage: -1,
     inventoryDisplay: "none",
     pagesCollected: 0,
-    transcript:
-      "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
   /*
   async glitchScreen() {
@@ -207,7 +208,7 @@ export class Phase3Layout extends React.Component {
                   top: -4,
                 }}
               >
-                <VideoPlayer/>
+                <VideoPlayer />
               </Phase3Window>
             </View>
           </View>
@@ -290,7 +291,11 @@ export class Phase3Layout extends React.Component {
                   </Text>
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
-                  <Button title="Open Inventory" color="red" onPress={() => this.handleToggleInventory()} />
+                  <Button
+                    title="Open Inventory"
+                    color="red"
+                    onPress={() => this.handleToggleInventory()}
+                  />
                 </View>
               </View>
             </Phase3Window>

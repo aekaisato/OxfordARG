@@ -32,6 +32,7 @@ import {
   setTranscriptStr,
 } from "../video_player/video_player";
 import { queueLiveFeed } from "../live_feed/live_feed";
+import { triggerIPEffect } from "../../other/ip_popup";
 
 /*
 const statusLibrary = [
@@ -500,6 +501,7 @@ export class StatusDebugPage extends React.Component {
           <Button title="test str" onPress={() => debugTranscriptTemp1()} />
           <Button title="test line" onPress={() => debugTranscriptTemp2()} />
           <Button title="test live feed" onPress={() => debugLiveFeed()} />
+          <Button title="test ip trick" onPress={() => triggerIPEffect()} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

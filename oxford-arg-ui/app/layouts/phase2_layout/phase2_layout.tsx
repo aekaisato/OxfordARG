@@ -35,7 +35,10 @@ import {
 } from "../../components/navigation/navigation";
 import { images } from "../../components/inventory/notebook";
 import { Inventory } from "../../components/inventory/inventory";
-import { Transcript, VideoPlayer } from "../../components/video_player/video_player";
+import {
+  Transcript,
+  VideoPlayer,
+} from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -59,8 +62,6 @@ export class Phase2Layout extends React.Component {
     loopAnim: new Animated.Value(0),
     pagesCollected: 0,
     inventoryDisplay: "none",
-    transcript:
-      "this is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdthis is a test\n\ntestetfsrhgedzs\n\nlorem ipsum\n\n\nnesgsfgsthf\ngsdfhgsxdd",
   };
 
   componentDidMount() {
@@ -132,7 +133,7 @@ export class Phase2Layout extends React.Component {
                   top: -4,
                 }}
               >
-                <VideoPlayer/>
+                <VideoPlayer />
               </Phase2Window>
             </View>
           </View>
