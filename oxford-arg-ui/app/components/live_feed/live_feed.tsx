@@ -59,7 +59,18 @@ const urls = {
   ),
 };
 
-const transcriptFeedLines = {};
+const transcriptFeedLines = {
+  Scene2: 'VIRIDOS: Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-',
+  Scene5: `VIRIDOS: Oxford is dedicated to career success as seen through our pathway programs. Here our biomed pathway takes its classes. Up ahead is our athletic facilities where our soccer field, baseball field, softball field, track, and...track...are...loca-`,
+  Scene8: `VIRIDOS: dak bal (chicken foot), so bal (cow foot), lechuga (lettuce), sandia (watermelon), an yong (hello), ganso (goose), eum ma eui sone mat (mom's handmade food)`,
+  Scene12: `VIRIDOS: Welcome to the English building. Not only are English classes taught here, but also our yearbook, ASB, and our school newspaper the Gamut meet in these classrooms as well.`,
+  Scene15: `VIRIDOS: We are approaching the hallway to the main office, the brains of Oxford. Our administrators work -`,
+  Scene17: `VIRIDOS: As we approach the math building, I'd like to take this opportunity to tell explain the different math tracks we-`,
+  Scene18: `VIRIDOS: This is our science wing. We have a variety of courses and clubs associated with science.`,
+  Scene21: `VIRIDOS: Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.`,
+  Scene23: `VIRIDOS: As we approach the locker rooms, I'd like to take this chance to let you know about the plethora of athletics Oxford offers. Despite us being an academic school, we do-`,
+  Scene25: `VIRIDOS: Oxford is part of the Anaheim Union High School District...`,
+};
 
 export { urls };
 
