@@ -24,6 +24,7 @@ import { Phase3Layout } from "./app/layouts/phase3_layout/phase3_layout";
 import { setPhaseNavigator } from "./app/components/navigation/navigation";
 import { initProgress } from "./app/components/status_system/status_system";
 import { IPPopup } from "./app/other/ip_popup";
+import { BlackoutTransition } from "./app/other/blackout_transition";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
@@ -113,7 +114,7 @@ export default class App extends React.Component {
                 setPhaseNavigator(navigatorRef);
               }}
             />
-            <IPPopup/>
+            <IPPopup />
           </ApplicationProvider>
         </React.Fragment>
       );
@@ -131,21 +132,15 @@ export const StackNavigator = createStackNavigator(
   {
     Phase1: {
       screen: Phase1Layout,
-      navigationOptions: {
-        headerShown: false,
-      },
     },
     Phase2: {
       screen: Phase2Layout,
-      navigationOptions: {
-        headerShown: false,
-      },
     },
     Phase3: {
       screen: Phase3Layout,
-      navigationOptions: {
-        headerShown: false,
-      },
+    },
+    BlackoutTransition: {
+      screen: BlackoutTransition,
     },
   },
   {

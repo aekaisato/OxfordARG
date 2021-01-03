@@ -41,6 +41,9 @@ const sounds = {
   button: new Howl({
     src: [soundDirectory + "button.mp3"]
   }),
+  shutdown: new Howl({
+    src: [soundDirectory + "shutdown.mp3"]
+  }),
 };
 
 export function playSound(sound: string) {

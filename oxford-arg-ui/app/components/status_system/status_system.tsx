@@ -113,10 +113,19 @@ const statusLibrary = [
     page: 3,
   },
   {
+    type: "wait",
+    value: "2000",
+    page: 4,
+  },
+  {
+    type: "blackout",
+    value: "blackout",
+    save: true,
+  },
+  {
     type: "phase",
     value: "Phase2",
     save: true,
-    page: 4,
   },
   {
     type: "puzzle",
@@ -242,6 +251,7 @@ export async function goto(status: {
 }) {
   console.log("attempting goto");
   console.log(status);
+  
   if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
   } else if (status.type == "phase") {
@@ -258,6 +268,13 @@ export async function goto(status: {
     queueLiveFeed(status.value, temp);
   } else if (status.type == "communicator") {
     queuePlayer(status.value);
+  } else if (status.type == "blackout") {
+    navigatePhase("BlackoutTransition");
+  } else if (status.type == "wait") {
+    await wait(Number.parseInt(status.value));
+    (async function () {
+      await goto(await increment());
+    })();
   }
 
   let statusVal = await getStatus();
@@ -502,7 +519,10 @@ export class StatusDebugPage extends React.Component {
           <Button title="test line" onPress={() => debugTranscriptTemp2()} />
           <Button title="test live feed" onPress={() => debugLiveFeed()} />
           <Button title="test ip trick" onPress={() => triggerIPEffect()} />
-          <Button title="sound test" onPress={() => navigatePuzzle("SoundTest")} />
+          <Button
+            title="sound test"
+            onPress={() => navigatePuzzle("SoundTest")}
+          />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}

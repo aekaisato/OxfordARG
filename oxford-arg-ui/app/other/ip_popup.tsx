@@ -19,6 +19,7 @@ import {
   IconRegistry,
   Layout,
 } from "@ui-kitten/components";
+import { images } from "../components/inventory/notebook";
 
 let that: any;
 
@@ -26,20 +27,23 @@ let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 async function fetchIP() {
+  // find better api
   console.log("fetching ip");
-  let obj = await (await fetch("https://ipwhois.app/json/")).json();
+  let fetched = await fetch(
+    "https://api.ipgeolocation.io/ipgeo?apiKey=f3fdd2df07074288a58408cd2bf58f7e"
+  ).catch(async () => {
+    console.log("first api didn't work, trying diff api");
+    return await fetch("https://ipwhois.app/json/");
+  });
+  let obj = await fetched.json();
   let ip;
   let city;
   let state;
-  if (obj != undefined && obj != null) {
-    ip = obj.ip;
-    city = obj.city;
-    state = obj.region;
-  } else {
-    obj = await (await fetch("https://freegeoip.app/json/")).json();
-    ip = obj.ip;
-    city = obj.city;
-    state = obj.region_name;
+  ip = obj.ip;
+  city = obj.city;
+  state = obj.country;
+  if(obj.country_name != undefined) {
+    state = obj.country_name
   }
 
   let output = {
