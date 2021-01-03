@@ -294,9 +294,8 @@ export async function goto(status: {
 
   for (let i = Number.parseInt(statusVal); i > 0; i--) {
     if (library[i].page != undefined) {
-      if (library[i].page == 0) {
+      if (library[i].page >= 0) {
         enableNotebook();
-        return;
       }
       setPage(library[i].page);
       updatePagesCollected1();
@@ -307,7 +306,6 @@ export async function goto(status: {
           "You found a notebook page! Check your inventory if you want to see it."
         );
       }
-      return;
     }
   }
 

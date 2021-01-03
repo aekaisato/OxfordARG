@@ -17,7 +17,11 @@ import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import { ViewProperties } from "react-native";
-import { getLibrary, getStatus, setStatus } from "../status_system/status_system";
+import {
+  getLibrary,
+  getStatus,
+  setStatus,
+} from "../status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -89,9 +93,11 @@ export { images };
 let that: this;
 
 export function setPage(page: number) {
-  console.log("setting state?")
-  images = allImages.slice(0, page)
-  that.forceUpdate();
+  console.log("setting state?");
+  if (page > images.length) {
+    images = allImages.slice(0, page);
+    that.forceUpdate();
+  }
 }
 
 async function wait(timeout: number) {
@@ -105,7 +111,7 @@ export declare interface NotebookProps extends ViewProperties {}
 export class Notebook extends React.Component<NotebookProps> {
   constructor(props: any) {
     super(props);
-  } 
+  }
 
   componentDidMount() {
     that = this;
