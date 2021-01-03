@@ -30,7 +30,7 @@ const transcriptStrings = {
   Scene22Line2: `HOSHI Representative: We've almost stopped Whitney from getting into our system. It should be safe to say this now: go to the locker rooms.`,
   Scene23Line2: `Ms. Jensen: I thought I heard that tour robot, glad I caught you guys! The blackout must've done something funky; there are a bunch of posters that I haven't seen before! Maybe you guys can go check it out?`,
   Scene23Line3: `HOSHI Representative: Okay, I think Whitney has lost our trail. Head to the custodial building for your next page.`,
-  Scene24Line4: `Mr. Vasquez: Ah, glad to see our tour robot functioning despite the odd blackout. I thought you'd might want to take a look at this. All of my mops are all over the place for some reason!`,
+  Scene24Line4: `Mr. Vasquez: I thought you'd might want to take a look at this. All of my mops are all over the place for some reason!`,
   Scene25Line1: `Whitney Representative: We know who you are and what you're after. You will not succeed. Whitney will reign number 1! Stop now...or else...By the way, we know where you are...`,
   Scene25Line2: `HOSHI Representative: Hurry! They're onto us! You must find the rest of the research before it's too late! I'm sorry, I can't help you anymore until you find the rest of the pages; this connection just isn't safe anymore. The fate of our rankings is in your hands. I'll leave you with one last hint.`,
   Scene25Error1: `HOSHI Representative: Uhh that's not quite right, look at your math again.`,
