@@ -114,7 +114,7 @@ const statusLibrary = [
   },
   {
     type: "wait",
-    value: "2000",
+    value: "0",
     page: 4,
   },
   {

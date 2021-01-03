@@ -59,6 +59,10 @@ const urls = {
     "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2014%20Line%201%20Fong.mp4",
   Scene15Line2:
     "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2015%20Line%202%20Hernandez.mp4",
+  Scene24Line1:
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2024%20Line%201%20Vasquez.mp4",
+  Scene26Line1:
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2026%20Line%201%20Hogan.mp4",
 };
 
 export { urls };
@@ -117,8 +121,7 @@ export class VideoPlayer extends React.Component {
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}
-            width="100%"
-            height="100%"
+            width={0.2 * 0.9 * deviceWidth}
             playing={this.state.playing}
             onEnded={() => this.handleEnd()}
           />

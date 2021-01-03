@@ -14,6 +14,10 @@ import {
   Layout,
 } from "@ui-kitten/components";
 import { playSound } from "../components/sound_system/sound_system";
+import ReactPlayer from "react-player/lazy";
+import { goto, increment } from "../components/status_system/status_system";
+
+let that: any;
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -27,14 +31,36 @@ async function wait(timeout: number) {
 async function performAnimation() {
   playSound("shutdown");
   await wait(6000);
-  console.log("continue")
+  console.log("continue");
+  that.playVideo();
+  await wait(25000);
+  goto(await increment());
 }
 
 export class BlackoutTransition extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: false,
+    };
+    that = this;
+  }
+
+  playVideo() {
+    this.setState({ playing: true });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <NavigationEvents onWillFocus={() => performAnimation()} />
+        <ReactPlayer
+          url="https://static.viridos.toadtoad.xyz/other-clips/bootup_sequence.mp4"
+          width={deviceWidth}
+          height={deviceHeight}
+          playing={this.state.playing}
+          onEnded={() => this.setState({ playing: false })}
+        />
       </View>
     );
   }
@@ -48,6 +74,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     width: deviceWidth,
     height: deviceHeight,
+    overflow: "hidden",
   },
 });
-   

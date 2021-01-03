@@ -51,11 +51,17 @@ const urls = {
   Scene8: encodeURI(
     "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 8 Line 1 VIRIDOS.mp4"
   ),
+  Scene9: encodeURI(
+    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 9 RP Mural.mp4"
+  ),
   Scene12: encodeURI(
     "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 12 Line 1 VIRIDOS.mp4"
   ),
   Scene15: encodeURI(
     "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 15 Line 1 VIRIDOS.mp4"
+  ),
+  Scene24: encodeURI(
+    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 24 VIRIDOS.mp4"
   ),
 };
 
