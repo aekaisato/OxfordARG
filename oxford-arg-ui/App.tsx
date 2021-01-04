@@ -25,6 +25,7 @@ import { setPhaseNavigator } from "./app/components/navigation/navigation";
 import { initProgress } from "./app/components/status_system/status_system";
 import { IPPopup } from "./app/other/ip_popup";
 import { BlackoutTransition } from "./app/other/blackout_transition";
+import { MainMenu } from "./app/other/main_menu";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
@@ -141,6 +142,9 @@ export const StackNavigator = createStackNavigator(
     },
     BlackoutTransition: {
       screen: BlackoutTransition,
+    },
+    MainMenu: {
+      screen: MainMenu,
     },
   },
   {

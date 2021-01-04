@@ -251,7 +251,7 @@ export async function goto(status: {
 }) {
   console.log("attempting goto");
   console.log(status);
-  
+
   if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
   } else if (status.type == "phase") {
@@ -356,6 +356,17 @@ export async function initProgress() {
   } else {
     goto(statusLibrary[0]);
   }
+}
+
+export async function startGame() {
+  navigatePhase("Phase1");
+  await goto(await setStatus(1));
+}
+
+export async function continueGame() {
+  alert("dont forget to set phase")
+  navigatePhase("Phase1");
+  await goto(statusLibrary[Number.parseInt(await getStatus())]);
 }
 
 export async function syncUserToCloud() {}
@@ -515,12 +526,16 @@ export class StatusDebugPage extends React.Component {
           <Button title="test video" onPress={() => debugCommunicatorTemp()} />
           <Button title="test str" onPress={() => debugTranscriptTemp1()} />
           <Button title="test line" onPress={() => debugTranscriptTemp2()} />
-          <Button title="test live feed" onPress={() => debugLiveFeed()} />
+          <Button
+            title="test live feed (doesnt work)"
+            onPress={() => debugLiveFeed()}
+          />
           <Button title="test ip trick" onPress={() => triggerIPEffect()} />
           <Button
             title="sound test"
             onPress={() => navigatePuzzle("SoundTest")}
           />
+          <Button title="main menu" onPress={() => navigatePhase("MainMenu")} />
           <Button
             title="start"
             onPress={async () => await goto(await setStatus(1))}
@@ -531,7 +546,7 @@ export class StatusDebugPage extends React.Component {
               console.warn(
                 "don't forget to add the thing to switch phase on continue depending on status"
               );
-              goto(statusLibrary[Number.parseInt(await getStatus())]);
+              await goto(statusLibrary[Number.parseInt(await getStatus())]);
             }}
           />
         </ImageBackground>

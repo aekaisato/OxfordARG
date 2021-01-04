@@ -117,7 +117,7 @@ export class VideoPlayer extends React.Component {
   render() {
     if (this.state.playing) {
       return (
-        <View style={styles.container}>
+        <View style={[styles.container, { overflow: "hidden" }]}>
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}
