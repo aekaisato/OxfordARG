@@ -33,6 +33,7 @@ import {
 } from "../video_player/video_player";
 import { queueLiveFeed } from "../live_feed/live_feed";
 import { triggerIPEffect } from "../../other/ip_popup";
+import { playSound } from "../sound_system/sound_system";
 
 /*
 const statusLibrary = [
@@ -359,6 +360,8 @@ export async function initProgress() {
 }
 
 export async function startGame() {
+  playSound("start");
+  await wait(3000);
   navigatePhase("Phase1");
   await goto(await setStatus(1));
 }
