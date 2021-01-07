@@ -18,6 +18,12 @@ import {
   continueGame,
   startGame,
 } from "../components/status_system/status_system";
+import {
+  createAccount,
+  isLoggedIn,
+  loginUser,
+  logoutUser,
+} from "../components/cloud_sync/cloud_sync";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -47,6 +53,7 @@ export class MainMenu extends React.Component {
       email: "",
       password: "",
       studentID: "",
+      typingPassword: false,
     };
   }
 
@@ -63,7 +70,7 @@ export class MainMenu extends React.Component {
     );
     await wait(3);
     this.xtermRef.terminal.writeln(
-      `Available commands are "signup", "login", "start", and "continue".`
+      `Available commands are "signup", "login", "logout", "start", and "continue".`
     );
     await wait(5);
     this.xtermRef.terminal.writeln(
@@ -87,6 +94,7 @@ export class MainMenu extends React.Component {
     }
     let index = buffer - str.length;
     if (code === 13) {
+      this.setState({ typingPassword: false });
       if (this.state.doingSmth.length > 0) {
         this.xtermRef.terminal.writeln("");
         const input = this.state.input.trim();
@@ -173,10 +181,14 @@ export class MainMenu extends React.Component {
       }
       //*/
     } else {
-      this.xtermRef.terminal.write(data);
+      if (this.state.typingPassword) {
+        this.xtermRef.terminal.write("*");
+      } else {
+        this.xtermRef.terminal.write(data);
+      }
       this.setState({ input: this.state.input.substring(0, index) + data });
     }
-    console.log(this.state.input);
+    // console.log(this.state.input);
   }
 
   async signUp() {
@@ -187,18 +199,20 @@ export class MainMenu extends React.Component {
 
   async signUp2() {
     const str1 = "Enter your password: ";
-    this.setState({ doingSmth: "signup2", str: str1, input: "" });
+    this.setState({
+      doingSmth: "signup2",
+      str: str1,
+      input: "",
+      typingPassword: true,
+    });
     this.xtermRef.terminal.write(str1);
   }
 
   async signUp3() {
-    alert(
-      "this is where you'd sign up with email and password: " +
-        this.state.email +
-        " / " +
-        this.state.password
-    );
-    this.xtermRef.terminal.writeln("Please check your email to confirm it.\n");
+    this.xtermRef.terminal.writeln("Attempting to create account...");
+    let res = await createAccount(this.state.email, this.state.password);
+    this.xtermRef.terminal.writeln(res);
+    this.xtermRef.terminal.writeln("");
     this.setState({ doingSmth: "" });
     this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
     this.setState({ input: "", email: "", password: "" });
@@ -212,25 +226,28 @@ export class MainMenu extends React.Component {
 
   async login2() {
     const str1 = "Enter your password: ";
-    this.setState({ doingSmth: "login2", str: str1, input: "" });
+    this.setState({
+      doingSmth: "login2",
+      str: str1,
+      input: "",
+      typingPassword: true,
+    });
     this.xtermRef.terminal.write(str1);
   }
 
   async login3() {
-    alert(
-      "this is where you'd login with email and password: " +
-        this.state.email +
-        " / " +
-        this.state.password
-    );
-    this.setState({ doingSmth: "" });
+    this.xtermRef.terminal.writeln("Attempting to login...");
+    let res = await loginUser(this.state.email, this.state.password);
+    this.xtermRef.terminal.writeln(res);
     this.xtermRef.terminal.writeln("");
+    this.setState({ doingSmth: "" });
     this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
     this.setState({ input: "", email: "", password: "" });
   }
 
   async logout() {
-    alert("logout");
+    let res = await logoutUser();
+    this.xtermRef.terminal.writeln(res);
     this.setState({ doingSmth: "" });
     this.xtermRef.terminal.writeln("");
     this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
@@ -238,13 +255,33 @@ export class MainMenu extends React.Component {
   }
 
   async start() {
-    startGame();
-    this.xtermRef.terminal.writeln("Initiating transmission...");
+    let loggedIn = isLoggedIn();
+    if (loggedIn) {
+      startGame();
+      this.xtermRef.terminal.writeln("Initiating transmission...");
+    } else {
+      this.xtermRef.terminal.writeln(
+        "Please login before playing. If you have not signed up, please do that first."
+      );
+      this.setState({ doingSmth: "" });
+      this.xtermRef.terminal.writeln("");
+      this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
+    }
   }
 
   async continue() {
-    continueGame();
-    alert("check for saved state");
+    let loggedIn = isLoggedIn();
+    if (loggedIn) {
+      alert("check for saved state");
+      continueGame();
+    } else {
+      this.xtermRef.terminal.writeln(
+        "Please login before playing. If you have not signed up, please do that first."
+      );
+      this.setState({ doingSmth: "" });
+      this.xtermRef.terminal.writeln("");
+      this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
+    }
   }
 
   componentDidMount() {
