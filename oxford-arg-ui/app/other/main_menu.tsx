@@ -3,6 +3,7 @@ import { StyleSheet, View, Dimensions, Text } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
+  NavigationEvents,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
@@ -261,7 +262,7 @@ export class MainMenu extends React.Component {
       this.xtermRef.terminal.writeln("Initiating transmission...");
     } else {
       this.xtermRef.terminal.writeln(
-        "Please login before playing. If you have not signed up, please do that first."
+        'Please login before playing. If you have not signed up, please do that, then login using the "login" command.'
       );
       this.setState({ doingSmth: "" });
       this.xtermRef.terminal.writeln("");
@@ -276,7 +277,7 @@ export class MainMenu extends React.Component {
       continueGame();
     } else {
       this.xtermRef.terminal.writeln(
-        "Please login before playing. If you have not signed up, please do that first."
+        'Please login before playing. If you have not signed up, please do that, then login using the "login" command.'
       );
       this.setState({ doingSmth: "" });
       this.xtermRef.terminal.writeln("");
@@ -291,6 +292,7 @@ export class MainMenu extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents onDidFocus={() => this.xtermRef.terminal.focus()} />
         <XTerm
           ref={this.ref}
           options={{ cursorBlink: true }}

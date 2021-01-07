@@ -9,6 +9,7 @@ export async function createAccount(email: string, password: string) {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     await firebase.auth().currentUser?.sendEmailVerification();
     console.log("email sent");
+    await logoutUser();
     return "Please check your email to verify your account.";
   } catch (error) {
     console.warn(error.message);
@@ -26,7 +27,7 @@ export async function loginUser(email: string, password: string) {
       console.log("signed in");
       return "You are now signed in.";
     } else {
-      logoutUser();
+      await logoutUser();
       console.log("please verify email");
       return "Please verify your email before logging in.";
     }
