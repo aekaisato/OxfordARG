@@ -165,7 +165,7 @@ export class MainMenu extends React.Component {
     } else if (code == 3) {
       this.xtermRef.terminal.writeln("^C");
       this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
-      this.setState({ input: "", doingSmth: "" });
+      this.setState({ input: "", doingSmth: "", typingPassword: false });
       return;
     } else if (code < 32) {
       /*
@@ -273,7 +273,6 @@ export class MainMenu extends React.Component {
   async continue() {
     let loggedIn = isLoggedIn();
     if (loggedIn) {
-      alert("check for saved state");
       continueGame();
     } else {
       this.xtermRef.terminal.writeln(

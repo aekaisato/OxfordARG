@@ -34,6 +34,7 @@ import {
 import { queueLiveFeed } from "../live_feed/live_feed";
 import { triggerIPEffect } from "../../other/ip_popup";
 import { playSound } from "../sound_system/sound_system";
+import { syncUserToCloud } from "../cloud_sync/cloud_sync";
 
 /*
 const statusLibrary = [
@@ -278,6 +279,10 @@ export async function goto(status: {
     })();
   }
 
+  if (status.save == true) {
+    await syncUserToCloud("local");
+  }
+
   let statusVal = await getStatus();
   let library = getLibrary();
   if (statusVal == null) {
@@ -364,15 +369,24 @@ export async function startGame() {
   await wait(3000);
   navigatePhase("Phase1");
   await goto(await setStatus(1));
+  await syncUserToCloud("local");
 }
 
 export async function continueGame() {
-  alert("dont forget to set phase")
-  navigatePhase("Phase1");
+  await syncUserToCloud();
+  let phase = "Phase1";
+  let status = await getStatus();
+  if (status != null) {
+    for (let i = Number.parseInt(status); i >= 0; i--) {
+      if (statusLibrary[i].type == phase) {
+        i = -1;
+      }
+    }
+  }
+  await syncUserToCloud();
   await goto(statusLibrary[Number.parseInt(await getStatus())]);
+  navigatePhase(phase);
 }
-
-export async function syncUserToCloud() {}
 
 export async function fetchOthers() {}
 
@@ -399,24 +413,6 @@ async function createAccountTemp() {
       alert(error.message);
     });
 }
-
-async function checkForVerificationTemp() {
-  while (true) {
-    await wait(1000);
-    let studentid = await AsyncStorage.getItem("studentId");
-    if (firebase.auth().currentUser?.emailVerified) {
-      firebase
-        .database()
-        .ref("users/" + firebase.auth().currentUser?.uid)
-        .set({
-          studentId: studentid,
-        });
-      return;
-    }
-  }
-}
-
-checkForVerificationTemp();
 
 async function loginTemp() {
   let email = prompt("email");
