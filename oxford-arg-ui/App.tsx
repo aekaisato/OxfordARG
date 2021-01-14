@@ -26,6 +26,7 @@ import { initProgress } from "./app/components/status_system/status_system";
 import { IPPopup } from "./app/other/ip_popup";
 import { BlackoutTransition } from "./app/other/blackout_transition";
 import { MainMenu } from "./app/other/main_menu";
+import { CompletionScreen } from "./app/other/completion_screen";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
@@ -145,6 +146,9 @@ export const StackNavigator = createStackNavigator(
     },
     MainMenu: {
       screen: MainMenu,
+    },
+    CompletionScreen: {
+      screen: CompletionScreen
     },
   },
   {

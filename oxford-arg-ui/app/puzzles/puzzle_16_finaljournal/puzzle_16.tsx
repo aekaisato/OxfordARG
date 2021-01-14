@@ -67,9 +67,10 @@ export class Puzzle16 extends React.Component {
       }
     }
     if (hash1Solved && hash2Solved) {
-      alert(
-        "this is where the timestamp is logged and the final cutscenes play"
-      );
+      (async function(){
+        await wait(1000);
+        await goto(await increment());
+      })();
     } else {
       alert("do a short cutscene to show that this is not where to go");
     }

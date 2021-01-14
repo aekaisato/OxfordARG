@@ -3,7 +3,40 @@ import "firebase/auth";
 import "firebase/database";
 import { useReducer } from "react";
 import { AsyncStorage } from "react-native";
+import { updateCompletionData } from "../../other/completion_screen";
+import { updateLeaderboardData } from "../layout_components/progress_leaderboard/progress_leaderboard";
 import { getStatus, setStatus } from "../status_system/status_system";
+
+let statusData = {};
+
+function wait(timeout: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, timeout);
+  });
+}
+
+async function updateData() {
+  if (firebase.apps.length === 0) {
+    await wait(1000);
+    updateData();
+    return;
+  }
+  let databaseRef = firebase.database().ref("/statuses/");
+  console.log("starting sync of data");
+  statusData = (await databaseRef.once("value")).val();
+  updateLeaderboardData(statusData);
+  databaseRef.on("value", async (snapshot) => {
+    statusData = snapshot.val();
+    updateLeaderboardData(statusData);
+    updateCompletionData(statusData);
+  });
+}
+
+export function getStatuses() {
+  return statusData;
+}
+
+updateData();
 
 export async function createAccount(email: string, password: string) {
   try {
@@ -65,8 +98,8 @@ export async function setCloudStatus(status: number) {
   }
   await firebase
     .database()
-    .ref("/statuses/" + user.uid + "/status")
-    .set({
+    .ref("/statuses/" + user.uid)
+    .update({
       status: status,
     });
 }
@@ -83,7 +116,7 @@ export async function syncUserToCloud(override?: string) {
     cloudStatus = await (
       await firebase
         .database()
-        .ref("/statuses/" + user.uid + "/status")
+        .ref("/statuses/" + user.uid)
         .once("value")
     ).val().status;
   } catch {
@@ -117,4 +150,20 @@ export async function syncUserToCloud(override?: string) {
   console.log("setting both to " + higher);
   await setStatus(higher);
   await setCloudStatus(higher);
+}
+
+export async function setCompletion() {
+  console.log("trying to set completion time");
+  let time = new Date().toISOString();
+  let user = firebase.auth().currentUser;
+  if (user == null) {
+    return;
+  }
+  console.log("setting to " + time);
+  await firebase
+    .database()
+    .ref("/statuses/" + user.uid)
+    .update({
+      completed: time,
+    });
 }

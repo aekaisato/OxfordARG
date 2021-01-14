@@ -34,7 +34,8 @@ import {
 import { queueLiveFeed } from "../live_feed/live_feed";
 import { triggerIPEffect } from "../../other/ip_popup";
 import { playSound } from "../sound_system/sound_system";
-import { syncUserToCloud } from "../cloud_sync/cloud_sync";
+import { setCompletion, syncUserToCloud } from "../cloud_sync/cloud_sync";
+import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 
 /*
 const statusLibrary = [
@@ -128,6 +129,7 @@ const statusLibrary = [
     type: "phase",
     value: "Phase2",
     save: true,
+    continue: true,
   },
   {
     type: "puzzle",
@@ -162,6 +164,7 @@ const statusLibrary = [
     value: "Phase3",
     save: true,
     page: 8,
+    continue: true,
   },
   {
     type: "puzzle",
@@ -192,7 +195,20 @@ const statusLibrary = [
     save: true,
     page: 10,
   },
+  {
+    type: "completion",
+    value: "",
+    save: false,
+    continue: true,
+  },
+  {
+    type: "phase",
+    value: "CompletionScreen",
+    save: true,
+  },
 ];
+
+setLibraryLength(statusLibrary.length);
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -258,7 +274,6 @@ export async function goto(status: {
     navigatePuzzle(status.value);
   } else if (status.type == "phase") {
     navigatePhase(status.value);
-    await goto(await increment());
   } else if (status.type == "livefeed") {
     let temp = false;
     if (status.continue != undefined) {
@@ -277,6 +292,8 @@ export async function goto(status: {
     (async function () {
       await goto(await increment());
     })();
+  } else if (status.type == "completion") {
+    await setCompletion();
   }
 
   if (status.save == true) {
@@ -533,6 +550,10 @@ export class StatusDebugPage extends React.Component {
           <Button
             title="sound test"
             onPress={() => navigatePuzzle("SoundTest")}
+          />
+          <Button
+            title="final screen"
+            onPress={() => navigatePhase("CompletionScreen")}
           />
           <Button title="main menu" onPress={() => navigatePhase("MainMenu")} />
           <Button
