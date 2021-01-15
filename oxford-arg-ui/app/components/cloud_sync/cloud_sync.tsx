@@ -47,6 +47,9 @@ export async function createAccount(
   if (!stuID) {
     stuID = "";
   }
+  if (!name) {
+    stuID = "";
+  }
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     await firebase.auth().currentUser?.sendEmailVerification();

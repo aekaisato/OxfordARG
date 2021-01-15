@@ -106,10 +106,10 @@ export class CompletionScreen extends React.Component {
   }
 
   async handleName(item: string) {
-    console.log("handling name");
-    let database = firebase.database().ref("/users/" + item);
+    let database = firebase.database().ref("/users/" + item + "/name");
     let value = await (await database.once("value")).val();
-    this.setState({ [item]: value.name });
+    console.log(value);
+    this.setState({ [item]: value });
   }
 
   handleNameMeta(item) {
@@ -167,6 +167,7 @@ export class CompletionScreen extends React.Component {
                 borderRadius: 36,
                 height: (5 * deviceHeight) / 6,
                 minWidth: (1 * deviceWidth) / 2,
+                maxWidth: (2 * deviceWidth) / 3 - 40,
               }}
             >
               <Text
@@ -208,6 +209,7 @@ export class CompletionScreen extends React.Component {
                             height: "100%",
                             justifyContent: "center",
                             alignItems: "center",
+                            overflow: "hidden",
                           }}
                         >
                           <Text
@@ -222,9 +224,10 @@ export class CompletionScreen extends React.Component {
                         </View>
                         <View
                           style={{
-                            flex: 6,
+                            flex: 7,
                             height: "100%",
                             justifyContent: "center",
+                            overflow: "hidden",
                           }}
                         >
                           <Text
@@ -240,10 +243,11 @@ export class CompletionScreen extends React.Component {
                         </View>
                         <View
                           style={{
-                            flex: 5,
+                            flex: 4,
                             height: "100%",
                             justifyContent: "center",
                             alignItems: "flex-end",
+                            overflow: "hidden",
                           }}
                         >
                           <Text
