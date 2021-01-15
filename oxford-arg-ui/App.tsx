@@ -84,7 +84,58 @@ export default class App extends React.Component {
       "EB-Garamond": require("./assets/fonts/EBGaramond-VariableFont_wght.ttf"),
     });
     await Font.loadAsync({
-      "EB-Garamond-Italic": require("./assets/fonts/EBGaramond-Italic-VariableFont_wght.ttf"),
+      "Metropolis-Black": require("./assets/fonts/metropolis/Metropolis-Black.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-BlackItalic": require("./assets/fonts/metropolis/Metropolis-BlackItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-Bold": require("./assets/fonts/metropolis/Metropolis-Bold.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-BoldItalic": require("./assets/fonts/metropolis/Metropolis-BoldItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-ExtraBold": require("./assets/fonts/metropolis/Metropolis-ExtraBold.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-ExtraBoldItalic": require("./assets/fonts/metropolis/Metropolis-ExtraBoldItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-ExtraLight": require("./assets/fonts/metropolis/Metropolis-ExtraLight.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-ExtraLightItalic": require("./assets/fonts/metropolis/Metropolis-ExtraLightItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-Regular": require("./assets/fonts/metropolis/Metropolis-Regular.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-RegularItalic": require("./assets/fonts/metropolis/Metropolis-RegularItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-SemiBold": require("./assets/fonts/metropolis/Metropolis-SemiBold.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-SemiBoldItalic": require("./assets/fonts/metropolis/Metropolis-SemiBoldItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-Light": require("./assets/fonts/metropolis/Metropolis-Light.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-LightItalic": require("./assets/fonts/metropolis/Metropolis-LightItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-Medium": require("./assets/fonts/metropolis/Metropolis-Medium.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-MediumItalic": require("./assets/fonts/metropolis/Metropolis-MediumItalic.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-Thin": require("./assets/fonts/metropolis/Metropolis-Thin.ttf"),
+    });
+    await Font.loadAsync({
+      "Metropolis-ThinItalic": require("./assets/fonts/metropolis/Metropolis-ThinItalic.ttf"),
     });
     this.fontsLoaded = true;
   }

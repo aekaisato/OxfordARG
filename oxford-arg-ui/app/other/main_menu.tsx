@@ -110,6 +110,31 @@ export class MainMenu extends React.Component {
           this.signUp2();
         } else if (this.state.doingSmth == "signup2") {
           this.setState({ password: this.state.input });
+          this.signUp2p1();
+        } else if (this.state.doingSmth == "signup2p1") {
+          if (this.state.input == this.state.password) {
+            this.setState({ password: this.state.input });
+            this.signUp2p2();
+          } else {
+            this.setState({
+              input: "",
+              email: "",
+              password: "",
+              stuID: "",
+              name: "",
+              doingSmth: "",
+            });
+            this.xtermRef.terminal.writeln(
+              "Passwords do not match. Please try to sign up again."
+            );
+            this.xtermRef.terminal.writeln("");
+            this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
+          }
+        } else if (this.state.doingSmth == "signup2p2") {
+          this.setState({ stuID: this.state.input });
+          this.signUp2p3();
+        } else if (this.state.doingSmth == "signup2p3") {
+          this.setState({ name: this.state.input });
           this.signUp3();
         }
       } else {
@@ -193,7 +218,7 @@ export class MainMenu extends React.Component {
   }
 
   async signUp() {
-    const str1 = "Enter your email: ";
+    const str1 = "Enter your email (do not use your student email): ";
     this.setState({ doingSmth: "signup", str: str1, input: "" });
     this.xtermRef.terminal.write(str1);
   }
@@ -209,9 +234,47 @@ export class MainMenu extends React.Component {
     this.xtermRef.terminal.write(str1);
   }
 
+  async signUp2p1() {
+    const str1 = "Verify your password: ";
+    this.setState({
+      doingSmth: "signup2p1",
+      str: str1,
+      input: "",
+      typingPassword: true,
+    });
+    this.xtermRef.terminal.write(str1);
+  }
+
+  async signUp2p2() {
+    const str1 = "Enter your student ID: ";
+    this.setState({
+      doingSmth: "signup2p2",
+      str: str1,
+      input: "",
+      typingPassword: false,
+    });
+    this.xtermRef.terminal.write(str1);
+  }
+
+  async signUp2p3() {
+    const str1 = "Enter your name: ";
+    this.setState({
+      doingSmth: "signup2p3",
+      str: str1,
+      input: "",
+      typingPassword: false,
+    });
+    this.xtermRef.terminal.write(str1);
+  }
+
   async signUp3() {
     this.xtermRef.terminal.writeln("Attempting to create account...");
-    let res = await createAccount(this.state.email, this.state.password);
+    let res = await createAccount(
+      this.state.email,
+      this.state.password,
+      this.state.name,
+      this.state.stuID
+    );
     this.xtermRef.terminal.writeln(res);
     this.xtermRef.terminal.writeln("");
     this.setState({ doingSmth: "" });

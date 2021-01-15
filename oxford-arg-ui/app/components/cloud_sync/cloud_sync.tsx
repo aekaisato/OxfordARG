@@ -38,11 +38,31 @@ export function getStatuses() {
 
 updateData();
 
-export async function createAccount(email: string, password: string) {
+export async function createAccount(
+  email: string,
+  password: string,
+  name: string,
+  stuID?: string
+) {
+  if (!stuID) {
+    stuID = "";
+  }
   try {
     await firebase.auth().createUserWithEmailAndPassword(email, password);
     await firebase.auth().currentUser?.sendEmailVerification();
     console.log("email sent");
+    let user = firebase.auth().currentUser;
+    if (user == null) {
+      console.warn("user null when trying to send to thingy");
+      return;
+    }
+    let database = firebase
+      .database()
+      .ref("/users/" + user.uid)
+      .update({
+        name: name,
+        stuID: stuID,
+      });
     await logoutUser();
     return "Please check your email to verify your account.";
   } catch (error) {

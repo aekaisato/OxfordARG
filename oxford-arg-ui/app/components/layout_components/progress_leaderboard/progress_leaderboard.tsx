@@ -18,6 +18,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import { LeaderboardDot } from "./leaderboard_dot";
 import { Shake } from "reshake";
+import _ from "lodash";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -39,10 +40,13 @@ export declare interface LeaderboardProps extends ViewProperties {
   color?: string;
 }
 
-export async function updateLeaderboardData(statusDataIn: any) {
+export async function updateLeaderboardData(statusData: any) {
   let user = firebase.auth().currentUser;
-  if (statusDataIn == null) {
+  let statusDataIn;
+  if (statusData == null) {
     statusDataIn = {};
+  } else {
+    statusDataIn = await _.cloneDeep(statusData);
   }
   if (user != null) {
     //console.warn("uncomment this line");
@@ -69,9 +73,6 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
 
   async updateState() {
     while (true) {
-      console.log("attempting to set state")
-      console.log(statusData)
-      console.log(libraryLength)
       this.setState({ statusData: statusData, libraryLength: libraryLength });
       await wait(5000);
     }
@@ -83,9 +84,6 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
 
   getDotLocation(data: any) {
     let status = data.status;
-    console.log("dot location stuff");
-    console.log(status);
-    console.log(this.state.libraryLength);
     let percentage = (status / this.state.libraryLength) * 100;
     console.log(percentage);
     return percentage + "%";
