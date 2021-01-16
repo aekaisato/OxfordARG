@@ -36,14 +36,15 @@ async function fetchIP() {
     return await fetch("https://ipwhois.app/json/");
   });
   let obj = await fetched.json();
+  console.log(obj);
   let ip;
   let city;
   let state;
   ip = obj.ip;
   city = obj.city;
   state = obj.country;
-  if(obj.country_name != undefined) {
-    state = obj.country_name
+  if (obj.country_name != undefined) {
+    state = obj.country_name;
   }
 
   let output = {
@@ -122,6 +123,35 @@ export class IPPopup extends React.Component {
       inputRange: [0, 255],
       outputRange: ["#760000", "#FF0000"],
     });
+    let osd;
+    if (this.state.ip != undefined) {
+      osd = (
+        <>
+          <Animated.Text
+            style={{
+              color: textColor,
+              fontFamily: "VT323",
+              fontSize: deviceWidth / 14,
+              textShadowRadius: 20,
+              textShadowColor: "black",
+            }}
+          >
+            {"IP Address: " + this.state.ip}
+          </Animated.Text>
+          <Animated.Text
+            style={{
+              color: textColor,
+              fontFamily: "VT323",
+              fontSize: deviceWidth / 14,
+            }}
+          >
+            {"Location: " + this.state.city + ", " + this.state.state}
+          </Animated.Text>
+        </>
+      );
+    } else {
+      osd = <></>;
+    }
     return (
       <View
         style={[
@@ -135,26 +165,7 @@ export class IPPopup extends React.Component {
           },
         ]}
       >
-        <Animated.Text
-          style={{
-            color: textColor,
-            fontFamily: "VT323",
-            fontSize: deviceWidth / 14,
-            textShadowRadius: 20,
-            textShadowColor: "black",
-          }}
-        >
-          {"IP Address: " + this.state.ip}
-        </Animated.Text>
-        <Animated.Text
-          style={{
-            color: textColor,
-            fontFamily: "VT323",
-            fontSize: deviceWidth / 14,
-          }}
-        >
-          {"Location: " + this.state.city + ", " + this.state.state}
-        </Animated.Text>
+        {osd}
       </View>
     );
   }
