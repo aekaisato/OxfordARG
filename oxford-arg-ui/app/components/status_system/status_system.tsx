@@ -217,6 +217,12 @@ const statusLibrary = [
     page: 10,
   },
   {
+    type: "music",
+    value: "STOP",
+    continue: true,
+    save: false,
+  },
+  {
     type: "completion",
     value: "",
     save: false,
