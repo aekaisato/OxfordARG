@@ -58,6 +58,7 @@ import {
   Transcript,
   VideoPlayer,
 } from "../../components/video_player/video_player";
+import { playSound } from "../../components/sound_system/sound_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -312,7 +313,10 @@ export class Phase1Layout extends React.Component {
                 <View style={{ width: deviceWidth / 16 }}>
                   <Button
                     title="Open Inventory"
-                    onPress={() => this.handleToggleInventory()}
+                    onPress={() => {
+                      playSound("button");
+                      this.handleToggleInventory();
+                    }}
                   />
                 </View>
               </View>

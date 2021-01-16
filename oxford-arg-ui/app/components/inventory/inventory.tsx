@@ -22,6 +22,7 @@ import {
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { MuralClues } from "./mural-clues";
 import { Notebook } from "./notebook";
+import { playSound } from "../sound_system/sound_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -104,6 +105,7 @@ export class Inventory extends React.Component<InventoryProps> {
   }
 
   handleToggleMuralClues() {
+    playSound("button");
     let temp = this.state.displayMuralClues;
     if (temp == "none") {
       temp = "flex";
@@ -114,6 +116,7 @@ export class Inventory extends React.Component<InventoryProps> {
   }
 
   handleToggleNotebook() {
+    playSound("button");
     let temp = this.state.displayNotebook;
     if (temp == "none") {
       temp = "flex";
