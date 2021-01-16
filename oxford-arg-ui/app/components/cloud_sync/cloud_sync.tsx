@@ -183,10 +183,24 @@ export async function setCompletion() {
     return;
   }
   console.log("setting to " + time);
-  await firebase
-    .database()
-    .ref("/statuses/" + user.uid)
-    .update({
-      completed: time,
-    });
+  let statusObj = await (
+    await firebase
+      .database()
+      .ref("/statuses/" + user.uid)
+      .once("value")
+  ).val();
+  if (
+    statusObj.completed == undefined ||
+    statusObj.completed == null ||
+    statusObj.completed == ""
+  ) {
+    await firebase
+      .database()
+      .ref("/statuses/" + user.uid)
+      .update({
+        completed: time,
+      });
+  } else {
+    console.warn("user account already completed, not overwriting");
+  }
 }
