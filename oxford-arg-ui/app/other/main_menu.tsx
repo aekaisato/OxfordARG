@@ -25,11 +25,19 @@ import {
   loginUser,
   logoutUser,
 } from "../components/cloud_sync/cloud_sync";
+import {
+  navigatePhase,
+  navigatePuzzle,
+} from "../components/navigation/navigation";
+var bcrypt = require("bcryptjs");
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 const PRIMARY_PROMPT_STRING = "[remote@viridos-system]$ ";
+
+const debugHash =
+  "$2a$10$uBHufIPKvl7d4HSPwJuSLuaLheV9DM7CsBWrQfEjUGLpXcoPGG3Ra";
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -136,6 +144,9 @@ export class MainMenu extends React.Component {
         } else if (this.state.doingSmth == "signup2p3") {
           this.setState({ name: this.state.input });
           this.signUp3();
+        } else if (this.state.doingSmth == "debug") {
+          this.setState({ debugPassword: this.state.input });
+          this.debug2();
         }
       } else {
         if (this.state.input.trim().length == 0) {
@@ -164,6 +175,9 @@ export class MainMenu extends React.Component {
           this.xtermRef.terminal.writeln(
             `Available commands are "signup", "login", "logout", "start", and "continue".`
           );
+        } else if (input == "debug") {
+          this.debug();
+          return;
         } else {
           this.xtermRef.terminal.writeln(
             `"` + input + `"` + " is not a valid command."
@@ -345,6 +359,34 @@ export class MainMenu extends React.Component {
       this.xtermRef.terminal.writeln("");
       this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
     }
+  }
+
+  async debug() {
+    const str1 = "PASSWORD_REQUIRED: ";
+    this.setState({
+      doingSmth: "debug",
+      str: str1,
+      input: "",
+      typingPassword: true,
+    });
+    this.xtermRef.terminal.write(str1);
+  }
+
+  async debug2() {
+    if (await bcrypt.compareSync(this.state.debugPassword, debugHash)) {
+      navigatePhase("Phase1");
+      navigatePuzzle("StatusDebugPage");
+    } else {
+      this.xtermRef.terminal.writeln("Incorrect.");
+    }
+    this.xtermRef.terminal.writeln("");
+    this.setState({ doingSmth: "" });
+    this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
+    this.setState({
+      input: "",
+      debugPassword: "",
+      typingPassword: false,
+    });
   }
 
   componentDidMount() {

@@ -97,6 +97,9 @@ function roundNegative(x: number) {
 
 export const ThePuzzleNavigator = createStackNavigator(
   {
+    SplashScreen: {
+      screen: SplashScreen,
+    },
     StatusDebugPage: {
       screen: StatusDebugPage,
     },
@@ -105,9 +108,6 @@ export const ThePuzzleNavigator = createStackNavigator(
       navigationOptions: {
         headerShown: true,
       },
-    },
-    SplashScreen: {
-      screen: SplashScreen,
     },
     LiveFeed: {
       screen: LiveFeed,

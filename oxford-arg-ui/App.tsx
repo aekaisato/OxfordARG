@@ -183,6 +183,9 @@ const forFade = ({ current, closing }) => ({
 
 export const StackNavigator = createStackNavigator(
   {
+    MainMenu: {
+      screen: MainMenu,
+    },
     Phase1: {
       screen: Phase1Layout,
     },
@@ -195,11 +198,8 @@ export const StackNavigator = createStackNavigator(
     BlackoutTransition: {
       screen: BlackoutTransition,
     },
-    MainMenu: {
-      screen: MainMenu,
-    },
     CompletionScreen: {
-      screen: CompletionScreen
+      screen: CompletionScreen,
     },
   },
   {
