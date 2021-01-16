@@ -33,7 +33,11 @@ import {
 } from "../video_player/video_player";
 import { queueLiveFeed } from "../live_feed/live_feed";
 import { triggerIPEffect } from "../../other/ip_popup";
-import { playSound } from "../sound_system/sound_system";
+import {
+  playMusic,
+  playSound,
+  stopCurrentTrack,
+} from "../sound_system/sound_system";
 import { setCompletion, syncUserToCloud } from "../cloud_sync/cloud_sync";
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 
@@ -85,6 +89,11 @@ const statusLibrary = [
     mural: 2,
   },
   {
+    type: "music",
+    value: "mus1",
+    continue: true,
+  },
+  {
     type: "360",
     value: "EnglishRoom",
     save: true,
@@ -116,14 +125,16 @@ const statusLibrary = [
     page: 3,
   },
   {
-    type: "wait",
-    value: "0",
+    type: "music",
+    value: "STOP",
     page: 4,
+    continue: true,
+    save: false,
   },
   {
     type: "blackout",
     value: "blackout",
-    save: true,
+    save: false,
   },
   {
     type: "phase",
@@ -132,9 +143,14 @@ const statusLibrary = [
     continue: true,
   },
   {
+    type: "music",
+    value: "mus2",
+    continue: true,
+  },
+  {
     type: "puzzle",
     value: "Puzzle8",
-    save: true,
+    save: false,
   },
   {
     type: "360",
@@ -164,6 +180,11 @@ const statusLibrary = [
     value: "Phase3",
     save: true,
     page: 8,
+    continue: true,
+  },
+  {
+    type: "music",
+    value: "mus3",
     continue: true,
   },
   {
@@ -294,6 +315,12 @@ export async function goto(status: {
     })();
   } else if (status.type == "completion") {
     await setCompletion();
+  } else if (status.type == "music") {
+    if (status.value == "STOP") {
+      stopCurrentTrack();
+    } else {
+      playMusic(status.value);
+    }
   }
 
   if (status.save == true) {
@@ -390,19 +417,45 @@ export async function startGame() {
 }
 
 export async function continueGame() {
-  await syncUserToCloud();
-  let phase = "Phase1";
-  let status = await getStatus();
-  if (status != null) {
-    for (let i = Number.parseInt(status); i >= 0; i--) {
-      if (statusLibrary[i].type == phase) {
+  let savedStatus: any = await getStatus();
+  if (savedStatus != null) {
+    savedStatus = Number.parseInt(savedStatus);
+    for (let i = savedStatus; i >= 0; i--) {
+      savedStatus = i;
+      if (statusLibrary[i].save == true) {
         i = -1;
       }
     }
   }
+  await setStatus(savedStatus);
   await syncUserToCloud();
-  await goto(statusLibrary[Number.parseInt(await getStatus())]);
+  let phase = "Phase1";
+  let mus = "";
+  let status = await getStatus();
+  if (status != null) {
+    console.log("continue stuff");
+    for (let i = Number.parseInt(status); i >= 0; i--) {
+      if (statusLibrary[i].type == "phase") {
+        phase = statusLibrary[i].value;
+        i = -1;
+      }
+    }
+    for (let i = Number.parseInt(status); i >= 0; i--) {
+      console.log(statusLibrary[i]);
+      if (statusLibrary[i].type == "completion") {
+        i = -1;
+      }
+      if (statusLibrary[i].type == "music") {
+        mus = statusLibrary[i].value;
+        i = -1;
+      }
+    }
+    console.log(mus);
+  }
+  await syncUserToCloud();
+  playMusic(mus);
   navigatePhase(phase);
+  await goto(statusLibrary[Number.parseInt(await getStatus())]);
 }
 
 export async function fetchOthers() {}

@@ -24,9 +24,11 @@ import { Howl, Howler } from "howler";
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
-const soundDirectory = "/static/sfx/"; // add music object and function that loops and fades between music (if we do music)
+const soundDirectory = "/static/sfx/";
+const musicDirectory = "/static/mus/";
 
-Howler.volume(0.6)
+Howler.volume(0.6);
+const MUSIC_VOLUME = 0.2;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -36,23 +38,62 @@ async function wait(timeout: number) {
 
 const sounds = {
   start: new Howl({
-    src: [soundDirectory + "start.mp3"]
+    src: [soundDirectory + "start.mp3"],
   }),
   button: new Howl({
-    src: [soundDirectory + "button.mp3"]
+    src: [soundDirectory + "button.mp3"],
   }),
   shutdown: new Howl({
-    src: [soundDirectory + "shutdown.mp3"]
+    src: [soundDirectory + "shutdown.mp3"],
   }),
 };
 
+const music = {
+  mus1: new Howl({
+    src: [musicDirectory + "mus1.mp3"],
+  }),
+  mus2: new Howl({
+    src: [musicDirectory + "mus2.mp3"],
+  }),
+  mus3: new Howl({
+    src: [musicDirectory + "mus3.mp3"],
+  }),
+};
+
+let musCurrent: string | null | undefined;
+
 export function playSound(sound: string) {
-  if(sounds[sound] == undefined) {
+  if (sounds[sound] == undefined) {
     console.warn("sound " + sound + "not found");
     return;
   }
-  console.log("attempting to playing sound " + sound)
+  console.log("attempting to playing sound " + sound);
   sounds[sound].play();
+}
+
+export async function playMusic(track: string) {
+  await stopCurrentTrack();
+  if (music[track] == undefined) {
+    console.warn("track " + track + "not found");
+    return;
+  }
+  music[track].volume(MUSIC_VOLUME);
+  music[track].loop(true);
+  console.log("attempting to playing track " + track);
+  music[track].play();
+  musCurrent = track;
+}
+
+export async function stopCurrentTrack(fadeDuration?: number) {
+  if (musCurrent == undefined || musCurrent == null) {
+    return;
+  }
+  if (!fadeDuration) {
+    fadeDuration = 1000;
+  }
+  music[musCurrent].fade(MUSIC_VOLUME, 0, fadeDuration);
+  await wait(fadeDuration);
+  music[musCurrent].stop();
 }
 
 export class SoundTest extends React.Component {
@@ -63,8 +104,8 @@ export class SoundTest extends React.Component {
           style={styles.container}
           source={require("../../../assets/dylan-temp.jpg")}
         >
-          {Object.keys(sounds).map(key => (
-            <Button title={key} onPress={() => playSound(key)}/>
+          {Object.keys(sounds).map((key) => (
+            <Button title={key} onPress={() => playSound(key)} />
           ))}
         </ImageBackground>
       </View>

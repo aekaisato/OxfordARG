@@ -107,7 +107,6 @@ function setCreditsScrollToTop() {
 
 export async function updateCompletionData(completionData: any) {
   while (that == undefined) {
-    console.warn("completion screen that is undefined");
     await wait(2000);
   }
   console.log("completion screen that IS defined :)");
