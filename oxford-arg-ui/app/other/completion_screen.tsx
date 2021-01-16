@@ -33,7 +33,7 @@ document.addEventListener("contextmenu", (event) => event.preventDefault()); // 
 // https://codepen.io/ConnorsFan/pen/rzeXNe
 
 let fps = 60;
-let speedFactor = 0.01;
+let speedFactor = 0.0025;
 let minDelta = 0.5;
 let autoScrollSpeed = 10;
 let autoScrollTimer: NodeJS.Timeout, restartTimer: NodeJS.Timeout;
@@ -48,7 +48,9 @@ async function initAutoScrollCredits() {
   }
   document
     .getElementById("creditsView")
-    ?.addEventListener("scroll", handleManualScroll);
+    ?.addEventListener("scroll", function (e) {
+      currentPos = document.getElementById("creditsView")?.scrollTop;
+    });
   document
     .getElementById("creditsView")
     ?.addEventListener("wheel", handleManualScroll);
@@ -67,7 +69,7 @@ function handleManualScroll() {
   restartTimer = setTimeout(() => {
     prevTime = null;
     setAutoScroll();
-  }, 50);
+  }, 250);
 }
 
 function setAutoScroll(newValue?: number | undefined) {
@@ -352,6 +354,7 @@ export class CompletionScreen extends React.Component {
               backgroundColor: "#00000080",
               height: deviceHeight,
               width: (1 * deviceWidth) / 3,
+              overflow: "hidden"
             }}
           >
             <Text
@@ -371,6 +374,8 @@ export class CompletionScreen extends React.Component {
                 overflowY: "scroll",
                 alignItems: "center",
                 textAlign: "center",
+                paddingRight: (document.getElementById("creditsView")?.offsetWidth - document.getElementById("creditsView")?.offsetWidth) || 17,
+                boxSizing: "content-box"
               }}
               id="creditsView"
             >
