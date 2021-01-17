@@ -43,6 +43,8 @@ import { PathwayRoom } from "../../rooms/pathway/pathway";
 import { SplashScreen } from "../../other/splash_screen";
 import { LiveFeed } from "../live_feed/live_feed";
 import { SoundTest } from "../sound_system/sound_system";
+import React from "react";
+import { View } from "react-native";
 
 let _puzzleNavigator: any;
 let _phaseNavigator: any;
@@ -95,8 +97,21 @@ function roundNegative(x: number) {
   }
 }
 
+class BlankScreen extends React.Component {
+  render() {
+    return (
+      <View
+        style={{ backgroundColor: "black", width: "100%", height: "100%" }}
+      />
+    );
+  }
+}
+
 export const ThePuzzleNavigator = createStackNavigator(
   {
+    BlankScreen: {
+      screen: BlankScreen,
+    },
     SplashScreen: {
       screen: SplashScreen,
     },
