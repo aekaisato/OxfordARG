@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { StyleSheet, View, Dimensions, Text, AsyncStorage } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
@@ -67,25 +67,33 @@ export class MainMenu extends React.Component {
   }
 
   async initTerm() {
-    await wait(800);
+    let waitTimes;
+    let hasOpened = await AsyncStorage.getItem("hasSeenMainMenu");
+    if (hasOpened == null) {
+      waitTimes = [800, 20, 350, 920, 3, 5, 1200];
+      await AsyncStorage.setItem("hasSeenMainMenu", "true");
+    } else {
+      waitTimes = [0, 0, 0, 0, 0, 0, 0];
+    }
+    await wait(waitTimes[0]);
     this.xtermRef.terminal.write("ViriDOS Remote Operating System");
-    await wait(20);
+    await wait(waitTimes[1]);
     this.xtermRef.terminal.writeln(" - Version 0.7.2");
-    await wait(350);
+    await wait(waitTimes[2]);
     this.xtermRef.terminal.writeln(new Date().toString() + "\n");
-    await wait(920);
+    await wait(waitTimes[3]);
     this.xtermRef.terminal.writeln(
       "Please sign up or login before beginning the game."
     );
-    await wait(3);
+    await wait(waitTimes[4]);
     this.xtermRef.terminal.writeln(
       `Available commands are "signup", "login", "logout", "start", and "continue".`
     );
-    await wait(5);
+    await wait(waitTimes[5]);
     this.xtermRef.terminal.writeln(
       "Type in a command (without quotes), then press the ENTER key to run it.\n"
     );
-    await wait(1200);
+    await wait(waitTimes[6]);
     this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
 
     this.setState({ inited: true });
