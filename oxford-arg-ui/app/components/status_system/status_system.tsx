@@ -5,6 +5,7 @@ import {
   Button,
   StyleSheet,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 
 import firebase from "firebase/app";
@@ -583,51 +584,62 @@ export class StatusDebugPage extends React.Component {
           style={styles.container}
           source={require("../../../assets/dylan-temp.jpg")}
         >
-          <Button
-            title="set"
-            onPress={() => setStatus(Number.parseInt(prompt("enter value")))}
-          />
-          <Button title="get" onPress={() => getStatus()} />
-          <Button title="increment" onPress={() => increment()} />
-          <Button title="sign up" onPress={() => createAccountTemp()} />
-          <Button title="login" onPress={() => loginTemp()} />
-          <Button title="logout" onPress={() => logoutTemp()} />
-          <Button title="info" onPress={() => getLoginInfoTemp()} />
-          <Button
-            title="nav puzzle"
-            onPress={() => debugNavigatePuzzleTemp()}
-          />
-          <Button title="nav phase" onPress={() => debugNavigatePhaseTemp()} />
-          <Button title="test video" onPress={() => debugCommunicatorTemp()} />
-          <Button title="test str" onPress={() => debugTranscriptTemp1()} />
-          <Button title="test line" onPress={() => debugTranscriptTemp2()} />
-          <Button
-            title="test live feed (doesnt work)"
-            onPress={() => debugLiveFeed()}
-          />
-          <Button title="test ip trick" onPress={() => triggerIPEffect()} />
-          <Button
-            title="sound test"
-            onPress={() => navigatePuzzle("SoundTest")}
-          />
-          <Button
-            title="final screen"
-            onPress={() => navigatePhase("CompletionScreen")}
-          />
-          <Button title="main menu" onPress={() => navigatePhase("MainMenu")} />
-          <Button
-            title="start"
-            onPress={async () => await goto(await setStatus(1))}
-          />
-          <Button
-            title="continue"
-            onPress={async () => {
-              console.warn(
-                "don't forget to add the thing to switch phase on continue depending on status"
-              );
-              await goto(statusLibrary[Number.parseInt(await getStatus())]);
-            }}
-          />
+          <ScrollView>
+            <Button
+              title="set"
+              onPress={() => setStatus(Number.parseInt(prompt("enter value")))}
+            />
+            <Button title="get" onPress={() => getStatus()} />
+            <Button title="increment" onPress={() => increment()} />
+            <Button title="sign up" onPress={() => createAccountTemp()} />
+            <Button title="login" onPress={() => loginTemp()} />
+            <Button title="logout" onPress={() => logoutTemp()} />
+            <Button title="info" onPress={() => getLoginInfoTemp()} />
+            <Button
+              title="nav puzzle"
+              onPress={() => debugNavigatePuzzleTemp()}
+            />
+            <Button
+              title="nav phase"
+              onPress={() => debugNavigatePhaseTemp()}
+            />
+            <Button
+              title="test video"
+              onPress={() => debugCommunicatorTemp()}
+            />
+            <Button title="test str" onPress={() => debugTranscriptTemp1()} />
+            <Button title="test line" onPress={() => debugTranscriptTemp2()} />
+            <Button
+              title="test live feed (doesnt work)"
+              onPress={() => debugLiveFeed()}
+            />
+            <Button title="test ip trick" onPress={() => triggerIPEffect()} />
+            <Button
+              title="sound test"
+              onPress={() => navigatePuzzle("SoundTest")}
+            />
+            <Button
+              title="final screen"
+              onPress={() => navigatePhase("CompletionScreen")}
+            />
+            <Button
+              title="main menu"
+              onPress={() => navigatePhase("MainMenu")}
+            />
+            <Button
+              title="start"
+              onPress={async () => await goto(await setStatus(1))}
+            />
+            <Button
+              title="continue"
+              onPress={async () => {
+                console.warn(
+                  "don't forget to add the thing to switch phase on continue depending on status"
+                );
+                await goto(statusLibrary[Number.parseInt(await getStatus())]);
+              }}
+            />
+          </ScrollView>
         </ImageBackground>
       </View>
     );
@@ -641,6 +653,5 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "scroll",
   },
 });

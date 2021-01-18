@@ -121,7 +121,8 @@ export class VideoPlayer extends React.Component {
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}
-            width={0.2 * 0.9 * deviceWidth}
+            height="100%"
+            width="100%"
             playing={this.state.playing}
             onEnded={() => this.handleEnd()}
           />

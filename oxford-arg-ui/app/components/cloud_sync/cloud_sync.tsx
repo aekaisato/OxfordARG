@@ -149,17 +149,30 @@ export async function syncUserToCloud(override?: string) {
   let localStatus: any = await getStatus();
   console.log("cloud:");
   console.log(cloudStatus);
-  console.log("local: " + localStatus);
+  console.log("local:");
+  console.log(localStatus)
   if (cloudStatus == null || cloudStatus == NaN) {
     cloudStatus = 1;
   } else {
     cloudStatus = Number.parseInt(cloudStatus);
+    if (isNaN(cloudStatus)) {
+      console.log("setting cloud status to 1")
+      cloudStatus = 1;
+    }
   }
   if (localStatus == null || localStatus == NaN) {
     localStatus = 1;
   } else {
     localStatus = Number.parseInt(localStatus);
+    console.log(localStatus)
+    if (isNaN(localStatus)) {
+      console.log("setting local status to 1")
+      localStatus = 1;
+    }
   }
+
+  console.log(cloudStatus);
+  console.log(localStatus);
 
   let higher;
   if (override == "local") {
@@ -169,6 +182,8 @@ export async function syncUserToCloud(override?: string) {
   } else {
     higher = Math.max(cloudStatus, localStatus);
   }
+
+  console.log(higher)
 
   console.log("setting both to " + higher);
   await setStatus(higher);
