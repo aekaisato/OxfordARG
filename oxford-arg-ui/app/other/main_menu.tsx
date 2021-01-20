@@ -164,26 +164,26 @@ export class MainMenu extends React.Component {
         }
         this.xtermRef.terminal.writeln("");
         const input = this.state.input.trim();
-        if (input == "signup") {
+        if (input.toLowerCase() == "signup") {
           this.signUp();
           return;
-        } else if (input == "login") {
+        } else if (input.toLowerCase() == "login") {
           this.login();
           return;
-        } else if (input == "logout") {
+        } else if (input.toLowerCase() == "logout") {
           this.logout();
           return;
-        } else if (input == "start") {
+        } else if (input.toLowerCase() == "start") {
           this.start();
           return;
-        } else if (input == "continue") {
+        } else if (input.toLowerCase() == "continue") {
           this.continue();
           return;
-        } else if (input == "help") {
+        } else if (input.toLowerCase() == "help") {
           this.xtermRef.terminal.writeln(
             `Available commands are "signup", "login", "logout", "start", and "continue".`
           );
-        } else if (input == "debug") {
+        } else if (input.toLowerCase() == "debug") {
           this.debug();
           return;
         } else {
