@@ -36,33 +36,33 @@ async function wait(timeout: number) {
 
 const urls = {
   Scene1Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%201%20Line%201%20Alonso%20v3.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 1 Line 1 Alonso v3.mp4"),
   Scene3Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%203%20Line%201%20Alonso.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 3 Line 1 Alonso.mp4"),
   Scene4Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%204%20Line%201%20Alonso.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 4 Line 1 Alonso.mp4"),
   Scene6Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%206%20Line%201%20Alonso.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 6 Line 1 Alonso.mp4"),
   Scene7Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%207%20Line%201%20Alonso.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 7 Line 1 Alonso.mp4"),
   Scene9Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%209%20Line%201%20Alonso.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 1 Alonso.mp4"),
   Scene9Line2:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%209%20Line%202%20Alonso%20v3.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 2 Alonso v3.mp4"),
   Scene11Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2011%20Line%201%20VIRIDOS.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 11 Line 1 VIRIDOS.mp4"),
   Scene12Line2:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2012%20Line%202%20Fong.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 12 Line 2 Fong.mp4"),
   Scene13Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2013%20Line%201%20Fong.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 13 Line 1 Fong.mp4"),
   Scene14Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2014%20Line%201%20Fong.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 14 Line 1 Fong.mp4"),
   Scene15Line2:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2015%20Line%202%20Hernandez.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 15 Line 2 Hernandez.mp4"),
   Scene24Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2024%20Line%201%20Vasquez.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 24 Line 1 Vasquez.mp4"),
   Scene26Line1:
-    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene%2026%20Line%201%20Hogan.mp4",
+    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 26 Line 1 Hogan.mp4"),
 };
 
 export { urls };
