@@ -36,9 +36,11 @@ The difficulty lies in that each vertical nine-square column, or horizontal nine
 const sudokuStr =
   "76294..53.34..67.9..85732.6327819.65851..4937649357..2..6432578275...394483795621";
 const sudokuGrid = sudoku.board_string_to_grid(sudokuStr);
-const sudokuSolution = sudoku.solve(sudokuStr);
-const sudokuSolution2 =
-  "762941853534286719918573246327819465851624937649357182196432578275168394483795621";
+// const sudokuSolution = sudoku.solve(sudokuStr);
+// const sudokuSolution2 =
+//   "762941853534286719918573246327819465851624937649357182196432578275168394483795621";
+// const solutionsIncomplete = ["1852811944621891168", "1852819144621819168", "8151281944268191681", "8151289144268119681"];
+
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;

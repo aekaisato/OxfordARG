@@ -254,7 +254,7 @@ export class Puzzle15 extends React.Component {
           >
             <tbody
               style={{
-                fontFamily: "Noto-Sans-Bold",
+                fontFamily: "SourceCodePro-Regular",
                 fontSize: 32,
                 color: "white",
               }}

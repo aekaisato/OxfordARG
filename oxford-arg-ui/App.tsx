@@ -137,6 +137,9 @@ export default class App extends React.Component {
     await Font.loadAsync({
       "Metropolis-ThinItalic": require("./assets/fonts/metropolis/Metropolis-ThinItalic.ttf"),
     });
+    await Font.loadAsync({
+      "SourceCodePro-Regular": require("./assets/fonts/SourceCodePro-Regular.ttf"),
+    });
     this.fontsLoaded = true;
   }
 
