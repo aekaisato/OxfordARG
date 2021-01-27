@@ -1,5 +1,6 @@
 import {
   createAppContainer,
+  NavigationContainerComponent,
   NavigationNavigateAction,
   SafeAreaView,
   ThemeContext,
@@ -46,8 +47,8 @@ import { SoundTest } from "../sound_system/sound_system";
 import React from "react";
 import { View } from "react-native";
 
-let _puzzleNavigator: any;
-let _phaseNavigator: any;
+let _puzzleNavigator: NavigationContainerComponent;
+let _phaseNavigator: NavigationContainerComponent;
 
 export function setPuzzleNavigator(navigatorRef: any) {
   _puzzleNavigator = navigatorRef;
@@ -55,6 +56,17 @@ export function setPuzzleNavigator(navigatorRef: any) {
 
 export function setPhaseNavigator(navigatorRef: any) {
   _phaseNavigator = navigatorRef;
+}
+
+export function getCurrentPhase() {
+  if (_phaseNavigator == undefined || _phaseNavigator == null) {
+    console.warn("current phase undefined");
+    return;
+  }
+  let navState = _phaseNavigator.state.nav;
+  let phase = navState.routes[navState.index].routeName;
+  console.log(phase);
+  return phase;
 }
 
 export function navigatePuzzle(routeName: any, params?: any) {
@@ -83,19 +95,11 @@ export function toLiveFeed() {
   );
 }
 
-const forFade = ({ current, closing }) => ({
+const forFade = ({ current, closing }: any) => ({
   cardStyle: {
     opacity: current.progress,
   },
 });
-
-function roundNegative(x: number) {
-  if (x < 0) {
-    return 0;
-  } else {
-    return x;
-  }
-}
 
 class BlankScreen extends React.Component {
   render() {

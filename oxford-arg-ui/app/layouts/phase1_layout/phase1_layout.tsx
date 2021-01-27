@@ -233,7 +233,7 @@ export class Phase1Layout extends React.Component {
                   top: -4,
                 }}
               >
-                <VideoPlayer />
+                <VideoPlayer phase={1}/>
               </Phase1Window>
             </View>
           </View>

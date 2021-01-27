@@ -12,6 +12,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import {
+  getCurrentPhase,
   navigatePhase,
   navigatePuzzle,
   toLiveFeed,
@@ -328,6 +329,12 @@ export async function goto(status: {
     } else {
       playMusic(status.value);
     }
+  } else if (status.type == "transcript") {
+    if (status.value == "CLEAR") {
+      setTranscriptStr("");
+    } else {
+      setTranscriptStr(status.value);
+    }
   }
 
   if (status.save == true) {
@@ -621,6 +628,10 @@ export class StatusDebugPage extends React.Component {
             <Button
               title="final screen"
               onPress={() => navigatePhase("CompletionScreen")}
+            />
+            <Button
+              title="get current phase"
+              onPress={() => getCurrentPhase()}
             />
             <Button
               title="main menu"

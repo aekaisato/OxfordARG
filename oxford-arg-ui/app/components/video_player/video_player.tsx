@@ -9,6 +9,7 @@ import {
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
+  NavigationEvents,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
@@ -21,9 +22,10 @@ import {
 import ReactPlayer from "react-player/lazy";
 import { transcriptStrings } from "./transcript_strings";
 import { goto, increment } from "../status_system/status_system";
+import { getCurrentPhase } from "../navigation/navigation";
 
-let thatP: any;
-let thatT: any;
+const REFRESH_INTERVAL = 250;
+let queue: any[] = [];
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -35,51 +37,69 @@ async function wait(timeout: number) {
 }
 
 const urls = {
-  Scene1Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 1 Line 1 Alonso v3.mp4"),
-  Scene3Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 3 Line 1 Alonso.mp4"),
-  Scene4Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 4 Line 1 Alonso.mp4"),
-  Scene6Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 6 Line 1 Alonso.mp4"),
-  Scene7Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 7 Line 1 Alonso.mp4"),
-  Scene9Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 1 Alonso.mp4"),
-  Scene9Line2:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 2 Alonso v3.mp4"),
-  Scene11Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 11 Line 1 VIRIDOS.mp4"),
-  Scene12Line2:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 12 Line 2 Fong.mp4"),
-  Scene13Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 13 Line 1 Fong.mp4"),
-  Scene14Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 14 Line 1 Fong.mp4"),
-  Scene15Line2:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 15 Line 2 Hernandez.mp4"),
-  Scene24Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 24 Line 1 Vasquez.mp4"),
-  Scene26Line1:
-    encodeURI("https://static.viridos.toadtoad.xyz/communicator-clips/Scene 26 Line 1 Hogan.mp4"),
+  Scene1Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 1 Line 1 Alonso v3.mp4"
+  ),
+  Scene3Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 3 Line 1 Alonso.mp4"
+  ),
+  Scene4Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 4 Line 1 Alonso.mp4"
+  ),
+  Scene6Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 6 Line 1 Alonso.mp4"
+  ),
+  Scene7Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 7 Line 1 Alonso.mp4"
+  ),
+  Scene9Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 1 Alonso.mp4"
+  ),
+  Scene9Line2: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 9 Line 2 Alonso v3.mp4"
+  ),
+  Scene11Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 11 Line 1 VIRIDOS.mp4"
+  ),
+  Scene12Line2: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 12 Line 2 Fong.mp4"
+  ),
+  Scene13Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 13 Line 1 Fong.mp4"
+  ),
+  Scene14Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 14 Line 1 Fong.mp4"
+  ),
+  Scene15Line2: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 15 Line 2 Hernandez.mp4"
+  ),
+  Scene24Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 24 Line 1 Vasquez.mp4"
+  ),
+  Scene26Line1: encodeURI(
+    "https://static.viridos.toadtoad.xyz/communicator-clips/Scene 26 Line 1 Hogan.mp4"
+  ),
 };
 
 export { urls };
 
-export function queuePlayer(line: string, blockGoto?: boolean) {
+export function queuePlayer(line: string, blockGoto?: boolean, endAt?: number) {
   if (blockGoto == undefined) {
     blockGoto = false;
   }
-  thatP.queuePlayer(line, blockGoto);
-  setTranscriptLine(line);
+  let queueObj = { line, blockGoto, endAt };
+  queue.push(queueObj);
 }
 
-export class VideoPlayer extends React.Component {
+interface VideoPlayerProps extends ViewProperties {
+  phase?: number;
+}
+
+export class VideoPlayer extends React.Component<VideoPlayerProps> {
   // add function to check for current position, and other to queue up a goto
   player: any;
-
-  constructor(props) {
+  phase: number;
+  constructor(props: any) {
     super(props);
     this.player;
     this.state = {
@@ -87,15 +107,33 @@ export class VideoPlayer extends React.Component {
       video: "",
       blockGoto: false,
     };
-    thatP = this;
+    if (props.phase == undefined) {
+      props.phase = -1;
+    }
+    this.phase = props.phase;
   }
 
-  queuePlayer(url: string, blockGoto: boolean) {
+  async checkForVideos() {
+    while (true) {
+      if (queue.length > 0) {
+        let phase = getCurrentPhase();
+        let thisPhase = "Phase" + this.phase;
+        if (phase == thisPhase) {
+          let video = queue.shift();
+          this.queuePlayer(video.line, video.blockGoto, video.endAt);
+        }
+      }
+      await wait(REFRESH_INTERVAL);
+    }
+  }
+
+  queuePlayer(url: string, blockGoto: boolean, endAt: any) {
     let boo = true;
     if (urls[url] == undefined) {
       boo = false;
     }
-    this.setState({ video: url, playing: boo, blockGoto });
+    setTranscriptLine(url);
+    this.setState({ video: url, playing: boo, blockGoto, endAt });
     // setup wait for goto
   }
 
@@ -106,12 +144,30 @@ export class VideoPlayer extends React.Component {
   handleEnd() {
     this.setState({ playing: false, video: "" });
     if (this.state.blockGoto) {
-      this.setState({ blockGoto: true });
+      this.setState({ blockGoto: false });
     } else {
       (async function () {
         await goto(await increment());
       })();
     }
+  }
+
+  handleProgress(callback: {
+    played?: number;
+    playedSeconds: any;
+    loaded?: number;
+    loadedSeconds?: number;
+  }) {
+    if (this.state.handleProgress != undefined) {
+      if (callback.playedSeconds >= this.state.handleProgress) {
+        this.handleEnd();
+        this.setState({ handleProgress: undefined });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.checkForVideos();
   }
 
   render() {
@@ -125,6 +181,8 @@ export class VideoPlayer extends React.Component {
             width="100%"
             playing={this.state.playing}
             onEnded={() => this.handleEnd()}
+            onProgress={(callback) => this.handleProgress(callback)}
+            stopOnUnmount={true}
           />
         </View>
       );
@@ -144,19 +202,21 @@ export class VideoPlayer extends React.Component {
   }
 }
 
+let transcript = "";
+
 export declare interface TranscriptProps extends ViewProperties {
   style: any;
 }
 
 export function setTranscriptStr(str: string) {
-  thatT.setTranscript(str);
+  transcript = str;
 }
 
 export function setTranscriptLine(line: string) {
   if (transcriptStrings[line] == undefined) {
     return;
   }
-  thatT.setTranscript(transcriptStrings[line]);
+  setTranscriptStr(transcriptStrings[line]);
 }
 
 export class Transcript extends React.Component<TranscriptProps> {
@@ -169,11 +229,23 @@ export class Transcript extends React.Component<TranscriptProps> {
     this.state = {
       str: "",
     };
-    thatT = this;
   }
 
   setTranscript(str: string) {
     this.setState({ str });
+  }
+
+  async watchTranscript() {
+    while (true) {
+      if (this.state.str != transcript) {
+        this.setTranscript(transcript);
+      }
+      await wait(REFRESH_INTERVAL);
+    }
+  }
+
+  componentDidMount() {
+    this.watchTranscript();
   }
 
   render() {
