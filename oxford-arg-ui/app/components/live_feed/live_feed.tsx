@@ -26,8 +26,8 @@ import {
   setTranscriptStr,
 } from "../video_player/video_player";
 
-let thatP: any;
-let thatT: any;
+const REFRESH_INTERVAL = 250;
+let queue: any[] = [];
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -38,35 +38,29 @@ async function wait(timeout: number) {
   });
 }
 
+const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
+
 const urls = {
-  Scene1: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 1 VIRIDOS.mp4"
-  ),
-  Scene2: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 2 Line 1 VIRIDOS v2.mp4"
-  ),
-  Scene5: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 5 Line 1 VIRIDOS v3.mp4"
-  ),
-  Scene8: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 8 Line 1 VIRIDOS.mp4"
-  ),
-  Scene9: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 9 RP Mural.mp4"
-  ),
-  Scene12: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 12 Line 1 VIRIDOS.mp4"
-  ),
-  Scene15: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 15 Line 1 VIRIDOS.mp4"
-  ),
-  Scene24: encodeURI(
-    "https://static.viridos.toadtoad.xyz/livefeed-clips/Scene 24 VIRIDOS.mp4"
-  ),
+  Scene1: encodeURI(FOLDER_PATH + "Scene 1 VIRIDOS.mp4"),
+  Scene2: encodeURI(FOLDER_PATH + "Scene 2 Line 1 VIRIDOS v2.mp4"),
+  Scene5: encodeURI(FOLDER_PATH + "Scene 5 Line 1 VIRIDOS v3.mp4"),
+  Scene8: encodeURI(FOLDER_PATH + "Scene 8 Line 1 VIRIDOS.mp4"),
+  Scene9: encodeURI(FOLDER_PATH + "Scene 9 RP Mural.mp4"),
+  Scene12: encodeURI(FOLDER_PATH + "Scene 12 Line 1 VIRIDOS.mp4"),
+  Scene15: encodeURI(FOLDER_PATH + "Scene 15 Line 1 VIRIDOS.mp4"),
+  Scene17: encodeURI(FOLDER_PATH + "Scene 17 VIRIDOS.mp4"),
+  Scene18: encodeURI(FOLDER_PATH + "Scene 18 VIRIDOS.mp4"),
+  Scene20: encodeURI(FOLDER_PATH + "Scene 20 VIRIDOS.mp4"),
+  Scene23: encodeURI(FOLDER_PATH + "Scene 23 VIRIDOS.mp4"),
+  Scene24: encodeURI(FOLDER_PATH + "Scene 24 VIRIDOS.mp4"),
+  Scene25: encodeURI(FOLDER_PATH + "Scene 25 Line 4 VIRIDOS.mp4"),
+  Scene26: encodeURI(FOLDER_PATH + "Scene 26 VIRIDOS.mp4"),
+  Scene27: encodeURI(FOLDER_PATH + "Scene 27 VIRIDOS.mp4"),
 };
 
 const transcriptFeedLines = {
-  Scene2: 'VIRIDOS: Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-',
+  Scene2:
+    "VIRIDOS: Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-",
   Scene5: `VIRIDOS: Oxford is dedicated to career success as seen through our pathway programs. Here our biomed pathway takes its classes. Up ahead is our athletic facilities where our soccer field, baseball field, softball field, track, and...track...are...loca-`,
   Scene8: `VIRIDOS: dak bal (chicken foot), so bal (cow foot), lechuga (lettuce), sandia (watermelon), an yong (hello), ganso (goose), eum ma eui sone mat (mom's handmade food)`,
   Scene12: `VIRIDOS: Welcome to the English building. Not only are English classes taught here, but also our yearbook, ASB, and our school newspaper the Gamut meet in these classrooms as well.`,
@@ -80,11 +74,16 @@ const transcriptFeedLines = {
 
 export { urls };
 
-export function queueLiveFeed(line: string, blockGoto?: boolean) {
+export function queueLiveFeed(
+  line: string,
+  blockGoto?: boolean,
+  endAt?: number
+) {
   if (blockGoto == undefined) {
     blockGoto = false;
   }
-  thatP.queuePlayer(line, blockGoto);
+  let queueObj = { line, blockGoto, endAt };
+  queue.push(queueObj);
   if (transcriptFeedLines[line] != undefined) {
     setTranscriptStr(transcriptFeedLines[line]);
   }
@@ -93,8 +92,9 @@ export function queueLiveFeed(line: string, blockGoto?: boolean) {
 export class LiveFeed extends React.Component {
   // add function to check for current position, and other to queue up a goto
   player: any;
+  phase: any;
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.player;
     this.state = {
@@ -102,16 +102,28 @@ export class LiveFeed extends React.Component {
       video: "",
       blockGoto: false,
     };
-    thatP = this;
-    console.log("thatP: " + thatP);
+    // if(props.phase == undefined) {
+    //   props.phase = -1;
+    // }
+    // this.phase = props.phase;
   }
 
-  queuePlayer(url: string, blockGoto: any) {
+  async checkForVideos() {
+    while (true) {
+      if (queue.length > 0) {
+        let video = queue.shift();
+        this.queuePlayer(video.line, video.blockGoto, video.endAt);
+      }
+      await wait(REFRESH_INTERVAL);
+    }
+  }
+
+  queuePlayer(url: string, blockGoto: any, endAt: number) {
     let boo = true;
     if (urls[url] == undefined) {
       boo = false;
     }
-    this.setState({ video: url, playing: boo, blockGoto });
+    this.setState({ video: url, playing: boo, blockGoto, endAt });
     // setup wait for goto
   }
 
@@ -130,6 +142,24 @@ export class LiveFeed extends React.Component {
     }
   }
 
+  handleProgress(callback: {
+    played?: number;
+    playedSeconds: any;
+    loaded?: number;
+    loadedSeconds?: number;
+  }) {
+    if (this.state.handleProgress != undefined) {
+      if (callback.playedSeconds >= this.state.handleProgress) {
+        this.handleEnd();
+        this.setState({ handleProgress: undefined });
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.checkForVideos();
+  }
+
   render() {
     if (this.state.playing) {
       return (
@@ -141,6 +171,8 @@ export class LiveFeed extends React.Component {
             width={(32 / 21) * deviceWidth}
             playing={this.state.playing}
             onEnded={() => this.handleEnd()}
+            onProgress={(callback) => this.handleProgress(callback)}
+            stopOnUnmount={true}
           />
         </View>
       );
