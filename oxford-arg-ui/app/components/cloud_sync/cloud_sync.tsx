@@ -127,7 +127,10 @@ export async function setCloudStatus(status: number) {
     });
 }
 
-export async function syncUserToCloud(override?: string) {
+export async function syncUserToCloud(
+  override?: string,
+  overrideValue?: number | string
+) {
   let user = firebase.auth().currentUser;
   console.log(user);
   if (user == null) {
@@ -150,13 +153,13 @@ export async function syncUserToCloud(override?: string) {
   console.log("cloud:");
   console.log(cloudStatus);
   console.log("local:");
-  console.log(localStatus)
+  console.log(localStatus);
   if (cloudStatus == null || cloudStatus == NaN) {
     cloudStatus = 1;
   } else {
     cloudStatus = Number.parseInt(cloudStatus);
     if (isNaN(cloudStatus)) {
-      console.log("setting cloud status to 1")
+      console.log("setting cloud status to 1");
       cloudStatus = 1;
     }
   }
@@ -164,9 +167,9 @@ export async function syncUserToCloud(override?: string) {
     localStatus = 1;
   } else {
     localStatus = Number.parseInt(localStatus);
-    console.log(localStatus)
+    console.log(localStatus);
     if (isNaN(localStatus)) {
-      console.log("setting local status to 1")
+      console.log("setting local status to 1");
       localStatus = 1;
     }
   }
@@ -179,11 +182,17 @@ export async function syncUserToCloud(override?: string) {
     higher = localStatus;
   } else if (override == "cloud") {
     higher = cloudStatus;
+  } else if (override == "override") {
+    if (overrideValue == undefined) {
+      higher = Math.max(cloudStatus, localStatus);
+    } else {
+      higher = overrideValue;
+    }
   } else {
     higher = Math.max(cloudStatus, localStatus);
   }
 
-  console.log(higher)
+  console.log(higher);
 
   console.log("setting both to " + higher);
   await setStatus(higher);

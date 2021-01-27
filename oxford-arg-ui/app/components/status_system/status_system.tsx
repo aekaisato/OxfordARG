@@ -427,7 +427,7 @@ export async function startGame() {
   await wait(3000);
   navigatePhase("Phase1");
   await goto(await setStatus(1));
-  await syncUserToCloud("local");
+  await syncUserToCloud("override", 1);
 }
 
 export async function continueGame() {
@@ -441,6 +441,7 @@ export async function continueGame() {
       }
     }
   }
+  console.log(savedStatus)
   await setStatus(savedStatus);
   await syncUserToCloud();
   let phase = "Phase1";
@@ -639,15 +640,12 @@ export class StatusDebugPage extends React.Component {
             />
             <Button
               title="start"
-              onPress={async () => await goto(await setStatus(1))}
+              onPress={async () => await startGame()}
             />
             <Button
               title="continue"
               onPress={async () => {
-                console.warn(
-                  "don't forget to add the thing to switch phase on continue depending on status"
-                );
-                await goto(statusLibrary[Number.parseInt(await getStatus())]);
+                await continueGame();
               }}
             />
           </ScrollView>
