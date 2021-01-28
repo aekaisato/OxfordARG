@@ -21,14 +21,24 @@ function checkForGreen() {
   //@ts-ignore
   let muralImage = $.find("#mural-image");
   if (
+    muralImage.length == 0 ||
     muralImage[0].contentDocument == undefined ||
     muralImage[0].contentDocument == null
   ) {
     return false;
   }
-  let pathStyle = muralImage[0].contentDocument.documentElement.children.namedItem(
-    "path1185"
-  ).attributes.style.nodeValue;
+  let pathStyle;
+  try {
+    pathStyle = muralImage[0].contentDocument.documentElement.children.namedItem(
+      "path1185"
+    ).attributes.style.nodeValue;
+    console.log(pathStyle);
+  } catch (e) {
+    console.warn(e);
+    console.log(muralImage);
+    return;
+  }
+
   pathStyle = pathStyle.replace(/ /g, "");
   console.log(pathStyle);
   var result = {},
