@@ -149,7 +149,7 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     await this.initializeApp();
-    await wait(1000);
+    //await wait(1000);
     this.forceUpdate();
   }
 
