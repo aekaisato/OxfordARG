@@ -42,7 +42,11 @@ import {
   playSound,
   stopCurrentTrack,
 } from "../sound_system/sound_system";
-import { setCompletion, syncUserToCloud } from "../cloud_sync/cloud_sync";
+import {
+  setCloudStatus,
+  setCompletion,
+  syncUserToCloud,
+} from "../cloud_sync/cloud_sync";
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 
 /*
@@ -247,7 +251,7 @@ export async function startGame() {
   await wait(3000);
   navigatePhase("Phase1");
   await goto(await setStatus(1));
-  await syncUserToCloud("override", 1);
+  await setCloudStatus(1);
 }
 
 export async function continueGame() {
