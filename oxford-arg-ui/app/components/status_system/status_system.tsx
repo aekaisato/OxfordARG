@@ -47,13 +47,10 @@ import {
   setCloudStatus,
   setCompletion,
   syncUserToCloud,
-  updateData,
 } from "../cloud_sync/cloud_sync";
 import {
   setLibraryLength,
-  updateLeaderboardData,
 } from "../layout_components/progress_leaderboard/progress_leaderboard";
-import { lib } from "crypto-js";
 
 /*
 const statusLibrary = [
@@ -273,7 +270,6 @@ export async function initProgress() {
 export async function startGame() {
   playSound("start");
   await wait(3000);
-  // await updateData();
   navigatePhase("Phase1");
   await goto(await setStatus(1));
   await setCloudStatus(1);
@@ -318,7 +314,6 @@ export async function continueGame() {
   }
   await syncUserToCloud();
   playMusic(mus);
-  // await updateData();
   navigatePhase(phase);
   await goto(statusLibrary[Number.parseInt(await getStatus())]);
 }

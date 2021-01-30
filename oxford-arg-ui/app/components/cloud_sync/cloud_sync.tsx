@@ -15,7 +15,7 @@ function wait(timeout: number) {
   });
 }
 
-export async function updateData() {
+async function updateData() {
   if (firebase.apps.length === 0) {
     await wait(1000);
     updateData();
