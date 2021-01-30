@@ -40,13 +40,13 @@ export declare interface LeaderboardProps extends ViewProperties {
   color?: string;
 }
 
-export async function updateLeaderboardData(statusData: any) {
+export async function updateLeaderboardData(statusDataP: any) {
   let user = firebase.auth().currentUser;
   let statusDataIn;
-  if (statusData == null) {
+  if (statusDataP == null) {
     statusDataIn = {};
   } else {
-    statusDataIn = await _.cloneDeep(statusData);
+    statusDataIn = await _.cloneDeep(statusDataP);
   }
   if (user != null) {
     //console.warn("uncomment this line");
