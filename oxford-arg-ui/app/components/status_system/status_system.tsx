@@ -32,10 +32,11 @@ import {
 } from "../inventory/mural-clues";
 import {
   queuePlayer,
+  queueStopPlayer,
   setTranscriptLine,
   setTranscriptStr,
 } from "../video_player/video_player";
-import { queueLiveFeed } from "../live_feed/live_feed";
+import { queueLiveFeed, queueStopLiveFeed } from "../live_feed/live_feed";
 import { triggerIPEffect } from "../../other/ip_popup";
 import {
   playMusic,
@@ -48,6 +49,7 @@ import {
   syncUserToCloud,
 } from "../cloud_sync/cloud_sync";
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
+import { lib } from "crypto-js";
 
 /*
 const statusLibrary = [
@@ -123,6 +125,10 @@ export async function goto(status: {
   console.log("attempting goto");
   console.log(status);
 
+  if (status.save == undefined) {
+    status.save = false;
+  }
+
   if (status.type == "puzzle" || status.type == "360") {
     navigatePuzzle(status.value);
   } else if (status.type == "phase") {
@@ -134,10 +140,24 @@ export async function goto(status: {
         temp = true;
       }
     }
-    toLiveFeed();
-    queueLiveFeed(status.value, temp);
+    if (status.value == "STOP") {
+      queueStopLiveFeed();
+    } else {
+      toLiveFeed();
+      queueLiveFeed(status.value, temp, status.endAt, status.splashScreenOnEnd);
+    }
   } else if (status.type == "communicator") {
-    queuePlayer(status.value);
+    let temp = false;
+    if (status.continue != undefined) {
+      if (status.continue == true) {
+        temp = true;
+      }
+    }
+    if (status.value == "STOP") {
+      queueStopPlayer();
+    } else {
+      queuePlayer(status.value, temp, status.endAt);
+    }
   } else if (status.type == "blackout") {
     navigatePhase("BlackoutTransition");
   } else if (status.type == "wait") {
@@ -189,7 +209,7 @@ export async function goto(status: {
       updatePagesCollected1();
       updatePagesCollected2();
       updatePagesCollected3();
-      if (i == Number.parseInt(statusVal)) {
+      if (i == Number.parseInt(statusVal) && library[i].page > 0) {
         alert(
           "You found a notebook page! Check your inventory if you want to see it."
         );

@@ -82,6 +82,10 @@ export function queuePlayer(line: string, blockGoto?: boolean, endAt?: number) {
   queue.push(queueObj);
 }
 
+export function queueStopPlayer() {
+  queue.push("STOP");
+}
+
 interface VideoPlayerProps extends ViewProperties {
   phase?: number;
 }
@@ -111,7 +115,11 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
         let thisPhase = "Phase" + this.phase;
         if (phase == thisPhase) {
           let video = queue.shift();
-          this.queuePlayer(video.line, video.blockGoto, video.endAt);
+          if (video == "STOP") {
+            this.handleEnd();
+          } else {
+            this.queuePlayer(video.line, video.blockGoto, video.endAt);
+          }
         }
       }
       await wait(REFRESH_INTERVAL);
@@ -149,10 +157,12 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
     loaded?: number;
     loadedSeconds?: number;
   }) {
-    if (this.state.handleProgress != undefined) {
-      if (callback.playedSeconds >= this.state.handleProgress) {
-        this.handleEnd();
-        this.setState({ handleProgress: undefined });
+    if (this.state.endAt != undefined) {
+      if (callback.playedSeconds >= this.state.endAt) {
+        (async function () {
+          await goto(await increment());
+        })();
+        this.setState({ endAt: undefined, blockGoto: true });
       }
     }
   }

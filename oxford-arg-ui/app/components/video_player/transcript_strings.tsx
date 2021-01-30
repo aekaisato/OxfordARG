@@ -1,9 +1,9 @@
 const transcriptStrings = {
-  Scene1Line1: `Mr. Alonso: Ah, there you are! Thank you so much for helping me out with the VIRIDOS project! The past few nights have been, uh, kinda busy as we scrambled to get this prototype ready, but now we're...somewhat confident in it. Let me show you how it works.`,
+  Scene1Line1: `Mr. Alonso: Ah, there you are! Thank you so much for helping me out with the ViriDOS project! The past few nights have been, uh, kinda busy as we scrambled to get this prototype ready, but now we're...somewhat confident in it. Let me show you how it works.`,
   Scene3Line1: `Mr. Alonso: That...shouldn't happen. I swear I programmed it on a straight path... Could you take a look to see what's wrong?`,
-  Scene4Line1: `Mr. Alonso: Hm, there seems to be an odd script in VIRIDOS's files now. Hopefully that's just a one-off glitch hehe, let's continue the test.`,
+  Scene4Line1: `Mr. Alonso: Hm, there seems to be an odd script in ViriDOS's files now. Hopefully that's just a one-off glitch hehe, let's continue the test.`,
   Scene6Line1: `Mr. Alonso: Huh, back here again? ...that's odd...there's some transmission sending data directly to the robot! No-one else should have access to control it... and why would they bring it here...? A-Anyway, why don't you go and fix the robot.`,
-  Scene7Line1: `Mr. Alonso: Again? Another weird file showed up in VIRIDOS...what is going on? Its programming looks good now, hopefully that's the last of any technical difficulties.`,
+  Scene7Line1: `Mr. Alonso: Again? Another weird file showed up in ViriDOS...what is going on? Its programming looks good now, hopefully that's the last of any technical difficulties.`,
   Scene9Line1: `Mr. Alonso: Gosh darn robot, why won't you work!? There's gotta be something else wrong, I've checked the code 5 times now! Check the wall for anything odd...maybe there's some interference. Or what about those weird files from earlier?`,
   Scene9Line2: `Mr. Alonso: Wait! My connection's breaking up! What's going on?! I can't see!`,
   Scene10Line1: `HOSHI Representative: To whoever finds this...we cannot let Whitney uncover the findings to Project Emerald. We have scattered the most important pieces of research throughout the school. If you are reading this, find the research...it is imperative in order to conquer the Whitney Wildcats. Don't worry, we will be there with you throughout your tour.`,
@@ -25,7 +25,7 @@ const transcriptStrings = {
   Scene21Line2: `Mrs. Stephan: How's the tour been so far? I know you can't respond to that, but I just hope you're enjoying it. Huh, that's odd. The lights are out. Is everything okay there? Uh...anyway... Right now, we're in Mr. Kim's room, and did you know he has a stash of Choco Pies in that cabinet over there? It's too bad he put a lock on it...`,
   Scene21Line3: `Mr. Kim's Class Representative: Hi I'm Mr. Kim's class president. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?`,
   Scene21Line4: `Mrs. Stephan: Wait, what's tha--`,
-  Scene21Line5: `HOSHI Representative: Good, you found the page. VIRIDOS will guide you to the next location.`,
+  Scene21Line5: `HOSHI Representative: Good, you found the page. ViriDOS will guide you to the next location.`,
   Scene22Line1: `Siggson TA: Oh, hello. Glad you're here. When I heard there was a blackout I decided to check in on the classroom. For whatever reason, someone threw a safe into it. There's also a slip of paper, but I can't read it from my camera angle.`,
   Scene22Line2: `HOSHI Representative: We've almost stopped Whitney from getting into our system. It should be safe to say this now: go to the locker rooms.`,
   Scene23Line2: `Ms. Jensen: I thought I heard that tour robot, glad I caught you guys! The blackout must've done something funky; there are a bunch of posters that I haven't seen before! Maybe you guys can go check it out?`,
@@ -42,7 +42,7 @@ const transcriptStrings = {
   Scene27Line1: `Mr. Wei: Ok, I was looking through the various pathway classrooms when all of the computers started glitching out. Only one of them works, but it's stuck on the same screen. It seems like it's an application to program something, but I'm not at the computer myself. Since your robot is on campus, can you see if you can figure it out?`,
   Scene28Line1: `HOSHI Representative: Awesome, I"m so glad you were able to piece it all together. The secret is safe now, our engineers have blocked Whitney's connection.`,
   Scene30Line1: `HOSHI Representative: And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out`,
-  Scene30line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has VIRIDOS gone through?? (sigh), I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
+  Scene30line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through?? (sigh), I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
 }
 
 export { transcriptStrings };

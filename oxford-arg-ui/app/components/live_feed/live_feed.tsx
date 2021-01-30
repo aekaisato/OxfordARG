@@ -25,6 +25,7 @@ import {
   setTranscriptLine,
   setTranscriptStr,
 } from "../video_player/video_player";
+import { navigatePhase, navigatePuzzle } from "../navigation/navigation";
 
 const REFRESH_INTERVAL = 250;
 let queue: any[] = [];
@@ -56,20 +57,21 @@ const urls = {
   Scene25: encodeURI(FOLDER_PATH + "Scene 25 Line 4 VIRIDOS.mp4"),
   Scene26: encodeURI(FOLDER_PATH + "Scene 26 VIRIDOS.mp4"),
   Scene27: encodeURI(FOLDER_PATH + "Scene 27 VIRIDOS.mp4"),
+  Tutorial: encodeURI(FOLDER_PATH + "Tutorial.mp4"),
 };
 
 const transcriptFeedLines = {
-  Scene2:
-    "VIRIDOS: Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-",
-  Scene5: `VIRIDOS: Oxford is dedicated to career success as seen through our pathway programs. Here our biomed pathway takes its classes. Up ahead is our athletic facilities where our soccer field, baseball field, softball field, track, and...track...are...loca-`,
-  Scene8: `VIRIDOS: dak bal (chicken foot), so bal (cow foot), lechuga (lettuce), sandia (watermelon), an yong (hello), ganso (goose), eum ma eui sone mat (mom's handmade food)`,
-  Scene12: `VIRIDOS: Welcome to the English building. Not only are English classes taught here, but also our yearbook, ASB, and our school newspaper the Gamut meet in these classrooms as well.`,
-  Scene15: `VIRIDOS: We are approaching the hallway to the main office, the brains of Oxford. Our administrators work -`,
-  Scene17: `VIRIDOS: As we approach the math building, I'd like to take this opportunity to tell explain the different math tracks we-`,
-  Scene18: `VIRIDOS: This is our science wing. We have a variety of courses and clubs associated with science.`,
-  Scene21: `VIRIDOS: Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.`,
-  Scene23: `VIRIDOS: As we approach the locker rooms, I'd like to take this chance to let you know about the plethora of athletics Oxford offers. Despite us being an academic school, we do-`,
-  Scene25: `VIRIDOS: Oxford is part of the Anaheim Union High School District...`,
+  Scene2: `ViriDOS: Welcome, everyone, and thank you for taking the time to join us today. Oxford Academy is a Gold Ribbon School and a National Blue Ribbon School. It is ranked #2 in California and #19 in the nation by the US News and World Report in 2020. Please keep your hands, arms, feet and legs, inside your house while the robot is movi-`,
+  Scene5: `ViriDOS: Oxford is dedicated to career success as seen through our pathway programs. Here our biomed pathway takes its classes. Up ahead is our athletic facilities where our soccer field, baseball field, softball field, track, and...track...are...loca-`,
+  Scene8: `ViriDOS: dak bal (chicken foot), so bal (cow foot), lechuga (lettuce), sandia (watermelon), an yong (hello), ganso (goose), eum ma eui sone mat (mom's handmade food)`,
+  Scene12: `ViriDOS: Welcome to the English building. Not only are English classes taught here, but also our yearbook, ASB, and our school newspaper the Gamut meet in these classrooms as well.`,
+  Scene15: `ViriDOS: We are approaching the hallway to the main office, the brains of Oxford. Our administrators work -`,
+  Scene17: `ViriDOS: As we approach the math building, I'd like to take this opportunity to tell explain the different math tracks we-`,
+  Scene18: `ViriDOS: This is our science wing. We have a variety of courses and clubs associated with science.`,
+  Scene21: `ViriDOS: Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.`,
+  Scene23: `ViriDOS: As we approach the locker rooms, I'd like to take this chance to let you know about the plethora of athletics Oxford offers. Despite us being an academic school, we do-`,
+  Scene25: `ViriDOS: Oxford is part of the Anaheim Union High School District...`,
+  Tutorial: `transcript go brrrrrr`,
 };
 
 export { urls };
@@ -77,16 +79,24 @@ export { urls };
 export function queueLiveFeed(
   line: string,
   blockGoto?: boolean,
-  endAt?: number
+  endAt?: number,
+  splashScreenOnEnd?: boolean
 ) {
   if (blockGoto == undefined) {
     blockGoto = false;
   }
-  let queueObj = { line, blockGoto, endAt };
+  if (splashScreenOnEnd == undefined) {
+    splashScreenOnEnd = false;
+  }
+  let queueObj = { line, blockGoto, endAt, splashScreenOnEnd };
   queue.push(queueObj);
   if (transcriptFeedLines[line] != undefined) {
     setTranscriptStr(transcriptFeedLines[line]);
   }
+}
+
+export function queueStopLiveFeed() {
+  queue.push("STOP");
 }
 
 export class LiveFeed extends React.Component {
@@ -101,6 +111,7 @@ export class LiveFeed extends React.Component {
       playing: false,
       video: "",
       blockGoto: false,
+      splashScreenOnEnd: false,
     };
     // if(props.phase == undefined) {
     //   props.phase = -1;
@@ -112,18 +123,38 @@ export class LiveFeed extends React.Component {
     while (true) {
       if (queue.length > 0) {
         let video = queue.shift();
-        this.queuePlayer(video.line, video.blockGoto, video.endAt);
+        if (video == "STOP") {
+          this.handleEnd();
+        } else {
+          this.queuePlayer(
+            video.line,
+            video.blockGoto,
+            video.endAt,
+            video.splashScreenOnEnd
+          );
+        }
       }
       await wait(REFRESH_INTERVAL);
     }
   }
 
-  queuePlayer(url: string, blockGoto: any, endAt: number) {
+  queuePlayer(
+    url: string,
+    blockGoto: any,
+    endAt: number,
+    splashScreenOnEnd: boolean
+  ) {
     let boo = true;
     if (urls[url] == undefined) {
       boo = false;
     }
-    this.setState({ video: url, playing: boo, blockGoto, endAt });
+    this.setState({
+      video: url,
+      playing: boo,
+      blockGoto,
+      endAt,
+      splashScreenOnEnd,
+    });
     // setup wait for goto
   }
 
@@ -133,6 +164,10 @@ export class LiveFeed extends React.Component {
 
   handleEnd() {
     this.setState({ playing: false, video: "" });
+    if (this.state.splashScreenOnEnd) {
+      navigatePuzzle("SplashScreen");
+      this.setState({ splashScreenOnEnd: false });
+    }
     if (this.state.blockGoto) {
       this.setState({ blockGoto: true });
     } else {
@@ -148,10 +183,12 @@ export class LiveFeed extends React.Component {
     loaded?: number;
     loadedSeconds?: number;
   }) {
-    if (this.state.handleProgress != undefined) {
-      if (callback.playedSeconds >= this.state.handleProgress) {
-        this.handleEnd();
-        this.setState({ handleProgress: undefined });
+    if (this.state.endAt != undefined) {
+      if (callback.playedSeconds >= this.state.endAt) {
+        (async function () {
+          await goto(await increment());
+        })();
+        this.setState({ endAt: undefined, blockGoto: true });
       }
     }
   }
