@@ -49,6 +49,7 @@ import {
   syncUserToCloud,
 } from "../cloud_sync/cloud_sync";
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
+import { NavigationEvents } from "react-navigation";
 
 /*
 const statusLibrary = [
@@ -443,6 +444,11 @@ export class StatusDebugPage extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents
+          onDidFocus={() => {
+            console.log(statusLibrary);
+          }}
+        />
         <ImageBackground
           style={styles.container}
           source={require("../../../assets/dylan-temp.jpg")}

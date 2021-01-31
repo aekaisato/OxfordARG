@@ -43,8 +43,7 @@ async function wait(timeout: number) {
   });
 }
 
-//  const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
-const FOLDER_PATH = "https://s3-us-west-1.amazonaws.com/static.viridos.toadtoad.xyz/livefeed-clips/";
+const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
 
 const urls = {
   Scene1: encodeURI(FOLDER_PATH + "Scene 1 VIRIDOS.mp4"),
@@ -120,7 +119,6 @@ export class LiveFeed extends React.Component {
       video: "",
       blockGoto: false,
       splashScreenOnEnd: false,
-      isActive: true,
     };
     // if(props.phase == undefined) {
     //   props.phase = -1;
@@ -163,9 +161,6 @@ export class LiveFeed extends React.Component {
     endAt: number,
     splashScreenOnEnd: boolean
   ) {
-    if (!this.state.isActive) {
-      return;
-    }
     let boo = true;
     if (urls[url] == undefined) {
       boo = false;
@@ -227,16 +222,6 @@ export class LiveFeed extends React.Component {
     if (this.state.playing) {
       return (
         <View style={styles.container}>
-          <NavigationEvents
-            onDidBlur={() => {
-              console.log("blur live feed");
-              this.setState({ isActive: false });
-            }}
-            onDidFocus={() => {
-              console.log("focus live feed");
-              this.setState({ isActive: true });
-            }}
-          />
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}
