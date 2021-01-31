@@ -43,7 +43,8 @@ async function wait(timeout: number) {
   });
 }
 
-const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
+//  const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
+const FOLDER_PATH = "https://s3-us-west-1.amazonaws.com/static.viridos.toadtoad.xyz/livefeed-clips/";
 
 const urls = {
   Scene1: encodeURI(FOLDER_PATH + "Scene 1 VIRIDOS.mp4"),
