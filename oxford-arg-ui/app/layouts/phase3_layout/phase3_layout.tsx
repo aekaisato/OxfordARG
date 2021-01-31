@@ -404,6 +404,7 @@ export class Phase3Layout extends React.Component {
                   width: deviceWidth - 48,
                 }}
                 color="red"
+                dotColor="red"
               />
             </View>
           </Phase3Window>

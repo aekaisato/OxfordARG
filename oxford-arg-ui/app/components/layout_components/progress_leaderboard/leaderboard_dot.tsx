@@ -17,13 +17,27 @@ import {
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
-export class LeaderboardDot extends React.Component<ViewProperties> {
+interface LeaderboardDotProps extends ViewProperties {
+  color?: string;
+}
+
+export class LeaderboardDot extends React.Component<LeaderboardDotProps> {
+  color: string;
+  constructor(props: Readonly<LeaderboardDotProps>) {
+    super(props);
+    if (props.color == undefined) {
+      this.color = "white";
+    } else {
+      this.color = props.color;
+    }
+  }
+
   render() {
     return (
       <View
         style={[
           {
-            backgroundColor: "white",
+            backgroundColor: this.color,
             opacity: 0.33,
             width: deviceHeight / 100,
             height: deviceHeight / 100,

@@ -41,9 +41,11 @@ const transcriptStrings = {
   Scene26Line1: `Mr. Hogan: Glad I ran into you. I just received this cryptic email from someone from Whitney?? Do you know what's going on? You're free to use my piano if you feel like it.`,
   Scene26Line2: `Mr. Hogan: What an interesting tune. I hope everything will be alright; best of luck.`,
   Scene27Line1: `Mr. Wei: Ok, I was looking through the various pathway classrooms when all of the computers started glitching out. Only one of them works, but it's stuck on the same screen. It seems like it's an application to program something, but I'm not at the computer myself. Since your robot is on campus, can you see if you can figure it out?`,
+  Scene27Line2: `brandon, you made the line numbers out of order for the videos!`,
+  Scene27Line3: `brandon, you did it twice!`,
   Scene28Line1: `HOSHI Representative: Awesome, I"m so glad you were able to piece it all together. The secret is safe now, our engineers have blocked Whitney's connection.`,
   Scene30Line1: `HOSHI Representative: And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out`,
-  Scene30line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through?? (sigh), I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
+  Scene30Line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through?? (sigh), I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
 }
 
 export { transcriptStrings };

@@ -327,6 +327,7 @@ export class Phase2Layout extends React.Component {
                   width: deviceWidth - 48,
                 }}
                 color="red"
+                dotColor="red"
               />
             </View>
           </Phase2Window>

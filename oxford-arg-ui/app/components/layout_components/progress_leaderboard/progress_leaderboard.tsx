@@ -37,6 +37,7 @@ export async function setLibraryLength(length: number) {
 
 export declare interface LeaderboardProps extends ViewProperties {
   color?: string;
+  dotColor?: string;
 }
 
 export async function updateLeaderboardData(statusDataP: any) {
@@ -56,6 +57,7 @@ export async function updateLeaderboardData(statusDataP: any) {
 
 export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
   color: string;
+  dotColor: string;
   // add firebase stuff here
   constructor(props: Readonly<LeaderboardProps>) {
     super(props);
@@ -67,6 +69,11 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
       this.color = "black";
     } else {
       this.color = props.color;
+    }
+    if (props.dotColor == undefined) {
+      this.dotColor = "white";
+    } else {
+      this.dotColor = props.dotColor;
     }
   }
 
@@ -120,6 +127,7 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
               position: "absolute",
               left: this.getDotLocation(this.state.statusData[item]),
             }}
+            color={this.dotColor}
           />
         ))}
       </View>

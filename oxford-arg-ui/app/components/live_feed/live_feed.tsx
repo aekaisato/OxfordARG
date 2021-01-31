@@ -62,6 +62,7 @@ const urls = {
   Scene25: encodeURI(FOLDER_PATH + "Scene 25 Line 4 VIRIDOS.mp4"),
   Scene26: encodeURI(FOLDER_PATH + "Scene 26 VIRIDOS.mp4"),
   Scene27: encodeURI(FOLDER_PATH + "Scene 27 VIRIDOS.mp4"),
+  Scene28: encodeURI(FOLDER_PATH + "Scene+28-30+Final+Reveal.mp4"),
   Tutorial: encodeURI(FOLDER_PATH + "Tutorial.mp4"),
 };
 

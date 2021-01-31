@@ -446,27 +446,108 @@ const statusLibrary = [
     save: false,
   },
   {
+    type: "livefeed",
+    value: "Scene25",
+    save: false,
+    endAt: 1.3,
+  },
+  {
+    type: "communicator",
+    value: "Scene25Line3",
+  },
+  {
+    type: "wait",
+    value: 3500,
+  },
+  {
+    type: "livefeed",
+    value: "STOP",
+    save: false,
+    continue: true,
+  },
+  {
     type: "360",
     value: "ChoirRoom",
-    save: false,
+    save: true,
+    continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene26Line1",
+    blockGoto: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene27Line2",
+    page: 9,
+  },
+  {
+    type: "livefeed",
+    value: "Scene27",
+    endAt: 3,
+  },
+  {
+    type: "communicator",
+    value: "Scene27Line3",
   },
   {
     type: "360",
     value: "PathwayRoom",
-    save: false,
-    page: 9,
+    save: true,
+    continue: true,
+  },
+  {
+    type: "communicator",
+    blockGoto: true,
+    value: "Scene27Line1",
+  },
+  {
+    type: "transcript",
+    value: "Use the notebook. Solve the puzzle. Discover our secret.",
+    continue: true,
+    save: true,
+    page: 10,
   },
   {
     type: "puzzle",
     value: "Puzzle16",
     save: false,
-    page: 10,
   },
   {
     type: "music",
     value: "STOP",
     continue: true,
     save: false,
+  },
+  {
+    type: "livefeed",
+    value: "Scene28",
+    endAt: 10,
+  },
+  {
+    type: "communicator",
+    value: "Scene28Line1",
+  },
+  {
+    type: "wait",
+    value: 12000,
+  },
+  {
+    type: "communicator",
+    value: "Scene30Line1",
+  },
+  {
+    type: "wait",
+    value: 2000,
+  },
+  {
+    type: "communicator",
+    value: "Scene30Line2",
+  },
+  {
+    type: "livefeed",
+    value: "STOP",
+    continue: true,
   },
   {
     type: "completion",
@@ -477,7 +558,7 @@ const statusLibrary = [
   {
     type: "phase",
     value: "CompletionScreen",
-    save: false,
+    save: true,
   },
 ];
 
