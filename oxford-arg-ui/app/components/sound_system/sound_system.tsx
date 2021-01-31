@@ -28,7 +28,7 @@ const soundDirectory = "/static/sfx/";
 const musicDirectory = "/static/mus/";
 
 Howler.volume(0.6);
-const MUSIC_VOLUME = 0.3;
+const MUSIC_VOLUME = 0.2;
 const USE_HTML5 = false;
 
 async function wait(timeout: number) {
