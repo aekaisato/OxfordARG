@@ -2,7 +2,7 @@ title: VIRIDOS: An Oxford ARG
 credit: written by
 author: Brandon Imai and Aiden Sato
 source: Story by Brandon Imai and Aiden Sato
-draft date: 1-16-2020 ver. 1.2.3
+draft date: 1-30-2020 ver. 2.0.1
 
 ext. computer science building #1#
 
@@ -197,9 +197,9 @@ VIRIDOS makes a sharp right into Ms. Tran's classroom.
 TRANSITION TO:
 int. Oxford Academy, science classroom (Tran) #19#
 
-OFFICE TA
+MS. TRAN
 (via transmission)
-Hey, good thing I caught you! Ms. Tran got this slip of paper this morning saying to look at her periodic table but she doesn't know what it means. Do you think you can take a look at it?
+Hey, how's it going? I got this slip of paper this morning saying to look at my periodic table but I don't know what it means. Do you think you can give it a shot?
 
 **_PUZZLE #7 (SCIENCE)_**
 
@@ -249,9 +249,8 @@ MRS. STEPHAN goes onto the communicator.
 MRS. STEPHAN
 How's the tour been so far? I *know* you can't respond to that, but I just hope you're enjoying it. Huh, that's odd. The lights are out. Is everything okay there? Uh...anyway... Right now, we're in Mr. Kim's room, and did you know he has a stash of Choco Pies in that cabinet over there? It's too bad he put a lock on it...
 
-MS. SONG
-Actually, neither Mr. Kim nor I did that. I was in Mr. Kim's classroom grabbing supplies and it wasn't like that so someone must've came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
-[[I think Korean class has this right?]]
+MR. KIM'S CLASS REPRESENTATIVE
+Hi, I"m Mr. Kim's class president. Someone came in and locked it up leaving a strange note on the desk. Hey, since you're here, why don't you check it out?
 
 **_PUZZLE #9 (World Language Puzzle)_**
 [[Puzzle - similar to https://i.vgy.me/WB5kzU.png]]
@@ -268,6 +267,9 @@ Same map system, this time with the 100 building.
 
 CUT TO:
 int. oxford academy, history classroom (siggson) #22#
+
+VIRIDOS
+Welcome to the history building, the capsule to Earth's past. We offer a variety of classes from European, American, and World History as well as American Government and Economics. 
 
 SIGGSON TA
 Oh, hello. Glad you're here. When I heard there was a blackout I decided to check in on the classroom. For whatever reason, someone threw a safe into it. There's also a slip of paper, but I can't read it from my camera angle.
