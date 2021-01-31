@@ -55,19 +55,13 @@ export class Puzzle10 extends React.Component {
         iframeContents[0].body.innerHTML.indexOf("You Win!") >= 0
       ) {
         console.log("do stuff here");
-        (async function () {
-          await wait(2000);
-          await goto(await increment());
-        })();
+        await wait(1000);
+        await goto(await increment());
         return;
       } else {
         await wait(1000);
       }
     }
-  }
-
-  componentDidMount() {
-    this.checkCode();
   }
 
   render() {
