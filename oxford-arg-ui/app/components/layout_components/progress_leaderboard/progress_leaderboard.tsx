@@ -14,10 +14,9 @@ import {
   Layout,
   Text,
 } from "@ui-kitten/components";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/auth";
 import { LeaderboardDot } from "./leaderboard_dot";
-import { Shake } from "reshake";
 import _ from "lodash";
 
 let deviceHeight = Dimensions.get("window").height;
@@ -74,7 +73,7 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
   async updateState() {
     while (true) {
       this.setState({ statusData: statusData, libraryLength: libraryLength });
-      await wait(5000);
+      await wait(30000);
     }
   }
 
@@ -85,7 +84,6 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
   getDotLocation(data: any) {
     let status = data.status;
     let percentage = (status / this.state.libraryLength) * 100;
-    console.log(percentage);
     return percentage + "%";
   }
 
@@ -112,27 +110,17 @@ export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
               position: "absolute",
               left: -3,
               height: 0,
+              backgroundColor: this.color,
             },
           ]}
         />
         {Object.keys(this.state.statusData).map((item: any) => (
-          <Shake
-            h={5}
-            v={5}
-            r={0}
-            dur={1000}
-            int={12.5}
-            max={100}
-            fixed={true}
-            fixedStop={false}
-            freez={false}
+          <LeaderboardDot
             style={{
               position: "absolute",
               left: this.getDotLocation(this.state.statusData[item]),
             }}
-          >
-            <LeaderboardDot />
-          </Shake>
+          />
         ))}
       </View>
     );

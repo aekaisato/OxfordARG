@@ -29,6 +29,7 @@ const musicDirectory = "/static/mus/";
 
 Howler.volume(0.6);
 const MUSIC_VOLUME = 0.3;
+const USE_HTML5 = false;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -51,12 +52,19 @@ const sounds = {
 const music = {
   mus1: new Howl({
     src: [musicDirectory + "mus1.mp3"],
+    html5: USE_HTML5,
   }),
   mus2: new Howl({
     src: [musicDirectory + "mus2.mp3"],
+    html5: USE_HTML5,
   }),
   mus3: new Howl({
     src: [musicDirectory + "mus3.mp3"],
+    html5: USE_HTML5,
+    sprite: {
+      startLoop: [38492, 76834],
+      loop: [0, 115226, true],
+    },
   }),
 };
 
@@ -80,7 +88,26 @@ export async function playMusic(track: string) {
   music[track].volume(MUSIC_VOLUME);
   music[track].loop(true);
   console.log("attempting to playing track " + track);
-  music[track].play();
+  console.log(music[track]);
+  if (
+    music[track]._sprite.__default != undefined ||
+    Object.keys(music[track]._sprite).length == 0
+  ) {
+    console.log("normal loop");
+    music[track].play();
+  } else {
+    console.log("sprite loop");
+    let keys = Object.keys(music[track]._sprite);
+    music[track].loop(false);
+    music[track].once("end", () => {
+      if (keys.length >= 1) {
+        music[track].play(keys[1]);
+      }
+    });
+    music[track].volume(0);
+    music[track].play(keys[0]);
+    music[track].fade(0, MUSIC_VOLUME, 1000);
+  }
   musCurrent = track;
 }
 

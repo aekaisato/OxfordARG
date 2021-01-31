@@ -41,7 +41,6 @@ let map2d: string[][] = [];
 while (mapArr.length) {
   map2d.push(mapArr.splice(0, 8));
 }
-console.log(map2d);
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {

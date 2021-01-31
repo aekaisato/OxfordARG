@@ -93,7 +93,6 @@ export { images };
 let that: this;
 
 export function setPage(page: number) {
-  console.log("setting state?");
   if (page > images.length) {
     images = allImages.slice(0, page);
     that.forceUpdate();

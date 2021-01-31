@@ -70,10 +70,10 @@ export class MainMenu extends React.Component {
     let waitTimes;
     let hasOpened = await AsyncStorage.getItem("hasSeenMainMenu");
     if (hasOpened == null) {
-      waitTimes = [800, 20, 350, 920, 3, 5, 1200];
+      waitTimes = [800, 20, 350, 920, 3, 5, 4, 1200];
       await AsyncStorage.setItem("hasSeenMainMenu", "true");
     } else {
-      waitTimes = [0, 0, 0, 0, 0, 0, 0];
+      waitTimes = [0, 0, 0, 0, 0, 0, 0, 0];
     }
     await wait(waitTimes[0]);
     this.xtermRef.terminal.write("ViriDOS Remote Operating System");
@@ -86,14 +86,20 @@ export class MainMenu extends React.Component {
       "Please sign up or login before beginning the game."
     );
     await wait(waitTimes[4]);
+    this.xtermRef.terminal.writeln("");
+    this.xtermRef.terminal.writeln(
+      "WARNING: USING 'START' WILL OVERWRITE YOUR GAME SAVE, IF YOU HAVE ALREADY STARTED THE GAME. IF YOU HAVE STARTED THE GAME BEFORE, DO NOT USE 'START' UNLESS YOU ARE SURE YOU WOULD LIKE TO RESTART."
+    );
+    this.xtermRef.terminal.writeln("");
+    await wait(waitTimes[5]);
     this.xtermRef.terminal.writeln(
       `Available commands are "signup", "login", "logout", "start", and "continue".`
     );
-    await wait(waitTimes[5]);
+    await wait(waitTimes[6]);
     this.xtermRef.terminal.writeln(
       "Type in a command (without quotes), then press the ENTER key to run it.\n"
     );
-    await wait(waitTimes[6]);
+    await wait(waitTimes[7]);
     this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
 
     this.setState({ inited: true });

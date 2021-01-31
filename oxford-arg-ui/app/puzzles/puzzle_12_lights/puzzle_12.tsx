@@ -34,8 +34,6 @@ for (let i = 0; i < 3; i++) {
   map.push(tempArr);
 }
 
-console.log(map);
-
 async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);

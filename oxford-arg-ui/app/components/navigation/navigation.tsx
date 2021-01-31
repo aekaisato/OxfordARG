@@ -89,7 +89,7 @@ export function navigatePhase(routeName: any, params?: any) {
 }
 
 export function toLiveFeed() {
-  console.log("nav to screen");
+  console.log("nav to live feed");
   _puzzleNavigator.dispatch(
     NavigationActions.navigate({ routeName: "LiveFeed" })
   );

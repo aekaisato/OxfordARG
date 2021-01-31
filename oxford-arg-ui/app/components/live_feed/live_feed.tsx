@@ -9,6 +9,7 @@ import {
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
+  NavigationEvents,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
@@ -19,13 +20,16 @@ import {
   Layout,
 } from "@ui-kitten/components";
 import ReactPlayer from "react-player/lazy";
-import { transcriptStrings } from "./transcript_strings";
 import { goto, increment } from "../status_system/status_system";
 import {
   setTranscriptLine,
   setTranscriptStr,
 } from "../video_player/video_player";
-import { navigatePhase, navigatePuzzle } from "../navigation/navigation";
+import {
+  getCurrentPhase,
+  navigatePhase,
+  navigatePuzzle,
+} from "../navigation/navigation";
 
 const REFRESH_INTERVAL = 250;
 let queue: any[] = [];
@@ -52,6 +56,7 @@ const urls = {
   Scene17: encodeURI(FOLDER_PATH + "Scene 17 VIRIDOS.mp4"),
   Scene18: encodeURI(FOLDER_PATH + "Scene 18 VIRIDOS.mp4"),
   Scene20: encodeURI(FOLDER_PATH + "Scene 20 VIRIDOS.mp4"),
+  Scene22: encodeURI(FOLDER_PATH + "Scene 22 VIRIDOS.mp4"),
   Scene23: encodeURI(FOLDER_PATH + "Scene 23 VIRIDOS.mp4"),
   Scene24: encodeURI(FOLDER_PATH + "Scene 24 VIRIDOS.mp4"),
   Scene25: encodeURI(FOLDER_PATH + "Scene 25 Line 4 VIRIDOS.mp4"),
@@ -69,6 +74,7 @@ const transcriptFeedLines = {
   Scene17: `ViriDOS: As we approach the math building, I'd like to take this opportunity to tell explain the different math tracks we-`,
   Scene18: `ViriDOS: This is our science wing. We have a variety of courses and clubs associated with science.`,
   Scene21: `ViriDOS: Welcome to the Language Building. At Oxford we offer, Spanish and Korean languages. Additionally, we also have two of our pathways in this building Virtual Enterprise and Engineering.`,
+  Scene22: `wheres the transcript, *brandon*?`,
   Scene23: `ViriDOS: As we approach the locker rooms, I'd like to take this chance to let you know about the plethora of athletics Oxford offers. Despite us being an academic school, we do-`,
   Scene25: `ViriDOS: Oxford is part of the Anaheim Union High School District...`,
   Tutorial: `transcript go brrrrrr`,
@@ -112,6 +118,7 @@ export class LiveFeed extends React.Component {
       video: "",
       blockGoto: false,
       splashScreenOnEnd: false,
+      isActive: true,
     };
     // if(props.phase == undefined) {
     //   props.phase = -1;
@@ -122,16 +129,26 @@ export class LiveFeed extends React.Component {
   async checkForVideos() {
     while (true) {
       if (queue.length > 0) {
-        let video = queue.shift();
-        if (video == "STOP") {
-          this.handleEnd();
+        let currentPhase = getCurrentPhase();
+        let objPhase = this.state.phase;
+        console.log("obj phase");
+        console.log(objPhase);
+        console.log("current phase");
+        console.log(currentPhase);
+        if (objPhase != currentPhase) {
+          console.log("obj phase and current phase do not match");
         } else {
-          this.queuePlayer(
-            video.line,
-            video.blockGoto,
-            video.endAt,
-            video.splashScreenOnEnd
-          );
+          let video = queue.shift();
+          if (video == "STOP") {
+            this.handleEnd();
+          } else {
+            this.queuePlayer(
+              video.line,
+              video.blockGoto,
+              video.endAt,
+              video.splashScreenOnEnd
+            );
+          }
         }
       }
       await wait(REFRESH_INTERVAL);
@@ -144,6 +161,9 @@ export class LiveFeed extends React.Component {
     endAt: number,
     splashScreenOnEnd: boolean
   ) {
+    if (!this.state.isActive) {
+      return;
+    }
     let boo = true;
     if (urls[url] == undefined) {
       boo = false;
@@ -194,6 +214,10 @@ export class LiveFeed extends React.Component {
   }
 
   componentDidMount() {
+    let phaseTemp = getCurrentPhase();
+    console.log("mounted live feed");
+    console.log(phaseTemp);
+    this.setState({ phase: phaseTemp });
     this.checkForVideos();
   }
 
@@ -201,6 +225,16 @@ export class LiveFeed extends React.Component {
     if (this.state.playing) {
       return (
         <View style={styles.container}>
+          <NavigationEvents
+            onDidBlur={() => {
+              console.log("blur live feed");
+              this.setState({ isActive: false });
+            }}
+            onDidFocus={() => {
+              console.log("focus live feed");
+              this.setState({ isActive: true });
+            }}
+          />
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}

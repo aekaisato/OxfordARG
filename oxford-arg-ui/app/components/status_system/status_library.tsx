@@ -1,3 +1,5 @@
+import { transcriptStrings } from "../video_player/transcript_strings";
+
 const statusLibrary = [
   // shift pages and flags to match their actual location
   // add continue property to show when not to wait for next status
@@ -120,12 +122,26 @@ const statusLibrary = [
     value: "Scene9",
     save: false,
     continue: true,
-    splashScreenOnEnd: true
+    splashScreenOnEnd: true,
   },
   {
     type: "communicator",
-    value: "Scene9Line2",
-    endAt: 9,
+    value: "Scene10",
+    continue: true,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene9Line2"],
+    continue: true,
+  },
+  {
+    type: "wait",
+    value: 12000,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene10Line1"],
+    continue: true,
   },
   {
     type: "music",
@@ -133,46 +149,138 @@ const statusLibrary = [
     continue: true,
   },
   {
+    type: "wait",
+    value: 28000,
+  },
+  {
     type: "communicator",
-    value: "Scene10Line1",
+    value: "Scene11Line1",
+    page: 0,
+  },
+  {
+    type: "wait",
+    value: 500,
+  },
+  {
+    type: "livefeed",
+    value: "Scene12",
+    endAt: 11,
+    save: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene12Line2",
+  },
+  {
+    type: "wait",
+    value: 500,
+    save: false,
   },
   {
     type: "360",
     value: "EnglishRoom",
     save: false,
-    page: 0,
+    continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene13Line1",
+    blockGoto: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene14Line1",
+    page: 1,
+  },
+  {
+    type: "communicator",
+    value: "Scene14Line2",
+  },
+  {
+    type: "livefeed",
+    value: "Scene15",
+    endAt: 17,
+    save: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene15Line2",
+  },
+  {
+    type: "wait",
+    value: 500,
+    save: false,
   },
   {
     type: "360",
     value: "OfficeRoom",
     save: false,
-    page: 1,
+  },
+  {
+    type: "communicator",
+    value: "Scene16Line1",
+    page: 2,
+  },
+  {
+    type: "livefeed",
+    value: "Scene17",
+    save: true,
+    endAt: 7,
+  },
+  {
+    type: "communicator",
+    value: "Scene17Line1",
+  },
+  {
+    type: "wait",
+    value: 500,
+    save: false,
   },
   {
     type: "360",
     value: "MathRoom",
     save: false,
-    page: 2,
   },
-  /*
   {
-    type: "puzzle",
-    value: "Puzzle6",
+    type: "livefeed",
+    value: "Scene18",
+    endAt: 15,
+    page: 3,
     save: true,
   },
-  //*/
+  {
+    type: "communicator",
+    value: "Scene19Line1",
+  },
+  {
+    type: "wait",
+    value: 500,
+    save: false,
+  },
   {
     type: "360",
     value: "ScienceRoom",
     save: false,
-    page: 3,
+  },
+  {
+    type: "communicator",
+    value: "Scene19Line2",
+    page: 4,
+  },
+  {
+    type: "livefeed",
+    value: "Scene20",
+    endAt: 2,
   },
   {
     type: "music",
     value: "STOP",
-    page: 4,
     continue: true,
     save: false,
+  },
+  {
+    type: "communicator",
+    value: "Scene20Line1",
   },
   {
     type: "blackout",
@@ -182,8 +290,12 @@ const statusLibrary = [
   {
     type: "phase",
     value: "Phase2",
-    save: false,
+    save: true,
     continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene20Line2",
   },
   {
     type: "music",
@@ -198,37 +310,135 @@ const statusLibrary = [
   {
     type: "360",
     value: "LanguageRoom",
-    save: false,
+    save: true,
+    continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene21Line1",
+    endAt: 34,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene21Line1P2"],
+  },
+  {
+    type: "communicator",
+    value: "Scene21Line2",
+    endAt: 2,
+    page: 5,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene21Line2P2"],
+    continue: true,
+  },
+  {
+    type: "wait",
+    value: 4000,
+  },
+  {
+    type: "livefeed",
+    value: "Scene22",
+    save: true,
   },
   {
     type: "360",
     value: "HistoryRoom",
-    save: false,
-    page: 5,
+    continue: true,
+  },
+  {
+    blockGoto: true,
+    type: "communicator",
+    value: "Scene22Line1",
+  },
+  {
+    type: "communicator",
+    value: "Scene22Line2",
+    page: 6,
+  },
+  {
+    type: "livefeed",
+    value: "Scene23",
+    save: true,
+    endAt: 9,
+  },
+  {
+    type: "communicator",
+    value: "Scene23Line2",
   },
   {
     type: "360",
     value: "PERoom",
     save: false,
-    page: 6,
+  },
+  {
+    type: "communicator",
+    value: "Scene23Line3",
+    page: 7,
   },
   {
     type: "puzzle",
     value: "Puzzle12",
-    save: false,
-    page: 7,
+    save: true,
+    continue: true,
   },
   {
-    type: "phase",
-    value: "Phase3",
-    save: false,
-    page: 8,
+    type: "communicator",
+    value: "Scene24Line1",
+    endAt: 11,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene24Line1P2"],
+  },
+  {
+    type: "puzzle",
+    value: "SplashScreen",
     continue: true,
+    page: 8,
+    save: true,
+  },
+  {
+    type: "wait",
+    value: 2000,
+  },
+  {
+    type: "communicator",
+    value: "Scene25Line1",
+    continue: true,
+  },
+  {
+    type: "wait",
+    value: 500,
   },
   {
     type: "music",
     value: "mus3",
     continue: true,
+  },
+  {
+    type: "wait",
+    value: 17000,
+  },
+  {
+    type: "ip_popup",
+    value: "heck yea!",
+    continue: true,
+  },
+  {
+    type: "wait",
+    value: 2000,
+  },
+  {
+    type: "phase",
+    value: "Phase3",
+    continue: true,
+  },
+  {
+    type: "communicator",
+    value: "Scene25Line2",
+    endAt: 13,
   },
   {
     type: "puzzle",
@@ -240,13 +450,6 @@ const statusLibrary = [
     value: "ChoirRoom",
     save: false,
   },
-  /*
-  {
-    type: "puzzle",
-    value: "Puzzle14",
-    save: false,
-  },
-  //*/
   {
     type: "360",
     value: "PathwayRoom",

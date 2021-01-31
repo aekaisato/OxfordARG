@@ -20,9 +20,13 @@ import {
   Text,
 } from "@ui-kitten/components";
 import { goto, increment } from "../../components/status_system/status_system";
+import { queuePlayer } from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
+
+let freeze = false;
+let count = 0;
 
 const mapping = {
   name: "my-map",
@@ -44,7 +48,9 @@ async function wait(timeout: number) {
 }
 
 async function correctLink() {
-  console.warn("add stuff here for the correct stuff");
+  if (freeze) {
+    return;
+  }
   (async function () {
     await wait(2000);
     await goto(await increment());
@@ -52,11 +58,31 @@ async function correctLink() {
 }
 
 async function incorrectLink() {
-  alert("incorrect"); // replace alert with video rant
-  console.warn("add stuff here for the incorrect stuff");
+  if (freeze) {
+    return;
+  }
+  count++;
+  let freezeLength = 0;
+  if (count == 1) {
+    queuePlayer("Scene20Error1", true);
+    freezeLength = 3222;
+  } else if (count == 2) {
+    queuePlayer("Scene20Error2", true);
+    freezeLength = 3755;
+  } else if (count >= 3) {
+    queuePlayer("Scene20Error3", true);
+    freezeLength = 8955;
+  }
+  freeze = true;
+  await wait(freezeLength);
+  freeze = false;
 }
 
 export class Puzzle8 extends React.Component {
+  state = {
+    incorrectCount: 0,
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -96,12 +122,6 @@ export class Puzzle8 extends React.Component {
             <path
               style={{
                 opacity: 0,
-                fill: "#000000",
-                stroke: "#000000",
-                strokeWidth: 5,
-                strokeLinecap: "butt",
-                strokeLinejoin: "miter",
-                strokeOpacity: 1,
               }}
               d="m 1305.2007,455.68513 83.5455,-0.30922 0.5214,76.65489 -84.0669,-1.13075 z"
               id="path14"

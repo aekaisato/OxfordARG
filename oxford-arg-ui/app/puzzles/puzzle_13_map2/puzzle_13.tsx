@@ -5,7 +5,7 @@ import {
   Dimensions,
   Button,
   ImageBackground,
-  Text
+  Text,
 } from "react-native";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
@@ -20,9 +20,13 @@ import {
   Layout,
 } from "@ui-kitten/components";
 import { goto, increment } from "../../components/status_system/status_system";
+import { queuePlayer } from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
+
+let freeze = false;
+let count = 0;
 
 const mapping = {
   name: "my-map",
@@ -44,7 +48,9 @@ async function wait(timeout: number) {
 }
 
 async function correctLink() {
-  console.warn("add stuff here for the correct stuff");
+  if (freeze) {
+    return;
+  }
   (async function () {
     await wait(2000);
     await goto(await increment());
@@ -52,8 +58,24 @@ async function correctLink() {
 }
 
 async function incorrectLink() {
-  alert("incorrect"); // replace alert with video rant
-  console.warn("add stuff here for the incorrect stuff");
+  if (freeze) {
+    return;
+  }
+  count++;
+  let freezeLength = 0;
+  if (count == 1) {
+    queuePlayer("Scene25Error1", true);
+    freezeLength = 4022;
+  } else if (count == 2) {
+    queuePlayer("Scene25Error2", true);
+    freezeLength = 2255;
+  } else if (count >= 3) {
+    queuePlayer("Scene25Error3", true);
+    freezeLength = 9255;
+  }
+  freeze = true;
+  await wait(freezeLength);
+  freeze = false;
 }
 
 export class Puzzle13 extends React.Component {
@@ -96,12 +118,6 @@ export class Puzzle13 extends React.Component {
             <path
               style={{
                 opacity: 0,
-                fill: "#000000",
-                stroke: "#000000",
-                strokeWidth: 5,
-                strokeLinecap: "butt",
-                strokeLinejoin: "miter",
-                strokeOpacity: 1,
               }}
               d="m 324.47368,97.079727 1.09324,88.771103 24.48858,-0.21865 0.4373,46.13474 84.61679,1.09324 -1.31189,-135.780433 z"
               id="path14"

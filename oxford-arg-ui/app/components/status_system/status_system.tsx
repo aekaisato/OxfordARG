@@ -48,9 +48,7 @@ import {
   setCompletion,
   syncUserToCloud,
 } from "../cloud_sync/cloud_sync";
-import {
-  setLibraryLength,
-} from "../layout_components/progress_leaderboard/progress_leaderboard";
+import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 
 /*
 const statusLibrary = [
@@ -62,7 +60,7 @@ const statusLibrary = [
 ];
 //*/
 
-console.warn("shift pages and flags to match their actual location");
+// console.warn("shift pages and flags to match their actual location");
 
 setLibraryLength(statusLibrary.length);
 
@@ -141,6 +139,11 @@ export async function goto(status: {
         temp = true;
       }
     }
+    if (status.blockGoto != undefined) {
+      if (status.blockGoto == true) {
+        temp = true;
+      }
+    }
     if (status.value == "STOP") {
       queueStopLiveFeed();
     } else {
@@ -151,6 +154,11 @@ export async function goto(status: {
     let temp = false;
     if (status.continue != undefined) {
       if (status.continue == true) {
+        temp = true;
+      }
+    }
+    if (status.blockGoto != undefined) {
+      if (status.blockGoto == true) {
         temp = true;
       }
     }
@@ -180,6 +188,8 @@ export async function goto(status: {
     } else {
       setTranscriptStr(status.value);
     }
+  } else if (status.type == "ip_popup") {
+    triggerIPEffect();
   }
 
   if (status.save == true) {

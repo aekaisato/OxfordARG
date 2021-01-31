@@ -26,7 +26,7 @@ let deviceWidth = Dimensions.get("window").width;
 const cipherText = "Iulhqgv, Urpdqv, Frxqwubphq, ohqg ph brxu hduv: Wklv whdfkhu'v jxlgh kdv ehhq wdnhq ryhu eb KRVKL™. Li brx'uh orrnlqj iru zkdw zh'yh fuhdwhg, wkh sdvvzrug wr wkh vdih lq wkh fdelqhw lv **hljkw-wkuhh-ilyh-qlqh**. Li brx'uh qrw rq wkh txhvw, wkhq frpsohwhob ljqruh zkdw zh mxvw vdlg. Dqg li brx'uh iurp Zklwqhb, ohdyh. Wkdqn brx!";
 const cT1 = cipherText.substring(0, cipherText.length / 2);
 const cT2 = cipherText.substring(cipherText.length / 2);
-console.log(cipherText);
+//console.log(cipherText);
 
 export class Puzzle4Book extends React.Component {
   render() {
