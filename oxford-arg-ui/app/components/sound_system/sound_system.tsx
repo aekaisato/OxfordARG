@@ -134,6 +134,10 @@ export class SoundTest extends React.Component {
           {Object.keys(sounds).map((key) => (
             <Button title={key} onPress={() => playSound(key)} />
           ))}
+          {Object.keys(music).map((key) => (
+            <Button title={key} onPress={() => playMusic(key)} />
+          ))}
+          <Button title={"STOP"} onPress={() => playMusic("STOP")} />
         </ImageBackground>
       </View>
     );
