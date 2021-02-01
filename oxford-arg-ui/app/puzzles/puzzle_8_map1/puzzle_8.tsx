@@ -3,44 +3,18 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  Button,
+  Text,
   ImageBackground,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from "@ui-kitten/components";
 import { goto, increment } from "../../components/status_system/status_system";
 import { queuePlayer } from "../../components/video_player/video_player";
 
-let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 let freeze = false;
 let complete = false;
 let count = 0;
 
-const mapping = {
-  name: "my-map",
-  areas: [
-    {
-      name: "303",
-      shape: "poly",
-      coords: [980, 400, 980, 455, 1040, 455, 1040, 400],
-      preFillColor: "#FF0000",
-      fillColor: "#000000",
-    },
-  ],
-};
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {

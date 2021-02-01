@@ -10,45 +10,18 @@ import {
   Image,
   Button,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { Phase1Window } from "./phase1_window";
 import {
   ScrollView,
   TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
-import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
-import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
-import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
-import { Puzzle4Book } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_book";
-import { Puzzle4Safe } from "../../puzzles/puzzle_4_caesarcipher/puzzle_4_safe";
-import { Puzzle5Safe } from "../../puzzles/puzzle_5_posters/puzzle_5_safe";
-import { Puzzle5Crossword } from "../../puzzles/puzzle_5_posters/puzzle_5_crossword";
-import { Puzzle6 } from "../../puzzles/puzzle_6_sudoku/puzzle_6";
-import { Puzzle7 } from "../../puzzles/puzzle_7_ptable/puzzle_7";
-import { Puzzle3 } from "../../puzzles/puzzle_3_mural/puzzle_3";
 import {
   Inventory,
   notebookEnabled,
 } from "../../components/inventory/inventory";
-import { Puzzle9 } from "../../puzzles/puzzle_9_language/puzzle_9";
-import { Puzzle14 } from "../../puzzles/puzzle_14_piano/puzzle_14";
-import { Puzzle15 } from "../../puzzles/puzzle_15_navigator/puzzle_15";
-import { Puzzle10 } from "../../puzzles/puzzle_10_trail/puzzle_10";
-import { StatusDebugPage } from "../../components/status_system/status_system";
 import {
   PuzzleNavigator,
   setPuzzleNavigator,

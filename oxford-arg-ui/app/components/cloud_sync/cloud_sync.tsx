@@ -1,8 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import { useReducer } from "react";
-import { AsyncStorage } from "react-native";
 import { updateCompletionData } from "../../other/completion_screen";
 import { updateLeaderboardData } from "../layout_components/progress_leaderboard/progress_leaderboard";
 import { getStatus, setStatus } from "../status_system/status_system";

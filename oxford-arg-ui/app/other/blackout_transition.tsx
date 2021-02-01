@@ -1,18 +1,8 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Text } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
-  createAppContainer,
   NavigationEvents,
-  SafeAreaView,
-  ThemeContext,
 } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { playSound } from "../components/sound_system/sound_system";
 import ReactPlayer from "react-player/lazy";
 import { goto, increment } from "../components/status_system/status_system";

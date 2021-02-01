@@ -5,29 +5,9 @@ import {
   Dimensions,
   Text,
   ImageBackground,
-  Image,
-  NativeSyntheticEvent,
-  TextInputKeyPressEventData,
   Button,
   ScrollView,
-  TouchableHighlightBase,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
-import { TextInput } from "react-native-gesture-handler";
-import md5 from "crypto-js/md5";
-import { fontFamily } from "html2canvas/dist/types/css/property-descriptors/font-family";
-import { borderTopWidth } from "html2canvas/dist/types/css/property-descriptors/border-width";
 import update from "react-addons-update";
 import { goto, increment } from "../../components/status_system/status_system";
 

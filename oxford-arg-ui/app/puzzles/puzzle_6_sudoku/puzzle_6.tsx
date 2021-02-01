@@ -3,23 +3,9 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  Image,
   ImageBackground,
   Button,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from "@ui-kitten/components";
 //@ts-ignore
 import { sudoku } from "./sudoku.js-master/sudoku";
 import { TextInput } from "react-native-gesture-handler";
@@ -42,8 +28,6 @@ const sudokuGrid = sudoku.board_string_to_grid(sudokuStr);
 // const solutionsIncomplete = ["1852811944621891168", "1852819144621819168", "8151281944268191681", "8151289144268119681"];
 
 
-let deviceHeight = Dimensions.get("window").height;
-let deviceWidth = Dimensions.get("window").width;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {

@@ -1,19 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, ViewProperties } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  NavigationEvents,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from "@ui-kitten/components";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { LeaderboardDot } from "./leaderboard_dot";
@@ -49,7 +35,6 @@ export async function updateLeaderboardData(statusDataP: any) {
     statusDataIn = await _.cloneDeep(statusDataP);
   }
   if (user != null) {
-    //console.warn("uncomment this line");
     delete statusDataIn[user.uid];
   }
   statusData = statusDataIn;
@@ -58,7 +43,6 @@ export async function updateLeaderboardData(statusDataP: any) {
 export class ProgressLeaderboard extends React.Component<LeaderboardProps> {
   color: string;
   dotColor: string;
-  // add firebase stuff here
   constructor(props: Readonly<LeaderboardProps>) {
     super(props);
     this.state = {

@@ -4,30 +4,13 @@ import {
   View,
   Dimensions,
   Text,
-  ImageBackground,
-  Image,
-  NativeSyntheticEvent,
-  TextInputKeyPressEventData,
   Button,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { TextInput } from "react-native-gesture-handler";
 import md5 from "crypto-js/md5";
 import { goto, increment } from "../../components/status_system/status_system";
 import { queuePlayer } from "../../components/video_player/video_player";
 
-let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 async function wait(timeout: number) {
@@ -36,9 +19,6 @@ async function wait(timeout: number) {
   });
 }
 
-function getRandomArbitrary(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
 
 export class Puzzle16 extends React.Component {
   // add blurred background of classroom

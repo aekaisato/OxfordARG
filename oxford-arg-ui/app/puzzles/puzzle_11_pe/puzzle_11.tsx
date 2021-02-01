@@ -1,22 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Button } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from "@ui-kitten/components";
+import { StyleSheet, View, Dimensions } from "react-native";
 import { goto, increment } from "../../components/status_system/status_system";
-
-let deviceHeight = Dimensions.get("window").height;
-let deviceWidth = Dimensions.get("window").width;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -24,12 +8,6 @@ async function wait(timeout: number) {
   });
 }
 
-async function continueTemp() {
-  (async function () {
-    await wait(2000);
-    await goto(await increment());
-  })();
-}
 
 window.addEventListener("message", function (e) {
   const data = e.data;

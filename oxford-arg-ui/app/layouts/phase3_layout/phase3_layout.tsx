@@ -3,29 +3,14 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ImageBackground,
   Animated,
-  Easing,
   Text,
   Image,
   Button,
   TouchableWithoutFeedback,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { Phase3Window } from "./phase3_window";
 import { ScrollView } from "react-native-gesture-handler";
-import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";
@@ -102,34 +87,6 @@ export class Phase3Layout extends React.Component {
     inventoryDisplay: "none",
     pagesCollected: 0,
   };
-  /*
-  async glitchScreen() {
-    let canvasTemp;
-    let ctx;
-    let imageData;
-    let image;
-    while (true) {
-      canvasTemp = await html2canvas(document.body, {
-        imageTimeout: 0,
-        logging: false,
-        removeContainer: true,
-      });
-      ctx = await canvasTemp.getContext("2d");
-      if (ctx == null) {
-        console.log("null canvas");
-        return;
-      }
-      imageData = await ctx.getImageData(0, 0, deviceWidth, deviceHeight);
-      await ctx.clearRect(0, 0, deviceWidth, deviceHeight);
-      image = await glitch({ amount: 8, iterations: 20 })
-        .fromImageData(imageData)
-        .toDataURL();
-      console.log(image);
-      await wait(getRandomArbitrary(350, 1200));
-      await this.setState({ glitchImage: image });
-    }
-  }
-//*/
 
   async glitchScreen() {
     while (true) {

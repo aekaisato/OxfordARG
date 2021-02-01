@@ -6,21 +6,6 @@ import {
   Text,
   ViewProperties,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
-
-let deviceHeight = Dimensions.get("window").height;
-let deviceWidth = Dimensions.get("window").width;
 
 export declare interface WindowProps extends ViewProperties {
   windowName?: string;
@@ -100,10 +85,4 @@ export class Phase3Window extends React.Component<WindowProps> {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+

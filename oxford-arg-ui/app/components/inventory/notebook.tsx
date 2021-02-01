@@ -1,27 +1,9 @@
 import React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-  Text,
-} from "@ui-kitten/components";
-import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
+import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 import { ViewProperties } from "react-native";
-import {
-  getLibrary,
-  getStatus,
-  setStatus,
-} from "../status_system/status_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;

@@ -1,17 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, Text, ViewProperties } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 //@ts-ignore
 import butterchurn from "butterchurn";
 //@ts-ignore
@@ -45,11 +33,6 @@ function startRenderer() {
   visualizer.render();
 }
 
-async function wait(timeout: number) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, timeout);
-  });
-}
 
 export declare interface SplashScreenProps extends ViewProperties {
   showText?: boolean;

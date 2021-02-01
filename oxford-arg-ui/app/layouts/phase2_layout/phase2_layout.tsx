@@ -3,29 +3,14 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  ImageBackground,
   Animated,
-  Easing,
   Text,
   Image,
   Button,
   TouchableWithoutFeedback,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { Phase2Window } from "./phase2_window";
 import { ScrollView } from "react-native-gesture-handler";
-import { Audio, Video } from "expo-av";
 import { CodeDisplay } from "../../components/layout_components/code_display/code_display";
 import { ProgressBar } from "../../components/layout_components/progress_bar/progress_bar";
 import { ProgressLeaderboard } from "../../components/layout_components/progress_leaderboard/progress_leaderboard";

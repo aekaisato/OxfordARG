@@ -6,19 +6,6 @@ import {
   Text,
   ViewProperties,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  NavigationEvents,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import ReactPlayer from "react-player/lazy";
 import { transcriptStrings } from "./transcript_strings";
 import { goto, increment } from "../status_system/status_system";

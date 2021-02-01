@@ -1,19 +1,6 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text, Button } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
+import { StyleSheet, View, Dimensions } from "react-native";
 import $ from "jquery";
-
 import Mural from "../../../assets/mural/rosaparks-mural-interactive.svg";
 import { goto, increment } from "../../components/status_system/status_system";
 
@@ -83,8 +70,6 @@ async function wait(timeout: number) {
   });
 }
 
-let deviceHeight = Dimensions.get("window").height;
-let deviceWidth = Dimensions.get("window").width;
 
 export class Puzzle3 extends React.Component {
   componentDidMount() {

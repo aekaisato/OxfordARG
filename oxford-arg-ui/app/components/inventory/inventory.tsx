@@ -5,21 +5,8 @@ import {
   Dimensions,
   ViewProperties,
   Button,
-} from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
   Text,
-} from "@ui-kitten/components";
-import { TouchableHighlight } from "react-native-gesture-handler";
+} from "react-native";
 import { MuralClues } from "./mural-clues";
 import { Notebook } from "./notebook";
 import { playSound } from "../sound_system/sound_system";
@@ -134,7 +121,13 @@ export class Inventory extends React.Component<InventoryProps> {
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <Text style={{ fontFamily: "Noto-Sans", fontSize: deviceWidth / 100 }}>
+        <Text
+          style={{
+            fontFamily: "Noto-Sans",
+            fontSize: deviceWidth / 100,
+            color: "white",
+          }}
+        >
           Inventory (Click outside this window to close it)
         </Text>
         <View
@@ -159,6 +152,7 @@ export class Inventory extends React.Component<InventoryProps> {
                 fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 32,
                 textAlign: "center",
+                color: "white",
               }}
             >
               {this.state.muralClueTitle}
@@ -168,6 +162,7 @@ export class Inventory extends React.Component<InventoryProps> {
                 fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 100,
                 textAlign: "center",
+                color: "white",
               }}
             >
               {this.state.muralClueDescription}
@@ -194,6 +189,7 @@ export class Inventory extends React.Component<InventoryProps> {
                 fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 32,
                 textAlign: "center",
+                color: "white",
               }}
             >
               {this.state.notebookTitle}
@@ -203,6 +199,7 @@ export class Inventory extends React.Component<InventoryProps> {
                 fontFamily: "Noto-Sans",
                 fontSize: deviceWidth / 100,
                 textAlign: "center",
+                color: "white",
               }}
             >
               {this.state.notebookDescription}
@@ -231,7 +228,13 @@ export class Inventory extends React.Component<InventoryProps> {
             />
           </View>
           <View style={{ position: "absolute", top: 20, alignSelf: "center" }}>
-            <Text style={{ fontFamily: "Noto-Sans", alignSelf: "center" }}>
+            <Text
+              style={{
+                fontFamily: "Noto-Sans",
+                alignSelf: "center",
+                color: "white",
+              }}
+            >
               drag and drop the images (a tad buggy, but deal with it)
             </Text>
           </View>

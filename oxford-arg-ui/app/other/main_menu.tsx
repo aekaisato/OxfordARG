@@ -1,20 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text, AsyncStorage } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
+import { StyleSheet, View, Dimensions, AsyncStorage } from "react-native";
 import {
-  createAppContainer,
   NavigationEvents,
-  SafeAreaView,
-  ThemeContext,
 } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import { XTerm } from "xterm-for-react";
-import { images } from "../components/inventory/notebook";
 import {
   continueGame,
   startGame,
@@ -121,7 +110,6 @@ export class MainMenu extends React.Component {
       this.setState({ typingPassword: false });
       if (this.state.doingSmth.length > 0) {
         this.xtermRef.terminal.writeln("");
-        const input = this.state.input.trim();
         if (this.state.doingSmth == "login") {
           this.setState({ email: this.state.input });
           this.login2();

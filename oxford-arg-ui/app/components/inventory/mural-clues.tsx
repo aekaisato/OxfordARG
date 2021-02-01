@@ -5,22 +5,8 @@ import {
   Dimensions,
   ViewProperties,
   Text,
-  Image as ImageRN,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 import Draggable from "react-native-draggable";
-import { isUnlocked } from "../status_system/status_system";
 import { enableMuralClues } from "./inventory";
 
 let deviceHeight = Dimensions.get("window").height;

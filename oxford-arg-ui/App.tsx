@@ -1,18 +1,11 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import {
   createAppContainer,
   SafeAreaView,
   ThemeContext,
 } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { default as appTheme } from "./custom-theme.json";
-import { mapping } from "@eva-design/eva";
-import { light as lightTheme } from "@eva-design/eva";
-import { default as darkTheme } from "./dark-mapping.json";
-import { default as customMapping } from "./custom-mapping.json";
-import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import * as Font from "expo-font";
 import { AppLoading } from "expo";
 
@@ -40,8 +33,6 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-const theme = { ...darkTheme };
 
 function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -159,19 +150,12 @@ export default class App extends React.Component {
     } else {
       return (
         <React.Fragment>
-          <IconRegistry icons={EvaIconsPack} />
-          <ApplicationProvider
-            mapping={mapping}
-            theme={theme}
-            customMapping={customMapping}
-          >
-            <AppNavigator
-              ref={(navigatorRef) => {
-                setPhaseNavigator(navigatorRef);
-              }}
-            />
-            <IPPopup />
-          </ApplicationProvider>
+          <AppNavigator
+            ref={(navigatorRef) => {
+              setPhaseNavigator(navigatorRef);
+            }}
+          />
+          <IPPopup />
         </React.Fragment>
       );
     }

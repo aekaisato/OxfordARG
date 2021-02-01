@@ -3,26 +3,10 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  Text,
   ImageBackground,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
 
 import html from "./tower-of-hanoi-master/index.html";
-
-let deviceHeight = Dimensions.get("window").height;
-let deviceWidth = Dimensions.get("window").width;
 
 export class Puzzle2 extends React.Component {
   render() {

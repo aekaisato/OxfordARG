@@ -3,27 +3,9 @@ import {
   StyleSheet,
   View,
   Dimensions,
-  Text,
   ImageBackground,
   Image,
-  NativeSyntheticEvent,
-  TextInputKeyPressEventData,
-  Button,
 } from "react-native";
-import { EvaIconsPack } from "@ui-kitten/eva-icons";
-import {
-  createAppContainer,
-  SafeAreaView,
-  ThemeContext,
-} from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import {
-  ApplicationProvider,
-  IconRegistry,
-  Layout,
-} from "@ui-kitten/components";
-import { TextInput } from "react-native-gesture-handler";
-import md5 from "crypto-js/md5";
 //@ts-ignore
 import { Piano, KeyboardShortcuts, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
@@ -31,7 +13,6 @@ import SoundfontProvider from "./SoundfontProvider";
 import { goto, increment } from "../../components/status_system/status_system";
 const _ = require("lodash");
 
-let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
