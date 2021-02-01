@@ -436,552 +436,48 @@ const styles = StyleSheet.create({
 });
 
 const creditsString = `
-PYTHON (MONTY) PICTURES LTD
-in association with
-MICHAEL WHITE
-presents
+VIRIDOS - An Oxford ARG
 
 
 
 
+Created by 
+Aiden Sato and Brandon Imai
 
+Story by
+Aiden Sato and Brandon Imai
 
+Written by
+Aiden Sato and Brandon Imai
 
-Monty Python
-and
-The Holy Grail
-
-
-
-Mønti Pythøn ik den Hølie Gräilen
-
-
-
-
-
-
-
-
-
-Written and performed by:
-Graham Chapman
-John Cleese
-Eric Idle
-Terry Gilliam
-Terry Jones
-Michael Palin
-
-
-
-
-
-Røten nik Akten Di
-
-
-
-
-
-
-
-
-
-
-
-
-
-With
-Connie Booth
-Carol Cleveland
-Neil Innes
-Bee Duffell
-John Young
-Rita Davies
-
-
-
-
-
-Wik
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Also appearing
-Avril Stewart
-Sally Kinghon
-
-
-
-
-
-
-
-Alsø wik
-
-
-
-
-
-
-
-
-
-
-Also also appearing
-     Mark Zycon     Elspeth Cameron
-Mitsuko Forstater     Sandy Johnson    
-    Sandy Rose     Romilly Squire
-   Joni Flynn     Alison Walker
-Loraine Ward     Anna Lanski 
-      Sally Coombe     Vivienne Macdonald
-   Yvonne Dick     Daphne Darling
- Fiona Gordon     Gloria Graham
-    Judy Lams     Tracy Sneddon
-Sylvia Taylor     Joyce Pollner
-Mary Allen
-
-
-
-Alsø alsø wik
-
-
-
-
-
-
-
-
-
-
-
-
-Camera Operator     HOWARD ATHERTON
-Camera Focus     JOHN WELLARD
-Camera Assistant     ROGER PRATT     
-Camera Grip     RAY HALL   
-Chargehand Electrician     TERRY HUNT            
-                     Lighting     TELEFILM LIGHTING SERVICE LTD
-                             ANDREW RITCHIE & SON LTD
-                TECHNICOLOR
-Rostrum Cameraman     KENT HOUSTON     
- 
-
-
-
-Wi nøt trei a høliday in Sweden this yër ?
-
-
-
-
-
-
-
-
-
-
-
-Sound Recordist     GARTH MARSHALL 
-Sound Mixer     HUGH STRAIN
- Boom Swinger     GODFREY KIRBY
-Sound Maintenance     PHILIP CHUBB     
-Sound Assistant     ROBERT DOYLE   
-Dubbing Editor     JOHN FOSTER   
-        Assistant Editors     JOHN MISTER, NICK GASTER,
-                              ALEXANDER CAMPBELL ASKEW,
-                                    BRIAN PEACHEY, DANIELLE KOCHAVI
-Sound Effects     IAN CRAFFORD 
-  
-
-
-
-See the løveli lakes
-
-
-
-
-
-
-
-
-
-
-
-
- Continuity     PENNY EYLES
-     Accountant     BRIAN BROCKWELL
-Production Secretary     CHRISTINE WATT      
-  Property Buyer     BRIAN WINTERBORN
-Property Master     TOM RAEBURN    
-                Property Men     ROY CANNON, CHARLIE TORBETT,
-                 MIKE KENNEDY
-        Catering     RON HELLARD LTD.
-             Vehicles     BUDGET RENT-A-CAR LTD
-
-
-
-
-The wøndërful telephøne system
-
-
-
-
-
-
-
-
-
-
-
-
-
-Assistant Art Director     PHILIP COWLAM         
-Construction Manager     BILL HARMAN         
-             Carpenters     NOBBY CLARK, BOB DEVINE
-        Painter     GRAHAM BULLOCK 
-    Stagehand     JIM N. SAVERY
-     Rigger     ED SULLIVAN
-
-
-
-
-
-
-And mäni interesting furry animals
-
-
-
-
-
-
-
-                              With special extra thanks to
-Charlie Knode, Brian McNulty, John Gledhill, Peter Thomson, Sue Cable,
-Valerie Charlton, Drew Mara, Sue Smith, Charlie Coulter, Iain Monaghan,
-Steve Bennell, Bernard Belenger, Alpini McAlpine, Hugh Boyle, Dave Taylor,
-Gary Cooper, Peter Saunders, Les Shepherd, Vaughn Millard, Hamish MacInnes,
-Terry Mosaic, Bawn O'Beirne Ranelagh.
-
-Made entirely on location in Scotland at Doune Castle, Castle Stalker, Killin, Glen Coe,
-Arnhall Castle, Bracklim Falls, Sherriffmuir.
-
-By Python (Monty) Pictures Limited, 20, Fitzroy Square, London W1 England.
-And completed at Twickenham Film Studios, England.
-Copyright (c) 1974 National Film Trustee Company Limited.
-All rights reserved.
-
-
-
-The Producers would like to thank the Forestry Commission,
-Doune Admissions Ltd, Keir & Cawdor Estates, Stirling University,
-and the people of Doune for their help in the making of this film.
-
-The Characters and incidents portrayed and the names used are fictitious and
-any similarity to the names, characters, or history of any person is entirely
-accidental and unintentional.
-                       Signed RICHARD M. NIXON
-
-
-
-Including the majestik møøse
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Songs
-NEIL INNES
-
-Additional music
-DEWOLFE
-
-
-
-
-
-
-A Møøse once bit my sister...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Costume Designer
-HAZEL PETHIG
-
-
-
-
-
-  No realli! She was Karving her initials øn the møøse with the sharpened end  
-  of an interspace tøøthbrush given her by Svenge - her brother-in-law -an Oslo
-  dentist and star of many Norwegian møvies: "The Høt Hands of an Oslo         
-  Dentist", "Fillings of Passion", "The Huge Mølars of Horst Nordfink"...      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-We apologise for the fault in the
-subtitles. Those responsible have been
-sacked.
-
-
-
-
-
-
-
-
-Mynd you, møøse bites Kan be pretty nasti...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-We apologise again for the fault in the
-subtitles. Those responsible for sacking
-the people who have just been sacked,
-have been sacked.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Production Manager     JULIAN DOYLE      
-Assistant Director     GERRY HARRISON    
-Special Effects     JOHN HORTON    
- Choreography     LEO KHARIBIAN
-Fight Director & Period Consultant     JOHN WALLER                       
-         Make Up Artists     PEARL RASHBASS, PAM LUKE
-Special Effects Photography     JULIAN DOYLE               
-        Animation Assistance     LUCINDA COWELL, KATE HEPBURN
-             Møøse Trained by     YUTTE HERMSGERVØRDENBRØTBØRDA
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Lighting Cameraman     TERRY BEDFORD     
-Special Møøse Effects     OLAF PROT            
- Møøse Costumes     SIGGI CHURCHILL
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- Designer     ROY SMITH
-Møøse choreographed by     HORST PROT III        
-Miss Taylor's Møøses by     HENGST DOUGLAS-HOME    
-     Møøse trained to mix concrete and                                           
-sign complicated insurance forms by     JURGEN WIGG                        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      Editor     JOHN HACKNEY
-       Møøses noses wiped by     BJØRN IRKESTØM-SLATER WALKER
- Large møøse on the left hand side                                       
-of the screen in the third scene from the                                              
-end, given a thorough grounding in Latin,                                              
-French and "O" Level Geography by     BO BENN                          
-Suggestive poses for the møøse                                   
-
-suggested by     VIC ROTTER  
-Antler-care by     LIV THATCHER  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     The directors of the firm hired to     
-     continue the credits after the other   
-     people had been sacked, wish it to     
-     be known that they have just been      
-     sacked.                                
-
-     The credits have been completed        
-     in an entirely different style at great
-     expense and at the last minute.        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Executive Producer
-JOHN GOLDSTONE & "RALPH" The Wonder Llama
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Executive Producers
+Oxford PTSA
+Julie Sato
 
 Producer
-MARK FORSTATER
+Brandon Imai
 
-Assisted By
-EARL J. LLAMA
-MILT Q. LLAMA III
-SY LLAMA
-MERLE Z. LLAMA IX
+Cinematographer
+Aiden Sato
 
-
+Script Coordinator
+Brandon Imai
 
 
 
 
 
+Head of Programming
+Aiden Sato
+
+Video Editor
+Brandon Imai
+
+Special Effects Coordinator
+Aiden Sato
+
+Puzzle Team
+Brandon Imai, Lance Sahagun, Aiden Sato, Cory Spessert, and Joshua Spessert
 
 
 
@@ -989,26 +485,95 @@ MERLE Z. LLAMA IX
 
 
 
-Directed By
 
-40 SPECIALLY TRAINED
-ECUADORIAN MOUNTAIN LLAMAS
+CAST (in order of appearance)
 
-6 VENEZUELAN RED LLAMAS
+MR. ALONSO
+Himself
 
-142 MEXICAN WHOOPING LLAMAS
+VIRIDOS TUTORIAL VOICE
+Brandon Imai
 
-14 NORTH CHILEAN GUANACOS
-(CLOSELY RELATED TO THE LLAMA)
+VIRIDOS
+Salli Text to Speech Voice
 
-REG LLAMA OF BRIXTON
+HOSHI REPRESENTATIVE
+Aiden Sato
 
-76000 BATTERY LLAMAS
-FROM "LLAMA-FRESH" FARMS LTD. NEAR PARAGUAY
+MS. FONG
+Herself
 
-and
+MR. HERNANDEZ
+Himself
 
-TERRY GILLIAM & TERRY JONES
+MS. WORTHINGTON
+Herself
 
+MS. TRAN
+Herself
+
+MS. STEPHAN
+Herself
+
+MR. KIM’S CLASS PRESIDENT
+Michael Nguyen
+
+MS. SIGGSON
+Herself
+
+MS. JENSEN
+Herself
+
+MR. VASQUEZ
+Himself
+
+WHITNEY REPRESENTATIVE
+Kimberly Hosoda
+
+MR. HOGAN
+Himself
+
+MR. WEI
+Himself
+
+
+
+
+
+
+
+
+Music By
+Ryan Imai, Sebastian Aguilan, and Aiden Sato
+
+“Zero G”
+by Ryan Imai and Sebastian Aguilan
+
+"Safe_Mode"
+by Aiden Sato
+
+"Kali"
+by Aiden Sato
+
+Sound Effects from
+FreeSound and Storyblocks
+
+Additional Effects from
+Pexel
+
+
+
+
+
+
+
+
+
+Special thanks to
+Amazon Web Services, Facebook, Firebase, Oxford Academy PTSA
+
+The creators of this game would like to personally thank Mr. Hurley for allowing us to film on campus during the pandemic and the custodians who work tirelessly to keep our campus in a clean and safe condition.
+
+The creators would also like to thank everyone involved in the development of this game, including the teachers for generously donating their time to film footage for us as well as our good friend Kimberly Hosoda from Whitney High School.
 
 `;
