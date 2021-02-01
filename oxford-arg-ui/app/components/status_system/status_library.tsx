@@ -1,8 +1,6 @@
 import { transcriptStrings } from "../video_player/transcript_strings";
 
 const statusLibrary = [
-  // shift pages and flags to match their actual location
-  // add continue property to show when not to wait for next status
   {
     type: "puzzle",
     value: "StatusDebugPage",

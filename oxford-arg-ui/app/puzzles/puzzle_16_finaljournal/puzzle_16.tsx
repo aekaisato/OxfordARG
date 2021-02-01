@@ -25,6 +25,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 import md5 from "crypto-js/md5";
 import { goto, increment } from "../../components/status_system/status_system";
+import { queuePlayer } from "../../components/video_player/video_player";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -33,6 +34,10 @@ async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
+}
+
+function getRandomArbitrary(min: number, max: number) {
+  return Math.random() * (max - min) + min;
 }
 
 export class Puzzle16 extends React.Component {
@@ -67,12 +72,22 @@ export class Puzzle16 extends React.Component {
       }
     }
     if (hash1Solved && hash2Solved) {
-      (async function(){
+      (async function () {
         await wait(1000);
         await goto(await increment());
       })();
     } else {
-      alert("do a short cutscene to show that this is not where to go");
+      console.log("incorrect");
+      let rand = Math.floor(getRandomArbitrary(0, 3)) + 1;
+      if (rand > 3) {
+        // shouldn't be necessary
+        rand = 3;
+      } else if (rand < 1) {
+        rand = 1;
+      }
+      let key = "Scene28Error" + rand;
+      console.log(key);
+      queuePlayer(key, true);
     }
   }
 
