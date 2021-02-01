@@ -37,7 +37,7 @@ const transcriptStrings = {
   Scene25Error1: `HOSHI Representative: Uhh that's not quite right, look at your math again.`,
   Scene25Error2: `HOSHI Representative: Wrong one.`,
   Scene25Error3: `HOSHI Representative: C'mon now, you're an Oxford student. I'm pretty confident you can do basic math unless the curriculum has changed since I was last there...`,
-  Scene25Line3: `HOSHI Representative: Shut up!`,
+  Scene25Line3: `HOSHI Representative: Be quiet!`,
   Scene26Line1: `Mr. Hogan: Glad I ran into you. I just received this cryptic email from someone from Whitney? Do you know what's going on? You're free to use my piano if you feel like it.`,
   Scene26Line2: `Mr. Hogan: What an interesting tune. I hope everything will be alright; best of luck.`,
   Scene27Line1: `Mr. Wai: Ok, I was looking through the various pathway classrooms when all of the computers started glitching out. Only one of them works, but it's stuck on the same screen. It seems like it's an application to program something, but I'm not at the computer myself. Since your robot is on campus, can you see if you can figure it out?`,
@@ -47,8 +47,9 @@ const transcriptStrings = {
   Scene28Error2: `HOSHI Representative: We can go there another time, but not now`,
   Scene28Error3: `HOSHI Representative: Sigh, we may need to implement an orienteering class at Oxford`,
   Scene28Line1: `HOSHI Representative: Awesome, I"m so glad you were able to piece it all together. The secret is safe now, our engineers have blocked Whitney's connection.`,
+  Scene28Line2: `Use the notebook. Solve the puzzle. Discover our secret.`,
   Scene30Line1: `HOSHI Representative: And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out`,
   Scene30Line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through? Sigh, I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
-}
+};
 
 export { transcriptStrings };

@@ -513,8 +513,8 @@ const statusLibrary = [
     value: "Scene27Line1",
   },
   {
-    type: "transcript",
-    value: "Use the notebook. Solve the puzzle. Discover our secret.",
+    type: "communicator",
+    value: "Scene28Line2",
     continue: true,
     save: true,
     page: 10,

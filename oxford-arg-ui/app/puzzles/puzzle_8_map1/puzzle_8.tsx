@@ -26,6 +26,7 @@ let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 let freeze = false;
+let complete = false;
 let count = 0;
 
 const mapping = {
@@ -48,9 +49,10 @@ async function wait(timeout: number) {
 }
 
 async function correctLink() {
-  if (freeze) {
+  if (freeze || complete) {
     return;
   }
+  complete = true;
   (async function () {
     await wait(2000);
     await goto(await increment());
@@ -58,7 +60,7 @@ async function correctLink() {
 }
 
 async function incorrectLink() {
-  if (freeze) {
+  if (freeze || complete) {
     return;
   }
   count++;
