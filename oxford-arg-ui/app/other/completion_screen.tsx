@@ -114,7 +114,6 @@ export async function updateCompletionData(completionData: any) {
   for (let i in completionData) {
     if (completionData[i].completed != undefined) {
       filteredData = { ...filteredData, [i]: completionData[i] };
-      console.log(filteredData);
     }
   }
   that.updateCompletionData(filteredData);
@@ -188,10 +187,17 @@ export class CompletionScreen extends React.Component {
   }
 
   handleNameMeta(item: string) {
+    const PLACEHOLDER_STR = "Loading...";
+
     if (this.state[item] == undefined) {
       this.handleName(item);
+      this.setState({ [item]: PLACEHOLDER_STR });
     }
-    return this.state[item];
+    let temp = this.state[item];
+    if (temp == undefined) {
+      temp = PLACEHOLDER_STR;
+    }
+    return temp;
   }
 
   render() {
@@ -353,7 +359,7 @@ export class CompletionScreen extends React.Component {
               backgroundColor: "#00000080",
               height: deviceHeight,
               width: (1 * deviceWidth) / 3,
-              overflow: "hidden"
+              overflow: "hidden",
             }}
           >
             <Text
@@ -373,8 +379,10 @@ export class CompletionScreen extends React.Component {
                 overflowY: "scroll",
                 alignItems: "center",
                 textAlign: "center",
-                paddingRight: (document.getElementById("creditsView")?.offsetWidth - document.getElementById("creditsView")?.offsetWidth) || 17,
-                boxSizing: "content-box"
+                paddingRight:
+                  document.getElementById("creditsView")?.offsetWidth -
+                    document.getElementById("creditsView")?.offsetWidth || 17,
+                boxSizing: "content-box",
               }}
               id="creditsView"
             >
