@@ -28,7 +28,7 @@ async function wait(timeout: number) {
 
 let that: any;
 
-document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
+// document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
 
 // https://codepen.io/ConnorsFan/pen/rzeXNe
 

@@ -47,6 +47,7 @@ export class Puzzle16 extends React.Component {
 
   state = {
     textInput: "",
+    count: 0,
   };
 
   onTextChange(text) {
@@ -77,15 +78,11 @@ export class Puzzle16 extends React.Component {
         await goto(await increment());
       })();
     } else {
-      console.log("incorrect");
-      let rand = Math.floor(getRandomArbitrary(0, 3)) + 1;
-      if (rand > 3) {
-        // shouldn't be necessary
-        rand = 3;
-      } else if (rand < 1) {
-        rand = 1;
+      let val = ++this.state.count;
+      if (val > 3) {
+        val = 3;
       }
-      let key = "Scene28Error" + rand;
+      let key = "Scene28Error" + val;
       console.log(key);
       queuePlayer(key, true);
     }

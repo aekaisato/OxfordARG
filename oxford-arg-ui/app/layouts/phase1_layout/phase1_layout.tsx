@@ -63,7 +63,7 @@ import { playSound } from "../../components/sound_system/sound_system";
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
-document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
+// document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
 
 let that;
 
