@@ -286,7 +286,11 @@ export async function startGame() {
   await setCloudStatus(1);
 }
 
-export async function continueGame() {
+export async function continueGame(overrideCloud?: boolean) {
+  if (overrideCloud == undefined) {
+    overrideCloud = false;
+  }
+
   let savedStatus: any = await getStatus();
   if (savedStatus != null) {
     savedStatus = Number.parseInt(savedStatus);
@@ -299,7 +303,11 @@ export async function continueGame() {
   }
   console.log(savedStatus);
   await setStatus(savedStatus);
-  await syncUserToCloud();
+  if (overrideCloud) {
+    await syncUserToCloud("local");
+  } else {
+    await syncUserToCloud();
+  }
   let phase = "Phase1";
   let mus = "";
   let status = await getStatus();
@@ -323,7 +331,11 @@ export async function continueGame() {
     }
     console.log(mus);
   }
-  await syncUserToCloud();
+  if (overrideCloud) {
+    await syncUserToCloud("local");
+  } else {
+    await syncUserToCloud();
+  }
   playMusic(mus);
   navigatePhase(phase);
   await goto(statusLibrary[Number.parseInt(await getStatus())]);
@@ -504,6 +516,12 @@ export class StatusDebugPage extends React.Component {
               title="continue"
               onPress={async () => {
                 await continueGame();
+              }}
+            />
+            <Button
+              title="continue (override cloud)"
+              onPress={async () => {
+                await continueGame(true);
               }}
             />
           </ScrollView>
