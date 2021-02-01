@@ -48,7 +48,7 @@ const transcriptStrings = {
   Scene28Error3: `HOSHI Representative: Sigh, we may need to implement an orienteering class at Oxford`,
   Scene28Line1: `HOSHI Representative: Awesome, I"m so glad you were able to piece it all together. The secret is safe now, our engineers have blocked Whitney's connection.`,
   Scene30Line1: `HOSHI Representative: And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out`,
-  Scene30Line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through?? (sigh), I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
+  Scene30Line2: `Mr. Alonso: There you are, finally my systems are back online! What on earth has ViriDOS gone through? Sigh, I guess I've got a lot of re-programming to do. Thank you for your help again, can't imagine what this poor robot's been through...`,
 }
 
 export { transcriptStrings };
