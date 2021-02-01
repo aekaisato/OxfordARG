@@ -42,7 +42,7 @@ export class Puzzle7 extends React.Component {
 
   state = {
     textInput: "",
-    borderColor: "#000000"
+    borderColor: "#000000",
   };
 
   onTextChange(text) {
@@ -54,7 +54,7 @@ export class Puzzle7 extends React.Component {
     let currStr = this.state.textInput;
     let checkHash = md5(currStr.toLowerCase()).toString();
     if (checkHash == correctHash) {
-      this.setState({borderColor: "#00FF00"});
+      this.setState({ borderColor: "#00FF00" });
       console.log("do smth here because the puzzle is now solved");
       (async function () {
         await wait(2000);
@@ -77,6 +77,19 @@ export class Puzzle7 extends React.Component {
             alignItems: "center",
           }}
         >
+          <a
+            href="https://pubchem.ncbi.nlm.nih.gov/periodic-table/"
+            target="_blank"
+            style={{
+              fontFamily: "Noto-Sans",
+              fontSize: 24,
+              textDecoration: "underline",
+              color: "white",
+            }}
+          >
+            Click here for larger periodic table.
+          </a>
+          <View style={{ height: deviceHeight / 36 }} />
           <Image
             source={require("../../../assets/img/ptable.png")}
             style={{ height: "60%", width: "100%" }}
@@ -101,7 +114,7 @@ export class Puzzle7 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginRight: 15,
-                borderColor: this.state.borderColor
+                borderColor: this.state.borderColor,
               }}
               autoFocus={true}
               secureTextEntry={true}

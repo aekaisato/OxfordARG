@@ -1,6 +1,11 @@
 // import {goto, increment} from "../../../components/status_system/status_system"
-const {goto, increment} = require("../../../components/status_system/status_system")
+const {
+  goto,
+  increment,
+} = require("../../../components/status_system/status_system");
 const { multiply } = require("react-native-reanimated");
+
+let completed = false;
 
 (async function () {
   var _lastColor = null,
@@ -21,9 +26,9 @@ const { multiply } = require("react-native-reanimated");
       };
 
       levels = [
-      //  "a1abc2bc",
+        //  "a1abc2bc",
         "2b7gfe5d10d1f3b1g2e1c2ca1h3a5h5",
-      //  "4o1i9l6a11eb5g5e20j2g26n9f1f9l7h1o7n10j7c6pd3mc4h5p6im3kad23b2k1",
+        //  "4o1i9l6a11eb5g5e20j2g26n9f1f9l7h1o7n10j7c6pd3mc4h5p6im3kad23b2k1",
       ];
 
       _loadLevel(levels[Math.floor(Math.random() * levels.length)]);
@@ -273,15 +278,22 @@ const { multiply } = require("react-native-reanimated");
                   "data-" + { t: "b", b: "t", l: "r", r: "l" }[matchDirection],
                   ""
                 );
-                let numCompleted = document.querySelectorAll("[data-completed=true]").length
-                if (numCompleted == size*size) {
-                    console.log("flow free completed, this should interface with an object that handles flags and completion");
-                    
-                    (async function(){
+                let numCompleted = document.querySelectorAll(
+                  "[data-completed=true]"
+                ).length;
+                if (numCompleted == size * size) {
+                  console.log(
+                    "flow free completed, this should interface with an object that handles flags and completion"
+                  );
+                  if (!completed) {
+                    completed = true;
+                    (async function () {
                       await wait(2000);
                       await goto(await increment());
                     })();
-                    //*/
+                  } else {
+                    console.log("stop trying to cheat bruh");
+                  }
                 }
               } else {
                 console.log("here: " + _currentPath[_currentColor].length);

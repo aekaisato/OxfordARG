@@ -25,7 +25,7 @@ const statusLibrary = [
   {
     type: "livefeed",
     value: "Scene2",
-    save: false,
+    save: true,
     endAt: 32,
   },
   {

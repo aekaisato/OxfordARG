@@ -292,12 +292,14 @@ export async function continueGame(overrideCloud?: boolean) {
   }
 
   let savedStatus: any = await getStatus();
-  if (savedStatus != null) {
-    savedStatus = Number.parseInt(savedStatus);
-    for (let i = savedStatus; i >= 0; i--) {
-      savedStatus = i;
-      if (statusLibrary[i].save == true) {
-        i = -1;
+  if (!overrideCloud) {
+    if (savedStatus != null) {
+      savedStatus = Number.parseInt(savedStatus);
+      for (let i = savedStatus; i >= 0; i--) {
+        savedStatus = i;
+        if (statusLibrary[i].save == true) {
+          i = -1;
+        }
       }
     }
   }
