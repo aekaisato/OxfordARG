@@ -35,6 +35,7 @@ let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 const PRIMARY_PROMPT_STRING = "[remote@viridos-system]$ ";
+const AVAILABLE_COMMAND_STRING = `Available commands are "signup", "login", "logout", "start", and "continue".`
 
 const debugHash =
   "$2a$10$uBHufIPKvl7d4HSPwJuSLuaLheV9DM7CsBWrQfEjUGLpXcoPGG3Ra";
@@ -93,7 +94,7 @@ export class MainMenu extends React.Component {
     this.xtermRef.terminal.writeln("");
     await wait(waitTimes[5]);
     this.xtermRef.terminal.writeln(
-      `Available commands are "signup", "login", "logout", "start", and "continue".`
+      AVAILABLE_COMMAND_STRING
     );
     await wait(waitTimes[6]);
     this.xtermRef.terminal.writeln(
@@ -187,7 +188,7 @@ export class MainMenu extends React.Component {
           return;
         } else if (input.toLowerCase() == "help") {
           this.xtermRef.terminal.writeln(
-            `Available commands are "signup", "login", "logout", "start", and "continue".`
+            AVAILABLE_COMMAND_STRING
           );
         } else if (input.toLowerCase() == "debug") {
           this.debug();
@@ -197,7 +198,7 @@ export class MainMenu extends React.Component {
             `"` + input + `"` + " is not a valid command."
           );
           this.xtermRef.terminal.writeln(
-            `Available commands are "signup", "login", "logout", "start", and "continue".`
+            AVAILABLE_COMMAND_STRING
           );
         }
         this.xtermRef.terminal.writeln("");

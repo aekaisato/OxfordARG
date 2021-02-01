@@ -477,9 +477,22 @@ const statusLibrary = [
     blockGoto: true,
   },
   {
+    type: "puzzle",
+    value: "SplashScreen",
+    continue: true,
+    page: 9,
+  },
+  {
+    type: "communicator",
+    value: "Scene26Line2",
+  },
+  {
+    type: "wait",
+    value: 2500,
+  },
+  {
     type: "communicator",
     value: "Scene27Line2",
-    page: 9,
   },
   {
     type: "livefeed",
@@ -543,11 +556,6 @@ const statusLibrary = [
   {
     type: "communicator",
     value: "Scene30Line2",
-  },
-  {
-    type: "livefeed",
-    value: "STOP",
-    continue: true,
   },
   {
     type: "completion",

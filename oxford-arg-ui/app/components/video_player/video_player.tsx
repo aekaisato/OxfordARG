@@ -77,6 +77,7 @@ const urls = {
   Scene25Error2: encodeURI(FOLDER_PATH + "Scene 25 Error Msg 2.mp4"),
   Scene25Error3: encodeURI(FOLDER_PATH + "Scene 25 Error Msg 3.mp4"),
   Scene26Line1: encodeURI(FOLDER_PATH + "Scene 26 Line 1 Hogan.mp4"),
+  Scene26Line2: encodeURI(FOLDER_PATH + "Scene 26 Line 2 Hogan.mp4"),
   Scene27Line1: encodeURI(FOLDER_PATH + "Scene 27 Line 1 Wei.mp4"),
   Scene27Line2: encodeURI(FOLDER_PATH + "Scene 27 Line 2 Whitney Rep.mp4"),
   Scene27Line3: encodeURI(FOLDER_PATH + "Scene 27 Line 3 Whitney Rep.mp4"),
