@@ -15,6 +15,8 @@ const _ = require("lodash");
 
 let deviceWidth = Dimensions.get("window").width;
 
+let completed = false;
+
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const soundfontHostname = "https://d1pzp51pvbm36p.cloudfront.net";
 
@@ -26,8 +28,6 @@ async function wait(timeout: number) {
 
 export class Puzzle14 extends React.Component {
   // add blurred background of classroom
-
-  componentDidMount() {}
 
   firstNote = MidiNumbers.fromNote("c3");
   lastNote = MidiNumbers.fromNote("b3");
@@ -46,7 +46,11 @@ export class Puzzle14 extends React.Component {
       { notes: [...this.state.notes.splice(1), midiNumber] },
       () => {
         if (_.isEqual(this.state.notes, [57, 50, 52, 55])) {
+          if (completed) {
+            return;
+          }
           console.log("finished, do smth here");
+          completed = true;
           (async function () {
             await wait(2000);
             await goto(await increment());

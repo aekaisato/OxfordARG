@@ -11,6 +11,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { goto, increment } from "../../components/status_system/status_system";
 import md5 from "crypto-js/md5";
 
+let completed = false;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -63,7 +64,6 @@ export class Puzzle4Safe extends React.Component {
       } else {
         nextRef = refsList[index - 1];
       }
-      //@ts-ignore
 
       //@ts-ignore
       this.refs[nextRef].focus();
@@ -72,17 +72,17 @@ export class Puzzle4Safe extends React.Component {
 
   async checkCode() {
     while (true) {
-      let str = this.state.first +
-      this.state.second +
-      this.state.third +
-      this.state.fourth;
-      console.log(
-        "checking: " +
-          str
-      );
-      if (
-        md5(str).toString() == "3db54f5573cd617a0112d35dd1e6b1ef" 
-      ) {
+      if (completed) {
+        return;
+      }
+      let str =
+        this.state.first +
+        this.state.second +
+        this.state.third +
+        this.state.fourth;
+      console.log("checking: " + str);
+      if (md5(str).toString() == "3db54f5573cd617a0112d35dd1e6b1ef") {
+        completed = true;
         this.setState({ outlineColor: "green" });
         console.log(
           "code correct, this should be handled by the flags system or whatever"

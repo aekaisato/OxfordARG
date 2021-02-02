@@ -1,9 +1,16 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text, ViewProperties } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  ViewProperties,
+} from "react-native";
 //@ts-ignore
 import butterchurn from "butterchurn";
 //@ts-ignore
 import butterchurnPresets from "butterchurn-presets";
+import { getCurrentPhase } from "../components/navigation/navigation";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -17,8 +24,8 @@ let visualizer: any;
 let presets = butterchurnPresets.getPresets();
 let preset = presets["Eo.S. + Phat - cubetrace - v2"];
 
-function initVisualizer() {
-  canvas = document.querySelector("#milkdropCanvas");
+function initVisualizer(phase: any) {
+  canvas = document.querySelector("#milkdropCanvas" + phase);
   visualizer = butterchurn.createVisualizer(audioCtx, canvas, {
     height: (6 * deviceHeight) / 7,
     width: (5 * deviceWidth) / 9,
@@ -33,7 +40,6 @@ function startRenderer() {
   visualizer.render();
 }
 
-
 export declare interface SplashScreenProps extends ViewProperties {
   showText?: boolean;
 }
@@ -47,10 +53,12 @@ export class SplashScreen extends React.Component<SplashScreenProps> {
     } else {
       this.showText = props.showText;
     }
+    this.state = {}
   }
 
   componentDidMount() {
-    initVisualizer();
+    let phase = getCurrentPhase();
+    this.setState({ phase: phase }, () => initVisualizer(phase));
   }
 
   render() {
@@ -83,7 +91,7 @@ export class SplashScreen extends React.Component<SplashScreenProps> {
         <canvas
           width={(5 * deviceWidth) / 9}
           height={(6 * deviceHeight) / 7}
-          id="milkdropCanvas"
+          id={"milkdropCanvas" + this.state.phase}
         ></canvas>
         {text}
       </View>

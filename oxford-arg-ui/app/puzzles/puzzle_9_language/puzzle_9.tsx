@@ -9,8 +9,10 @@ import {
   TextInputKeyPressEventData,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import md5 from "crypto-js/md5";
 import { goto, increment } from "../../components/status_system/status_system";
 
+let completed = false;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -73,6 +75,9 @@ export class Puzzle9 extends React.Component {
 
   async checkCode() {
     while (true) {
+      if (completed) {
+        return;
+      }
       console.log(
         "checking: " +
           this.state.first +
@@ -80,12 +85,16 @@ export class Puzzle9 extends React.Component {
           this.state.third +
           this.state.fourth
       );
+      const hash1 = "83878c91171338902e0fe0fb97a8c47a";
+      const hash24 = "d95679752134a2d9eb61dbd7b91c4bcc";
+      const hash3 = "2db95e8e1a9267b7a1188556b2013b33";
       if (
-        this.state.first.toLowerCase() == "p" &&
-        this.state.second.toLowerCase() == "o" &&
-        this.state.third.toLowerCase() == "l" &&
-        this.state.fourth.toLowerCase() == "o"
+        md5(this.state.first.toLowerCase()).toString() == hash1 &&
+        md5(this.state.second.toLowerCase()).toString() == hash24 &&
+        md5(this.state.third.toLowerCase()).toString() == hash3 &&
+        md5(this.state.fourth.toLowerCase()).toString() == hash24
       ) {
+        completed = true;
         this.setState({ outlineColor: "green" });
         console.log(
           "code correct, this should be handled by the flags system or whatever"

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-  Button,
-} from "react-native";
+import { StyleSheet, View, Dimensions, Text, Button } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import md5 from "crypto-js/md5";
 import { goto, increment } from "../../components/status_system/status_system";
@@ -13,18 +7,15 @@ import { queuePlayer } from "../../components/video_player/video_player";
 
 let deviceWidth = Dimensions.get("window").width;
 
+let completed = false;
+
 async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
 }
 
-
 export class Puzzle16 extends React.Component {
-  // add blurred background of classroom
-
-  componentDidMount() {}
-
   state = {
     textInput: "",
     count: 0,
@@ -53,6 +44,10 @@ export class Puzzle16 extends React.Component {
       }
     }
     if (hash1Solved && hash2Solved) {
+      if (completed) {
+        return;
+      }
+      completed = true;
       (async function () {
         await wait(1000);
         await goto(await increment());

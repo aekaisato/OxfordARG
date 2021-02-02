@@ -27,7 +27,7 @@ const sudokuGrid = sudoku.board_string_to_grid(sudokuStr);
 //   "762941853534286719918573246327819465851624937649357182196432578275168394483795621";
 // const solutionsIncomplete = ["1852811944621891168", "1852819144621819168", "8151281944268191681", "8151289144268119681"];
 
-
+let completed = false;
 
 async function wait(timeout: number) {
   return new Promise((resolve) => {
@@ -84,7 +84,9 @@ export class Puzzle6 extends React.Component {
   }
 
   async checkSudoku() {
-    //while (true) {
+    if (completed) {
+      return;
+    }
     //@ts-ignore
     if (this.state["0"] != undefined) {
       let arr = [];
@@ -103,9 +105,13 @@ export class Puzzle6 extends React.Component {
       console.log(arr);
       console.log(check);
       if (check) {
+        if (completed) {
+          return;
+        }
+        completed = true;
         this.setState({ outlineColor: "green" });
         console.log("sudoku solved, handle opening safe stuff");
-        (async function(){
+        (async function () {
           await wait(2000);
           await goto(await increment());
         })();
@@ -115,7 +121,6 @@ export class Puzzle6 extends React.Component {
       }
     }
     await wait(1000);
-    //}
   }
 
   componentDidMount() {
@@ -182,7 +187,7 @@ export class Puzzle6 extends React.Component {
               alignItems: "center",
               justifyContent: "space-evenly",
               flexDirection: "row",
-              width: "50%"
+              width: "50%",
             }}
           >
             <Button onPress={() => alert(instructions)} title="instructions" />

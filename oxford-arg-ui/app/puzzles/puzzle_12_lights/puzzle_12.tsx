@@ -13,6 +13,8 @@ import { goto, increment } from "../../components/status_system/status_system";
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
+let completed = false;
+
 let map: boolean[][] = [];
 
 for (let i = 0; i < 3; i++) {
@@ -31,13 +33,6 @@ async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
-}
-
-async function continueTemp() {
-  (async function () {
-    await wait(2000);
-    await goto(await increment());
-  })();
 }
 
 export class Puzzle12 extends React.Component {
@@ -104,6 +99,10 @@ export class Puzzle12 extends React.Component {
         }
       }
     }
+    if (completed) {
+      return;
+    }
+    completed = true;
     this.setState({ complete: true });
     (async function () {
       await wait(2000);
@@ -159,7 +158,7 @@ export class Puzzle12 extends React.Component {
                           backgroundColor: this.setColor(item),
                           justifyContent: "center",
                           alignItems: "center",
-                          borderRadius: deviceWidth/100
+                          borderRadius: deviceWidth / 100,
                         }}
                       >
                         <Text

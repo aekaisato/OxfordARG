@@ -19,6 +19,8 @@ async function wait(timeout: number) {
   });
 }
 
+let completed = false;
+
 export class Puzzle7 extends React.Component {
   // add blurred background of classroom
 
@@ -34,10 +36,14 @@ export class Puzzle7 extends React.Component {
   }
 
   onSubmit() {
+    if (completed) {
+      return;
+    }
     const correctHash = "e7e94d9ef1edaf2c6c55e9966b551295";
     let currStr = this.state.textInput;
     let checkHash = md5(currStr.toLowerCase()).toString();
     if (checkHash == correctHash) {
+      completed = true;
       this.setState({ borderColor: "#00FF00" });
       console.log("do smth here because the puzzle is now solved");
       (async function () {

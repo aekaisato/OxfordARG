@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-} from "react-native";
-import {
-  NavigationEvents,
-} from "react-navigation";
+import { StyleSheet, View, Dimensions } from "react-native";
+import { NavigationEvents } from "react-navigation";
 import $ from "jquery";
 import { goto, increment } from "../../components/status_system/status_system";
 
@@ -17,10 +11,14 @@ async function wait(timeout: number) {
 }
 
 let disableCheckCode = false;
+let completed = false;
 
 export class Puzzle10 extends React.Component {
   async checkCode() {
     while (true) {
+      if (completed) {
+        return;
+      }
       if (disableCheckCode) {
         disableCheckCode = true;
         return;
@@ -30,6 +28,7 @@ export class Puzzle10 extends React.Component {
         iframeContents.length > 0 &&
         iframeContents[0].body.innerHTML.indexOf("You Win!") >= 0
       ) {
+        completed = true;
         console.log("do stuff here");
         await wait(1000);
         await goto(await increment());

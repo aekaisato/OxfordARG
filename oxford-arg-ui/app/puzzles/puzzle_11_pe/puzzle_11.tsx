@@ -2,16 +2,21 @@ import React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import { goto, increment } from "../../components/status_system/status_system";
 
+let completed = false;
+
 async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
 }
 
-
 window.addEventListener("message", function (e) {
   const data = e.data;
   if (data == "puzzle completed") {
+    if (completed) {
+      return;
+    }
+    completed = true;
     (async function () {
       await wait(2000);
       await goto(await increment());
