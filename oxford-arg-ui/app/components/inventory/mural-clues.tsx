@@ -6,7 +6,7 @@ import {
   ViewProperties,
   Text,
 } from "react-native";
-import Draggable from "react-native-draggable";
+import Draggable from "react-draggable";
 import { enableMuralClues } from "./inventory";
 
 let deviceHeight = Dimensions.get("window").height;
@@ -67,25 +67,20 @@ export class MuralClues extends React.Component<MuralClueProps> {
       "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
   }
 
-  handleOnDragStart = (e: any) => {
-    e.dataTransfer.setDragImage(this.dragImg, 0, 0);
-  };
-
   render() {
     let clue1;
     let clue2;
     if (this.state.mural1Unlocked) {
       clue1 = (
-        <Draggable x={500} y={150} renderSize={deviceWidth / 2}>
-          <View style={{ flex: 1 }}>
+        <Draggable>
+          <View>
             <img
               src={require("../../../assets/mural/rosaparks-mural-xonly.png")}
               style={{
-                width: deviceWidth / 2,
-                height: deviceWidth / 2,
+                width: (2 * deviceWidth) / 5,
                 objectFit: "contain",
               }}
-              onDragStart={(e) => this.handleOnDragStart(e)}
+              draggable="false"
             />
           </View>
         </Draggable>
@@ -95,16 +90,15 @@ export class MuralClues extends React.Component<MuralClueProps> {
     }
     if (this.state.mural2Unlocked) {
       clue2 = (
-        <Draggable x={50} y={50} renderSize={deviceWidth / 2}>
-          <View style={{ flex: 1 }}>
+        <Draggable>
+          <View>
             <img
               src={require("../../../assets/mural/rosaparks-mural-outlineonly.png")}
               style={{
-                width: deviceWidth / 2,
-                height: deviceWidth / 2,
+                width: (2 * deviceWidth) / 5,
                 objectFit: "contain",
               }}
-              onDragStart={(e) => this.handleOnDragStart(e)}
+              draggable="false"
             />
           </View>
         </Draggable>

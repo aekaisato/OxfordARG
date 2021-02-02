@@ -235,7 +235,7 @@ export class Inventory extends React.Component<InventoryProps> {
                 color: "white",
               }}
             >
-              drag and drop the images (a tad buggy, but deal with it)
+              drag and drop the images
             </Text>
           </View>
         </View>
