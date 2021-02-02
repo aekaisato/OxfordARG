@@ -49,6 +49,7 @@ import {
 } from "../cloud_sync/cloud_sync";
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 import { NavigationEvents } from "react-navigation";
+import { getMusicOn } from "../../other/main_menu";
 
 /*
 const statusLibrary = [
@@ -180,7 +181,9 @@ export async function goto(status: {
     if (status.value == "STOP") {
       stopCurrentTrack();
     } else {
-      playMusic(status.value);
+      if (await getMusicOn()) {
+        playMusic(status.value);
+      }
     }
   } else if (status.type == "transcript") {
     if (status.value == "CLEAR") {
@@ -337,7 +340,9 @@ export async function continueGame(overrideCloud?: boolean) {
   } else {
     await syncUserToCloud();
   }
-  playMusic(mus);
+  if (await getMusicOn()) {
+    playMusic(mus);
+  }
   navigatePhase(phase);
   await goto(statusLibrary[Number.parseInt(await getStatus())]);
 }

@@ -1,8 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Dimensions, AsyncStorage } from "react-native";
-import {
-  NavigationEvents,
-} from "react-navigation";
+import { NavigationEvents } from "react-navigation";
 import { XTerm } from "xterm-for-react";
 import {
   continueGame,
@@ -24,7 +22,7 @@ let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
 
 const PRIMARY_PROMPT_STRING = "[remote@viridos-system]$ ";
-const AVAILABLE_COMMAND_STRING = `Available commands are "signup", "login", "logout", "start", and "continue".`
+const AVAILABLE_COMMAND_STRING = `Available commands are "signup", "login", "logout", "togglemusic", "start", and "continue".`;
 
 const debugHash =
   "$2a$10$uBHufIPKvl7d4HSPwJuSLuaLheV9DM7CsBWrQfEjUGLpXcoPGG3Ra";
@@ -33,6 +31,31 @@ async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
   });
+}
+
+export async function getMusicOn() {
+  let temp: string | null | boolean = await AsyncStorage.getItem("musicon");
+  if (temp == null || temp == "true") {
+    temp = true;
+  } else {
+    temp = false;
+  }
+  return temp;
+}
+
+export async function setMusicOn(on: boolean) {
+  let temp = on + "";
+  await AsyncStorage.setItem("musicon", temp);
+}
+
+async function toggleMusicOn() {
+  let temp = await getMusicOn();
+  await setMusicOn(!temp);
+  if (!temp == true) {
+    return "Music has been turned on.";
+  } else {
+    return "Music has been turned off. (For the best experience, we recommend keeping music on.)";
+  }
 }
 
 export class MainMenu extends React.Component {
@@ -82,9 +105,7 @@ export class MainMenu extends React.Component {
     );
     this.xtermRef.terminal.writeln("");
     await wait(waitTimes[5]);
-    this.xtermRef.terminal.writeln(
-      AVAILABLE_COMMAND_STRING
-    );
+    this.xtermRef.terminal.writeln(AVAILABLE_COMMAND_STRING);
     await wait(waitTimes[6]);
     this.xtermRef.terminal.writeln(
       "Type in a command (without quotes), then press the ENTER key to run it.\n"
@@ -175,19 +196,17 @@ export class MainMenu extends React.Component {
           this.continue();
           return;
         } else if (input.toLowerCase() == "help") {
-          this.xtermRef.terminal.writeln(
-            AVAILABLE_COMMAND_STRING
-          );
+          this.xtermRef.terminal.writeln(AVAILABLE_COMMAND_STRING);
         } else if (input.toLowerCase() == "debug") {
           this.debug();
           return;
+        } else if (input.toLowerCase() == "togglemusic") {
+          this.xtermRef.terminal.writeln(await toggleMusicOn());
         } else {
           this.xtermRef.terminal.writeln(
             `"` + input + `"` + " is not a valid command."
           );
-          this.xtermRef.terminal.writeln(
-            AVAILABLE_COMMAND_STRING
-          );
+          this.xtermRef.terminal.writeln(AVAILABLE_COMMAND_STRING);
         }
         this.xtermRef.terminal.writeln("");
         this.xtermRef.terminal.write(PRIMARY_PROMPT_STRING);
