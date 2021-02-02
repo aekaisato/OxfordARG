@@ -20,11 +20,7 @@ let map: boolean[][] = [];
 for (let i = 0; i < 3; i++) {
   let tempArr = [];
   for (let j = 0; j < 3; j++) {
-    let tempVal = false;
-    if (Math.random() < 0.3) {
-      tempVal = true;
-    }
-    tempArr.push(tempVal);
+    tempArr.push(false);
   }
   map.push(tempArr);
 }

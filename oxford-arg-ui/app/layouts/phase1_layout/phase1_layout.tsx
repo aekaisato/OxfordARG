@@ -190,7 +190,7 @@ export class Phase1Layout extends React.Component {
                   <Transcript
                     style={{
                       fontFamily: "Courier-Prime",
-                      fontSize: 14,
+                      fontSize: 20,
                       color: "white",
                       margin: 6,
                       opacity: 1,

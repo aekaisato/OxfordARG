@@ -2,9 +2,7 @@ import {
   createAppContainer,
   NavigationContainerComponent,
 } from "react-navigation";
-import {
-  createStackNavigator,
-} from "react-navigation-stack";
+import { createStackNavigator } from "react-navigation-stack";
 import { Puzzle1 } from "../../puzzles/puzzle_1_robotfix1/puzzle_1";
 import { Puzzle2 } from "../../puzzles/puzzle_2_robotfix2/puzzle_2";
 
@@ -40,6 +38,7 @@ import { LiveFeed } from "../live_feed/live_feed";
 import { SoundTest } from "../sound_system/sound_system";
 import React from "react";
 import { View } from "react-native";
+import { ContinueConfirmation } from "../../other/continue_button";
 
 let _puzzleNavigator: NavigationContainerComponent;
 let _phaseNavigator: NavigationContainerComponent;
@@ -112,6 +111,9 @@ export const ThePuzzleNavigator = createStackNavigator(
     },
     SplashScreen: {
       screen: SplashScreen,
+    },
+    ContinueConfirmation: {
+      screen: ContinueConfirmation,
     },
     StatusDebugPage: {
       screen: StatusDebugPage,

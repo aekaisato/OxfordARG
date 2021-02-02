@@ -103,7 +103,7 @@ export class Phase2Layout extends React.Component {
                   <Transcript
                     style={{
                       fontFamily: "VT323",
-                      fontSize: 18,
+                      fontSize: 24,
                       color: "red",
                       margin: 6,
                       opacity: 1,

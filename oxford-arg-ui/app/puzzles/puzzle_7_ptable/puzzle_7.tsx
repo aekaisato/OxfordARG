@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Image,
   Button,
+  Text,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import md5 from "crypto-js/md5";
@@ -85,6 +86,15 @@ export class Puzzle7 extends React.Component {
             style={{ height: "60%", width: "100%" }}
             resizeMode="contain"
           />
+          <Text
+              style={{
+                fontFamily: "Noto-Sans",
+                fontSize: 20,
+                color: "white",
+              }}
+            >
+              The final answer is an element.
+            </Text>
           <View
             style={{
               flexDirection: "row",
