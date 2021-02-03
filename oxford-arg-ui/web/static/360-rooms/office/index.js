@@ -31,7 +31,8 @@
   var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
 
   // Detect desktop or mobile mode.
-  if (window.matchMedia) {
+  // if (window.matchMedia) {
+  if (false) {
     var setMode = function() {
       if (mql.matches) {
         document.body.classList.remove('desktop');
