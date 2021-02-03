@@ -32,24 +32,24 @@ Pong = {
     "images/winner.png"
   ],
 
-  Levels: [
-    {aiReaction: 1.3, aiError: 160}, // 0:  ai is losing by 8
-    {aiReaction: 1.3, aiError: 160}, // 1:  ai is losing by 7
-    {aiReaction: 1.3, aiError: 160}, // 2:  ai is losing by 6
-    {aiReaction: 1.3, aiError: 160}, // 3:  ai is losing by 5
-    {aiReaction: 1.3, aiError: 160}, // 4:  ai is losing by 4
-    {aiReaction: 1.3, aiError: 160}, // 5:  ai is losing by 3
-    {aiReaction: 1.3, aiError: 160}, // 6:  ai is losing by 2
-    {aiReaction: 1.3, aiError: 160}, // 7:  ai is losing by 1
-    {aiReaction: 1.3, aiError: 160}, // 8:  tie
-    {aiReaction: 1.3, aiError: 160}, // 9:  ai is winning by 1
-    {aiReaction: 1.3, aiError: 160}, // 10: ai is winning by 2
-    {aiReaction: 1.3, aiError: 160}, // 11: ai is winning by 3
-    {aiReaction: 1.3, aiError: 160}, // 12: ai is winning by 4
-    {aiReaction: 1.3, aiError: 160}, // 13: ai is winning by 5
-    {aiReaction: 1.3, aiError: 160}, // 14: ai is winning by 6
-    {aiReaction: 1.3, aiError: 160}, // 15: ai is winning by 7
-    {aiReaction: 1.3, aiError: 160}  // 16: ai is winning by 8
+  Levels: [ // lower is better for both
+    {aiReaction: 1.4, aiError: 175}, // 0:  ai is losing by 8
+    {aiReaction: 1.4, aiError: 175}, // 1:  ai is losing by 7
+    {aiReaction: 1.4, aiError: 175}, // 2:  ai is losing by 6
+    {aiReaction: 1.4, aiError: 175}, // 3:  ai is losing by 5
+    {aiReaction: 1.4, aiError: 175}, // 4:  ai is losing by 4
+    {aiReaction: 1.4, aiError: 175}, // 5:  ai is losing by 3
+    {aiReaction: 1.4, aiError: 175}, // 6:  ai is losing by 2
+    {aiReaction: 1.4, aiError: 175}, // 7:  ai is losing by 1
+    {aiReaction: 1.4, aiError: 175}, // 8:  tie
+    {aiReaction: 1.4, aiError: 175}, // 9:  ai is winning by 1
+    {aiReaction: 1.4, aiError: 175}, // 10: ai is winning by 2
+    {aiReaction: 1.4, aiError: 175}, // 11: ai is winning by 3
+    {aiReaction: 1.4, aiError: 175}, // 12: ai is winning by 4
+    {aiReaction: 1.4, aiError: 175}, // 13: ai is winning by 5
+    {aiReaction: 1.4, aiError: 175}, // 14: ai is winning by 6
+    {aiReaction: 1.4, aiError: 175}, // 15: ai is winning by 7
+    {aiReaction: 1.4, aiError: 175}  // 16: ai is winning by 8
   ],
 
   //-----------------------------------------------------------------------------

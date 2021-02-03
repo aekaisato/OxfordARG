@@ -52,6 +52,8 @@ export class Puzzle16 extends React.Component {
         await wait(1000);
         await goto(await increment());
       })();
+    } else if (hash1Solved || hash2Solved) {
+      queuePlayer("Scene28ErrorS", true);
     } else {
       let val = ++this.state.count;
       if (val > 3) {

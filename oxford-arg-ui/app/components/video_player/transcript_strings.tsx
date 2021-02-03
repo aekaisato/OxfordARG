@@ -46,6 +46,7 @@ const transcriptStrings = {
   Scene28Error1: `HOSHI Representative: No time to visit that site, Whitney's closing in.`,
   Scene28Error2: `HOSHI Representative: We can go there another time, but not now`,
   Scene28Error3: `HOSHI Representative: Sigh, we may need to implement an orienteering class at Oxford`,
+  Scene28ErrorS: `HOSHI Representative: You'll have to be a bit more specific if you want the robot to follow your instructions.`,
   Scene28Line1: `HOSHI Representative: Awesome, I"m so glad you were able to piece it all together. The secret is safe now, our engineers have blocked Whitney's connection.`,
   Scene28Line2: `Use the notebook. Solve the puzzle. Discover our secret.`,
   Scene30Line1: `HOSHI Representative: And there you have it, the glorious Green Polo, the results of Project Emerald. Our studies have shown that students who wear this polo are guaranteed to be the best Oxford student. You have clearly proven yourself worthy of the green polo through your efforts to thwart Whitney from getting possession of our coveted product. Thank you for everything, make us proud, go Patriots. HOSHI out`,

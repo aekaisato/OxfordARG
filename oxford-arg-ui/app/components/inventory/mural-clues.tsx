@@ -73,7 +73,7 @@ export class MuralClues extends React.Component<MuralClueProps> {
     if (this.state.mural1Unlocked) {
       clue1 = (
         <Draggable>
-          <View>
+          <div>
             <img
               src={require("../../../assets/mural/rosaparks-mural-xonly.png")}
               style={{
@@ -82,7 +82,7 @@ export class MuralClues extends React.Component<MuralClueProps> {
               }}
               draggable="false"
             />
-          </View>
+          </div>
         </Draggable>
       );
     } else {
@@ -91,7 +91,7 @@ export class MuralClues extends React.Component<MuralClueProps> {
     if (this.state.mural2Unlocked) {
       clue2 = (
         <Draggable>
-          <View>
+          <div>
             <img
               src={require("../../../assets/mural/rosaparks-mural-outlineonly.png")}
               style={{
@@ -100,7 +100,7 @@ export class MuralClues extends React.Component<MuralClueProps> {
               }}
               draggable="false"
             />
-          </View>
+          </div>
         </Draggable>
       );
     } else {
