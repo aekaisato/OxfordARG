@@ -20,6 +20,11 @@ let map: boolean[][] = [];
 for (let i = 0; i < 3; i++) {
   let tempArr = [];
   for (let j = 0; j < 3; j++) {
+    // let tempVal = false;
+    // if (Math.random() < 0.3) {
+    //   tempVal = true;
+    // }
+    // tempArr.push(tempVal);
     tempArr.push(false);
   }
   map.push(tempArr);
@@ -120,8 +125,8 @@ export class Puzzle12 extends React.Component {
         >
           <View
             style={{
-              width: (2 * deviceWidth) / 5,
-              height: (2 * deviceWidth) / 5,
+              width: (2 * deviceHeight) / 3,
+              height: (2 * deviceHeight) / 3,
               justifyContent: "center",
               alignItems: "center",
             }}
@@ -130,7 +135,6 @@ export class Puzzle12 extends React.Component {
               <View
                 style={{
                   flexDirection: "row",
-                  height: deviceWidth / 6,
                   justifyContent: "center",
                   alignItems: "center",
                 }}
@@ -138,8 +142,7 @@ export class Puzzle12 extends React.Component {
                 {row.map((item: any, indexC: any) => (
                   <View
                     style={{
-                      width: (2 * deviceWidth) / 15,
-                      height: (2 * deviceWidth) / 15,
+                      margin: 20,
                       alignItems: "center",
                       justifyContent: "center",
                     }}
@@ -149,19 +152,19 @@ export class Puzzle12 extends React.Component {
                     >
                       <View
                         style={{
-                          width: deviceWidth / 10,
-                          height: deviceWidth / 10,
+                          width: deviceHeight / 6,
+                          height: deviceHeight / 6,
                           backgroundColor: this.setColor(item),
                           justifyContent: "center",
                           alignItems: "center",
-                          borderRadius: deviceWidth / 100,
+                          borderRadius: deviceHeight / 100,
                         }}
                       >
                         <Text
                           style={{
                             textAlign: "center",
                             color: "white",
-                            fontSize: deviceWidth / 32,
+                            fontSize: deviceHeight / 22,
                             fontFamily: this.setFont(item),
                           }}
                         >
