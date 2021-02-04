@@ -193,6 +193,8 @@ export async function goto(status: {
     }
   } else if (status.type == "ip_popup") {
     triggerIPEffect();
+  } else if (status.type == "confirm") {
+    navigatePuzzle("ContinueConfirmation");
   }
 
   if (status.save == true) {

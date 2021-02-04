@@ -147,7 +147,7 @@ export class Puzzle9 extends React.Component {
               ref="first"
               style={{
                 width: "5%",
-                height: "10%",
+                height: "18%",
                 backgroundColor: "white",
                 borderColor: this.state.outlineColor,
                 borderWidth: 2,
@@ -167,7 +167,7 @@ export class Puzzle9 extends React.Component {
               ref="second"
               style={{
                 width: "5%",
-                height: "10%",
+                height: "18%",
                 backgroundColor: "white",
                 borderColor: this.state.outlineColor,
                 borderWidth: 2,
@@ -186,7 +186,7 @@ export class Puzzle9 extends React.Component {
               ref="third"
               style={{
                 width: "5%",
-                height: "10%",
+                height: "18%",
                 backgroundColor: "white",
                 borderColor: this.state.outlineColor,
                 borderWidth: 2,
@@ -205,7 +205,7 @@ export class Puzzle9 extends React.Component {
               ref="fourth"
               style={{
                 width: "5%",
-                height: "10%",
+                height: "18%",
                 backgroundColor: "white",
                 borderColor: this.state.outlineColor,
                 borderWidth: 2,

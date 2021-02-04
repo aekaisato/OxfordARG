@@ -1,10 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Dimensions, Text, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Dimensions,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { NavigationEvents } from "react-navigation";
 import { getCurrentPhase } from "../components/navigation/navigation";
+import { playSound } from "../components/sound_system/sound_system";
 import { goto, increment } from "../components/status_system/status_system";
 
 let completed = false;
+let intervalID: NodeJS.Timeout;
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -50,13 +58,19 @@ function matrix() {
 }
 
 function initVisualizer(phase: any) {
+  if (phase == undefined) {
+    console.log("matrix phase undefined");
+    return;
+  }
+  console.log("starting matrix for " + phase);
   canvas = document.getElementById("matrixCanvas" + phase);
   console.log(canvas);
   ctx = canvas.getContext("2d");
-  setInterval(matrix, 50);
+  intervalID = setInterval(matrix, 50);
 }
 
 function handleContinuePress() {
+  playSound("button");
   if (completed) {
     return;
   }
@@ -71,18 +85,24 @@ function handleContinuePress() {
 export class ContinueConfirmation extends React.Component {
   state = {};
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     let phase = getCurrentPhase();
-    this.setState({ phase: phase }, () => initVisualizer(phase));
+    this.setState({ phase: phase });
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: "black" }]}>
         <NavigationEvents
           onWillFocus={() => {
             console.log("resetting continue button");
             completed = false;
+            initVisualizer(this.state.phase);
+          }}
+          onWillBlur={() => {
+            console.log("disabling matrix effect");
+            console.log(intervalID);
+            clearInterval(intervalID);
           }}
         />
         <canvas height={h} width={w} id={"matrixCanvas" + this.state.phase} />
@@ -95,10 +115,28 @@ export class ContinueConfirmation extends React.Component {
             width: w,
           }}
         >
-          <Button
-            title="Ready to continue!"
-            onPress={() => handleContinuePress()}
-          />
+          <TouchableOpacity onPress={() => handleContinuePress()}>
+            <View
+              style={{
+                backgroundColor: "green",
+                borderRadius: 14,
+                shadowRadius: 20,
+                shadowOpacity: 0.5,
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "Noto-Sans",
+                  fontSize: 24,
+                  margin: 20,
+                  fontWeight: "bold",
+                  color: "white",
+                }}
+              >
+                Ready to continue!
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );

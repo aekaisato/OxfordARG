@@ -56,6 +56,9 @@ const statusLibrary = [
     mural: 1,
   },
   {
+    type: "confirm",
+  },
+  {
     type: "livefeed",
     value: "Scene5",
     save: true,
@@ -87,6 +90,9 @@ const statusLibrary = [
     value: "Scene7Line1",
     save: false,
     mural: 2,
+  },
+  {
+    type: "confirm",
   },
   {
     type: "livefeed",
@@ -156,8 +162,7 @@ const statusLibrary = [
     page: 0,
   },
   {
-    type: "wait",
-    value: 500,
+    type: "confirm",
   },
   {
     type: "livefeed",
@@ -195,6 +200,9 @@ const statusLibrary = [
     value: "Scene14Line2",
   },
   {
+    type: "confirm",
+  },
+  {
     type: "livefeed",
     value: "Scene15",
     endAt: 17,
@@ -220,6 +228,9 @@ const statusLibrary = [
     page: 2,
   },
   {
+    type: "confirm",
+  },
+  {
     type: "livefeed",
     value: "Scene17",
     save: true,
@@ -240,10 +251,13 @@ const statusLibrary = [
     save: false,
   },
   {
+    type: "confirm",
+    page: 3,
+  },
+  {
     type: "livefeed",
     value: "Scene18",
     endAt: 15,
-    page: 3,
     save: true,
   },
   {
@@ -264,6 +278,9 @@ const statusLibrary = [
     type: "communicator",
     value: "Scene19Line2",
     page: 4,
+  },
+  {
+    type: "confirm",
   },
   {
     type: "livefeed",
@@ -336,6 +353,9 @@ const statusLibrary = [
     value: 4000,
   },
   {
+    type: "confirm",
+  },
+  {
     type: "livefeed",
     value: "Scene22",
     save: true,
@@ -356,6 +376,9 @@ const statusLibrary = [
     page: 6,
   },
   {
+    type: "confirm",
+  },
+  {
     type: "livefeed",
     value: "Scene23",
     save: true,
@@ -374,6 +397,9 @@ const statusLibrary = [
     type: "communicator",
     value: "Scene23Line3",
     page: 7,
+  },
+  {
+    type: "confirm",
   },
   {
     type: "puzzle",
@@ -495,7 +521,7 @@ const statusLibrary = [
   {
     type: "livefeed",
     value: "Scene27",
-    endAt: 3,
+    endAt: 1.5,
   },
   {
     type: "communicator",
@@ -513,16 +539,16 @@ const statusLibrary = [
     value: "Scene27Line1",
   },
   {
-    type: "communicator",
-    value: "Scene28Line2",
-    continue: true,
+    type: "puzzle",
+    value: "Puzzle16",
     save: true,
+    continue: true,
     page: 10,
   },
   {
-    type: "puzzle",
-    value: "Puzzle16",
-    save: false,
+    type: "communicator",
+    value: "Scene28Line2",
+    blockGoto: true,
   },
   {
     type: "music",

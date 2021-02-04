@@ -10,6 +10,7 @@ import ReactPlayer from "react-player/lazy";
 import { transcriptStrings } from "./transcript_strings";
 import { goto, increment } from "../status_system/status_system";
 import { getCurrentPhase } from "../navigation/navigation";
+import { NavigationEvents } from "react-navigation";
 
 const REFRESH_INTERVAL = 250;
 let queue: any[] = [];
@@ -100,6 +101,8 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
   // add function to check for current position, and other to queue up a goto
   player: any;
   phase: number;
+  _isMounted = false;
+
   constructor(props: any) {
     super(props);
     this.player;
@@ -107,6 +110,7 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
       playing: false,
       video: "",
       blockGoto: false,
+      isMounted: false,
     };
     if (props.phase == undefined) {
       props.phase = -1;
@@ -132,14 +136,18 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
     }
   }
 
-  queuePlayer(url: string, blockGoto: boolean, endAt: any) {
+  async queuePlayer(url: string, blockGoto: boolean, endAt: any) {
     let boo = true;
     if (urls[url] == undefined) {
+      console.warn("video not found: " + url);
       boo = false;
     }
     setTranscriptLine(url);
+    while (!this._isMounted) {
+      await wait(250);
+      console.log("waiting for mounted livefeed");
+    }
     this.setState({ video: url, playing: boo, blockGoto, endAt });
-    // setup wait for goto
   }
 
   ref = (player: any) => {
@@ -174,13 +182,27 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
   }
 
   componentDidMount() {
+    console.log("video player component did mount")
     this.checkForVideos();
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    console.log("video player component will unmount")
+    this._isMounted = false;
   }
 
   render() {
     if (this.state.playing) {
       return (
         <View style={[styles.container, { overflow: "hidden" }]}>
+          <NavigationEvents
+            onDidFocus={() => {
+              console.log("focusing video player");
+              this.forceUpdate();
+            }}
+            onWillBlur={() => console.log("blurring video player")}
+          />
           <ReactPlayer
             ref={this.ref}
             url={urls[this.state.video]}

@@ -17,6 +17,7 @@ import {
   navigatePhase,
   navigatePuzzle,
 } from "../navigation/navigation";
+import { NavigationEvents } from "react-navigation";
 
 const REFRESH_INTERVAL = 250;
 let queue: any[] = [];
@@ -94,9 +95,10 @@ export function queueStopLiveFeed() {
 }
 
 export class LiveFeed extends React.Component {
-  // add function to check for current position, and other to queue up a goto
   player: any;
   phase: any;
+  _isMounted = false;
+  _intervalID!: NodeJS.Timeout;
 
   constructor(props: any) {
     super(props);
@@ -114,35 +116,35 @@ export class LiveFeed extends React.Component {
   }
 
   async checkForVideos() {
-    while (true) {
-      if (queue.length > 0) {
-        let currentPhase = getCurrentPhase();
-        let objPhase = this.state.phase;
-        console.log("obj phase");
-        console.log(objPhase);
-        console.log("current phase");
-        console.log(currentPhase);
-        if (objPhase != currentPhase) {
-          console.log("obj phase and current phase do not match");
+    //while (true) {
+    if (queue.length > 0) {
+      let currentPhase = getCurrentPhase();
+      let objPhase = this.state.phase;
+      console.log("obj phase");
+      console.log(objPhase);
+      console.log("current phase");
+      console.log(currentPhase);
+      if (objPhase != currentPhase) {
+        console.log("obj phase and current phase do not match");
+      } else {
+        let video = queue.shift();
+        if (video == "STOP") {
+          this.handleEnd();
         } else {
-          let video = queue.shift();
-          if (video == "STOP") {
-            this.handleEnd();
-          } else {
-            this.queuePlayer(
-              video.line,
-              video.blockGoto,
-              video.endAt,
-              video.splashScreenOnEnd
-            );
-          }
+          this.queuePlayer(
+            video.line,
+            video.blockGoto,
+            video.endAt,
+            video.splashScreenOnEnd
+          );
         }
       }
-      await wait(REFRESH_INTERVAL);
     }
+    //  await wait(REFRESH_INTERVAL);
+    //}
   }
 
-  queuePlayer(
+  async queuePlayer(
     url: string,
     blockGoto: any,
     endAt: number,
@@ -150,7 +152,12 @@ export class LiveFeed extends React.Component {
   ) {
     let boo = true;
     if (urls[url] == undefined) {
+      console.warn("video not found: " + url);
       boo = false;
+    }
+    while (!this._isMounted) {
+      await wait(250);
+      console.log("waiting for mounted livefeed");
     }
     this.setState({
       video: url,
@@ -159,7 +166,6 @@ export class LiveFeed extends React.Component {
       endAt,
       splashScreenOnEnd,
     });
-    // setup wait for goto
   }
 
   ref = (player: any) => {
@@ -198,32 +204,50 @@ export class LiveFeed extends React.Component {
   }
 
   componentDidMount() {
+    console.log("live feed component did mount");
     let phaseTemp = getCurrentPhase();
     console.log("mounted live feed");
     console.log(phaseTemp);
     this.setState({ phase: phaseTemp });
-    this.checkForVideos();
+    this._isMounted = true;
+    //this.checkForVideos();
+    this._intervalID = setInterval(
+      async () => await this.checkForVideos(),
+      REFRESH_INTERVAL
+    );
+  }
+
+  componentWillUnmount() {
+    console.log("live feed component will unmount");
+    this._isMounted = false;
+    clearInterval(this._intervalID);
   }
 
   render() {
+    let player;
     if (this.state.playing) {
-      return (
-        <View style={styles.container}>
-          <ReactPlayer
-            ref={this.ref}
-            url={urls[this.state.video]}
-            height={(6 * deviceHeight) / 7}
-            width={(32 / 21) * deviceWidth}
-            playing={this.state.playing}
-            onEnded={() => this.handleEnd()}
-            onProgress={(callback) => this.handleProgress(callback)}
-            stopOnUnmount={true}
-          />
-        </View>
+      player = (
+        <ReactPlayer
+          ref={this.ref}
+          url={urls[this.state.video]}
+          height={(6 * deviceHeight) / 7}
+          width={(32 / 21) * deviceWidth}
+          playing={this.state.playing}
+          onEnded={() => this.handleEnd()}
+          onProgress={(callback) => this.handleProgress(callback)}
+          stopOnUnmount={true}
+        />
       );
     } else {
-      return <View style={styles.container}></View>;
+      player = (
+        <Text>
+          {
+            "You should not see this text.\n(This isn't part of the puzzle; this is actually a bug.)\nPlease refresh your page."
+          }
+        </Text>
+      );
     }
+    return <View style={styles.container}>{player}</View>;
   }
 }
 
