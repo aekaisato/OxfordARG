@@ -83,6 +83,27 @@
   </head>
 
   <body>
+    <script
+      type="text/javascript"
+      src="/static/unsupported-browser/bundled.js"
+    ></script>
+    <script>
+      const browser = bowser.getParser(window.navigator.userAgent);
+      console.log(browser.getBrowser());
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      let override = urlParams.get("browser-override");
+      console.log(override);
+
+      let isSupported = browser.satisfies({
+        chrome: ">=80",
+        firefox: ">=80",
+      });
+      console.log("is supported: " + isSupported);
+      if (!isSupported && override != "true") {
+        window.location.href = "/static/unsupported-browser/unsupported.html";
+      }
+    </script>
     <!-- 
       A generic no script element with a reload button and a message.
       Feel free to customize this however you'd like.
@@ -145,14 +166,14 @@
           text-align: center;
         "
       >
-      <div class="zoomClass">
-        <h1 style="color: white; font-family: 'Source Code Pro', monospace">
-          Loading. Please wait...
-        </h1>
-        <h2 style="color: white; font-family: 'Source Code Pro', monospace">
-          This may take several seconds.
-        </h2>
-      </div>
+        <div class="zoomClass">
+          <h1 style="color: white; font-family: 'Source Code Pro', monospace">
+            Loading. Please wait...
+          </h1>
+          <h2 style="color: white; font-family: 'Source Code Pro', monospace">
+            This may take several seconds.
+          </h2>
+        </div>
       </div>
     </div>
   </body>

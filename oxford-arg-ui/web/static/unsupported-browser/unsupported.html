@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="%LANG_ISO_CODE%">
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 
+      This viewport works for phones with notches.
+      It's optimized for gestures by disabling global zoom.
+     -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover"
+    />
+    <title>%WEB_TITLE%</title>
+    <style>
+      /**
+       * Extend the react-native-web reset:
+       * https://github.com/necolas/react-native-web/blob/master/packages/react-native-web/src/exports/StyleSheet/initialRules.js
+       */
+      html,
+      body,
+      #root {
+        width: 100%;
+        /* To smooth any scrolling behavior */
+        -webkit-overflow-scrolling: touch;
+        margin: 0px;
+        padding: 0px;
+        /* Allows content to fill the viewport and go beyond the bottom */
+        min-height: 100%;
+      }
+      #root {
+        flex-shrink: 0;
+        flex-basis: auto;
+        flex-grow: 1;
+        display: flex;
+        flex: 1;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        /* Prevent text size change on orientation change https://gist.github.com/tfausak/2222823#file-ios-8-web-app-html-L138 */
+        -webkit-text-size-adjust: 100%;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        /* Allows you to scroll below the viewport; default value is visible */
+        overflow-y: auto;
+        overscroll-behavior-y: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -ms-overflow-style: scrollbar;
+      }
+      @keyframes zoomInOut {
+        0% {
+          transform: scale(1, 1);
+        }
+        50% {
+          transform: scale(1.1, 1.1);
+        }
+        100% {
+          transform: scale(1, 1);
+        }
+      }
+
+      .zoomClass {
+        animation: zoomInOut 1.5s infinite;
+      }
+      /* Enable for apps that support dark-theme */
+      /*@media (prefers-color-scheme: dark) {
+        body {
+          background-color: black;
+        }
+      }*/
+    </style>
+  </head>
+
+  <body>
+    <div
+      style="
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      "
+    >
+      <div style="width: 70vw">
+        <h1 style="color: white; font-family: 'Source Code Pro', monospace">
+          Unsupported browser.
+        </h1>
+        <h2 style="color: white; font-family: 'Source Code Pro', monospace">
+          It appears you are using Safari, an outdated version of Chrome or
+          Firefox, or another browser that is not supported by ViriDOS. Please
+          use the latest version of Mozilla Firefox or Google Chrome in order to
+          play ViriDOS. Browsers such as Safari <strong>*will*</strong> create
+          issues.
+        </h2>
+        <h3 style="color: white; font-family: 'Source Code Pro', monospace">
+          Download Mozilla Firefox:
+          <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"
+            >https://www.mozilla.org/en-US/firefox/new/</a
+          >
+        </h3>
+        <h3 style="color: white; font-family: 'Source Code Pro', monospace">
+          Download Google Chrome:
+          <a href="https://www.google.com/chrome/index.html" target="_blank"
+            >https://www.google.com/chrome/index.html</a
+          >
+        </h3>
+      </div>
+      <button onclick="window.location.href = '/?browser-override=true'">
+        If you feel like this was mistaken, click here to return to the game.
+        (Make sure you're using Firefox or Chrome.)
+      </button>
+    </div>
+  </body>
+</html>
