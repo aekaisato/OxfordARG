@@ -33,23 +33,23 @@ Pong = {
   ],
 
   Levels: [ // lower is better for both
-    {aiReaction: 1.6, aiError: 200}, // 0:  ai is losing by 8
-    {aiReaction: 1.6, aiError: 200}, // 1:  ai is losing by 7
-    {aiReaction: 1.6, aiError: 200}, // 2:  ai is losing by 6
-    {aiReaction: 1.6, aiError: 200}, // 3:  ai is losing by 5
-    {aiReaction: 1.6, aiError: 200}, // 4:  ai is losing by 4
-    {aiReaction: 1.6, aiError: 200}, // 5:  ai is losing by 3
-    {aiReaction: 1.6, aiError: 200}, // 6:  ai is losing by 2
-    {aiReaction: 1.6, aiError: 200}, // 7:  ai is losing by 1
-    {aiReaction: 1.6, aiError: 200}, // 8:  tie
-    {aiReaction: 1.6, aiError: 200}, // 9:  ai is winning by 1
-    {aiReaction: 1.6, aiError: 200}, // 10: ai is winning by 2
-    {aiReaction: 1.6, aiError: 200}, // 11: ai is winning by 3
-    {aiReaction: 1.6, aiError: 200}, // 12: ai is winning by 4
-    {aiReaction: 1.6, aiError: 200}, // 13: ai is winning by 5
-    {aiReaction: 1.6, aiError: 200}, // 14: ai is winning by 6
-    {aiReaction: 1.6, aiError: 200}, // 15: ai is winning by 7
-    {aiReaction: 1.6, aiError: 200}  // 16: ai is winning by 8
+    {aiReaction: 1.6, aiError: 180}, // 0:  ai is losing by 8
+    {aiReaction: 1.6, aiError: 180}, // 1:  ai is losing by 7
+    {aiReaction: 1.6, aiError: 180}, // 2:  ai is losing by 6
+    {aiReaction: 1.6, aiError: 180}, // 3:  ai is losing by 5
+    {aiReaction: 1.6, aiError: 180}, // 4:  ai is losing by 4
+    {aiReaction: 1.6, aiError: 180}, // 5:  ai is losing by 3
+    {aiReaction: 1.6, aiError: 180}, // 6:  ai is losing by 2
+    {aiReaction: 1.6, aiError: 180}, // 7:  ai is losing by 1
+    {aiReaction: 1.6, aiError: 180}, // 8:  tie
+    {aiReaction: 1.6, aiError: 180}, // 9:  ai is winning by 1
+    {aiReaction: 1.6, aiError: 180}, // 10: ai is winning by 2
+    {aiReaction: 1.6, aiError: 180}, // 11: ai is winning by 3
+    {aiReaction: 1.6, aiError: 180}, // 12: ai is winning by 4
+    {aiReaction: 1.6, aiError: 180}, // 13: ai is winning by 5
+    {aiReaction: 1.6, aiError: 180}, // 14: ai is winning by 6
+    {aiReaction: 1.6, aiError: 180}, // 15: ai is winning by 7
+    {aiReaction: 1.6, aiError: 180}  // 16: ai is winning by 8
   ],
 
   //-----------------------------------------------------------------------------
