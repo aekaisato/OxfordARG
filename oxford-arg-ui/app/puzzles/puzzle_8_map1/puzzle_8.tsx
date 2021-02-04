@@ -6,6 +6,7 @@ import {
   Text,
   ImageBackground,
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { goto, increment } from "../../components/status_system/status_system";
 import { queuePlayer } from "../../components/video_player/video_player";
 
@@ -79,17 +80,40 @@ export class Puzzle8 extends React.Component {
             alignItems: "center",
           }}
         >
-          <Text
-            style={{
-              fontWeight: "bold",
-              fontFamily: "VT323",
-              color: "white",
-              fontSize: deviceWidth / 24,
-              textAlign: "center",
-            }}
-          >
-            click on classroom 30B
-          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontFamily: "VT323",
+                color: "white",
+                fontSize: deviceWidth / 24,
+                textAlign: "center",
+              }}
+            >
+              {"click on classroom "}
+            </Text>
+            <TouchableOpacity
+              onPress={async () => {
+                queuePlayer("Scene20ErrorS");
+                freeze = true;
+                await wait(0);
+                freeze = false;
+              }}
+            >
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontFamily: "VT323",
+                  color: "white",
+                  fontSize: deviceWidth / 24,
+                  textAlign: "center",
+                }}
+              >
+                30B
+              </Text>
+            </TouchableOpacity>
+          </View>
+
           <svg
             viewBox="0 0 1656 1250.6667"
             preserveAspectRatio="none"

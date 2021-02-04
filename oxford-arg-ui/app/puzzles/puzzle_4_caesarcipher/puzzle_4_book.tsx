@@ -51,7 +51,7 @@ export class Puzzle4Book extends React.Component {
                   width: "33%",
                   height: "80%",
                   fontFamily: "EB-Garamond",
-                  fontSize: 36,
+                  fontSize: deviceHeight / 28,
                 }}
               >
                 {cT1}
@@ -61,7 +61,7 @@ export class Puzzle4Book extends React.Component {
                   width: "33%",
                   height: "80%",
                   fontFamily: "EB-Garamond",
-                  fontSize: 36,
+                  fontSize: deviceHeight / 28,
                 }}
               >
                 {cT2.substring(0, cT2.indexOf("**"))}
