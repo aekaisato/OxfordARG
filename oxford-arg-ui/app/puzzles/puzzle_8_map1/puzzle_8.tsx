@@ -55,7 +55,7 @@ async function incorrectLink() {
     freezeLength = 8955;
   } else if (count >= 4) {
     queuePlayer("Scene20Error4", true);
-    freezeLength = 0; // add here
+    freezeLength = 35355;
   }
   freeze = true;
   await wait(freezeLength);
