@@ -15,7 +15,6 @@ let freeze = false;
 let complete = false;
 let count = 0;
 
-
 async function wait(timeout: number) {
   return new Promise((resolve) => {
     setTimeout(resolve, timeout);
@@ -24,6 +23,9 @@ async function wait(timeout: number) {
 
 async function correctLink() {
   if (freeze || complete) {
+    if (freeze) {
+      alert("You can't click anything while a video is playing. Please wait.");
+    }
     return;
   }
   complete = true;
@@ -35,6 +37,9 @@ async function correctLink() {
 
 async function incorrectLink() {
   if (freeze || complete) {
+    if (freeze) {
+      alert("You can't click anything while a video is playing. Please wait.");
+    }
     return;
   }
   count++;
@@ -45,9 +50,12 @@ async function incorrectLink() {
   } else if (count == 2) {
     queuePlayer("Scene20Error2", true);
     freezeLength = 3755;
-  } else if (count >= 3) {
+  } else if (count == 3) {
     queuePlayer("Scene20Error3", true);
     freezeLength = 8955;
+  } else if (count >= 4) {
+    queuePlayer("Scene20Error4", true);
+    freezeLength = 0; // add here
   }
   freeze = true;
   await wait(freezeLength);

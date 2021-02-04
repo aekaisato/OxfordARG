@@ -22,6 +22,7 @@ const transcriptStrings = {
   Scene20Error1: `HOSHI Representative: That's not quite right, try again`,
   Scene20Error2: `HOSHI Representative: Uhhh, that's now what I meant either`,
   Scene20Error3: `HOSHI Representative: Take a closer look at the clue I gave you. It's almost spelled out for you. We though you were the smart one...`,
+  Scene20Error4: `HOSHI Representative: I didn't want to do this, but I think you need the clue: (to the tune of a specific children's song) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26`,
   Scene21Line1: `Ms. Stephan: How's the tour been so far? I know you can't respond to that, but I just hope you're enjoying it. Huh, that's odd. The lights are out. Is everything okay there? Uh...anyway... Right now, we're in Mr. Kim's room, and did you know he has a stash of Choco Pies in that cabinet over there? It's too bad he put a lock on it...`,
   Scene21Line1P2: `Mr. Kim's Class Representative: Hi I'm Mr. Kim's class president. Someone came in and locked it up, leaving a strange note on the desk. Hey, since you're here, why don't you check it out?`,
   Scene21Line2: `Ms. Stephan: Wait, what's tha--`,
