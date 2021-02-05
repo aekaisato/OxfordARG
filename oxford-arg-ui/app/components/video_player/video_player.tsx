@@ -52,6 +52,7 @@ const urls = {
   Scene20Error2: encodeURI(FOLDER_PATH + "Scene 20 Error Msg 2.webm"),
   Scene20Error3: encodeURI(FOLDER_PATH + "Scene 20 Error Msg 3.webm"),
   Scene20Error4: encodeURI(FOLDER_PATH + "Scene 20 Error Msg 4.webm"),
+  Scene20ErrorS: encodeURI(FOLDER_PATH + "Scene 20 Easter Egg.webm"),
   Scene21Line1: encodeURI(FOLDER_PATH + "Scene 21 - Stephan and Kim.webm"),
   Scene21Line2: encodeURI(FOLDER_PATH + "Scene 21 Stephan - HOSHI.webm"),
   Scene22Line1: encodeURI(FOLDER_PATH + "Scene 22 Line 1 Siggson.webm"),
@@ -183,13 +184,13 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
   }
 
   componentDidMount() {
-    console.log("video player component did mount")
+    console.log("video player component did mount");
     this.checkForVideos();
     this._isMounted = true;
   }
 
   componentWillUnmount() {
-    console.log("video player component will unmount")
+    console.log("video player component will unmount");
     this._isMounted = false;
   }
 

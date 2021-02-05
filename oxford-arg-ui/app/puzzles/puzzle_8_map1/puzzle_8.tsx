@@ -94,9 +94,9 @@ export class Puzzle8 extends React.Component {
             </Text>
             <TouchableOpacity
               onPress={async () => {
-                queuePlayer("Scene20ErrorS");
+                queuePlayer("Scene20ErrorS", true);
                 freeze = true;
-                await wait(0);
+                await wait(5874);
                 freeze = false;
               }}
             >
