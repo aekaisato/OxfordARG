@@ -96,7 +96,7 @@
       console.log(override);
 
       let isSupported = browser.satisfies({
-        chrome: ">=56",
+        chrome: ">=72",
         firefox: ">=65",
       });
       console.log("is supported: " + isSupported);
@@ -108,10 +108,7 @@
       if (!video) {
         video = document.createElement("video");
       }
-      if (
-        video.canPlayType(`video/webm; codecs=vp9`) ||
-        video.canPlayType(`video/mp4; codecs=avc1.42E01E, mp4a.40.2`)
-      ) {
+      if (video.canPlayType(`video/webm; codecs=vp9`)) {
         console.log("video codec supported");
       } else {
         window.location.href = "/static/unsupported-browser/unsupported.html";

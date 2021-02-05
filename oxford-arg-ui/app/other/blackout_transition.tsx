@@ -45,7 +45,7 @@ export class BlackoutTransition extends React.Component {
       <View style={styles.container}>
         <NavigationEvents onWillFocus={() => performAnimation()} />
         <ReactPlayer
-          url="https://static.viridos.toadtoad.xyz/other-clips/bootup_sequence.mp4"
+          url="https://static.viridos.toadtoad.xyz/other-clips/bootup_sequence.webm"
           width={deviceWidth}
           height={deviceHeight}
           playing={this.state.playing}

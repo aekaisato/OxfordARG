@@ -26,27 +26,27 @@ async function wait(timeout: number) {
 
 const sounds = {
   start: new Howl({
-    src: [soundDirectory + "start.mp3"],
+    src: [soundDirectory + "start.ogg"],
   }),
   button: new Howl({
-    src: [soundDirectory + "button.mp3"],
+    src: [soundDirectory + "button.ogg"],
   }),
   shutdown: new Howl({
-    src: [soundDirectory + "shutdown.mp3"],
+    src: [soundDirectory + "shutdown.ogg"],
   }),
 };
 
 const music = {
   mus1: new Howl({
-    src: [musicDirectory + "mus1.mp3"],
+    src: [musicDirectory + "mus1.ogg"],
     html5: USE_HTML5,
   }),
   mus2: new Howl({
-    src: [musicDirectory + "mus2.mp3"],
+    src: [musicDirectory + "mus2.ogg"],
     html5: USE_HTML5,
   }),
   mus3: new Howl({
-    src: [musicDirectory + "mus3.mp3"],
+    src: [musicDirectory + "mus3.ogg"],
     html5: USE_HTML5,
     sprite: {
       startLoop: [38492, 76834],

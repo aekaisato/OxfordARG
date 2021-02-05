@@ -130,7 +130,7 @@ export default class App extends React.Component {
     });
     await Font.loadAsync({
       "SourceCodePro-Regular": require("./assets/fonts/SourceCodePro-Regular.ttf"),
-    });
+    }); 
     this.fontsLoaded = true;
   }
 
