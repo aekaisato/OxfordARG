@@ -103,6 +103,19 @@
       if (!isSupported && override != "true") {
         window.location.href = "/static/unsupported-browser/unsupported.html";
       }
+
+      let video;
+      if (!video) {
+        video = document.createElement("video");
+      }
+      if (
+        video.canPlayType(`video/webm; codecs=vp9`) ||
+        video.canPlayType(`video/mp4; codecs=avc1.42E01E, mp4a.40.2`)
+      ) {
+        console.log("video codec supported");
+      } else {
+        window.location.href = "/static/unsupported-browser/unsupported.html";
+      }
     </script>
     <!-- 
       A generic no script element with a reload button and a message.
