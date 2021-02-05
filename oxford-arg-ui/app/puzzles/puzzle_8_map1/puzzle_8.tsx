@@ -90,7 +90,7 @@ export class Puzzle8 extends React.Component {
                 textAlign: "center",
               }}
             >
-              {"click on classroom "}
+              {"click on "}
             </Text>
             <TouchableOpacity
               onPress={async () => {
@@ -109,7 +109,7 @@ export class Puzzle8 extends React.Component {
                   textAlign: "center",
                 }}
               >
-                30B
+                classroom 30B
               </Text>
             </TouchableOpacity>
           </View>

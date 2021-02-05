@@ -156,6 +156,7 @@ export class Puzzle9 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginTop: "20%",
+                color: "black",
               }}
               maxLength={1}
               onChangeText={(val) => this.handleOnChangeText("first", val)}
@@ -176,6 +177,7 @@ export class Puzzle9 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginTop: "20%",
+                color: "black",
               }}
               maxLength={1}
               onChangeText={(val) => this.handleOnChangeText("second", val)}
@@ -195,6 +197,7 @@ export class Puzzle9 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginTop: "20%",
+                color: "black",
               }}
               maxLength={1}
               onChangeText={(val) => this.handleOnChangeText("third", val)}
@@ -214,6 +217,7 @@ export class Puzzle9 extends React.Component {
                 fontSize: 48,
                 textAlign: "center",
                 marginTop: "20%",
+                color: "black",
               }}
               maxLength={1}
               onChangeText={(val) => this.handleOnChangeText("fourth", val)}

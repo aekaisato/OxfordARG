@@ -115,6 +115,7 @@ export class Puzzle7 extends React.Component {
                 textAlign: "center",
                 marginRight: 15,
                 borderColor: this.state.borderColor,
+                color: "black"
               }}
               autoFocus={true}
               secureTextEntry={true}
