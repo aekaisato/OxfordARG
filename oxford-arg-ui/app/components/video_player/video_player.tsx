@@ -69,7 +69,7 @@ const urls = {
   Scene26Line1: encodeURI(FOLDER_PATH + "Scene 26 Line 1 Hogan.webm"),
   Scene26Line2: encodeURI(FOLDER_PATH + "Scene 26 Line 2 Hogan.webm"),
   Scene27Line1: encodeURI(FOLDER_PATH + "Scene 27 Line 1 Wai.webm"),
-  Scene27Line2: encodeURI(FOLDER_PATH + "Scene+27+Line+2+Whitney+Rep.webm"),
+  Scene27Line2: encodeURI(FOLDER_PATH + "Scene+27+Line+2+Whitney+Rep.webm"), // fix for double line 3
   Scene27Line3: encodeURI(FOLDER_PATH + "Scene 27 Line 3 Whitney Rep.webm"),
   Scene28Line1: encodeURI(FOLDER_PATH + "Scene 28 Line 1 HOSHI.webm"),
   Scene28Line2: encodeURI(FOLDER_PATH + "Scene 28 Line 2 HOSHI.webm"),
