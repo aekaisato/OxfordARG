@@ -91,7 +91,12 @@
       const browser = bowser.getParser(window.navigator.userAgent);
       console.log(browser.getBrowser());
       const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
+      let urlParams;
+      try {
+        urlParams = new URLSearchParams(queryString);
+      } catch (e) {
+        window.location.href = "/static/unsupported-browser/unsupported.html";
+      }
       let override = urlParams.get("browser-override");
       console.log(override);
 
@@ -108,7 +113,7 @@
       if (!video) {
         video = document.createElement("video");
       }
-      if (video.canPlayType(`video/webm; codecs=vp9`)) {
+      if (video.canPlayType("video/webm; codecs=vp9")) {
         console.log("video codec supported");
       } else {
         window.location.href = "/static/unsupported-browser/unsupported.html";
