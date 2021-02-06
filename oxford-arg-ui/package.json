@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build": "webpack --config webpack.config.js"
+    "build": "expo build:web",
+    "build-webpack": "webpack --config webpack.config.js"
   },
   "dependencies": {
     "@expo/webpack-config": "^0.12.1",
