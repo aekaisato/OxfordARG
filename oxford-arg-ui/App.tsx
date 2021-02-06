@@ -135,6 +135,8 @@ export default class App extends React.Component {
   }
 
   async initializeApp() {
+    const isLoadingDiv = document.getElementById("isLoadingDiv");
+    isLoadingDiv?.parentNode?.removeChild(isLoadingDiv);
     await this.loadFonts();
   }
 
