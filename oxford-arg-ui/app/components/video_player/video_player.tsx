@@ -157,6 +157,7 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
   };
 
   handleEnd() {
+    console.log("video ended");
     this.setState({ playing: false, video: "" });
     if (this.state.blockGoto) {
       this.setState({ blockGoto: false });
@@ -175,6 +176,7 @@ export class VideoPlayer extends React.Component<VideoPlayerProps> {
   }) {
     if (this.state.endAt != undefined) {
       if (callback.playedSeconds >= this.state.endAt) {
+        console.log("end at called");
         (async function () {
           await goto(await increment());
         })();

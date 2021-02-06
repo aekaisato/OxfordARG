@@ -173,6 +173,7 @@ export class LiveFeed extends React.Component {
   };
 
   handleEnd() {
+    console.log("live feed ended");
     this.setState({ playing: false, video: "" });
     if (this.state.splashScreenOnEnd) {
       navigatePuzzle("SplashScreen");
