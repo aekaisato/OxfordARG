@@ -207,30 +207,34 @@ export async function goto(status: {
     return;
   }
   let percent = statusVal / library.length;
-  setProgress(percent);
+  try {
+    setProgress(percent);
 
-  if (!getMural1Unlocked()) {
-    setUnlocked(1, await isUnlockedMural(1, statusVal));
-  }
-  if (!getMural2Unlocked()) {
-    setUnlocked(2, await isUnlockedMural(2, statusVal));
-  }
+    if (!getMural1Unlocked()) {
+      setUnlocked(1, await isUnlockedMural(1, statusVal));
+    }
+    if (!getMural2Unlocked()) {
+      setUnlocked(2, await isUnlockedMural(2, statusVal));
+    }
 
-  for (let i = Number.parseInt(statusVal); i > 0; i--) {
-    if (library[i].page != undefined) {
-      if (library[i].page >= 0) {
-        enableNotebook();
-      }
-      setPage(library[i].page);
-      updatePagesCollected1();
-      updatePagesCollected2();
-      updatePagesCollected3();
-      if (i == Number.parseInt(statusVal) && library[i].page > 0) {
-        alert(
-          "You found a notebook page! Check your inventory if you want to see it."
-        );
+    for (let i = Number.parseInt(statusVal); i > 0; i--) {
+      if (library[i].page != undefined) {
+        if (library[i].page >= 0) {
+          enableNotebook();
+        }
+        setPage(library[i].page);
+        updatePagesCollected1();
+        updatePagesCollected2();
+        updatePagesCollected3();
+        if (i == Number.parseInt(statusVal) && library[i].page > 0) {
+          alert(
+            "You found a notebook page! Check your inventory if you want to see it."
+          );
+        }
       }
     }
+  } catch (e) {
+    console.warn(e);
   }
 
   if (status.continue != undefined && status.continue) {
@@ -329,8 +333,7 @@ export async function continueGame(overrideCloud?: boolean) {
       console.log(statusLibrary[i]);
       if (statusLibrary[i].type == "completion") {
         i = -1;
-      }
-      if (statusLibrary[i].type == "music") {
+      } else if (statusLibrary[i].type == "music") {
         mus = statusLibrary[i].value;
         i = -1;
       }
@@ -346,7 +349,12 @@ export async function continueGame(overrideCloud?: boolean) {
     playMusic(mus);
   }
   navigatePhase(phase);
-  await goto(statusLibrary[Number.parseInt(await getStatus())]);
+  let continueStatus = Number.parseInt(await getStatus());
+  if (statusLibrary[continueStatus] == undefined) {
+    await goto(statusLibrary[statusLibrary.length - 1]);
+  } else {
+    await goto(statusLibrary[continueStatus]);
+  }
 }
 
 export async function fetchOthers() {}

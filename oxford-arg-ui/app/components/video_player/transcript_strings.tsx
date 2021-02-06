@@ -2,7 +2,7 @@ const transcriptStrings = {
   Scene1Line1: `Mr. Alonso: Ah, there you are! Thank you so much for helping me out with the ViriDOS project! The past few nights have been, uh, kinda busy as we scrambled to get this prototype ready, but now we are...somewhat confident in it. Let me show you how it works.`,
   Scene3Line1: `Mr. Alonso: That shouldn't happen. I swear I programmed it on a straight path. Could you take a look to see what's wrong?`,
   Scene4Line1: `Mr. Alonso: Hm, there seems to be an odd script in ViriDOS's files. Hm, hopefully that's just a one-off glitch here, let's continue the test.`,
-  Scene6Line1: `Mr. Alonso: Huh, back here again huh? That's odd, there's some transmission sending data directly to the robot! Hm,no-one else should have access to control it... and why would they bring it in here...? Hm, anyway, why don't you go and fix the robot.`,
+  Scene6Line1: `Mr. Alonso: Huh, back here again huh? That's odd, there's some transmission sending data directly to the robot! Hm, no-one else should have access to control it... and why would they bring it in here...? Hm, anyway, why don't you go and fix the robot.`,
   Scene7Line1: `Mr. Alonso: Again? Another weird file showed up in ViriDOS. What is going on? Its programming looks good! Hopefully that's the last of any technical difficulties.`,
   Scene9Line1: `Mr. Alonso: Gosh darn robot, why won't you work!? There's gotta be something else wrong, I've checked the code 5 times now! Check the wall for anything odd...maybe there is some interference. Or what about those weird files from earlier?`,
   Scene9Line2: `Mr. Alonso: Wait! My connection's breaking up! What's going on?! I can't see!`,

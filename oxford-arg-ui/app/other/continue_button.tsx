@@ -90,6 +90,17 @@ export class ContinueConfirmation extends React.Component {
     this.setState({ phase: phase });
   }
 
+  componentDidMount() {
+    initVisualizer(this.state.phase);
+  }
+
+  componentWillUnmount() {
+    console.log("disabling matrix effect");
+    console.log(intervalID);
+    clearInterval(intervalID);
+    intervalID = null;
+  }
+
   render() {
     return (
       <View style={[styles.container, { backgroundColor: "black" }]}>
@@ -97,12 +108,15 @@ export class ContinueConfirmation extends React.Component {
           onWillFocus={() => {
             console.log("resetting continue button");
             completed = false;
-            initVisualizer(this.state.phase);
+            if (intervalID == null) {
+              initVisualizer(this.state.phase);
+            }
           }}
           onWillBlur={() => {
             console.log("disabling matrix effect");
             console.log(intervalID);
             clearInterval(intervalID);
+            intervalID = null;
           }}
         />
         <canvas height={h} width={w} id={"matrixCanvas" + this.state.phase} />

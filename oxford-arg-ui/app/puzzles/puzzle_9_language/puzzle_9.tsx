@@ -45,6 +45,7 @@ export class Puzzle9 extends React.Component {
     ref: string,
     key: NativeSyntheticEvent<TextInputKeyPressEventData>
   ) {
+    console.log(ref);
     if (this.state.outlineColor == "green") {
       return;
     }
@@ -57,10 +58,15 @@ export class Puzzle9 extends React.Component {
       } else {
         nextRef = refsList[index + 1];
       }
+      this.setState({ [ref]: "" });
       //@ts-ignore
       this.refs[nextRef].focus();
     } else {
       //this.handleOnChangeText(ref, "") //this.state[ref].substring(0, this.state[ref].length-2)
+      if (this.state[ref].length >= 1) {
+        this.setState({ [ref]: "" });
+        return;
+      }
       if (index == 0) {
         nextRef = refsList[refsList.length - 1];
       } else {

@@ -130,7 +130,7 @@ export class Phase1Layout extends React.Component {
             opacity: 1,
           }}
         >
-          {"items collected"}
+          {"files collected"}
         </Text>
       );
     }
@@ -206,7 +206,7 @@ export class Phase1Layout extends React.Component {
                   top: -4,
                 }}
               >
-                <VideoPlayer phase={1}/>
+                <VideoPlayer phase={1} />
               </Phase1Window>
             </View>
           </View>
