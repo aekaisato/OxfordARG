@@ -135,14 +135,7 @@ export default class App extends React.Component {
   }
 
   async initializeApp() {
-    try {
-      const tempDiv = document.getElementById("isLoadingDiv");
-      tempDiv?.replaceWith(...tempDiv.childNodes);
-    } catch (e) {
-      console.warn(e);
-    }
     await this.loadFonts();
-    this.forceUpdate();
   }
 
   async componentDidMount() {
