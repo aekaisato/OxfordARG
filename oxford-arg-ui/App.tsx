@@ -137,6 +137,7 @@ export default class App extends React.Component {
   async initializeApp() {
     try {
       let tempDiv = document.getElementById("isLoadingDiv");
+      console.log(tempDiv);
       tempDiv?.parentNode?.removeChild(tempDiv);
     } catch (e) {
       console.warn(e);
