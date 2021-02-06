@@ -62,6 +62,7 @@ async function wait(timeout: number) {
 }
 
 export class IPPopup extends React.Component {
+  animation: any;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -71,6 +72,13 @@ export class IPPopup extends React.Component {
       visible: "none",
       textColor: new Animated.Value(0),
     };
+    this.animation = Animated.loop(
+      Animated.timing(this.state.textColor, {
+        toValue: 255,
+        duration: 800,
+        easing: Easing.inOut(Easing.quad),
+      })
+    );
     that = this;
   }
 
@@ -81,28 +89,23 @@ export class IPPopup extends React.Component {
   toggleVisibility() {
     console.log("toggling visibility of ip");
     if (this.state.visible == "none") {
+      this.animation.start();
       this.setState({ visible: "flex" });
     } else if (this.state.visible == "flex") {
       this.setState({ visible: "none" });
+      this.animation.stop();
+      this.animation = Animated.loop(
+        Animated.timing(this.state.textColor, {
+          toValue: 255,
+          duration: 800,
+          easing: Easing.inOut(Easing.quad),
+        })
+      );
     } else {
       console.warn(
         "you done goofed -- tried to toggle visibility of ip address trick"
       );
     }
-  }
-
-  animateColor() {
-    Animated.loop(
-      Animated.timing(this.state.textColor, {
-        toValue: 255,
-        duration: 800,
-        easing: Easing.inOut(Easing.quad),
-      })
-    ).start();
-  }
-
-  componentDidMount() {
-    this.animateColor();
   }
 
   render() {
