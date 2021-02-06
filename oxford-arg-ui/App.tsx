@@ -136,15 +136,13 @@ export default class App extends React.Component {
 
   async initializeApp() {
     try {
-      // const tempDiv = document.getElementById("isLoadingDiv");
-      // tempDiv?.replaceWith(...tempDiv.childNodes);
-      const zoomClass = document.getElementsByClassName("zoomClass")[0];
-      console.log(zoomClass.childNodes);
-      zoomClass?.replaceWith(...zoomClass.childNodes);
+      const tempDiv = document.getElementById("isLoadingDiv");
+      tempDiv?.replaceWith(...tempDiv.childNodes);
     } catch (e) {
       console.warn(e);
     }
     await this.loadFonts();
+    this.forceUpdate();
   }
 
   async componentDidMount() {
