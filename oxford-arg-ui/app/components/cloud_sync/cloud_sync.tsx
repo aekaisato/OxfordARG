@@ -82,7 +82,7 @@ export async function loginUser(email: string, password: string) {
       console.log("signed in");
       await firebase
         .database()
-        .ref("/statuses/" + firebase.auth().currentUser?.uid)
+        .ref("/users/" + firebase.auth().currentUser?.uid)
         .update({
           verified: true,
         });
