@@ -80,6 +80,12 @@ export async function loginUser(email: string, password: string) {
       .signInWithEmailAndPassword(email, password);
     if (firebase.auth().currentUser?.emailVerified) {
       console.log("signed in");
+      await firebase
+        .database()
+        .ref("/statuses/" + firebase.auth().currentUser?.uid)
+        .update({
+          verified: true,
+        });
       return "You are now signed in.";
     } else {
       await logoutUser();
