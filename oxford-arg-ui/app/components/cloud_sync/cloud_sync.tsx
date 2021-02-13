@@ -1,9 +1,11 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import { AsyncStorage } from "react-native";
 import { updateCompletionData } from "../../other/completion_screen";
 import { updateLeaderboardData } from "../layout_components/progress_leaderboard/progress_leaderboard";
 import { getStatus, setStatus } from "../status_system/status_system";
+import { statusToJWT, validateJWT } from "../status_system/status_validation";
 
 let statusData = {};
 
@@ -25,6 +27,24 @@ async function updateData() {
   updateLeaderboardData(statusData);
   databaseRef.on("value", async (snapshot) => {
     statusData = snapshot.val();
+    let statusUnwrapped = {};
+    for (let i in statusData) {
+      let temp = statusData[i].status;
+      if (!isNaN(temp)) {
+        statusUnwrapped = {
+          ...statusUnwrapped,
+          [i]: { status: temp, completed: statusData[i].completed },
+        };
+      } else {
+        let str = temp.substring(temp.indexOf(".") + 1, temp.length - 1);
+        str = str.substring(0, str.indexOf("."));
+        let obj = JSON.parse(atob(str));
+        statusUnwrapped = {
+          ...statusUnwrapped,
+          [i]: { status: obj.status, completed: statusData[i].completed },
+        };
+      }
+    }
     updateLeaderboardData(statusData);
     updateCompletionData(statusData);
   });
@@ -99,13 +119,14 @@ export async function loginUser(email: string, password: string) {
 }
 
 export async function logoutUser() {
-  firebase
+  await firebase
     .auth()
     .signOut()
     .catch((error) => {
       console.warn(error.message);
       return "Error: " + error.message;
     });
+  await AsyncStorage.removeItem("status");
   return "Successfully signed out.";
 }
 
@@ -127,7 +148,7 @@ export async function setCloudStatus(status: number) {
     .database()
     .ref("/statuses/" + user.uid)
     .update({
-      status: status,
+      status: await statusToJWT(status),
     });
 }
 
@@ -143,12 +164,14 @@ export async function syncUserToCloud(
   console.log("now syncing");
   let cloudStatus;
   try {
-    cloudStatus = await (
-      await firebase
-        .database()
-        .ref("/statuses/" + user.uid)
-        .once("value")
-    ).val().status;
+    cloudStatus = await validateJWT(
+      await (
+        await firebase
+          .database()
+          .ref("/statuses/" + user.uid)
+          .once("value")
+      ).val().status
+    );
   } catch {
     cloudStatus = null;
   }

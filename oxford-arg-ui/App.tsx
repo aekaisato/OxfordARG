@@ -20,6 +20,10 @@ import { IPPopup } from "./app/other/ip_popup";
 import { BlackoutTransition } from "./app/other/blackout_transition";
 import { MainMenu } from "./app/other/main_menu";
 import { CompletionScreen } from "./app/other/completion_screen";
+import {
+  statusToJWT,
+  validateJWT,
+} from "./app/components/status_system/status_validation";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAyKgYHFgHghjs5xmKe-Lcfbw9uLX7nq10",
@@ -144,6 +148,7 @@ export default class App extends React.Component {
     await this.initializeApp();
     //await wait(1000);
     this.forceUpdate();
+    await wait(3000);
   }
 
   render() {
