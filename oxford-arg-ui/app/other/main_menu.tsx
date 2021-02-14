@@ -96,12 +96,12 @@ export class MainMenu extends React.Component {
     this.xtermRef.terminal.writeln(new Date().toString() + "\n");
     await wait(waitTimes[3]);
     this.xtermRef.terminal.writeln(
-      "Please sign up or login before beginning the game."
+      "Please sign up or login before beginning the tour."
     );
     await wait(waitTimes[4]);
     this.xtermRef.terminal.writeln("");
     this.xtermRef.terminal.writeln(
-      "WARNING: USING 'START' WILL OVERWRITE YOUR GAME SAVE, IF YOU HAVE ALREADY STARTED THE GAME. IF YOU HAVE STARTED THE GAME BEFORE, DO NOT USE 'START' UNLESS YOU ARE SURE YOU WOULD LIKE TO RESTART."
+      "WARNING: USING 'START' WILL OVERWRITE YOUR TOUR SAVE, IF YOU HAVE ALREADY STARTED THE TOUR. IF YOU HAVE STARTED THE TOUR BEFORE, DO NOT USE 'START' UNLESS YOU ARE SURE YOU WOULD LIKE TO RESTART."
     );
     this.xtermRef.terminal.writeln("");
     await wait(waitTimes[5]);
