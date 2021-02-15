@@ -50,6 +50,7 @@ import {
 import { setLibraryLength } from "../layout_components/progress_leaderboard/progress_leaderboard";
 import { NavigationEvents } from "react-navigation";
 import { getMusicOn } from "../../other/main_menu";
+import { statusToJWT, validateJWT } from "./status_validation";
 
 /*
 const statusLibrary = [
@@ -73,15 +74,16 @@ async function wait(timeout: number) {
 
 export async function setStatus(statusNum: number) {
   console.log("attempting to set status to " + statusNum);
-  await AsyncStorage.setItem("status", statusNum + "");
+  await AsyncStorage.setItem("status", await statusToJWT(statusNum));
   return statusLibrary[statusNum];
 }
 
 export async function getStatus() {
   console.log("attempting to get status");
   let temp = await AsyncStorage.getItem("status");
-  console.log("status: " + temp);
-  return temp;
+  let temp2 = await validateJWT(temp);
+  console.log("status: " + temp2);
+  return temp2;
 }
 
 export function getLibrary() {
@@ -91,11 +93,12 @@ export function getLibrary() {
 export async function increment() {
   console.log("attempting to get status");
   let temp = await AsyncStorage.getItem("status");
+  temp = await validateJWT(temp);
   console.log("attempting to increment status from " + temp);
   if (status != undefined && status != null) {
     try {
       let finalNum = Number.parseInt(temp) + 1;
-      await AsyncStorage.setItem("status", finalNum + "");
+      await AsyncStorage.setItem("status", (await statusToJWT(finalNum)) + "");
       let final = statusLibrary[finalNum];
       console.log("returning below log");
       console.log(final);
