@@ -38,6 +38,7 @@ export class Puzzle15 extends React.Component {
     direction: "right",
     map: JSON.parse(JSON.stringify(map2d)),
     queue: [],
+    isPlaying: false,
   };
 
   async clockwise() {
@@ -188,23 +189,29 @@ export class Puzzle15 extends React.Component {
   }
 
   async processQueue() {
-    for (let i = 0; i < this.state.queue.length; i++) {
-      let value = this.state.queue[i];
-      if (value == 0) {
-        await this.moveForward();
-      } else if (value == 1) {
-        await this.clockwise();
-      } else if (value == 2) {
-        await this.counterClockwise();
-      } else {
+    if (this.state.isPlaying) {
+      return;
+    }
+    this.setState({ isPlaying: true }, async () => {
+      for (let i = 0; i < this.state.queue.length; i++) {
+        let value = this.state.queue[i];
+        if (value == 0) {
+          await this.moveForward();
+        } else if (value == 1) {
+          await this.clockwise();
+        } else if (value == 2) {
+          await this.counterClockwise();
+        } else {
+        }
+        await wait(500);
       }
-      await wait(500);
-    }
-    if (!(this.state.xPos == 7 && this.state.yPos == 3)) {
-      await wait(500);
-      alert("incorrect. try again.");
-      this.resetBoard();
-    }
+      if (!(this.state.xPos == 7 && this.state.yPos == 3)) {
+        await wait(500);
+        alert("incorrect. try again.");
+        this.resetBoard();
+      }
+      this.setState({ isPlaying: false });
+    });
   }
 
   resetBoard() {

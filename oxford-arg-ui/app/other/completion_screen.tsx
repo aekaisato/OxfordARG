@@ -438,9 +438,6 @@ const styles = StyleSheet.create({
 const creditsString = `
 VIRIDOS - An Oxford ARG
 
-
-
-
 Created by 
 Aiden Sato and Brandon Imai
 
@@ -450,9 +447,8 @@ Aiden Sato and Brandon Imai
 Written by
 Aiden Sato and Brandon Imai
 
-Executive Producers
+Executive Producer
 Oxford PTSA
-Julie Sato
 
 Producer
 Brandon Imai
@@ -462,10 +458,6 @@ Aiden Sato
 
 Script Coordinator
 Brandon Imai
-
-
-
-
 
 Head of Programming
 Aiden Sato
@@ -477,14 +469,13 @@ Special Effects Coordinator
 Aiden Sato
 
 Puzzle Team
-Brandon Imai, Lance Sahagun, Aiden Sato, Cory Spessert, and Joshua Spessert
+Cory Spessert, Joshua Spessert, Lance Sahagun, Aiden Sato, and Brandon Imai
 
+Playtesters
+The Sato Family, The Imai Family, Justin Lin, Lance Sahagun, and Connor Takeshita
 
-
-
-
-
-
+Marketing Team
+Lance Sahagun, Brandon Imai, Aiden Sato
 
 CAST (in order of appearance)
 
@@ -536,23 +527,16 @@ Himself
 MR. WEI
 Himself
 
-
-
-
-
-
-
-
 Music By
 Ryan Imai, Sebastian Aguilan, and Aiden Sato
 
 “Zero G”
 by Ryan Imai and Sebastian Aguilan
 
-"Safe_Mode"
+“Safe_Mode”
 by Aiden Sato
 
-"Kali"
+“Kali”
 by Aiden Sato
 
 Sound Effects from
@@ -561,18 +545,7 @@ FreeSound and Storyblocks
 Additional Effects from
 Pexel
 
-
-
-
-
-
-
-
-
-Special thanks to
-Amazon Web Services, Facebook, Firebase, Oxford Academy PTSA
-
-The creators of this game would like to personally thank Mr. Hurley for allowing us to film on campus during the pandemic and the custodians who work tirelessly to keep our campus in a clean and safe condition.
+The creators of this game would like to personally thank PTSA and the OA administration for allowing us to create this project and the custodians who work tirelessly to keep our campus in a clean and safe condition.
 
 The creators would also like to thank everyone involved in the development of this game, including the teachers for generously donating their time to film footage for us as well as our good friend Kimberly Hosoda from Whitney High School.
 

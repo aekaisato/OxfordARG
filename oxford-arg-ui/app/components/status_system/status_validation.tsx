@@ -6,7 +6,6 @@ import "firebase/auth";
 const SECRET_STR =
   "L3tGLlskXFB0c2MyR3hSRSwnVjk1SloocFxMalFaNTp+SXhQNk9kQ3VbcHQ5b2lIJVEhNkIwdURjPWR2cSJAQA==";
 const PRIVATE_KEY = Buffer.from(atob(SECRET_STR));
-console.log(PRIVATE_KEY);
 
 export async function statusToJWT(status: any) {
   const uid = firebase.auth().currentUser?.uid;
