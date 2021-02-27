@@ -542,8 +542,8 @@ by Aiden Sato
 Sound Effects from
 FreeSound and Storyblocks
 
-Additional Effects from
-Pexel
+Additional Images from
+Pexels
 
 The creators of this game would like to personally thank PTSA and the OA administration for allowing us to create this project and the custodians who work tirelessly to keep our campus in a clean and safe condition.
 
