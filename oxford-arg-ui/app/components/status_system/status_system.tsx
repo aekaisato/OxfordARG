@@ -295,6 +295,11 @@ export async function startGame() {
   navigatePhase("Phase1");
   await goto(await setStatus(1));
   await setCloudStatus(1);
+  const uid = firebase.auth().currentUser?.uid;
+  const date = new Date().toISOString();
+  firebase.database().ref("/statuses/" + uid + "/").update({
+    started: date
+  })
 }
 
 export async function continueGame(overrideCloud?: boolean) {

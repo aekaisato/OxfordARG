@@ -182,7 +182,7 @@ export class CompletionScreen extends React.Component {
   async handleName(item: string) {
     let database = firebase.database().ref("/users/" + item + "/name");
     let value = await (await database.once("value")).val();
-    console.log(value);
+    // console.log(value);
     this.setState({ [item]: value });
   }
 
@@ -284,6 +284,7 @@ export class CompletionScreen extends React.Component {
                           borderBottomWidth: 1,
                           alignItems: "center",
                         }}
+                        key={item}
                       >
                         <View
                           style={{
@@ -540,7 +541,7 @@ by Aiden Sato
 by Aiden Sato
 
 Sound Effects from
-FreeSound and Storyblocks
+FreeSound  Storyblocks
 
 Additional Images from
 Pexels
