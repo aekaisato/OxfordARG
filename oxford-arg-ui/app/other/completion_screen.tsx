@@ -438,6 +438,7 @@ const styles = StyleSheet.create({
 
 const creditsString = `VIRIDOS - An Oxford ARG
 
+
 Created by 
 Aiden Sato and Brandon Imai
 
@@ -470,6 +471,7 @@ Aiden Sato
 
 Puzzle Team
 Cory Spessert, Joshua Spessert, Lance Sahagun, Aiden Sato, and Brandon Imai
+
 
 CAST (in order of appearance)
 
@@ -521,6 +523,7 @@ Himself
 MR. WEI
 Himself
 
+
 Music By
 Ryan Imai, Sebastian Aguilan, and Aiden Sato
 
@@ -533,11 +536,13 @@ by Aiden Sato
 “Kali”
 by Aiden Sato
 
+
 Playtesters
 The Sato Family, The Imai Family, Justin Lin, Lance Sahagun, and Connor Takeshita
 
 Marketing Team
 Lance Sahagun, Brandon Imai, Aiden Sato
+
 
 Sound Effects from
 FreeSound and Storyblocks
@@ -545,6 +550,8 @@ FreeSound and Storyblocks
 Additional Images from
 Pexels
 
+
 The creators of this game would like to personally thank PTSA and the OA administration for allowing us to create this project and the custodians who work tirelessly to keep our campus in a clean and safe condition.
 
-The creators would also like to thank everyone involved in the development of this game, including the teachers for generously donating their time to film footage for us as well as our good friend Kimberly Hosoda from Whitney High School.`;
+The creators would also like to thank everyone involved in the development of this game, including the teachers for generously donating their time to film footage for us as well as our good friend Kimberly Hosoda from Whitney High School.
+`;
