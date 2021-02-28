@@ -32,6 +32,10 @@ let that: any;
 
 // https://codepen.io/ConnorsFan/pen/rzeXNe
 
+const scrollBarPadding =
+  document.getElementById("creditsView")?.offsetWidth -
+    document.getElementById("creditsView")?.offsetWidth || 17;
+
 let fps = 60;
 let speedFactor = 0.0025;
 let minDelta = 0.5;
@@ -380,38 +384,46 @@ export class CompletionScreen extends React.Component {
                 overflowY: "scroll",
                 alignItems: "center",
                 textAlign: "center",
-                paddingRight:
-                  document.getElementById("creditsView")?.offsetWidth -
-                    document.getElementById("creditsView")?.offsetWidth || 17,
+                paddingRight: scrollBarPadding,
                 boxSizing: "content-box",
+                justifyContent: "center",
               }}
               id="creditsView"
             >
-              <View style={{ height: deviceHeight }} />
-              <Text
+              <div
                 style={{
-                  color: "white",
-                  margin: 20,
-                  fontFamily: "Metropolis-Regular",
-                  fontSize: deviceHeight / 54,
-                  textAlign: "center",
+                  alignItems: "center",
+                  width: "90%",
+                  paddingLeft: scrollBarPadding,
+                  margin: "0 auto",
                 }}
               >
-                {creditsString}
-              </Text>
-              <View style={{ height: deviceHeight / 2 }} />
-              <Text
-                style={{
-                  color: "white",
-                  margin: 20,
-                  fontFamily: "Metropolis-Regular",
-                  fontSize: deviceHeight / 54,
-                  textAlign: "center",
-                }}
-              >
-                Thanks for playing!
-              </Text>
-              <View style={{ height: deviceHeight / 2 }} />
+                <View style={{ height: deviceHeight }} />
+                <Text
+                  style={{
+                    color: "white",
+                    margin: 0,
+                    fontFamily: "Metropolis-Regular",
+                    fontSize: deviceHeight / 54,
+                    textAlign: "center",
+                  }}
+                >
+                  {creditsString}
+                </Text>
+                <View style={{ height: deviceHeight / 2 }} />
+                <Text
+                  style={{
+                    color: "white",
+                    margin: 0,
+                    fontFamily: "Metropolis-Regular",
+                    fontSize: deviceHeight / 54,
+                    textAlign: "center",
+                  }}
+                >
+                  Thanks for playing!
+                </Text>
+                <View style={{ height: deviceHeight / 2 }} />
+              </div>
             </div>
           </View>
         </View>
