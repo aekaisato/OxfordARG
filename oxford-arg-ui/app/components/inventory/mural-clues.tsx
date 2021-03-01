@@ -23,10 +23,18 @@ async function wait(timeout: number) {
 }
 
 export function getMural1Unlocked() {
+  if(that == undefined) {
+    "mural that not defined"
+    return;
+  }
   return that.state.mural1Unlocked;
 }
 
 export function getMural2Unlocked() {
+  if(that == undefined) {
+    "mural that not defined"
+    return;
+  }
   return that.state.mural2Unlocked;
 }
 

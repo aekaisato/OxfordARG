@@ -10,6 +10,10 @@ let progress = 0.0; // num from 0 to 1
 
 export function setProgress(val: number) {
   progress = val;
+  if (that == undefined) {
+    console.log("progress bar that is not defined");
+    return;
+  }
   that.forceUpdate();
 }
 
