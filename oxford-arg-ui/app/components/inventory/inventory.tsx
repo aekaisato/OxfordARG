@@ -227,17 +227,18 @@ export class Inventory extends React.Component<InventoryProps> {
               onPress={() => this.handleToggleMuralClues()}
             />
           </View>
-          <View style={{ position: "absolute", top: 20, alignSelf: "center" }}>
+          {/* <View style={{ position: "absolute", top: 20, alignSelf: "center" }}>
             <Text
               style={{
                 fontFamily: "Noto-Sans",
                 alignSelf: "center",
                 color: "white",
+                fontSize: deviceHeight/32,
               }}
             >
               drag and drop the images
             </Text>
-          </View>
+          </View> */}
         </View>
         <View
           style={{

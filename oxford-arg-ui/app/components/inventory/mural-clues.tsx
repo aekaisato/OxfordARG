@@ -5,6 +5,8 @@ import {
   Dimensions,
   ViewProperties,
   Text,
+  Image,
+  Button
 } from "react-native";
 import Draggable from "react-draggable";
 import { enableMuralClues } from "./inventory";
@@ -41,6 +43,7 @@ export class MuralClues extends React.Component<MuralClueProps> {
     this.state = {
       mural1Unlocked: false,
       mural2Unlocked: false,
+      infoOverlay: "flex"
     };
     that = this;
   }
@@ -110,6 +113,47 @@ export class MuralClues extends React.Component<MuralClueProps> {
       <View style={[styles.container, this.props.style]}>
         {clue1}
         {clue2}
+        <View
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#000000A0",
+            display: this.state.infoOverlay,
+          }}
+        >
+          <Image
+            source={require("../../../assets/img/clue-instructions.webp")}
+            style={{
+              width: "88.8vh",
+              height: "50vh",
+              borderColor: "white",
+              borderWidth: 5,
+            }}
+            resizeMode="contain"
+          />
+          <View style={{ height: 25 }} />
+          <View style={{ flexDirection: "row" }}>
+            <Text
+              style={{
+                fontFamily: "Noto-Sans",
+                fontSize: deviceWidth / 64,
+                color: "white",
+              }}
+            >
+              Drag and drop the images.
+            </Text>
+            <View style={{ width: 25 }} />
+            <View>
+              <Button
+                title="Understood."
+                onPress={() => this.setState({ infoOverlay: "none" })}
+              />
+            </View>
+          </View>
+        </View>
       </View>
     );
   }
@@ -118,7 +162,8 @@ export class MuralClues extends React.Component<MuralClueProps> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
   },
 });
