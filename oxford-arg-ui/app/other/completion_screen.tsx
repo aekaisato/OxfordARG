@@ -10,12 +10,13 @@ import {
   Animated,
   Easing,
   Text,
-  Image,
   Button,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { format, parseISO } from "date-fns";
 import { NavigationEvents } from "react-navigation";
+import { getDate, getMonth } from "date-fns";
+import { playSound } from "../components/sound_system/sound_system";
 
 let deviceHeight = Dimensions.get("window").height;
 let deviceWidth = Dimensions.get("window").width;
@@ -27,6 +28,33 @@ async function wait(timeout: number) {
 }
 
 let that: any;
+
+let thanks: {} | null | undefined;
+let date = new Date();
+if (getDate(date) == 10 && getMonth(date) == 2) { // mario day
+  console.log("mario")
+  thanks = (
+    <Button
+      title="Thank you so much-a for-to playing my game!"
+      onPress={() => playSound("mario")}
+    />
+  );
+} else {
+  console.log("thanks")
+  thanks = (
+    <Text
+      style={{
+        color: "white",
+        margin: 0,
+        fontFamily: "Metropolis-Regular",
+        fontSize: deviceHeight / 54,
+        textAlign: "center",
+      }}
+    >
+      Thanks for playing!
+    </Text>
+  );
+}
 
 // document.addEventListener("contextmenu", (event) => event.preventDefault()); // prevents right click. remove maybe?
 
@@ -411,17 +439,7 @@ export class CompletionScreen extends React.Component {
                   {creditsString}
                 </Text>
                 <View style={{ height: deviceHeight / 2 }} />
-                <Text
-                  style={{
-                    color: "white",
-                    margin: 0,
-                    fontFamily: "Metropolis-Regular",
-                    fontSize: deviceHeight / 54,
-                    textAlign: "center",
-                  }}
-                >
-                  Thanks for playing!
-                </Text>
+                  {thanks}
                 <View style={{ height: deviceHeight / 2 }} />
               </div>
             </div>

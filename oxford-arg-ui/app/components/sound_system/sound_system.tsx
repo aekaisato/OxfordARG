@@ -34,6 +34,9 @@ const sounds = {
   shutdown: new Howl({
     src: [soundDirectory + "shutdown.ogg"],
   }),
+  mario: new Howl({
+    src: [soundDirectory + "mario.ogg"],
+  }),
 };
 
 const music = {
