@@ -5,7 +5,6 @@ import firebase from "firebase/app";
 import "firebase/database";
 //@ts-ignore
 import jwtVerify from "jose/dist/browser/jwt/verify";
-import "sorttable";
 
 const SECRET_STR =
   "L3tGLlskXFB0c2MyR3hSRSwnVjk1SloocFxMalFaNTp+SXhQNk9kQ3VbcHQ5b2lIJVEhNkIwdURjPWR2cSJAQA==";
@@ -170,7 +169,7 @@ export default class App extends React.Component {
           overflow: "auto",
         }}
       >
-        <table className="sortable">
+        <table>
           <thead>
             <th>pos</th>
           </thead>
