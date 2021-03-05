@@ -563,23 +563,26 @@ const statusLibrary = [
   },
   {
     type: "communicator",
-    value: "Scene28Line1",
+    value: "Scene28N",
+    endAt: 22,
+  },
+  {
+    type: "transcript",
+    value: transcriptStrings["Scene28NLine2"],
+    continue: true,
   },
   {
     type: "wait",
-    value: 12000,
+    value: 44000,
   },
   {
-    type: "communicator",
-    value: "Scene30Line1",
+    type: "transcript",
+    value: transcriptStrings["Scene28NLine3"],
+    continue: true,
   },
   {
     type: "wait",
-    value: 2000,
-  },
-  {
-    type: "communicator",
-    value: "Scene30Line2",
+    value: 26000,
   },
   {
     type: "completion",

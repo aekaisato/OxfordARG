@@ -31,8 +31,9 @@ let that: any;
 
 let thanks: {} | null | undefined;
 let date = new Date();
-if (getDate(date) == 10 && getMonth(date) == 2) { // mario day
-  console.log("mario")
+if (getDate(date) == 10 && getMonth(date) == 2) {
+  // mario day
+  console.log("mario");
   thanks = (
     <Button
       title="Thank you so much-a for-to playing my game!"
@@ -40,7 +41,7 @@ if (getDate(date) == 10 && getMonth(date) == 2) { // mario day
     />
   );
 } else {
-  console.log("thanks")
+  console.log("thanks");
   thanks = (
     <Text
       style={{
@@ -439,7 +440,7 @@ export class CompletionScreen extends React.Component {
                   {creditsString}
                 </Text>
                 <View style={{ height: deviceHeight / 2 }} />
-                  {thanks}
+                {thanks}
                 <View style={{ height: deviceHeight / 2 }} />
               </div>
             </div>
@@ -581,7 +582,20 @@ Additional Images from
 Pexels
 
 
-The creators of this game would like to personally thank PTSA and the OA administration for allowing us to create this project and the custodians who work tirelessly to keep our campus in a clean and safe condition.
+Flow Puzzle from
+https://github.com/dom111/flow-free
+
+Tower of Hanoi Puzzle from
+https://github.com/timfoley/tower-of-hanoi
+
+Oregon Trail Puzzle from
+https://github.com/warnock/oregon-trail-game
+
+Pong Puzzle from
+https://github.com/jakesgordon/javascript-pong/
+
+
+The creators of this game would like to personally thank PTSA, Mrs. Houston, and the OA Administration for allowing us to create this project, as well as the custodians who work tirelessly to keep our campus in a clean and safe condition.
 
 The creators would also like to thank everyone involved in the development of this game, including the teachers for generously donating their time to film footage for us as well as our good friend Kimberly Hosoda from Whitney High School.
 `;

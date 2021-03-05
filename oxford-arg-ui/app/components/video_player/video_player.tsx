@@ -79,6 +79,7 @@ const urls = {
   Scene28ErrorS: encodeURI(FOLDER_PATH + "Scene 28 Error Msg 4.webm"),
   Scene30Line1: encodeURI(FOLDER_PATH + "Scene 30 Line 1 HOSHI.webm"),
   Scene30Line2: encodeURI(FOLDER_PATH + "Scene 30 Line 2 Alonso.webm"),
+  Scene28N: encodeURI(FOLDER_PATH + "Scene 28-30 ACTUAL.webm")
 };
 
 export { urls };

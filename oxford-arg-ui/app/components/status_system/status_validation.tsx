@@ -29,6 +29,7 @@ export async function validateJWT(jwt: string) {
     res = await jwtVerify(jwt, PRIVATE_KEY);
   } catch (e) {
     console.warn("jwt token invalid");
+    console.warn(e);
     alert(
       "The status key supplied is invalid. Returning to start of game. If you believe this is in error, please contact support."
     );
