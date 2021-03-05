@@ -84,6 +84,16 @@ export default class App extends React.Component {
     }
   }
 
+  getStuID(value: string) {
+    //@ts-ignore
+    let temp = this.state.database.users[value].stuID;
+    if (temp == undefined) {
+      return "";
+    } else {
+      return temp;
+    }
+  }
+
   async getStatus(value: string, skipFormat?: boolean) {
     //@ts-ignore
     let temp = this.state.database.statuses[value].status;
@@ -183,6 +193,7 @@ export default class App extends React.Component {
           <thead>
             <th>name</th>
             <th>uid</th>
+            <th>student id</th>
             <th>status</th>
             <th>completion</th>
           </thead>
@@ -194,6 +205,7 @@ export default class App extends React.Component {
                   {/* <td>{index + 1}</td> */}
                   <td>{this.getName(value)}</td>
                   <td>{value}</td>
+                  <td>{this.getStuID(value)}</td>
                   {/* @ts-ignore */}
                   <td>{this.state[value]}</td>
                   <td>{this.getCompletion(value)}</td>
