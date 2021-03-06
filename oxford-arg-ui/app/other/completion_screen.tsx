@@ -506,7 +506,7 @@ Cory Spessert, Joshua Spessert, Lance Sahagun, Aiden Sato, and Brandon Imai
 
 CAST (in order of appearance)
 
-MR. ALONSO
+DR. ALONSO
 Himself
 
 VIRIDOS TUTORIAL VOICE
