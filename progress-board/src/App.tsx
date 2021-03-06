@@ -146,25 +146,26 @@ export default class App extends React.Component {
     let aStatus = Number.parseInt(this.state[a]);
     //@ts-ignore
     let bStatus = Number.parseInt(this.state[b]);
-    if (aStatus > bStatus) {
+    let aComplete = this.getCompletion(a);
+    let bComplete = this.getCompletion(b);
+
+    if (aComplete.length > 0 && bComplete.length == 0) {
       return -1;
-    } else if (bStatus > aStatus) {
+    } else if (bComplete.length > 0 && aComplete.length == 0) {
       return 1;
     } else {
-      let aComplete = this.getCompletion(a);
-      let bComplete = this.getCompletion(b);
-      if (aComplete == "") {
-        return 1;
-      }
-      if (bComplete == "") {
-        return -1;
-      }
       if (aComplete > bComplete) {
         return 1;
       } else if (bComplete > aComplete) {
         return -1;
       } else {
-        return 0;
+        if (aStatus > bStatus) {
+          return -1;
+        } else if (bStatus > aStatus) {
+          return 1;
+        } else {
+          return 0;
+        }
       }
     }
   }
