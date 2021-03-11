@@ -31,7 +31,7 @@ async function wait(timeout: number) {
   });
 }
 
-const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/livefeed-clips/";
+const FOLDER_PATH = "/static/vid/livefeed-clips/";
 
 const urls = {
   Scene1: encodeURI(FOLDER_PATH + "Scene 1 VIRIDOS.webm"),

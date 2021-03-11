@@ -285,7 +285,7 @@ export class Phase1Layout extends React.Component {
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
                   <Button
-                    title="Open Inventory"
+                    title="Open"
                     onPress={() => {
                       playSound("button");
                       this.handleToggleInventory();

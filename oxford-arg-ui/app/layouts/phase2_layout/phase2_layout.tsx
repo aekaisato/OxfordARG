@@ -203,7 +203,7 @@ export class Phase2Layout extends React.Component {
                 </View>
                 <View style={{ width: deviceWidth / 16 }}>
                   <Button
-                    title="Open Inventory"
+                    title="Open"
                     color="red"
                     onPress={() => {
                       playSound("button");

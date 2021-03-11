@@ -24,7 +24,7 @@ async function wait(timeout: number) {
   });
 }
 
-const FOLDER_PATH = "https://static.viridos.toadtoad.xyz/communicator-clips/";
+const FOLDER_PATH = "/static/vid/communicator-clips/";
 
 const urls = {
   Scene1Line1: encodeURI(FOLDER_PATH + "Scene 1 Line 1 Alonso v3.webm"),
